@@ -14,27 +14,13 @@ import Select from "react-validation/build/select"
 import AuthService from "../../service/AuthService";
 import {required, nameValidation, validEmail, validUsername, validPassword, validPhoneNumber, validAge} from "./validations/RegisterValidations"
 import {Grid} from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-
-},
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-}));
+import {useStyles} from "./AuthStyles";
 
 const Register = () => {
     const classes = useStyles();
     const history = useHistory();
     const form = useRef();
     const checkBtn = useRef();
-
 
     const submitForm = e => {
         e.preventDefault();
@@ -111,7 +97,7 @@ const Register = () => {
     }
 
     return (
-        <Container maxWidth="xs" className="sign-up-container" style={{border: "1px solid black", width: "600px"}}>
+        <Container maxWidth="xs" className="sign-up-container">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -258,7 +244,7 @@ const Register = () => {
                             <br/>
                             <br/>
                             <Grid xs={12}>
-                                <div className="form-group" style={{marginTop: "20px"}}>
+                                <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
                                     <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign Up</Button>
                                     <Button variant="contained" color="success" block href="/login">Back to login</Button>
                                 </div>

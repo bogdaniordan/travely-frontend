@@ -1,78 +1,40 @@
-import React, { useState, useRef } from "react";
+import React, {useRef, useState} from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
+import {required, validPassword, validUsername} from "./validations/RegisterValidations";
 import CheckButton from "react-validation/build/button";
-import { isEmail } from "validator";
-import { useHistory } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import {useHistory} from "react-router-dom";
+import AuthService from "../../service/AuthService";
+import {useStyles} from "./AuthStyles";
 
-const required = (value) => {
-    if (!value) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This field is required!
-            </div>
-        );
-    }
-};
-
-const validEmail = (value) => {
-    if (!isEmail(value)) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This is not a valid email.
-            </div>
-        );
-    }
-};
-
-const vusername = (value) => {
-    if (value.length < 3 || value.length > 20) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                The username must be between 3 and 20 characters.
-            </div>
-        );
-    }
-};
-
-const vpassword = (value) => {
-    if (value.length < 6 || value.length > 40) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                The password must be between 6 and 40 characters.
-            </div>
-        );
-    }
-};
-
-const Register = (props) => {
-    const history = useHistory();
+const Login = () => {
+    const classes = useStyles();
     const form = useRef();
     const checkBtn = useRef();
+    const history = useHistory();
 
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
+    const [password, setPassword] = useState();
+    const [username, setUsername] = useState();
 
-    const onChangeUsername = (e) => {
-        const username = e.target.value;
-        setUsername(username);
-    };
+    const onChangeUsername = event => {
+        setUsername(event.target.value)
+    }
 
-    const onChangeEmail = (e) => {
-        const email = e.target.value;
-        setEmail(email);
-    };
+    const onChangePassword = event => {
+        setPassword(event.target.value)
+    }
 
-    const onChangePassword = (e) => {
-        const password = e.target.value;
-        setPassword(password);
-    };
-
-    const handleRegister = (e) => {
+    const submitForm = e => {
         e.preventDefault();
 
         setMessage("");
@@ -80,100 +42,87 @@ const Register = (props) => {
 
         form.current.validateAll();
 
-        // if (checkBtn.current.context._errors.length === 0) {
-        //     AuthService.register(username, email, password).then(
-        //         (response) => {
-        //             setMessage(response.data);
-        //             setSuccessful(true);
-        //             setTimeout(() => {
-        //                 history.push("/login");
-        //             }, 2000);
-        //
-        //         },
-        //         (error) => {
-        //             const resMessage =
-        //                 (error.response &&
-        //                     error.response.data &&
-        //                     error.response.data.message) ||
-        //                 error.message ||
-        //                 error.toString();
-        //
-        //             setMessage(resMessage);
-        //             setSuccessful(false);
-        //         }
-        //     );
-        // }
-    };
+        if (checkBtn.current.context._errors.length === 0) {
+            AuthService.login(username, password).then(
+                res => {
+                    setMessage("You have signed in. Redirecting to home page...")
+                    setSuccessful(true)
+                    setTimeout(() => {
+                        history.push("/")
+                    }, 2500)
+                },
+                error => {
+                    setMessage("User doesn't exist or credentials don't match.");
+                    setSuccessful(false);
+                }
+            )
+        }
+    }
 
     return (
-        <div className="col-md-12">
-            {message && (
-                <div className="form-group">
-                    <div
-                        className={
-                            successful ? "alert alert-success" : "alert alert-danger"
-                        }
-                        role="alert"
-                    >
-                        {message}
-                    </div>
-                </div>
-            )}
-            <div className="card card-container">
-                <img
-                    src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                    alt="profile-img"
-                    className="profile-img-card"
-                />
-
-                <Form onSubmit={handleRegister} ref={form}>
-                    <div>
-                        <div className="form-group">
-                            <label htmlFor="username">Username</label>
-                            <Input
-                                type="text"
-                                className="form-control"
-                                name="username"
-                                value={username}
-                                onChange={onChangeUsername}
-                                validations={[required, vusername]}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <Input
-                                type="text"
-                                className="form-control"
-                                name="email"
-                                value={email}
-                                onChange={onChangeEmail}
-                                validations={[required, validEmail]}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <Input
-                                type="password"
-                                className="form-control"
-                                name="password"
-                                value={password}
-                                onChange={onChangePassword}
-                                validations={[required, vpassword]}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <Button type="submit" variant="primary" block>Sign Up</Button>
-                            <Button variant="outline-info" block href="/login">Back to login</Button>
+        <Container maxWidth="xs" className="sign-up-container">
+            <CssBaseline />
+            <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Sign up
+                </Typography>
+                {message && (
+                    <div className="form-group">
+                        <div
+                            className={
+                                successful ? "alert alert-success" : "alert alert-danger"
+                            }
+                            role="alert"
+                        >
+                            {message}
                         </div>
                     </div>
+                )}
+                <br/>
+                <Form onSubmit={submitForm} ref={form}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <div className="form-group">
+                                <label htmlFor="username">Username</label>
+                                <Input
+                                    type="text"
+                                    className="form-control"
+                                    name="username"
+                                    value={username}
+                                    onChange={onChangeUsername}
+                                    validations={[required, validUsername]}
+                                />
+                            </div>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <Input
+                                    type="password"
+                                    className="form-control"
+                                    name="password"
+                                    value={password}
+                                    onChange={onChangePassword}
+                                    validations={[required, validPassword]}
+                                />
+                            </div>
+                        </Grid>
+                        <br/>
+                        <br/>
+                        <Grid xs={12}>
+                            <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
+                                <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
+                            </div>
+                        </Grid>
+                    </Grid>
                     <CheckButton style={{ display: "none" }} ref={checkBtn} />
                 </Form>
             </div>
-        </div>
+        </Container>
     );
-};
+}
 
-export default Register;
+export default Login;
