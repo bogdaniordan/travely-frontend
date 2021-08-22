@@ -4,14 +4,16 @@ import Register from "../auth/Register";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "../auth/Login";
 import AuthService from "../../service/AuthService";
+import HomePage from "./HomePage";
 
 const Routes = () => {
     return (
         <div>
             <Router>
                 <Switch>
-                    <Route path="/register" exact render={() => AuthService.getCurrentUser() ? <Register /> : <Redirect to="/"/>} />
-                    <Route path="/login" exact render={() => AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
+                    <Route path="/" exact component={HomePage} />
+                    <Route path="/register" exact render={() => !AuthService.getCurrentUser() ? <Register /> : <Redirect to="/"/>} />
+                    <Route path="/login" exact render={() => !AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
                 </Switch>
             </Router>
         </div>
