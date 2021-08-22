@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService"
 import {useHistory} from "react-router-dom";
+import SearchResults from "../search/SearchResults";
 
-const HomePage = () => {
+const HomePage = (props) => {
     const history = useHistory();
     const [location, setLocation] = useState();
     const [searchInput, setSearchInput] = useState();
@@ -11,14 +12,11 @@ const HomePage = () => {
 
     const search = () => {
         if (!location && !searchInput) {
-            AccommodationService.getAllAccommodations().then(r => setResults(r.data))
+            AccommodationService.getAllAccommodations().then(r => {setResults(r.data)})
         } else if (location) {
             AccommodationService.getByLocation(location).then(r => setResults(r.data))
         }
-        history.push({
-            pathname: "/search-results",
-            state: {results: results}
-        })
+
     }
 
     return (
@@ -67,8 +65,12 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
+                {
+                    results && (
+                        <SearchResults places={results}/>
+                    )
+                }
             </div>
-
 
         </div>
     );

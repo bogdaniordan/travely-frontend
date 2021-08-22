@@ -34,7 +34,7 @@ const Navbar = () => {
                         className={classes.menuButton}
                         color="inherit"
                         aria-label="menu"
-                        onClick={() => history.push("/home")}
+                        onClick={() => history.push("/")}
                     >
                         Travely
                     </IconButton>
