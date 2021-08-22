@@ -1,7 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
+import AccommodationService from "../../service/AccommodationService"
+import {useHistory} from "react-router-dom";
 
 const HomePage = () => {
+    const history = useHistory();
+    const [location, setLocation] = useState();
+    const [searchInput, setSearchInput] = useState();
+    const [results, setResults] = useState();
+
+    const search = () => {
+        if (!location && !searchInput) {
+            AccommodationService.getAllAccommodations().then(r => setResults(r.data))
+        } else if (location) {
+            AccommodationService.getByLocation(location).then(r => setResults(r.data))
+        }
+        history.push({
+            pathname: "/search-results",
+            state: {results: results}
+        })
+    }
+
     return (
         <div>
             <Navbar />
@@ -10,12 +29,12 @@ const HomePage = () => {
                     <div className="col-lg-12 card-margin">
                         <div className="card search-form">
                             <div className="card-body p-0">
-                                <form id="search-form">
+                                {/*<form id="search-form">*/}
                                     <div className="row">
                                         <div className="col-12">
                                             <div className="row no-gutters">
                                                 <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                                                    <select className="form-control" id="exampleFormControlSelect1">
+                                                    <select className="form-control" id="exampleFormControlSelect1" onChange={(event) => setLocation(event.target.value)}>
                                                         <option value="" selected disabled hidden>City</option>
                                                         <option value="London">London</option>
                                                         <option value="Boston">Boston</option>
@@ -27,10 +46,10 @@ const HomePage = () => {
                                                 </div>
                                                 <div className="col-lg-8 col-md-6 col-sm-12 p-0">
                                                     <input type="text" placeholder="Search..." className="form-control"
-                                                           id="search" name="search"/>
+                                                           id="search" name="search" onChange={(event) => setSearchInput(event.target.value)}/>
                                                 </div>
                                                 <div className="col-lg-1 col-md-3 col-sm-12 p-0">
-                                                    <button type="submit" className="btn btn-base">
+                                                    <button type="submit" className="btn btn-base" onClick={search}>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                              viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                              stroke-width="2" stroke-linecap="round"
@@ -43,7 +62,7 @@ const HomePage = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                {/*</form>*/}
                             </div>
                         </div>
                     </div>
