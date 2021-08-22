@@ -2,91 +2,17 @@ import React, {useState, useEffect, useRef} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { isEmail } from "validator";
 import {useHistory} from "react-router-dom";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
 import Select from "react-validation/build/select"
-
-
-const required = (value) => {
-    if (!value) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This field is required!
-            </div>
-        );
-    }
-};
-
-const nameValidation = value => {
-    if (value.length < 3 && value.length > 15) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                Name must be between 3 and 15 characters long.
-            </div>
-        );
-    }
-}
-
-const validEmail = (value) => {
-    if (!isEmail(value)) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This is not a valid email.
-            </div>
-        );
-    }
-};
-
-
-const validUsername = (value) => {
-    if (value.length < 3 || value.length > 25) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                The username must be between 3 and 25 characters.
-            </div>
-        );
-    }
-};
-
-const validPassword = (value) => {
-    if (value.length < 5 || value.length > 25) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                The password must be between 5 and 25 characters.
-            </div>
-        );
-    }
-};
-
-const validPhoneNumber = (value) => {
-    if (value.length < 5 || value.length > 15 || !/^\d+\.\d+$/.test(value)) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                Phone number must be between 5 and 15 and must be only digits.
-            </div>
-        );
-    }
-}
-
-const validAge = value => {
-    if (value < 18) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                You must be at least 18 years old.
-            </div>
-        );
-    }
-}
+import AuthService from "../../service/AuthService";
+import {required, nameValidation, validEmail, validUsername, validPassword, validPhoneNumber, validAge} from "./validations/RegisterValidations"
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -117,7 +43,21 @@ const Register = () => {
 
         form.current.validateAll();
 
-
+        if (checkBtn.current.context._errors.length === 0) {
+            AuthService.register(firstName, lastName, username, password, email, address, phoneNumber, gender, age).then(
+                res => {
+                    setMessage(res.data.message);
+                    setSuccessful(true);
+                    setTimeout(() => {
+                        history.push("/login");
+                    }, 3000);
+                },
+                error => {
+                    setMessage(error.response.data.message);
+                    setSuccessful(false);
+                }
+            )
+        }
     }
 
     const [firstName, setFirstName] = useState();
@@ -169,24 +109,9 @@ const Register = () => {
         setAge(event.target.value)
     }
 
-
-
-
     return (
         <Container maxWidth="xs" className="sign-up-container" style={{border: "1px solid black"}}>
             <CssBaseline />
-            {/*{message && (*/}
-            {/*    <div className="form-group">*/}
-            {/*        <div*/}
-            {/*            className={*/}
-            {/*                successful ? "alert alert-success" : "alert alert-danger"*/}
-            {/*            }*/}
-            {/*            role="alert"*/}
-            {/*        >*/}
-            {/*            {message}*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*)}*/}
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />

@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "http://localhost:8080/auth";
 
 class AuthService {
     login(username, password) {
         return axios
-            .post(API_URL + "signin", {
+            .post(API_URL + "/register-customer", {
                 username,
                 password,
             })
@@ -22,15 +22,17 @@ class AuthService {
         localStorage.removeItem("user");
     }
 
-    register(username, email, address, phoneNumber, gender, firstName, lastName) {
-        return axios.post(API_URL + "signup", {
+    register(firstName, lastName, username, password, email, address, phoneNumber, gender, age) {
+        return axios.post(API_URL + "/register-customer", {
+            firstName,
+            lastName,
             username,
+            password,
             email,
             address,
             phoneNumber,
             gender,
-            firstName,
-            lastName,
+            age
         });
     }
 
