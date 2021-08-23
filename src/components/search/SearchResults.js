@@ -16,7 +16,7 @@ const SearchResults = (props) => {
                                         <div className="result-header">
                                             <div className="row">
                                                 <div className="col-lg-6">
-                                                    <div className="records">Showing: <b>1-20</b> of <b>{props.places.length}</b> result
+                                                    <div className="records">Showing: <b>1-{props.places.length}</b> of <b>{props.places.length}</b> results
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-6">
@@ -59,7 +59,7 @@ const SearchResults = (props) => {
                                                                 </td>
                                                                 <td>
                                                                     <div className="widget-26-job-info">
-                                                                        <p className="type m-0">Full-Time</p>
+                                                                        <p className="type m-0">{place.address}</p>
                                                                         <p className="text-muted m-0">in <span
                                                                             className="location">{place.location}</span></p>
                                                                     </div>
@@ -70,7 +70,7 @@ const SearchResults = (props) => {
                                                                 <td>
                                                                     <div className="widget-26-job-category bg-soft-base">
                                                                         <i className="indicator bg-base"></i>
-                                                                        <span>Software Development</span>
+                                                                        <span>{place.placeType}</span>
                                                                     </div>
                                                                 </td>
                                                                 <td>
