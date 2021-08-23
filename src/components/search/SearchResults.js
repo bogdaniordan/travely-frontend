@@ -50,7 +50,7 @@ const SearchResults = (props) => {
                                                                 </td>
                                                                 <td>
                                                                     <div className="widget-26-job-title">
-                                                                        <a href="#">{place.title}</a>
+                                                                        <a href={`/accommodation/${place.id}`}>{place.title}</a>
                                                                         <p className="m-0"><a href="#"
                                                                                               className="employer-name">Axiom
                                                                             Corp.</a> <span className="text-muted time">1 days ago</span>

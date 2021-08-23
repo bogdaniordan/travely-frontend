@@ -27,7 +27,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <AppBar position="static" style={{ marginBottom: "3%" }}>
+            <AppBar position="static">
                 <Toolbar>
                     <IconButton
                         edge="start"

@@ -19,6 +19,10 @@ class AccommodationService {
     getByPlaceTypeAndLocation(placeType, location) {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/place-type/${placeType}/location/${location}`, { headers: AuthHeader() });
     }
+
+    getById(id) {
+        return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/${id}`, { headers: AuthHeader() });
+    }
 }
 
 export default new AccommodationService;

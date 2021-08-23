@@ -1,30 +1,17 @@
 import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService"
-import {useHistory} from "react-router-dom";
 import SearchResults from "../search/SearchResults";
-import Button from '@material-ui/core/Button';
-import {Checkbox, Collapse} from "@material-ui/core";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-const HomePage = (props) => {
-    const history = useHistory();
+
+const HomePage = () => {
     const [location, setLocation] = useState();
     const [searchInput, setSearchInput] = useState();
     const [results, setResults] = useState();
-    // const [showFacilities, setShowFacilities] = useState(false);
-    // const [facilities, setFacilities] = useState([]);
     const [placeType, setPlaceType] = useState()
-    // const [checked, setChecked] = useState(true);
 
-    // const [facilities, setFacilities] = useState({
-    //     Kitchen: false,
-    //     TV: false,
-    //     Hair_dryer: false,
-    //     Dedicated_workspace: false,
-    //     Wifi: false,
-    //     Washer: false,
-    //     Refrigerator: false,
-    // })
 
     const search = () => {
         if (!location && !searchInput && !placeType) {
@@ -39,17 +26,20 @@ const HomePage = (props) => {
         console.log(results)
     }
 
-    // const toggleFilters = () => {
-    //     setShowFacilities(!showFacilities);
-    // }
-
-    // const handleHairDryer = (event) => {
-    //     setChecked(event.target.checked);
-    // };
-
     return (
         <div>
             <Navbar />
+            <Carousel autoPlay showIndicators={false} showThumbs={false} height={"70%"}>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1494783367193-149034c05e8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" />
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
+                </div>
+            </Carousel>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 card-margin">
@@ -59,7 +49,7 @@ const HomePage = (props) => {
                                         <div className="col-12">
                                             <div className="row no-gutters">
                                                 <div className="col-lg-3 col-md-3 col-sm-4 p-0" style={{width: "100px"}}>
-                                                    <select className="form-control" id="exampleFormControlSelect1" onClick={(event) => {setPlaceType(event.target.value)}}>
+                                                    <select className="form-control" id="exampleFormControlSelect1" onClick={(event) => setPlaceType(event.target.value)}>
                                                         <option value="" selected disabled hidden>Type</option>
                                                         <option value="Shared">Shared</option>
                                                         <option value="Private">Private</option>
@@ -99,7 +89,8 @@ const HomePage = (props) => {
                         </div>
                     </div>
                 </div>
-                {/*<Collapse in={showFacilities}>*/}
+
+                    {/*<Collapse in={showFacilities}>*/}
                 {/*    <div style={{border: "1px solid black", width: "300px", marginBottom: "20px", left: "-500px"}}>*/}
                 {/*        <h5 style={{textAlign:"center"}}>Choose facilities</h5>*/}
                 {/*        <Checkbox*/}
@@ -112,9 +103,9 @@ const HomePage = (props) => {
 
                 {/*</Collapse>*/}
                 {
-                    results && (
+                    results ? (
                         <SearchResults places={results}/>
-                    )
+                    ) : (<h3 style={{marginTop: "20px"}}>Where would you like to go...</h3>)
                 }
 
             </div>
