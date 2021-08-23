@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService";
+import BookingCard from "../reservations/BookingCard";
 
 const Accommodation = (props) => {
     const id = props.match.params.id;
@@ -28,46 +29,45 @@ const Accommodation = (props) => {
                     <div class="row">
 
                         <div class="col-md-8">
-                            <img class="img-fluid" src={accommodation.imageUrls.allImages[0]} alt=""/>
+                            <img class="img-fluid" style={{borderRadius: "25px"}} src={accommodation.imageUrls.allImages[0]} alt=""/>
                         </div>
 
                         <div class="col-md-4">
-                            <h3 class="my-3">Project Description</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                            <h5 class="my-3">Facilities</h5>
-                            <ul>
-                                {
-                                    accommodation.facilities.map(
-                                        facility => <li>{facility}</li>
+                            <div>
+                                <BookingCard accommodation={accommodation} />
+                            </div>
+                            {/*<h5 className="my-3">Facilities</h5>*/}
+                            {/*<ul>*/}
+                            {/*    {*/}
+                            {/*        accommodation.facilities.map(*/}
+                            {/*            facility => <li>{facility}</li>*/}
+                            {/*        )*/}
+                            {/*    }*/}
+                            {/*    /!*<li>Lorem Ipsum</li>*!/*/}
+                            {/*    /!*<li>Dolor Sit Amet</li>*!/*/}
+                            {/*    /!*<li>Consectetur</li>*!/*/}
+                            {/*    /!*<li>Adipiscing Elit</li>*!/*/}
+                            {/*</ul>*/}
+                            {/*<h4>Address</h4>*/}
+                            {/*<p>{accommodation.address}</p>*/}
+                            {/*<h6>Host</h6>*/}
+                            {/*<p>{accommodation.host.firstName} {accommodation.host.lastName}</p>*/}
 
-                                    )
-                                }
-                                {/*<li>Lorem Ipsum</li>*/}
-                                {/*<li>Dolor Sit Amet</li>*/}
-                                {/*<li>Consectetur</li>*/}
-                                {/*<li>Adipiscing Elit</li>*/}
-                            </ul>
-                            <h4>Address</h4>
-                            <p>{accommodation.address}</p>
-                            <h6>Host</h6>
-                            <p>{accommodation.host.firstName} {accommodation.host.lastName}</p>
                         </div>
-
-
                     </div>
 
-                    <h3 class="my-4">Related Projects</h3>
+                    <h4 class="my-4">Other pictures</h4>
 
                     <div class="row">
                         <div class="col-md-3 col-sm-6 mb-4">
                             <a href="#">
-                                <img class="img-fluid" src={accommodation.imageUrls.allImages[1]} alt=""/>
+                                <img class="img-fluid" src={accommodation.imageUrls.allImages[1]} style={{borderRadius: "25px"}} alt=""/>
                             </a>
                         </div>
 
                         <div class="col-md-3 col-sm-6 mb-4">
                             <a href="#">
-                                <img class="img-fluid" src={accommodation.imageUrls.allImages[2]} alt=""/>
+                                <img class="img-fluid" src={accommodation.imageUrls.allImages[2]} style={{borderRadius: "25px"}} alt=""/>
                             </a>
                         </div>
 
