@@ -38,6 +38,8 @@ const BookingCard = (props) => {
     const [checkinDate, setCheckinDate] = useState();
     const [checkoutDate, setCheckoutDate] = useState();
     const [message, setMessage] = useState("");
+    const [successful, setSuccessful] = useState(false);
+
 
     const submitForm = e => {
         e.preventDefault();
@@ -45,16 +47,20 @@ const BookingCard = (props) => {
         const startingDate = new Date(checkinDate);
         const endingDate = new Date(checkoutDate);
         if (startingDate < endingDate) {
-            history.push({
-                pathname: "/payment",
-                state: {
-                    booking: {
-                        checkInDate: checkinDate,
-                        checkoutDate: checkoutDate
-                    },
-                    accommodation: props.accommodation
-                }
-            })
+            setSuccessful(true);
+            setMessage("Dates are available. Redirecting to payment page...");
+            setTimeout(() => {
+                history.push({
+                    pathname: "/payment",
+                    state: {
+                        booking: {
+                            checkInDate: checkinDate,
+                            checkoutDate: checkoutDate
+                        },
+                        accommodation: props.accommodation
+                    }
+                }, )
+            },2500)
         } else {
             setMessage("Check-in needs to be before check-out date.")
         }
@@ -90,7 +96,9 @@ const BookingCard = (props) => {
                 {message && (
                     <div className="form-group">
                         <div
-                            className="alert alert-danger"
+                            className={
+                                successful ? "alert alert-success" : "alert alert-danger"
+                            }
                             role="alert"
                         >
                             {message}

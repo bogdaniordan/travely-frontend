@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import {required, validPassword, validUsername} from "./validations/RegisterValidations";
+import {required, validPassword, validUsername} from "./validations/Validations";
 import CheckButton from "react-validation/build/button";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
