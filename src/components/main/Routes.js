@@ -6,6 +6,7 @@ import Login from "../auth/Login";
 import AuthService from "../../service/AuthService";
 import HomePage from "./HomePage";
 import Accommodation from "../accommodation/Accommodation";
+import Payment from "../customer/Payment";
 
 const Routes = () => {
     return (
@@ -16,6 +17,7 @@ const Routes = () => {
                     <Route path="/register" exact render={() => !AuthService.getCurrentUser() ? <Register /> : <Redirect to="/"/>} />
                     <Route path="/login" exact render={() => !AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
                     <Route path="/accommodation/:id" exact component={Accommodation}/>
+                    <Route path="/payment" exact component={Payment} />
                 </Switch>
             </Router>
         </div>

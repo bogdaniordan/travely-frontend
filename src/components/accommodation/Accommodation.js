@@ -20,12 +20,10 @@ const Accommodation = (props) => {
             <div>
                 <Navbar />
                 <div class="container">
-
                     <h1 class="my-4">
                         <small>{accommodation.title}</small>
                     </h1>
                     <div class="row">
-
                         <div class="col-md-8">
                             <img class="img-fluid" style={{borderRadius: "25px"}} src={accommodation.imageUrls.allImages[0]} alt=""/>
                         </div>
@@ -36,7 +34,6 @@ const Accommodation = (props) => {
                             </div>
                         </div>
                     </div>
-
                     <h6 class="my-4">Other pictures</h6>
 
                     <div class="row">
@@ -70,7 +67,6 @@ const Accommodation = (props) => {
                                         </h3>
                                         <div className="mb-1 text-muted">{accommodation.location}</div>
                                         <p className="card-text mb-auto">The price for this accommodation is {accommodation.pricePerNight} per night.</p>
-                                        {/*<a href="#">Continue reading</a>*/}
                                     </div>
                                     <img height="250px" width="200px" src="https://image.freepik.com/free-vector/beach-house-logo-design-template-beach-resort-villa-beach-hotel-logo_98702-711.jpg" className="card-img-right flex-auto d-none d-md-block"
                                          data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>
@@ -85,8 +81,6 @@ const Accommodation = (props) => {
                                         </h3>
                                         <div className="mb-1 text-muted">This {accommodation.placeType} offers</div>
                                         {accommodation.facilities.map(facility => <p className="card-text mb-auto">{facility.replace("_", " ")}</p>)}
-                                        {/*<p className="card-text mb-auto"></p>*/}
-                                        {/*<a href="#">Continue reading</a>*/}
                                     </div>
                                     <img  height="250px" width="200px" src="https://static.vecteezy.com/system/resources/previews/001/483/727/non_2x/hotel-services-and-facilities-banner-vector.jpg" className="card-img-right flex-auto d-none d-md-block"
                                          data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>

@@ -34,8 +34,9 @@ const BookingCard = (props) => {
     const [checkoutDate, setCheckoutDate] = useState();
 
     const book = () => {
-
+        console.log(checkoutDate)
     }
+
     useEffect(() => {
         console.log(props.accommodation)
     })
@@ -103,15 +104,12 @@ const BookingCard = (props) => {
                         {/*        </MenuItem>*/}
                         {/*    </Select>*/}
                         {/*<br/>*/}
-                        <Button size="large" color="primary" variant="contained" type="submit" style={{marginTop: "10px"}} onClick={book}>
+                        <Button type="submit" size="large" color="primary" variant="contained" style={{marginTop: "10px"}} onClick={book}>
                             BOOK
                         </Button>
                     </form>
                 </CardActions>
                 <CardActions style={{alignItems: "center"}}>
-                    {/*<Button size="small" color="primary">*/}
-                    {/*    Learn More*/}
-                    {/*</Button>*/}
                 </CardActions>
             </Card>
         </>

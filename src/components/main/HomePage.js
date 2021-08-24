@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService"
 import SearchResults from "../search/SearchResults";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import ImageCarousel from "./ImageCarousel"; // requires a loader
 
 
 const HomePage = () => {
@@ -29,20 +29,7 @@ const HomePage = () => {
     return (
         <div>
             <Navbar />
-            <div>
-                <Carousel autoPlay showIndicators={false} showThumbs={false} height={"70%"}>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1494783367193-149034c05e8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" />
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                    </div>
-                </Carousel>
-            </div>
-
+            <ImageCarousel />
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 card-margin">
@@ -92,68 +79,35 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-
-                    {/*<Collapse in={showFacilities}>*/}
-                {/*    <div style={{border: "1px solid black", width: "300px", marginBottom: "20px", left: "-500px"}}>*/}
-                {/*        <h5 style={{textAlign:"center"}}>Choose facilities</h5>*/}
-                {/*        <Checkbox*/}
-                {/*            // checked={checked}*/}
-                {/*            onChange={handleHairDryer}*/}
-                {/*            inputProps={{ 'aria-label': 'primary checkbox' }}*/}
-                {/*        />*/}
-                {/*        Hair dryer*/}
-                {/*    </div>*/}
-
-                {/*</Collapse>*/}
-                {
-                    results ? (
-                        <SearchResults places={results}/>
-                    ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)
-                }
-
-                <div className="container marketing">
-
-                    <div className="row">
-                        <div className="col-lg-4">
-                            <svg className="bd-placeholder-img rounded-circle" width="140" height="140"
-                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
-                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#777"/>
-                                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-                            </svg>
-
-                            <h2>Heading</h2>
-                            <p>Some representative placeholder content for the three columns of text below the carousel.
-                                This is the first column.</p>
-                            <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
-                        </div>
-                        <div className="col-lg-4">
-                            <svg className="bd-placeholder-img rounded-circle" width="140" height="140"
-                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
-                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#777"/>
-                                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-                            </svg>
-
-                            <h2>Heading</h2>
-                            <p>Another exciting bit of representative placeholder content. This time, we've moved on to
-                                the second column.</p>
-                            <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
-                        </div>
-                        <div className="col-lg-4">
-                            <svg className="bd-placeholder-img rounded-circle" width="140" height="140"
-                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
-                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#777"/>
-                                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-                            </svg>
-
-                            <h2>Heading</h2>
-                            <p>And lastly this, the third column of representative placeholder content.</p>
-                            <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <div class="album py-5 bg-light">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            {
+                                results ? (
+                                    <SearchResults places={results}/>
+                                ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)
+                            }
                         </div>
                     </div>
                 </div>
+
+                {/*<div className="container marketing">*/}
+
+                {/*    <div className="row">*/}
+                {/*        <div className="col-lg-4">*/}
+                {/*            <img alt="Responsive image" className="img-fluid"  src="https://static.amazon.jobs/locations/16/thumbnails/london-thumb.jpg?1617639578"/>*/}
+                {/*            <p><a className="btn btn-secondary" href="#">Explore &raquo;</a></p>*/}
+                {/*        </div>*/}
+                {/*        <div className="col-lg-4">*/}
+                {/*            <img alt="Responsive image" className="img-fluid"  src="https://www.worldtravelguide.net/wp-content/uploads/2017/04/Think-India-Mumbai-486332873-Chidanand-M.-copy.jpg"/>*/}
+                {/*            <p><a className="btn btn-secondary" href="#">Explore &raquo;</a></p>*/}
+                {/*        </div>*/}
+                {/*        <div className="col-lg-4">*/}
+                {/*            <img alt="Responsive image" className="img-fluid"  src="https://upload.wikimedia.org/wikipedia/commons/9/96/ISH_WC_Boston4.jpg"/>*/}
+                {/*            <p><a className="btn btn-secondary" href="#">Explore &raquo;</a></p>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
             </div>
 
