@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import Navbar from "../navigation/Navbar";
 import {useLocation} from "react-router-dom";
 import Button from "@material-ui/core/Button";
@@ -7,7 +7,9 @@ import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import Select from "react-validation/build/select"
+import CheckButton from "react-validation/build/button";
+import {required, nameValidation, validEmail, validUsername, validPassword, validPhoneNumber, validAge, validCardName, validCreditCardNumber, validExpirationDate, validCVV} from "../auth/validations/Validations"
+
 
 const Payment = () => {
     const booking = useLocation().state.booking;
@@ -15,6 +17,8 @@ const Payment = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [customer, setCustomer] = useState();
     const [bookingDurationInDays, setBookingDurationInDays] = useState();
+    const form = useRef();
+    const checkBtn = useRef();
 
     useEffect(() => {
         setBookingDuration()
@@ -35,6 +39,10 @@ const Payment = () => {
                 setIsLoading(false);
             }
         )
+    }
+
+    const submitForm = () => {
+
     }
 
     if (!isLoading) {
@@ -74,42 +82,43 @@ const Payment = () => {
                         </div>
                         <div className="col-md-8 order-md-1">
                             <h4 className="mb-3">Billing address</h4>
-                            <Form className="needs-validation">
+                            <Form className="needs-validation" ref={form} onSubmit={submitForm}>
 
                                 <div className="row">
                                     <div className="col-md-6 mb-3">
                                         <label htmlFor="firstName">First name</label>
-                                        <Input type="text" className="form-control" id="firstName" placeholder="Enter first name"
+                                        <Input
+                                               type="text"
+                                               className="form-control"
+                                               id="firstName"
                                                value={customer.firstName} required/>
-                                        <div className="invalid-feedback">
-                                            Valid first name is required.
-                                        </div>
                                     </div>
                                     <div className="col-md-6 mb-3">
                                         <label htmlFor="lastName">Last name</label>
                                         <Input type="text" className="form-control" id="lastName" placeholder="Enter second name"
-                                               required/>
-                                        <div className="invalid-feedback">
-                                            Valid last name is required.
-                                        </div>
+                                               value={customer.lastName} required/>
+
                                     </div>
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="email">Email</label>
-                                    <Input type="email" className="form-control" id="email" placeholder="you@example.com" required/>
-                                    <div className="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
-                                    </div>
+                                    <Input
+                                        type="email"
+                                        className="form-control"
+                                        id="email"
+                                        value={customer.email}
+                                    />
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="address">Address</label>
-                                    <Input type="text" className="form-control" id="address" placeholder="1234 Main St"
+                                    <Input
+                                        type="text"
+                                        className="form-control"
+                                        id="address"
+                                        value={customer.address}
                                            required/>
-                                    <div className="invalid-feedback">
-                                        Please enter your shipping address.
-                                    </div>
                                 </div>
                                 <hr className="mb-4"/>
 
@@ -118,20 +127,17 @@ const Payment = () => {
                                 <div className="row">
                                     <div className="col-md-6 mb-3">
                                         <label htmlFor="cc-name">Name on card</label>
-                                        <Input type="text" className="form-control" id="cc-name" placeholder=""
+                                        <Input
+                                            type="text"
+                                            className="form-control"
+                                            id="cc-name"
                                                required/>
                                         <small className="text-muted">Full name as displayed on card</small>
-                                        <div className="invalid-feedback">
-                                            Name on card is required
-                                        </div>
                                     </div>
                                     <div className="col-md-6 mb-3">
                                         <label htmlFor="cc-number">Credit card number</label>
                                         <Input type="text" className="form-control" id="cc-number" placeholder="#### #### #### ####"
                                                required/>
-                                        <div className="invalid-feedback">
-                                            Credit card number is required
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -139,17 +145,11 @@ const Payment = () => {
                                         <label htmlFor="cc-expiration">Expiration</label>
                                         <Input type="text" className="form-control" id="cc-expiration"
                                                placeholder="" required/>
-                                        <div className="invalid-feedback">
-                                            Expiration date required
-                                        </div>
                                     </div>
                                     <div className="col-md-3 mb-3">
                                         <label htmlFor="cc-expiration">CVV</label>
                                         <Input type="text" className="form-control" id="cc-cvv" placeholder=""
                                                required/>
-                                        <div className="invalid-feedback">
-                                            Security code required
-                                        </div>
                                     </div>
                                 </div>
 
@@ -161,6 +161,7 @@ const Payment = () => {
                                 </div>
                                 <hr className="mb-4"/>
                                 <Button variant="contained" color="primary" type="submit">Book</Button>
+                                <CheckButton style={{ display: "none" }} ref={checkBtn} />
                             </Form>
                         </div>
                     </div>
