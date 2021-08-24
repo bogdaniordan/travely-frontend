@@ -11,7 +11,6 @@ const Accommodation = (props) => {
     useEffect(() => {
         AccommodationService.getById(id).then(response => {
             setAccommodation(response.data);
-            console.log(response.data)
             setIsLoading(false);
         })
     }, [])
@@ -25,7 +24,6 @@ const Accommodation = (props) => {
                     <h1 class="my-4">
                         <small>{accommodation.title}</small>
                     </h1>
-
                     <div class="row">
 
                         <div class="col-md-8">
@@ -36,27 +34,10 @@ const Accommodation = (props) => {
                             <div>
                                 <BookingCard accommodation={accommodation} />
                             </div>
-                            {/*<h5 className="my-3">Facilities</h5>*/}
-                            {/*<ul>*/}
-                            {/*    {*/}
-                            {/*        accommodation.facilities.map(*/}
-                            {/*            facility => <li>{facility}</li>*/}
-                            {/*        )*/}
-                            {/*    }*/}
-                            {/*    /!*<li>Lorem Ipsum</li>*!/*/}
-                            {/*    /!*<li>Dolor Sit Amet</li>*!/*/}
-                            {/*    /!*<li>Consectetur</li>*!/*/}
-                            {/*    /!*<li>Adipiscing Elit</li>*!/*/}
-                            {/*</ul>*/}
-                            {/*<h4>Address</h4>*/}
-                            {/*<p>{accommodation.address}</p>*/}
-                            {/*<h6>Host</h6>*/}
-                            {/*<p>{accommodation.host.firstName} {accommodation.host.lastName}</p>*/}
-
                         </div>
                     </div>
 
-                    <h4 class="my-4">Other pictures</h4>
+                    <h6 class="my-4">Other pictures</h6>
 
                     <div class="row">
                         <div class="col-md-3 col-sm-6 mb-4">
@@ -76,16 +57,45 @@ const Accommodation = (props) => {
                         {/*        <img class="img-fluid" src="https://via.placeholder.com/500x300" alt=""/>*/}
                         {/*    </a>*/}
                         {/*</div>*/}
-
-                        {/*<div class="col-md-3 col-sm-6 mb-4">*/}
-                        {/*    <a href="#">*/}
-                        {/*        <img class="img-fluid" src="https://via.placeholder.com/500x300" alt=""/>*/}
-                        {/*    </a>*/}
-                        {/*</div>*/}
-
                     </div>
 
+                    <div className="container">
+                        <div className="row mb-2" >
+                            <div className="col-md-6">
+                                <div className="card flex-md-row mb-4 box-shadow h-md-250" style={{borderRadius: "25px"}}>
+                                    <div className="card-body d-flex flex-column align-items-start">
+                                        <strong className="d-inline-block mb-2 text-primary">Accomodation type</strong>
+                                        <h3 className="mb-0">
+                                            <a className="text-dark" href="#">{accommodation.placeType}</a>
+                                        </h3>
+                                        <div className="mb-1 text-muted">{accommodation.location}</div>
+                                        <p className="card-text mb-auto">The price for this accommodation is {accommodation.pricePerNight} per night.</p>
+                                        {/*<a href="#">Continue reading</a>*/}
+                                    </div>
+                                    <img height="250px" width="200px" src="https://image.freepik.com/free-vector/beach-house-logo-design-template-beach-resort-villa-beach-hotel-logo_98702-711.jpg" className="card-img-right flex-auto d-none d-md-block"
+                                         data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="card flex-md-row mb-4 box-shadow h-md-250" style={{borderRadius: "25px"}}>
+                                    <div className="card-body d-flex flex-column align-items-start">
+                                        <strong className="d-inline-block mb-2 text-success">Design</strong>
+                                        <h3 className="mb-0">
+                                            <a className="text-dark" href="#">Facilities</a>
+                                        </h3>
+                                        <div className="mb-1 text-muted">This {accommodation.placeType} offers</div>
+                                        {accommodation.facilities.map(facility => <p className="card-text mb-auto">{facility.replace("_", " ")}</p>)}
+                                        {/*<p className="card-text mb-auto"></p>*/}
+                                        {/*<a href="#">Continue reading</a>*/}
+                                    </div>
+                                    <img  height="250px" width="200px" src="https://static.vecteezy.com/system/resources/previews/001/483/727/non_2x/hotel-services-and-facilities-banner-vector.jpg" className="card-img-right flex-auto d-none d-md-block"
+                                         data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         );
     } else {

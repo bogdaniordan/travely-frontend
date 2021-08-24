@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -36,6 +36,9 @@ const BookingCard = (props) => {
     const book = () => {
 
     }
+    useEffect(() => {
+        console.log(props.accommodation)
+    })
 
     return (
         <>
@@ -106,7 +109,6 @@ const BookingCard = (props) => {
                     </form>
                 </CardActions>
                 <CardActions style={{alignItems: "center"}}>
-
                     {/*<Button size="small" color="primary">*/}
                     {/*    Learn More*/}
                     {/*</Button>*/}
