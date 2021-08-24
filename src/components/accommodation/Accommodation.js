@@ -19,33 +19,33 @@ const Accommodation = (props) => {
         return (
             <div>
                 <Navbar />
-                <div class="container">
-                    <h1 class="my-4">
+                <div className="container">
+                    <h1 className="my-4">
                         <small>{accommodation.title}</small>
                     </h1>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <img class="img-fluid" style={{borderRadius: "25px"}} src={accommodation.imageUrls.allImages[0]} alt=""/>
+                    <div className="row">
+                        <div className="col-md-8">
+                            <img className="img-fluid" style={{borderRadius: "25px"}} src={accommodation.imageUrls.allImages[0]} alt=""/>
                         </div>
 
-                        <div class="col-md-4">
+                        <div className="col-md-4">
                             <div>
                                 <BookingCard accommodation={accommodation} />
                             </div>
                         </div>
                     </div>
-                    <h6 class="my-4">Other pictures</h6>
+                    <h6 className="my-4">Other pictures</h6>
 
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 mb-4">
+                    <div className="row">
+                        <div className="col-md-3 col-sm-6 mb-4">
                             <a href="#">
-                                <img class="img-fluid" src={accommodation.imageUrls.allImages[1]} style={{borderRadius: "25px"}} alt=""/>
+                                <img className="img-fluid" src={accommodation.imageUrls.allImages[1]} style={{borderRadius: "25px"}} alt=""/>
                             </a>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 mb-4">
+                        <div className="col-md-3 col-sm-6 mb-4">
                             <a href="#">
-                                <img class="img-fluid" src={accommodation.imageUrls.allImages[2]} style={{borderRadius: "25px"}} alt=""/>
+                                <img className="img-fluid" src={accommodation.imageUrls.allImages[2]} style={{borderRadius: "25px"}} alt=""/>
                             </a>
                         </div>
 

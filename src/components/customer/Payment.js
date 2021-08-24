@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
+import {useLocation} from "react-router-dom";
 
 const Payment = () => {
+    const booking = useLocation().state.booking;
+    const accommodation = useLocation().state.accommodation;
+
+    useEffect(() => {
+        console.log(booking)
+        console.log(accommodation)
+    })
+
     return (
         <>
             <Navbar />
@@ -150,9 +159,9 @@ const Payment = () => {
                                         <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to
                                             checkout
                                         </button>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
                 </div>
             </body>
         </>

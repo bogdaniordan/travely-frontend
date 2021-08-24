@@ -8,6 +8,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
+import BookingService from "../../service/BookingService";
+import AuthService from "../../service/AuthService";
+import {useHistory} from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,15 +34,34 @@ const useStyles = makeStyles((theme) => ({
 
 const BookingCard = (props) => {
     const classes = useStyles();
+    const history = useHistory();
     const [checkinDate, setCheckinDate] = useState();
     const [checkoutDate, setCheckoutDate] = useState();
+    const [message, setMessage] = useState("");
 
-    const book = () => {
-        console.log(checkoutDate)
+    const submitForm = e => {
+        e.preventDefault();
+
+        const startingDate = new Date(checkinDate);
+        const endingDate = new Date(checkoutDate);
+        if (startingDate < endingDate) {
+            history.push({
+                pathname: "/payment",
+                state: {
+                    booking: {
+                        checkInDate: checkinDate,
+                        checkoutDate: checkoutDate
+                    },
+                    accommodation: props.accommodation
+                }
+            })
+        } else {
+            setMessage("Check-in needs to be before check-out date.")
+        }
     }
 
     useEffect(() => {
-        console.log(props.accommodation)
+        console.log(props.accommodation);
     })
 
     return (
@@ -63,7 +86,17 @@ const BookingCard = (props) => {
                 </CardActionArea>
             </Card>
             <br/>
-            <Card className={classes.root}>
+            <Card className={classes.root} onSubmit={submitForm}>
+                {message && (
+                    <div className="form-group">
+                        <div
+                            className="alert alert-danger"
+                            role="alert"
+                        >
+                            {message}
+                        </div>
+                    </div>
+                )}
                 <br/>
                 <CardActions>
                     <form className={classes.container}>
@@ -71,7 +104,6 @@ const BookingCard = (props) => {
                             id="date"
                             label="Check-in"
                             type="date"
-                            // defaultValue="2017-05-24"
                             className={classes.textField}
                             required
                             InputLabelProps={{
@@ -83,7 +115,6 @@ const BookingCard = (props) => {
                             id="date"
                             label="Check-out"
                             type="date"
-                            // defaultValue="2017-05-24"
                             className={classes.textField}
                             required
                             onChange={(event) => setCheckoutDate(event.target.value)}
@@ -92,19 +123,7 @@ const BookingCard = (props) => {
                             }}
                         />
                         <br/>
-                        {/*<InputLabel id="demo-simple-select-helper-label">Number of guests</InputLabel>*/}
-                        {/*<Select*/}
-                        {/*    label="Number of guests"*/}
-                        {/*        required*/}
-                        {/*        style={{width: "100px"}}*/}
-                        {/*    >*/}
-                        {/*        <MenuItem value="">*/}
-                        {/*            <em></em>*/}
-                        {/*            {props.capacity.map(number => <MenuItem value={number}>{number}</MenuItem>)}*/}
-                        {/*        </MenuItem>*/}
-                        {/*    </Select>*/}
-                        {/*<br/>*/}
-                        <Button type="submit" size="large" color="primary" variant="contained" style={{marginTop: "10px"}} onClick={book}>
+                        <Button size="large" type="submit" color="primary" variant="contained" style={{marginTop: "10px"}}>
                             BOOK
                         </Button>
                     </form>
