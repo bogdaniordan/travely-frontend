@@ -97,7 +97,7 @@ export const validExpirationDate = value => {
     if (value.length < 2 || value.length > 7 || !value.includes("/")) {
         return (
             <div className="alert alert-danger" role="alert">
-                Please enter a valid credit card number.
+                Please enter a expiration date.
             </div>
         );
     }
@@ -107,7 +107,7 @@ export const validCVV = value => {
     if (value.length !== 3 || !(/^\d+$/.test(value))) {
         return (
             <div className="alert alert-danger" role="alert">
-                Please enter a valid credit card number.
+                Please enter a valid CVV.
             </div>
         );
     }

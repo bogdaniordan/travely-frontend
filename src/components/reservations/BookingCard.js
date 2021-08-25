@@ -55,7 +55,8 @@ const BookingCard = (props) => {
                             checkInDate: checkinDate,
                             checkoutDate: checkoutDate
                         },
-                        accommodation: props.accommodation
+                        accommodation: props.accommodation,
+                        customer: props.customer
                     }
                 }, )
             },2500)

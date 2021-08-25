@@ -8,21 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import {Link, useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
-
 const Navbar = () => {
-    const classes = useStyles();
-    const history = useHistory();
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
     return (

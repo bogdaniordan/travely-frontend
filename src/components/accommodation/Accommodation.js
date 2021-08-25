@@ -2,18 +2,30 @@ import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService";
 import BookingCard from "../reservations/BookingCard";
+import CustomerService from "../../service/CustomerService";
+import AuthService from "../../service/AuthService";
 
 const Accommodation = (props) => {
     const id = props.match.params.id;
     const [isLoading, setIsLoading] = useState(true);
     const [accommodation, setAccommodation] = useState();
+    const [customer, setCustomer] = useState();
 
     useEffect(() => {
         AccommodationService.getById(id).then(response => {
             setAccommodation(response.data);
-            setIsLoading(false);
+            getCustomer();
         })
     }, [])
+
+    const getCustomer = () => {
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(
+            response => {
+                setCustomer(response.data);
+                setIsLoading(false);
+            }
+        )
+    }
 
     if (!isLoading) {
         return (
@@ -30,7 +42,7 @@ const Accommodation = (props) => {
 
                         <div className="col-md-4">
                             <div>
-                                <BookingCard accommodation={accommodation} />
+                                <BookingCard customer={customer} accommodation={accommodation} />
                             </div>
                         </div>
                     </div>
