@@ -7,6 +7,7 @@ import AuthService from "../../service/AuthService";
 import HomePage from "./HomePage";
 import AccommodationDetails from "../accommodation/AccommodationDetails";
 import Payment from "../customer/Payment";
+import CustomerProfile from "../customer/CustomerProfile";
 
 const Routes = () => {
     return (
@@ -18,6 +19,7 @@ const Routes = () => {
                     <Route path="/login" exact render={() => !AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
                     <Route path="/accommodation/:id" exact component={AccommodationDetails}/>
                     <Route path="/payment" exact component={Payment} />
+                    <Route path="/profile" exact component={CustomerProfile} />
                 </Switch>
             </Router>
         </div>

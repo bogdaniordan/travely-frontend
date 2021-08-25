@@ -23,6 +23,10 @@ class AccommodationService {
     getById(id) {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/${id}`, { headers: AuthHeader() });
     }
+
+    getByTitleInput(titleInput) {
+        return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/get-by-title/${titleInput}`, { headers: AuthHeader() });
+    }
 }
 
 export default new AccommodationService;

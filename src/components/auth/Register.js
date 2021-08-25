@@ -11,7 +11,7 @@ import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
 import Select from "react-validation/build/select"
 import AuthService from "../../service/AuthService";
-import {required, nameValidation, validEmail, validUsername, validPassword, validPhoneNumber, validAge} from "./validations/Validations"
+import {required, nameValidation, validEmail, validUsername, validPassword, validPhoneNumber, validAge} from "../../utils/Validations"
 import {Grid} from "@material-ui/core";
 import {useStyles} from "./AuthStyles";
 

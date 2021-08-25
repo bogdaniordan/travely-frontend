@@ -14,7 +14,9 @@ const HomePage = () => {
 
 
     const search = () => {
-        if (!location && !searchInput && !placeType) {
+        if (!location && !placeType && searchInput) {
+            AccommodationService.getByTitleInput(searchInput).then(r => setResults(r.data))
+        } else if (!location && !searchInput && !placeType) {
             AccommodationService.getAllAccommodations().then(r => {setResults(r.data)});
         } else if (location && !searchInput && !placeType) {
             AccommodationService.getByLocation(location).then(r => setResults(r.data));
@@ -81,7 +83,7 @@ const HomePage = () => {
                 </div>
                 <div class="album py-5 bg-light">
                     <div class="container">
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style={{textAlign: "center", justifyContent: "center"}}>
                             {
                                 results ? (
                                     <AccommodationCards places={results}/>

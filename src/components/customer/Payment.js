@@ -6,7 +6,7 @@ import AccommodationCards from "../accommodation/AccommodationCards"
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import {required, nameValidation, validEmail, validCardName, validCreditCardNumber, validExpirationDate, validCVV} from "../auth/validations/Validations"
+import {required, nameValidation, validEmail, validCardName, validCreditCardNumber, validExpirationDate, validCVV} from "../../utils/Validations"
 import BookingService from "../../service/BookingService";
 import CustomerService from "../../service/CustomerService";
 
@@ -86,17 +86,20 @@ const Payment = () => {
     }
 
     const saveCustomerCardDetails = () => {
-        CustomerService.saveCardDetails(nameOnCard, cardNumber, expirationDate, cvv, customer.id).then(
-            res => {
-                setTimeout(() => {
-                    console.log(cvv)
-                    history.push("/")
-                }, 2000)
-            },
-            error => {
-                setMessage("Something went wrong with the payment.")
-                setSuccessful(false);
-            })
+        if (saveCardDetails) {
+            CustomerService.saveCardDetails(nameOnCard, cardNumber, expirationDate, cvv, customer.id).then(
+                res => {
+                    setTimeout(() => {
+                        console.log(cvv)
+                        history.push("/")
+                    }, 2000)
+                },
+                error => {
+                    setMessage("Something went wrong with the payment.")
+                    setSuccessful(false);
+                })
+        }
+
     }
 
 

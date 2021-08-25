@@ -14,8 +14,8 @@ import {useHistory} from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
-        borderRadius: "25px",
-        border: "1px solid black",
+        // borderRadius: "25px",
+        border: "0.5px solid black",
     },
     container: {
         // display: 'flex',
@@ -44,7 +44,8 @@ const BookingCard = (props) => {
 
         const startingDate = new Date(checkinDate);
         const endingDate = new Date(checkoutDate);
-        if (startingDate < endingDate) {
+        // if checkout date is after arriving daate and arriving date is later than today...
+        if (startingDate < endingDate && startingDate >= new Date()) {
             setSuccessful(true);
             setMessage("Dates are available. Redirecting to payment page...");
             setTimeout(() => {
@@ -61,13 +62,13 @@ const BookingCard = (props) => {
                 }, )
             },2500)
         } else {
-            setMessage("Check-in needs to be before check-out date.")
+            if (startingDate < new Date()) {
+                setMessage("You cannot book a date in the past.");
+            } else {
+                setMessage("Check-in needs to be before check-out date.");
+            }
         }
     }
-
-    useEffect(() => {
-        console.log(props.accommodation);
-    })
 
     return (
         <>
@@ -84,9 +85,7 @@ const BookingCard = (props) => {
                         <Typography gutterBottom variant="h5" component="h4">
                             {props.accommodation.host.firstName} {props.accommodation.host.lastName}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Choose your dates and the number of guests for this reservation.
-                        </Typography>
+
                     </CardContent>
                 </CardActionArea>
             </Card>
@@ -107,6 +106,9 @@ const BookingCard = (props) => {
                 <br/>
                 <CardActions>
                     <form className={classes.container}>
+                        <Typography variant="body2" component="p">
+                            Choose your dates and the number of guests for this reservation.
+                        </Typography>
                         <TextField
                             id="date"
                             label="Check-in"
