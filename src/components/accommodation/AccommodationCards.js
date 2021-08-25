@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Navbar from "../navigation/Navbar";
 import {useHistory, useLocation} from "react-router-dom";
 
-const SearchResults = (props) => {
+const AccommodationCards = (props) => {
     const history = useHistory();
 
     return (
@@ -15,7 +15,6 @@ const SearchResults = (props) => {
 
                             <div className="card-body">
                                 <p className="card-text"><strong>{place.title}</strong></p>
-                                <p className="card-text">Location: {place.location}</p>
                                 <small style={{marginBottom: "5px"}}>Place type: {place.placeType}</small>
 
 
@@ -35,4 +34,4 @@ const SearchResults = (props) => {
     );
 };
 
-export default SearchResults;
+export default AccommodationCards;

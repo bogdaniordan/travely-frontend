@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService"
-import SearchResults from "../search/SearchResults";
+import AccommodationCards from "../accommodation/AccommodationCards";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ImageCarousel from "./ImageCarousel"; // requires a loader
 
@@ -84,7 +84,7 @@ const HomePage = () => {
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                             {
                                 results ? (
-                                    <SearchResults places={results}/>
+                                    <AccommodationCards places={results}/>
                                 ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)
                             }
                         </div>

@@ -8,12 +8,12 @@ class CustomerService {
         return axios.get(`${CUSTOMER_SERVICE_API_URL}/${id}`, { headers: AuthHeader() });
     }
 
-    saveCarDetails(cardName, cardNumber, expirationDate, Cvv, id) {
+    saveCardDetails(cardName, cardNumber, expirationDate, cvv, id) {
         return axios.post(`${CUSTOMER_SERVICE_API_URL}/save-card/${id}`, {
             cardName: cardName,
             cardNumber: cardNumber,
             expirationDate: expirationDate,
-            CVV: Cvv
+            cvv: cvv
         }, { headers: AuthHeader() })
     }
 }

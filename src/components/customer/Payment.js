@@ -1,13 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react';
 import Navbar from "../navigation/Navbar";
-import {useLocation} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import SearchResults from "../search/SearchResults"
+import AccommodationCards from "../accommodation/AccommodationCards"
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import {required, nameValidation, validEmail, validCardName, validCreditCardNumber, validExpirationDate, validCVV} from "../auth/validations/Validations"
 import BookingService from "../../service/BookingService";
+import CustomerService from "../../service/CustomerService";
 
 const Payment = () => {
     const booking = useLocation().state.booking;
@@ -15,6 +16,7 @@ const Payment = () => {
     const customer = useLocation().state.customer;
     const form = useRef();
     const checkBtn = useRef();
+    const history = useHistory();
 
     const [bookingDurationInDays, setBookingDurationInDays] = useState();
     const [saveCardDetails, setSaveCardDetails] = useState(false);
@@ -22,10 +24,10 @@ const Payment = () => {
     const [lastName, setLastName] = useState(customer.lastName);
     const [email, setEmail] = useState(customer.email);
     const [address, setAddress] = useState(customer.address);
-    const [nameOnCard, setNameOnCard] = useState(customer.cardDetails ? customer.cardName : "");
-    const [cardNumber, setCardNumber] = useState(customer.cardDetails ? customer.cardNumber: "");
-    const [expirationDate, setExpirationDate] = useState(customer.cardDetails ? customer.expirationDate : "");
-    const [cvv, setCvv] = useState(customer.cardDetails ? customer.CVV : "");
+    const [nameOnCard, setNameOnCard] = useState();
+    const [cardNumber, setCardNumber] = useState();
+    const [expirationDate, setExpirationDate] = useState();
+    const [cvv, setCvv] = useState();
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
 
@@ -62,9 +64,19 @@ const Payment = () => {
     }
 
     useEffect(() => {
-        // console.log(customer)
-        setBookingDuration()
+        setBookingDuration();
+        setCardDetailsIfSaved();;
     }, [])
+
+
+    const setCardDetailsIfSaved = () => {
+        if (customer.cardDetails) {
+            setNameOnCard(customer.cardDetails.cardName);
+            setCardNumber(customer.cardDetails.cardNumber);
+            setExpirationDate(customer.cardDetails.expirationDate);
+            setCvv(customer.cardDetails.cvv)
+        }
+    }
 
     const setBookingDuration = () => {
         const arriveDate = new Date(booking.checkInDate);
@@ -74,28 +86,36 @@ const Payment = () => {
     }
 
     const saveCustomerCardDetails = () => {
-
+        CustomerService.saveCardDetails(nameOnCard, cardNumber, expirationDate, cvv, customer.id).then(
+            res => {
+                setTimeout(() => {
+                    console.log(cvv)
+                    history.push("/")
+                }, 2000)
+            },
+            error => {
+                setMessage("Something went wrong with the payment.")
+                setSuccessful(false);
+            })
     }
 
 
     const submitForm = e => {
         e.preventDefault();
-
         setMessage("");
         setSuccessful(false);
-
         form.current.validateAll();
-
         if (checkBtn.current.context._errors.length === 0) {
-            BookingService.saveBooking(booking, accommodation.host.id, customer.id, accommodation)
+            BookingService.saveBooking(booking, accommodation.host.id, customer.id, accommodation.id)
                 .then(
                     response => {
                             setMessage("You're booking was successful.")
                             setSuccessful(true);
+                            saveCustomerCardDetails();
                         },
                         error => {
-                            setMessage("Something went wrong with your payment or billing details.")
-                            setSuccessful(true);
+                            setMessage("Something went wrong with the billing details.")
+                            setSuccessful(false);
                         })
 
         }
@@ -133,7 +153,7 @@ const Payment = () => {
                                     <strong>${bookingDurationInDays * accommodation.pricePerNight}</strong>
                                 </li>
                             </ul>
-                            <SearchResults places={[accommodation]}/>
+                            <AccommodationCards places={[accommodation]}/>
                         </div>
                         <div className="col-md-8 order-md-1">
                             <h4 className="mb-3">Billing address</h4>
@@ -230,7 +250,6 @@ const Payment = () => {
                                         <Input
                                             type="text"
                                             className="form-control"
-                                            placeholder=""
                                             value={expirationDate}
                                             onChange={onChangeExpirationDate}
                                             placeholder="12/22"
@@ -253,7 +272,10 @@ const Payment = () => {
                                 <hr className="mb-4"/>
 
                                 <div className="form-check">
-                                    <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => setSaveCardDetails(!saveCardDetails)}/>
+                                    <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => {
+                                        setSaveCardDetails(!saveCardDetails)
+                                        console.log(saveCardDetails)
+                                    }}/>
                                     <label className="form-check-label" htmlFor="same-address">Save credit card details</label>
                                 </div>
                                 <hr className="mb-4"/>
@@ -265,7 +287,6 @@ const Payment = () => {
                 </div>
             </>
         );
-
 };
 
 export default Payment;

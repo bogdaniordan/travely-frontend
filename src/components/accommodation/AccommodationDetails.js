@@ -5,7 +5,7 @@ import BookingCard from "../reservations/BookingCard";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
 
-const Accommodation = (props) => {
+const AccommodationDetails = (props) => {
     const id = props.match.params.id;
     const [isLoading, setIsLoading] = useState(true);
     const [accommodation, setAccommodation] = useState();
@@ -113,4 +113,4 @@ const Accommodation = (props) => {
 
 };
 
-export default Accommodation;
+export default AccommodationDetails;
