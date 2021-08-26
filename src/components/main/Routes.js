@@ -9,6 +9,7 @@ import AccommodationDetails from "../accommodation/AccommodationDetails";
 import Payment from "../customer/Payment";
 import CustomerProfile from "../customer/CustomerProfile";
 import UpdateProfile from "../customer/UpdateProfile"
+import QuestionForm from "../questions/QuestionForm";
 
 const Routes = () => {
     return (
@@ -22,6 +23,7 @@ const Routes = () => {
                     <Route path="/payment" exact component={Payment} />
                     <Route path="/profile" exact component={CustomerProfile} />
                     <Route path="/update-profile" exact component={UpdateProfile} />
+                    <Route path="/ask-question/:bookingId" exact component={QuestionForm} />
                 </Switch>
             </Router>
         </div>

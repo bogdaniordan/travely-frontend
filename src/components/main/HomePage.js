@@ -3,7 +3,7 @@ import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService"
 import AccommodationCards from "../accommodation/AccommodationCards";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import ImageCarousel from "./ImageCarousel"; // requires a loader
+import ImageCarousel from "./ImageCarousel";
 
 
 const HomePage = () => {
@@ -25,7 +25,6 @@ const HomePage = () => {
         } else if (!location && placeType) {
             AccommodationService.getByPlaceType(placeType).then(r => setResults(r.data));
         }
-        console.log(results)
     }
 
     return (
@@ -85,8 +84,9 @@ const HomePage = () => {
                     <div class="container">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style={{textAlign: "center", justifyContent: "center"}}>
                             {
-                                results ? (
-                                    <AccommodationCards places={results}/>
+                                results ? ( results.length > 0 ? (
+                                        <AccommodationCards places={results}/>
+                                    ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>There are no results for your search...</h3>)
                                 ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)
                             }
                         </div>

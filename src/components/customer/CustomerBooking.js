@@ -44,12 +44,20 @@ const CustomerBooking = ({booking}) => {
         history.push("/profile")
     }
 
+    const leaveQuestion = () => {
+        history.push({
+            pathname: `/ask-question/${booking.id}`,
+            state: {booking: booking}
+        })
+    }
+
+
     return (
         <>
             <div className="col-md-4">
                 <div className="card p-3">
                     <div className="d-flex flex-row mb-3"><img src={booking.accommodation.imageUrls.allImages[0]}
-                                                               width="70"/>
+                                                               width="70" alt="" />
                         <div className="d-flex flex-column ml-2"><span>{booking.accommodation.title}</span><span
                             className="text-black-50">{getFormattedDate(booking.checkInDate)}</span><span
                             className="text-black-50">{getFormattedDate(booking.checkoutDate)}</span><span
@@ -58,9 +66,21 @@ const CustomerBooking = ({booking}) => {
                             className="fa fa-star"></i></span></div>
                     </div>
                     <h6>Get more context on your users with stripe data inside our platform.</h6>
-                    <div className="d-flex justify-content-between install mt-3"><span>Installed 172 times</span><span
-                        className="text-primary"><Button variant="contained" color="primary">Message
-                        </Button><Button variant="contained" color="secondary" style={{marginLeft: "5px"}} onClick={openModal}>CANCEL</Button></span>
+                    <div className="d-flex justify-content-between install mt-3"><span>
+                        {
+                            new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
+                                <Button variant="contained" color="primary">R</Button>
+                            )
+                        }
+                        </span><span
+                        className="text-primary"><Button variant="contained" color="primary" onClick={leaveQuestion}>Question
+                        </Button>
+                        {
+                            new Date(getFormattedDate(booking.checkInDate)) > new Date() && (
+                                <Button variant="contained" color="secondary" style={{marginLeft: "5px"}} onClick={openModal}>CANCEL</Button>
+                            )
+                        }
+                        </span>
                     </div>
                     <Modal
                         isOpen={modalIsOpen}

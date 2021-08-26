@@ -88,18 +88,15 @@ const Payment = () => {
     const saveCustomerCardDetails = () => {
         if (saveCardDetails) {
             CustomerService.saveCardDetails(nameOnCard, cardNumber, expirationDate, cvv, customer.id).then(
-                res => {
-                    setTimeout(() => {
-                        console.log(cvv)
-                        history.push("/")
-                    }, 2000)
-                },
+                res => {},
                 error => {
                     setMessage("Something went wrong with the payment.")
                     setSuccessful(false);
                 })
         }
-
+        setTimeout(() => {
+            history.push("/")
+        }, 2000)
     }
 
 
