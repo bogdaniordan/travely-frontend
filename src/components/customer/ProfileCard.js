@@ -14,9 +14,9 @@ const ProfileCard = () => {
 
     return (
         <>
-            <div className="padding">
-                <div className="row container d-flex justify-content-center">
-                    <div className="col-xl-6 col-md-12">
+            <div className="padding" style={{justifyContent: "center"}}>
+                <div className="row container d-flex justify-content-center" style={{height: "auto", margin: "0 auto"}}>
+                    <div className="col-xl-6 col-md-12" style={{width: "1200px"}}>
                         <div className="card user-card-full">
                             <div className="row m-l-0 m-r-0">
                                 <div className="col-sm-4 bg-c-lite-green user-profile">

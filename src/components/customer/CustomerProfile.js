@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import ProfileCard from "./ProfileCard";
 import BookingService from "../../service/BookingService";
 import CustomerBooking from "./CustomerBooking";
+import Footer from "../navigation/Footer";
 
 const CustomerProfile = () => {
     const [bookings, setBookings] = useState([]);
@@ -17,7 +18,7 @@ const CustomerProfile = () => {
         return (
             <div>
                 <Navbar />
-                <div className="page-content page-container" id="page-content">
+                {/*<div className="page-content page-container" id="page-content">*/}
                     <ProfileCard/>
                     <div className="container mt-5">
                         <h5>My bookings</h5>
@@ -33,7 +34,8 @@ const CustomerProfile = () => {
                         <hr className="mb-4"/>
 
                     </div>
-                </div>
+                {/*</div>*/}
+                <Footer />
 
             </div>
         );
