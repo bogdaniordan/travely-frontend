@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 
 const ProfileCard = ({customer}) => {
     const history = useHistory();
+
     return (
         <>
             <div className="padding">
@@ -14,7 +15,7 @@ const ProfileCard = ({customer}) => {
                                 <div className="col-sm-4 bg-c-lite-green user-profile">
                                     <div className="card-block text-center text-white">
                                         <div className="m-b-25"><img
-                                            src="https://in.bmscdn.com/iedb/artist/images/website/poster/large/leonardo-dicaprio-1273-06-05-2020-06-55-21.jpg" height="100px" width="100px"
+                                            src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="100px" width="100px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
                                         <h6 className="f-w-600">{customer.firstName} {customer.lastName}</h6>
                                         {/*className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>*/}
@@ -51,10 +52,6 @@ const ProfileCard = ({customer}) => {
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Gender</p>
                                                 <h6 className="text-muted f-w-400">{customer.gender}</h6>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                {/*<p className="m-b-10 f-w-600"><Button variant="contained" color="secondary">Update</Button></p>*/}
-                                                {/*<h6 className="text-muted f-w-400">Dinoter husainm</h6>*/}
                                             </div>
                                         </div>
                                     </div>

@@ -8,6 +8,7 @@ import HomePage from "./HomePage";
 import AccommodationDetails from "../accommodation/AccommodationDetails";
 import Payment from "../customer/Payment";
 import CustomerProfile from "../customer/CustomerProfile";
+import UpdateProfile from "../customer/UpdateProfile"
 
 const Routes = () => {
     return (
@@ -20,6 +21,7 @@ const Routes = () => {
                     <Route path="/accommodation/:id" exact component={AccommodationDetails}/>
                     <Route path="/payment" exact component={Payment} />
                     <Route path="/profile" exact component={CustomerProfile} />
+                    <Route path="/update-profile" exact component={UpdateProfile} />
                 </Switch>
             </Router>
         </div>

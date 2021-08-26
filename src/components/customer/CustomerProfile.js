@@ -6,21 +6,12 @@ import Button from "@material-ui/core/Button";
 import ProfileCard from "./ProfileCard";
 
 const CustomerProfile = () => {
-    const [customer, setCustomer] = useState();
-    const [isLoading, setIsLoading] = useState(true);
+    const [customer, setCustomer] = useState({});
 
     useEffect(() => {
-        getCustomer();
-    })
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {setCustomer(res.data);})
+    }, [])
 
-    const getCustomer = () => {
-        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {
-            setCustomer(res.data);
-            setIsLoading(false);
-        })
-    }
-
-    if(!isLoading) {
         return (
             <div>
                 <Navbar />
@@ -68,13 +59,6 @@ const CustomerProfile = () => {
 
             </div>
         );
-    } else {
-        return (
-            <h3>Loading...</h3>
-        )
-    }
-
-
 };
 
 export default CustomerProfile;
