@@ -45,14 +45,15 @@ const UpdateProfile = () => {
             age: data.get("age"),
         }
         CustomerService.updateCustomer(newCustomer, customer.id);
-        uploadImage();
         history.push(`/profile`);
     }
 
     const uploadImage = () => {
         const formData = new FormData();
         formData.append("file", file);
-        CustomerService.setImage(customer.id, formData);
+        if (file) {
+            CustomerService.setImage(customer.id, formData);
+        }
     }
 
     return (

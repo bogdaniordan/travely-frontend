@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
+import CustomerService from "../../service/CustomerService";
+import AuthService from "../../service/AuthService";
 
-const ProfileCard = ({customer}) => {
+const ProfileCard = () => {
     const history = useHistory();
+    const [customer, setCustomer] = useState({});
+
+    useEffect(() => {
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {setCustomer(res.data);})
+    }, [])
 
     return (
         <>
