@@ -4,14 +4,14 @@ import AccommodationService from "../../service/AccommodationService";
 import BookingCard from "../reservations/BookingCard";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
-import { GoogleMap } from "react-google-maps"
 import Map from "../../utils/Map";
+import TestimonialCard from "./TestimonialCard";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
     const [isLoading, setIsLoading] = useState(true);
-    const [accommodation, setAccommodation] = useState();
-    const [customer, setCustomer] = useState();
+    const [accommodation, setAccommodation] = useState({});
+    const [customer, setCustomer] = useState({});
 
     useEffect(() => {
         AccommodationService.getById(id).then(response => {
@@ -34,9 +34,7 @@ const AccommodationDetails = (props) => {
             <div>
                 <Navbar />
                 <div className="container">
-                    <h1 className="my-4">
-                        <small>{accommodation.title}</small>
-                    </h1>
+                    <h1 className="my-4">{accommodation.title}</h1>
                     <div className="row">
                         <div className="col-md-8">
                             <img className="img-fluid" src={accommodation.imageUrls.allImages[0]} alt=""/>
@@ -118,7 +116,7 @@ const AccommodationDetails = (props) => {
                         </div>
                     </div>
                 </div>
-
+                <TestimonialCard />
             </div>
         );
     } else {
