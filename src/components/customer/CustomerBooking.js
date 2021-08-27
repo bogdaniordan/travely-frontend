@@ -23,11 +23,11 @@ const CustomerBooking = ({booking}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
-    function openModal() {
+    const openModal = () => {
         setIsOpen(true);
     }
 
-    function closeModal() {
+    const closeModal = () => {
         setIsOpen(false);
     }
 
@@ -46,6 +46,10 @@ const CustomerBooking = ({booking}) => {
             pathname: `/ask-question/${booking.id}`,
             state: {booking: booking}
         })
+    }
+
+    const goToAllQuestions = () => {
+        history.push(`/questions/${booking.host.id}`)
     }
 
     return (
@@ -69,7 +73,8 @@ const CustomerBooking = ({booking}) => {
                             <br/>
                             <div className="postcard__preview-txt">Host: {booking.host.firstName} {booking.host.lastName}</div>
                             <ul className="postcard__tagbox">
-                                <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Question</li>
+                                <li className="tag__item play green" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
+                                <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>
                                 {
                                     new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
                                         <li className="tag__item play blue" ><i className="fas fa-clock mr-2"></i>Review</li>

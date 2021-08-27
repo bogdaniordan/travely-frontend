@@ -9,7 +9,11 @@ class QuestionService {
             date: new Date(),
             text: question,
             author: author,
-        }, { headers: AuthHeader() });;
+        }, { headers: AuthHeader() });
+    }
+
+    getAllForHost(customerId, hostId) {
+        return axios.get(`${QUESTION_SERVICE_API_URL}/get-all-for-host/${customerId}/${hostId}`, { headers: AuthHeader() })
     }
 }
 

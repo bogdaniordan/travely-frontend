@@ -5,7 +5,7 @@ import BookingCard from "../reservations/BookingCard";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
 import Map from "../../utils/Map";
-import TestimonialCard from "./TestimonialCard";
+import Testimonials from "./Testimonials";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
@@ -116,7 +116,7 @@ const AccommodationDetails = (props) => {
                         </div>
                     </div>
                 </div>
-                <TestimonialCard />
+                <Testimonials />
             </div>
         );
     } else {

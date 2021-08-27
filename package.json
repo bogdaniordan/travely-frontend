@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@material-ui/icons": "^4.11.2",
+    "dateformat": "^4.5.1",
     "sass": "^1.38.1"
   }
 }
