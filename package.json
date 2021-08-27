@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/icons": "^4.11.2"
+    "@material-ui/icons": "^4.11.2",
+    "sass": "^1.38.1"
   }
 }

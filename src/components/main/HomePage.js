@@ -4,6 +4,7 @@ import AccommodationService from "../../service/AccommodationService"
 import AccommodationCards from "../accommodation/AccommodationCards";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ImageCarousel from "./ImageCarousel";
+import Footer from "../navigation/Footer";
 
 
 const HomePage = () => {
@@ -112,7 +113,7 @@ const HomePage = () => {
                 {/*</div>*/}
 
             </div>
-
+            <Footer />
         </div>
     );
 };

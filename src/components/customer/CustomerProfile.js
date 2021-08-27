@@ -21,22 +21,25 @@ const CustomerProfile = () => {
                 {/*<div className="page-content page-container" id="page-content">*/}
                     <ProfileCard/>
                     <div className="container mt-5">
-                        <h5>My bookings</h5>
+                        {/*<h5>My bookings</h5>*/}
                         <hr className="mb-4"/>
 
-                        <div className="row">
-                            {
-                                bookings.map(
-                                    booking => <CustomerBooking key={booking.id} booking={booking} />
-                                )
-                            }
-                        </div>
+                        <section>
+                            <div className="container py-2">
+                                {/*<div className="h1 text-center text-dark" id="pageHeaderTitle">My bookings</div>*/}
+
+                                {
+                                    bookings.map(
+                                        booking => <CustomerBooking key={booking.id} booking={booking} />
+                                    )
+                                }
+                            </div>
+                        </section>
                         <hr className="mb-4"/>
 
                     </div>
                 {/*</div>*/}
                 <Footer />
-
             </div>
         );
 };
