@@ -8,7 +8,7 @@ const Footer = () => {
                     <div className="col-11">
                         <div className="row ">
                             <div className="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a">
-                                <h3 className="text-muted mb-md-0 mb-5 bold-text">Pepper.</h3>
+                                <h3 className="text-muted mb-md-0 mb-5 bold-text">Travely.</h3>
                             </div>
                             <div className="col-xl-2 col-md-4 col-sm-4 col-12">
                                 <h6 className="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
@@ -33,7 +33,7 @@ const Footer = () => {
                                     className="fa fa-linkedin-square" aria-hidden="true"></i></span> <span
                                     className="mx-2"><i className="fa fa-twitter" aria-hidden="true"></i></span> <span
                                     className="mx-2"><i className="fa fa-instagram" aria-hidden="true"></i></span></p>
-                                <small className="rights"><span>&#174;</span> Pepper All Rights Reserved.</small>
+                                <small className="rights"><span>&#174;</span> Travely All Rights Reserved.</small>
                             </div>
                             <div className="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
                                 <h6 className="mt-55 mt-2 text-muted bold-text"><b>ANIRUDH SINGLA</b></h6><small> <span><i

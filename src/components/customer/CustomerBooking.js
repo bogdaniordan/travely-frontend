@@ -51,7 +51,6 @@ const CustomerBooking = ({booking}) => {
         })
     }
 
-
     return (
         <>
             <div className="col-md-4">
