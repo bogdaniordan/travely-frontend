@@ -38,13 +38,12 @@ const BookingCard = (props) => {
     const [message, setMessage] = useState("");
     const [successful, setSuccessful] = useState(false);
 
-
     const submitForm = e => {
         e.preventDefault();
 
         const startingDate = new Date(checkinDate);
         const endingDate = new Date(checkoutDate);
-        // if checkout date is after arriving daate and arriving date is later than today...
+        // if checkout date is after arriving date and arriving date is later than today...
         if (startingDate < endingDate && startingDate >= new Date()) {
             setSuccessful(true);
             setMessage("Dates are available. Redirecting to payment page...");

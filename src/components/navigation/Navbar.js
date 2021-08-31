@@ -1,15 +1,20 @@
 import React, {useState} from "react";
-import {makeStyles} from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import {Link, useHistory} from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
 import AuthService from "../../service/AuthService";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+}));
 
 const Navbar = () => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+    const classes = useStyles();
 
     return (
         <div>
@@ -27,6 +32,13 @@ const Navbar = () => {
 
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/profile">Profile</a>
+                                </li>
+                                <li className="nav-item">
+                                    <div className={classes.root}>
+                                        <Badge badgeContent={4} color="primary">
+                                            <MailIcon style={{backgroundColor: "white"}}/>
+                                        </Badge>
+                                    </div>
                                 </li>
                             </ul>
                         ) : (

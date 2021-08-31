@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import TestimonialService from "../../service/TestimonialService";
 
-const TestimonialCard = () => {
+const TestimonialCard = ({accommodationId}) => {
+    const[testimonials, setTestimonials] = useState([])
+
+    useEffect(() => {
+        TestimonialService.getAllForAccommodation(accommodationId).then(res => setTestimonials(res.data))
+    }, [])
 
     return (
         <>
@@ -8,42 +14,26 @@ const TestimonialCard = () => {
                 <div className="container">
                     <div className="intro">
                         <h2 className="text-center">Testimonials </h2>
-                        <p className="text-center">Our customers love us! Read what they have to say below. Aliquam
-                            sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+                        <p className="text-center">Checkout what other customers thought about this accommodation.</p>
                     </div>
                     <div className="row people">
-                        <div className="col-md-6 col-lg-4 item">
-                            <div className="box">
-                                <p className="description">Aenean tortor est, vulputate quis leo in, vehicula
-                                    rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus
-                                    est.</p>
-                            </div>
-                            <div className="author"><img className="rounded-circle" src="assets/img/1.jpg"/>
-                                <h5 className="name">Ben Johnson</h5>
-                                <p className="title">CEO of Company Inc.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 item">
-                            <div className="box">
-                                <p className="description">Praesent aliquam in tellus eu gravida. Aliquam varius
-                                    finibus est, et interdum justo suscipit id.</p>
-                            </div>
-                            <div className="author"><img className="rounded-circle" src="assets/img/3.jpg"/>
-                                <h5 className="name">Carl Kent</h5>
-                                <p className="title">Founder of Style Co.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 item">
-                            <div className="box">
-                                <p className="description">Aliquam varius finibus est, et interdum justo suscipit.
-                                    Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus
-                                    eu.</p>
-                            </div>
-                            <div className="author"><img className="rounded-circle" src="assets/img/2.jpg"/>
-                                <h5 className="name">Emily Clark</h5>
-                                <p className="title">Owner of Creative Ltd.</p>
-                            </div>
-                        </div>
+                        {
+                            testimonials.length > 0 ? (
+                                testimonials.map(
+                                    testimonial => <div className="col-md-6 col-lg-4 item">
+                                        <div className="box">
+                                            <p className="description">{testimonial.message}</p>
+                                        </div>
+                                        <div className="author"><img className="rounded-circle" src="https://img4.cityrealty.com/neo/i/p/mig/airbnb_guide.jpg" alt=""/>
+                                            <h5 className="name">{testimonial.customer.firstName} {testimonial.customer.lastName}</h5>
+                                            {/*<p className="title">CEO of Company Inc.</p>*/}
+                                        </div>
+                                    </div>
+                                )
+                                ) : (
+                                    <h4>There are no testimonials for this accommodation</h4>
+                            )
+                        }
                     </div>
                 </div>
             </div>

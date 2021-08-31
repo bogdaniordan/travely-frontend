@@ -46,6 +46,7 @@ const UpdateProfile = () => {
             age: data.get("age"),
         }
         CustomerService.updateCustomer(newCustomer, customer.id);
+        uploadImage();
         history.push(`/profile`);
     }
 
@@ -58,7 +59,6 @@ const UpdateProfile = () => {
     }
 
     return (
-
         <div>
             <Navbar />
             <div className="light">

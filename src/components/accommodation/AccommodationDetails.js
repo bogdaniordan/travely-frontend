@@ -37,7 +37,7 @@ const AccommodationDetails = (props) => {
                     <h1 className="my-4">{accommodation.title}</h1>
                     <div className="row">
                         <div className="col-md-8">
-                            <img className="img-fluid" src={accommodation.imageUrls.allImages[0]} alt=""/>
+                            <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt=""/>
                         </div>
 
                         <div className="col-md-4">
@@ -51,13 +51,13 @@ const AccommodationDetails = (props) => {
                     <div className="row" style={{marginTop: "20px"}}>
                         <div className="col-md-3 col-sm-6 mb-4">
                             <a href="#">
-                                <img className="img-fluid" src={accommodation.imageUrls.allImages[1]} alt=""/>
+                                <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/secondImage/download`} alt=""/>
                             </a>
                         </div>
 
                         <div className="col-md-3 col-sm-6 mb-4">
                             <a href="#">
-                                <img className="img-fluid" src={accommodation.imageUrls.allImages[2]}  alt=""/>
+                                <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
                             </a>
                         </div>
 
@@ -116,7 +116,7 @@ const AccommodationDetails = (props) => {
                         </div>
                     </div>
                 </div>
-                <Testimonials />
+                <Testimonials accommodationId={accommodation.id} />
             </div>
         );
     } else {
