@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import TestimonialService from "../../service/TestimonialService";
+import AuthService from "../../service/AuthService";
 
 const TestimonialCard = ({accommodationId}) => {
     const[testimonials, setTestimonials] = useState([])
@@ -10,7 +11,7 @@ const TestimonialCard = ({accommodationId}) => {
 
     return (
         <>
-            <div className="testimonials-clean">
+            <div className="testimonials-clean" style={{marginBottom: "-250px"}}>
                 <div className="container">
                     {
                         testimonials.length > 0 && (
@@ -28,7 +29,7 @@ const TestimonialCard = ({accommodationId}) => {
                                         <div className="box">
                                             <p className="description">{testimonial.message}</p>
                                         </div>
-                                        <div className="author"><img className="rounded-circle" src="https://img4.cityrealty.com/neo/i/p/mig/airbnb_guide.jpg" alt=""/>
+                                        <div className="author"><img className="rounded-circle" height="50px" width="60px" src={`http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` ? `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} alt=""/>
                                             <h5 className="name">{testimonial.customer.firstName} {testimonial.customer.lastName}</h5>
                                             {/*<p className="title">CEO of Company Inc.</p>*/}
                                         </div>

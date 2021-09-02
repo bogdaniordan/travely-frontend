@@ -11,6 +11,7 @@ import CustomerProfile from "../customer/CustomerProfile";
 import UpdateProfile from "../customer/UpdateProfile"
 import QuestionForm from "../questions/QuestionForm";
 import QuestionsPage from "../questions/QuestionsPage";
+import AddTestimonial from "../testimonial/AddTestimonial";
 
 const Routes = () => {
     return (
@@ -26,6 +27,7 @@ const Routes = () => {
                     <Route path="/update-profile" exact component={UpdateProfile} />
                     <Route path="/ask-question/:bookingId" exact component={QuestionForm} />
                     <Route path="/questions/:hostId" exact component={QuestionsPage} />
+                    <Route path="/add-testimonial" exact component={AddTestimonial} />
                 </Switch>
             </Router>
         </div>

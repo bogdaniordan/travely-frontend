@@ -51,6 +51,13 @@ const CustomerBooking = ({booking}) => {
         history.push(`/questions/${booking.host.id}`)
     }
 
+    const leaveReview = () => {
+        history.push({
+          pathname: `/add-testimonial/`,
+          state: {accommodation: booking.accommodation}
+        })
+    }
+
     return (
         <>
                     <article className="postcard light blue">
@@ -76,7 +83,7 @@ const CustomerBooking = ({booking}) => {
                                 <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>
                                 {
                                     new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
-                                        <li className="tag__item play blue" ><i className="fas fa-clock mr-2"></i>Review</li>
+                                        <li className="tag__item play blue" onClick={leaveReview}><i className="fas fa-clock mr-2"></i>Review</li>
                                     )
                                 }
                                 {

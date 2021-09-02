@@ -12,15 +12,8 @@ import Footer from "../navigation/Footer";
 import QuestionService from "../../service/QuestionService";
 import AuthService from "../../service/AuthService";
 
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-});
-
 const QuestionsPage = (props) => {
     const hostId = props.match.params.hostId;
-    const classes = useStyles();
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
@@ -33,13 +26,12 @@ const QuestionsPage = (props) => {
 
     return (
         <div>
-            <Navbar />
-
-            <h4 style={{marginTop: "20px", marginBottom: "20px"}}>My questions</h4>
+            <Navbar title={"My questions"}/>
+            {/*<h4 style={{marginTop: "20px", marginBottom: "20px"}}>My questions</h4>*/}
             <div className="container" style={{justifyContent: "center"}}>
 
             <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="caption table">
+                <Table style={{minWidth: "650px"}} aria-label="caption table">
                     <TableHead>
                         <TableRow>
                             <TableCell style={{backgroundColor: "black", color: "white"}}>Question</TableCell>

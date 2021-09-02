@@ -5,8 +5,9 @@ import BookingCard from "../reservations/BookingCard";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
 import Map from "../../utils/Map";
-import Testimonials from "./Testimonials";
+import Testimonials from "../testimonial/Testimonials";
 import AccommodationFacilitiesCard from "./AccommodationFacilitiesCard";
+import Footer from "../navigation/Footer";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
@@ -33,18 +34,7 @@ const AccommodationDetails = (props) => {
     if (!isLoading) {
         return (
             <div>
-                <Navbar title={accommodation.title}/>
-                {/*<div id="masthead">*/}
-                {/*    <div className="container">*/}
-                {/*        <div className="row">*/}
-                {/*            <div className="col-md-7">*/}
-                {/*                <h1 style={{marginLeft: "100px"}}>UserProfile*/}
-                {/*                    <p className="lead">The easiest way to use responsive frameworks</p>*/}
-                {/*                </h1>*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <Navbar title={accommodation.title} subtitle={accommodation.location}/>
                 <div className="container">
                     {/*<h1 className="my-4">{accommodation.title}</h1>*/}
                     <div className="row">
@@ -97,7 +87,8 @@ const AccommodationDetails = (props) => {
                     </div>
                 <AccommodationFacilitiesCard accommodation={accommodation} />
 
-                <Testimonials accommodationId={accommodation.id} />
+                <Testimonials accommodationId={accommodation.id}/>
+                <Footer />
             </div>
         );
     } else {

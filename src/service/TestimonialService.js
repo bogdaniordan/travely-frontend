@@ -8,6 +8,12 @@ class TestimonialService {
         return axios.get(`${TESTIMONIAL_SERVICE_API_URL}/get-all-for-accommodation/${id}`, {headers: AuthHeader()})
     }
 
+    addTestimonial(accommodationId, customerId, data) {
+        return axios.post(`${TESTIMONIAL_SERVICE_API_URL}/add/${accommodationId}/${customerId}`, {
+            message: data.message
+        }, {headers: AuthHeader()})
+    }
+
 }
 
 export default new TestimonialService;

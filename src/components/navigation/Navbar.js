@@ -73,8 +73,6 @@ const Navbar = ({title, subtitle}) => {
                 </div>
             </div>
             {title === "Welcome to Travely." && (<img src = {plane} className="malePhoto" alt=""/>)}
-
-
         </div>
     );
 };
