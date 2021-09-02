@@ -60,18 +60,18 @@ const UpdateProfile = () => {
 
     return (
         <div>
-            <Navbar />
-            <div className="light">
+            <Navbar title={"Update user"} subtitle={"Please fill in any user detail you want to update."}/>
+            <div>
                 <Container
                     style={{
                         border: "white",
                         height: "100%",
                         width: "50%",
                         margin: "auto",
-                        marginTop: "5%",
+                        // marginTop: "5%",
                     }}
                 >
-                    <h1>Update details</h1>
+                    {/*<h1>Update details</h1>*/}
                     <form
                         className="form-signin"
                         method="post"

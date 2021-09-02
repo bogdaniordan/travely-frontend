@@ -4,6 +4,7 @@ import {useHistory, useLocation} from "react-router-dom";
 import BookingService from "../../service/BookingService";
 import CustomerService from "../../service/CustomerService";
 import PaymentForm from "../../utils/PaymentForm";
+import Footer from "../navigation/Footer";
 
 const Payment = () => {
     const booking = useLocation().state.booking;
@@ -118,7 +119,7 @@ const Payment = () => {
 
         return (
             <>
-                <Navbar />
+                <Navbar title={"Payment"} subtitle={"Please fill in your billing address along with your payment info."}/>
                 <br/>
                 {message && (
                     <div className="form-group">
@@ -158,6 +159,7 @@ const Payment = () => {
                     saveCardDetails={saveCardDetails}
                     checkBtn={checkBtn}
                 />
+                <Footer />
             </>
         );
 };

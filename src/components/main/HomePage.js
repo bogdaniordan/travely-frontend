@@ -30,8 +30,8 @@ const HomePage = () => {
 
     return (
         <div>
-            <Navbar />
-            <ImageCarousel />
+            <Navbar title={"Welcome to Travely."} subtitle={"Travel anywhere around the globe with just one click!"}/>
+            {/*<ImageCarousel />*/}
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 card-margin">

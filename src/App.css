@@ -334,7 +334,7 @@
 /*profile*/
 
 body {
-  background-color: #f9f9fa
+  background-color: #f9f9fa;
 }
 
 .padding {
@@ -737,3 +737,87 @@ h3 {
   margin-top:-5px;
 }
 
+#masthead {
+  min-height:270px;
+  background-color:#212529;
+  color:#aaaacc;
+}
+
+#masthead h1 {
+  font-size: 55px;
+  line-height: 1;
+}
+
+#masthead .well {
+  margin-top:13%;
+  background-color:#111155 ;
+  border-color:#000033;
+}
+
+.icon-bar {
+  background-color:#fff;
+}
+
+@media screen and (min-width: 768px) {
+  #masthead h1 {
+    font-size: 100px;
+  }
+}
+
+/*.navbar-bright {*/
+/*  background-color:#111155;*/
+/*  color:#fff;*/
+/*}*/
+
+/*.navbar-bright a, #masthead a, #masthead .lead {*/
+/*  color:#aaaacc;*/
+/*}*/
+
+/*.navbar-bright li > a:hover {*/
+/*  background-color:#000033;*/
+/*}*/
+
+/*.affix-top,.affix{*/
+/*  position: static;*/
+/*}*/
+
+/*#sidebar li {*/
+/*  border-bottom:1px solid #eee;*/
+/*}*/
+
+/*#sidebar li.active {*/
+/*  border-right:5px solid #eee;*/
+/*}*/
+
+/*#mainCol h2 {*/
+/*  padding-top: 55px;*/
+/*  margin-top: -55px;*/
+/*}*/
+
+/*@media (min-width: 992px) {*/
+/*  #sidebar.affix-top {*/
+/*    position: static;*/
+/*    margin-top:30px;*/
+/*    width:228px;*/
+/*  }*/
+
+/*  #sidebar.affix {*/
+/*    position: fixed;*/
+/*    top:70px;*/
+/*    width:228px;*/
+/*  }*/
+/*}*/
+
+.malePhoto {
+  /*margin-left: 50%;*/
+  /*width: 20%;*/
+  /*height: 100%;*/
+  position: absolute;
+  z-index: 2;
+  object-fit: cover;
+  height: 500px;
+  width: 500px;
+  margin-top: -500px;
+  margin-left: 100px;
+
+}

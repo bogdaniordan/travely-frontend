@@ -17,7 +17,7 @@ const CustomerProfile = () => {
 
         return (
             <div>
-                <Navbar />
+                <Navbar title={"User profile"} subtitle={"View profile information or view bookings"}/>
                 {/*<div className="page-content page-container" id="page-content">*/}
                     <ProfileCard/>
                     <div className="container mt-5">

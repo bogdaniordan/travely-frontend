@@ -14,7 +14,7 @@ const ProfileCard = () => {
 
     return (
         <>
-            <div className="testimonials-clean">
+            {/*<div className="testimonials-clean">*/}
                 <div className="padding" style={{justifyContent: "center"}}>
                     <div className="row container d-flex justify-content-center" style={{height: "auto", margin: "0 auto"}}>
                         <div className="col-xl-6 col-md-12" style={{width: "1200px"}}>
@@ -69,7 +69,7 @@ const ProfileCard = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            {/*</div>*/}
         </>
     );
 };

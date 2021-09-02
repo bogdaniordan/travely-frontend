@@ -33,9 +33,20 @@ const AccommodationDetails = (props) => {
     if (!isLoading) {
         return (
             <div>
-                <Navbar />
+                <Navbar title={accommodation.title}/>
+                {/*<div id="masthead">*/}
+                {/*    <div className="container">*/}
+                {/*        <div className="row">*/}
+                {/*            <div className="col-md-7">*/}
+                {/*                <h1 style={{marginLeft: "100px"}}>UserProfile*/}
+                {/*                    <p className="lead">The easiest way to use responsive frameworks</p>*/}
+                {/*                </h1>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="container">
-                    <h1 className="my-4">{accommodation.title}</h1>
+                    {/*<h1 className="my-4">{accommodation.title}</h1>*/}
                     <div className="row">
                         <div className="col-md-8">
                             <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt=""/>
@@ -64,6 +75,12 @@ const AccommodationDetails = (props) => {
                                 <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
                             </a>
                         </div>
+
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <a href="#">
+                                <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
+                            </a>
+                        </div>
                         <div style={{marginBottom: "20px"}}>
                             <Map
                                 // api key = AIzaSyBtJ-at-3HxnIdCfaeplBDJJaNuZ18rFgg
@@ -75,11 +92,7 @@ const AccommodationDetails = (props) => {
                                 lng={26.096306}
                             />
                         </div>
-                        {/*<div class="col-md-3 col-sm-6 mb-4">*/}
-                        {/*    <a href="#">*/}
-                        {/*        <img class="img-fluid" src="https://via.placeholder.com/500x300" alt=""/>*/}
-                        {/*    </a>*/}
-                        {/*</div>*/}
+
                     </div>
                     </div>
                 <AccommodationFacilitiesCard accommodation={accommodation} />
