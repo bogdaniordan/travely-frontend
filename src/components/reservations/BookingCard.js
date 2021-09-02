@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const BookingCard = (props) => {
+const BookingCard = ({customer, accommodation}) => {
     const classes = useStyles();
     const history = useHistory();
     const [checkinDate, setCheckinDate] = useState();
@@ -55,8 +55,8 @@ const BookingCard = (props) => {
                             checkInDate: checkinDate,
                             checkoutDate: checkoutDate
                         },
-                        accommodation: props.accommodation,
-                        customer: props.customer
+                        accommodation: accommodation,
+                        customer: customer
                     }
                 }, )
             },2500)
@@ -71,25 +71,21 @@ const BookingCard = (props) => {
 
     return (
         <>
-            <Card className={classes.root}>
+            <Card className={classes.root} onSubmit={submitForm}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
                         alt="Host"
                         height="140"
-                        image="https://storage.googleapis.com/afs-prod/media/00acf28012674823a28e4f8bc1b462f8/800.jpeg"
+                        image={`http://localhost:8080/hosts/image/${accommodation.host.id}/download` ? `http://localhost:8080/hosts/image/${accommodation.host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}
                         title="Host"
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="h4">
-                            {props.accommodation.host.firstName} {props.accommodation.host.lastName}
+                        <Typography gutterBottom variant="h6" component="h5">
+                            Host: {accommodation.host.firstName} {accommodation.host.lastName}
                         </Typography>
-
                     </CardContent>
                 </CardActionArea>
-            </Card>
-            <br/>
-            <Card className={classes.root} onSubmit={submitForm}>
                 {message && (
                     <div className="form-group">
                         <div
@@ -102,7 +98,6 @@ const BookingCard = (props) => {
                         </div>
                     </div>
                 )}
-                <br/>
                 <CardActions>
                     <form className={classes.container}>
                         <Typography variant="body2" component="p">

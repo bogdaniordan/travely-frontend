@@ -17,7 +17,6 @@ const customStyles = {
 };
 
 Modal.setAppElement('#root');
-
 const CustomerBooking = ({booking}) => {
     const history = useHistory();
 

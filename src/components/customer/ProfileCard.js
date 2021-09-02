@@ -20,12 +20,12 @@ const ProfileCard = () => {
                         <div className="col-xl-6 col-md-12" style={{width: "1200px"}}>
                             <div className="card user-card-full">
                                 <div className="row m-l-0 m-r-0">
-                                    <div className="col-sm-4 bg-c-lite-green user-profile">
+                                    <div className="col-sm-4 bg-c-lite-blue user-profile" style={{backgroundColor: "lightblue"}}>
                                         <div className="card-block text-center text-white">
                                             <div className="m-b-25"><img
                                                 src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="100px" width="100px"
                                                 className="img-radius" alt="User-Profile-Image"/></div>
-                                            <h6 className="f-w-600">{customer.firstName} {customer.lastName}</h6>
+                                            <h6 className="f-w-600" style={{color: "black"}}>{customer.firstName} {customer.lastName}</h6>
                                             {/*className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>*/}
                                             <p><Button variant="contained" color="secondary" onClick={() => history.push(`/update-profile`)}>Update</Button></p>
                                         </div>

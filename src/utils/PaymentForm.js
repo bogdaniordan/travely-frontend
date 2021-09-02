@@ -48,18 +48,6 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                 </div>
                 <div className="col-md-8 order-md-1">
                     <h4 className="mb-3">Billing address</h4>
-                    {/*{message && (*/}
-                    {/*    <div className="form-group">*/}
-                    {/*        <div*/}
-                    {/*            className={*/}
-                    {/*                successful ? "alert alert-success" : "alert alert-danger"*/}
-                    {/*            }*/}
-                    {/*            role="alert"*/}
-                    {/*        >*/}
-                    {/*            {message}*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*)}*/}
                     <Form className="needs-validation" onSubmit={submitForm} ref={form}>
 
                         <div className="row">

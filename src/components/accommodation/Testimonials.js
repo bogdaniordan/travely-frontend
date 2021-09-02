@@ -12,10 +12,14 @@ const TestimonialCard = ({accommodationId}) => {
         <>
             <div className="testimonials-clean">
                 <div className="container">
-                    <div className="intro">
-                        <h2 className="text-center">Testimonials </h2>
-                        <p className="text-center">Checkout what other customers thought about this accommodation.</p>
-                    </div>
+                    {
+                        testimonials.length > 0 && (
+                            <div className="intro">
+                                <h2 className="text-center">Testimonials </h2>
+                                <p className="text-center">Checkout what other customers thought about this accommodation.</p>
+                            </div>
+                        )
+                    }
                     <div className="row people">
                         {
                             testimonials.length > 0 ? (
