@@ -1,26 +1,34 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from "@material-ui/core/Button";
 import Modal from 'react-modal';
 import BookingService from "../../service/BookingService";
 import {useHistory} from "react-router-dom";
-import "./BookingCard.scss"
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
+import "../../styling/BookingCard.scss"
+import {customStyles} from "../../styling/ModalStyling";
+import TestimonialService from "../../service/TestimonialService";
+import AuthService from "../../service/AuthService";
+//
+// const customStyles = {
+//     content: {
+//         top: '50%',
+//         left: '50%',
+//         right: 'auto',
+//         bottom: 'auto',
+//         marginRight: '-50%',
+//         transform: 'translate(-50%, -50%)',
+//     },
+// };
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking}) => {
     const history = useHistory();
 
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false)
+    const [bookingIsReviewed, setBookingIsReviewed] = useState(false);
+
+    useEffect(() => {
+        TestimonialService.accommodationIsReviewedByUser(booking.accommodation.id, AuthService.getCurrentUser().id).then(res => setBookingIsReviewed(res.data));
+    }, [])
 
     const openModal = () => {
         setIsOpen(true);
@@ -83,7 +91,9 @@ const CustomerBooking = ({booking}) => {
                                 <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>
                                 {
                                     new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
-                                        <li className="tag__item play blue" onClick={leaveReview}><i className="fas fa-clock mr-2"></i>Review</li>
+                                        !bookingIsReviewed && (
+                                            <li className="tag__item play blue" onClick={leaveReview}><i className="fas fa-clock mr-2"></i>Review</li>
+                                        )
                                     )
                                 }
                                 {

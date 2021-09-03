@@ -14,6 +14,10 @@ class TestimonialService {
         }, {headers: AuthHeader()})
     }
 
+    accommodationIsReviewedByUser(accommodationId, customerId) {
+        return axios.get(`${TESTIMONIAL_SERVICE_API_URL}/accommodation-is-reviewed/${accommodationId}/${customerId}`, {headers: AuthHeader()});
+    }
+
 }
 
 export default new TestimonialService;

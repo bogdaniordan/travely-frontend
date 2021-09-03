@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
     const classes = useStyles();
+    const isHomePage = title === "Welcome to Travely.";
 
     return (
         <div style={{border: "1px solid white"}}>
@@ -56,7 +57,7 @@ const Navbar = ({title, subtitle}) => {
                     </div>
                 </div>
             </nav>
-            <div id="masthead" style={{marginBottom: "100px"}}>
+            <div id="masthead" style={{minHeight: isHomePage ? "370px" : "220px"}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-7">
@@ -72,7 +73,7 @@ const Navbar = ({title, subtitle}) => {
 
                 </div>
             </div>
-            {title === "Welcome to Travely." && (<img src = {plane} className="malePhoto" alt=""/>)}
+            {isHomePage && (<img src = {plane} className="malePhoto" alt=""/>)}
         </div>
     );
 };
