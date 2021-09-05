@@ -1,5 +1,7 @@
 import React from 'react';
 import {useHistory} from "react-router-dom";
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import PageviewIcon from '@material-ui/icons/Pageview';
 
 const AccommodationCards = ({places}) => {
     const history = useHistory();
@@ -16,8 +18,8 @@ const AccommodationCards = ({places}) => {
                                 <small style={{marginBottom: "5px"}}>Place type: {place.placeType}</small>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <div className="btn-group">
-                                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}>View</button>
-                                        <button type="button" className="btn btn-sm btn-outline-secondary">Save</button>
+                                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>
+                                        <button type="button" className="btn btn-sm btn-outline-secondary"><BookmarkIcon /></button>
                                     </div>
                                     <small className="text-muted">${place.pricePerNight}/night</small>
                                 </div>

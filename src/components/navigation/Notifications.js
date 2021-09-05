@@ -4,21 +4,8 @@ import Button from "@material-ui/core/Button";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import Typography from "@material-ui/core/Typography";
 import Link from "react-router-dom/Link";
-import {makeStyles} from "@material-ui/core/styles";
 import QuestionService from "../../service/QuestionService";
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-    typography: {
-        padding: theme.spacing(2),
-    },
-}));
-
+import {useStyles} from "../../styling/NavbarBadgeStyling";
 
 const Notifications = () => {
     const classes = useStyles();
@@ -32,12 +19,9 @@ const Notifications = () => {
         QuestionService.getAllQuestions().then(res => setQuestions(res.data));
     }, [])
 
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
-
 
     const handleClose = () => {
         setAnchorEl(null);

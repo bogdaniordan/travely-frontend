@@ -27,6 +27,22 @@ class AccommodationService {
     getByTitleInput(titleInput) {
         return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/get-by-title/${titleInput}`, { headers: AuthHeader() });
     }
+
+    saveToFavorites(accommodationId, customerId) {
+        return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/save-to-favorites/accommodation/${accommodationId}/customer/${customerId}`, {headers: AuthHeader()});
+    }
+
+    removeFromFavorites(accommodationId, customerId) {
+        return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/remove-from-favorites/accommodation/${accommodationId}/customer/${customerId}`, {headers: AuthHeader()});
+    }
+
+    accommodationIsSaved(accommodationId, customerId) {
+        return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/accommodation-is-saved/${accommodationId}/${customerId}`, {headers: AuthHeader()});
+    }
+
+    getAllSavedAccommodations(customerId) {
+        return axios.get(`${ACCOMMODATION_SERVICE_API_URL}/all-saved/${customerId}`, {headers: AuthHeader()});;
+    }
 }
 
 export default new AccommodationService;
