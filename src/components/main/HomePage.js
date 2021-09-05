@@ -86,32 +86,16 @@ const HomePage = () => {
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style={{textAlign: "center", justifyContent: "center"}}>
                             {
                                 results ? ( results.length > 0 ? (
-                                        <AccommodationCards places={results}/>
+                                    results.map(
+                                        place => <AccommodationCards place={place}/>
+                                    )
+                                        // <AccommodationCards places={results}/>
                                     ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>There are no results for your search...</h3>)
                                 ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)
                             }
                         </div>
                     </div>
                 </div>
-
-                {/*<div className="container marketing">*/}
-
-                {/*    <div className="row">*/}
-                {/*        <div className="col-lg-4">*/}
-                {/*            <img alt="Responsive image" className="img-fluid"  src="https://static.amazon.jobs/locations/16/thumbnails/london-thumb.jpg?1617639578"/>*/}
-                {/*            <p><a className="btn btn-secondary" href="#">Explore &raquo;</a></p>*/}
-                {/*        </div>*/}
-                {/*        <div className="col-lg-4">*/}
-                {/*            <img alt="Responsive image" className="img-fluid"  src="https://www.worldtravelguide.net/wp-content/uploads/2017/04/Think-India-Mumbai-486332873-Chidanand-M.-copy.jpg"/>*/}
-                {/*            <p><a className="btn btn-secondary" href="#">Explore &raquo;</a></p>*/}
-                {/*        </div>*/}
-                {/*        <div className="col-lg-4">*/}
-                {/*            <img alt="Responsive image" className="img-fluid"  src="https://upload.wikimedia.org/wikipedia/commons/9/96/ISH_WC_Boston4.jpg"/>*/}
-                {/*            <p><a className="btn btn-secondary" href="#">Explore &raquo;</a></p>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
             </div>
             <Footer />
         </div>
