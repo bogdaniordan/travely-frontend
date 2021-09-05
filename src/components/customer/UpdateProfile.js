@@ -76,6 +76,7 @@ const UpdateProfile = () => {
                         className="form-signin"
                         method="post"
                         onSubmit={submitForm}
+                        style={{width: "50%", margin: "auto"}}
                     >
                         <div className="mb-3">
                             <label htmlFor="firstName" className="form-label">

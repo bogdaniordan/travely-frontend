@@ -38,7 +38,7 @@ const QuestionForm = () => {
     return (
         <div>
             <Navbar title={"Leave a question"}/>
-            <div className="container contact-form">
+            <div className="container contact-form" style={{height: "500px"}}>
                 <div className="contact-image">
                     <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
                 </div>

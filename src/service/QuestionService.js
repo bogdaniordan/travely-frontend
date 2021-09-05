@@ -15,6 +15,10 @@ class QuestionService {
     getAllForHost(customerId, hostId) {
         return axios.get(`${QUESTION_SERVICE_API_URL}/get-all-for-host/${customerId}/${hostId}`, { headers: AuthHeader() })
     }
+
+    getAllQuestions() {
+        return axios.get(`${QUESTION_SERVICE_API_URL}/all`, {headers: AuthHeader()});
+    }
 }
 
 export default new QuestionService;

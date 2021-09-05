@@ -14,7 +14,7 @@ import Button from "@material-ui/core/Button";
 import CheckButton from "react-validation/build/button";
 
 const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm, form, firstName, onChangeFirstName, lastName ,onChangeLastName, email, onChangeEmail, address, onChangeAddress, nameOnCard, onChangeNameOnCard, cardNumber, onChangeCardNumber,
-                     expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn}) => {
+                     expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn, cardDetailsExist}) => {
     return (
         <div className="container">
             <div className="row">
@@ -147,13 +147,15 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 />
                             </div>
                         </div>
-
                         <hr className="mb-4"/>
-
-                        <div className="form-check">
-                            <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => {setSaveCardDetails(!saveCardDetails)}}/>
-                            <label className="form-check-label" htmlFor="same-address">Save credit card details</label>
-                        </div>
+                        {
+                            !cardDetailsExist && (
+                                <div className="form-check">
+                                    <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => {setSaveCardDetails(!saveCardDetails)}}/>
+                                    <label className="form-check-label" htmlFor="same-address">Save credit card details</label>
+                                </div>
+                            )
+                        }
                         <hr className="mb-4"/>
                         <Button variant="contained" color="primary" type="submit">Book</Button>
                         <CheckButton style={{ display: "none" }} ref={checkBtn} />

@@ -31,6 +31,9 @@ class CustomerService {
         return axios.put(`${CUSTOMER_SERVICE_API_URL}/update/${id}`, customer, { headers: AuthHeader() });
     }
 
+    cardDetailsExist(id) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/card-details-exist/${id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new CustomerService;

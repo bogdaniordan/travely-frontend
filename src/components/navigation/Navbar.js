@@ -4,6 +4,7 @@ import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import AuthService from "../../service/AuthService";
 import plane from "./plane.png"
+import Notifications from "./Notifications";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,9 +17,14 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
     const classes = useStyles();
-    const isHomePage = title === "Welcome to Travely.";
+    const isHomePage = title === "Welcome to Travely."
+
+    const logout = () => {
+        AuthService.logout();
+    }
 
     return (
+
         <div style={{border: "1px solid white"}}>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
@@ -36,11 +42,10 @@ const Navbar = ({title, subtitle}) => {
                                     <a className="nav-link active" aria-current="page" href="/profile">Profile</a>
                                 </li>
                                 <li className="nav-item">
-                                    <div className={classes.root}>
-                                        <Badge badgeContent={4} color="primary">
-                                            <MailIcon style={{backgroundColor: "white"}}/>
-                                        </Badge>
-                                    </div>
+                                    <Notifications />
+                                </li>
+                                <li className="nav-item" style={{marginLeft: "1000px"}}>
+                                    <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
                             </ul>
                         ) : (
@@ -57,7 +62,7 @@ const Navbar = ({title, subtitle}) => {
                     </div>
                 </div>
             </nav>
-            <div id="masthead" style={{minHeight: isHomePage ? "370px" : "220px"}}>
+            <div id="masthead" style={{minHeight: isHomePage ? "370px" : "235px"}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-7">

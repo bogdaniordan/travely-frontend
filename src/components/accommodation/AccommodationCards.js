@@ -10,7 +10,7 @@ const AccommodationCards = ({places}) => {
                 places.map(
                     place => <div className="col">
                         <div className="card shadow-sm">
-                            <img alt="Responsive image" className="img-fluid" src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
+                            <img alt="Responsive image" className="img-fluid" style={{height: "250px"}}  src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
                             <div className="card-body">
                                 <p className="card-text"><strong>{place.title}</strong></p>
                                 <small style={{marginBottom: "5px"}}>Place type: {place.placeType}</small>

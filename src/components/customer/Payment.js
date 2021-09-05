@@ -5,6 +5,7 @@ import BookingService from "../../service/BookingService";
 import CustomerService from "../../service/CustomerService";
 import PaymentForm from "../../utils/PaymentForm";
 import Footer from "../navigation/Footer";
+import AuthService from "../../service/AuthService";
 
 const Payment = () => {
     const booking = useLocation().state.booking;
@@ -14,6 +15,7 @@ const Payment = () => {
     const checkBtn = useRef();
     const history = useHistory();
 
+    const [cardDetailsExist, setCardDetailsExist] = useState(false);
     const [bookingDurationInDays, setBookingDurationInDays] = useState();
     const [saveCardDetails, setSaveCardDetails] = useState(false);
     const [firstName, setFirstName] = useState(customer.firstName);
@@ -61,7 +63,8 @@ const Payment = () => {
 
     useEffect(() => {
         setBookingDuration();
-        setCardDetailsIfSaved();;
+        setCardDetailsIfSaved();
+        CustomerService.cardDetailsExist(AuthService.getCurrentUser().id).then(res => setCardDetailsExist(res.data))
     }, [])
 
 
@@ -158,6 +161,7 @@ const Payment = () => {
                     setSaveCardDetails={setSaveCardDetails}
                     saveCardDetails={saveCardDetails}
                     checkBtn={checkBtn}
+                    cardDetailsExist={cardDetailsExist}
                 />
                 <Footer />
             </>
