@@ -37,7 +37,7 @@ const AccommodationCards = ({place}) => {
                                         <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>
                                         <button type="button" className="btn btn-sm btn-outline-secondary" onClick={saveOrUnsaveAccommodation}>
                                             {
-                                                jobIsSaved ? (
+                                                !jobIsSaved ? (
                                                     <BookmarkBorderIcon />
                                                 ) : (
                                                     <BookmarkIcon />

@@ -5,6 +5,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import AuthService from "../../service/AuthService";
 import plane from "./plane.png"
 import Notifications from "./Notifications";
+import SavedAccommodations from "./SavedAccommodations";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,6 +41,9 @@ const Navbar = ({title, subtitle}) => {
 
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/profile">Profile</a>
+                                </li>
+                                <li className="nav-item">
+                                   <SavedAccommodations />
                                 </li>
                                 <li className="nav-item">
                                     <Notifications />
