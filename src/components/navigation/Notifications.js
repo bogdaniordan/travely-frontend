@@ -63,7 +63,7 @@ const Notifications = () => {
                                         </div>
                                     )
                             )
-                            : "No new questions"}
+                            : "No responses"}
                     </Typography>
                 </Popover>
             </Badge>

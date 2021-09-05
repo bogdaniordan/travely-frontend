@@ -27,16 +27,18 @@ const CustomerProfile = () => {
                         <section>
                             <div className="container py-2">
                                 {/*<div className="h1 text-center text-dark" id="pageHeaderTitle">My bookings</div>*/}
-
                                 {
-                                    bookings.map(
-                                        booking => <CustomerBooking key={booking.id} booking={booking} />
+                                    bookings.length > 0 ? (
+                                        bookings.map(
+                                            booking => <CustomerBooking key={booking.id} booking={booking} />
+                                        )
+                                    ) : (
+                                        <h4 style={{margin: "auto"}}>No bookings at the moment.</h4>
                                     )
                                 }
                             </div>
                         </section>
                         <hr className="mb-4"/>
-
                     </div>
                 {/*</div>*/}
                 <Footer />

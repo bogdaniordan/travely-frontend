@@ -66,7 +66,6 @@ const SavedAccommodations = () => {
                                     )
                                 )
                             ) : ("No saved accommodations")
-
                         }
                     </Typography>
                 </Popover>

@@ -44,7 +44,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             <strong>${bookingDurationInDays * accommodation.pricePerNight}</strong>
                         </li>
                     </ul>
-                    <AccommodationCards places={[accommodation]}/>
+                    <AccommodationCards place={accommodation}/>
                 </div>
                 <div className="col-md-8 order-md-1">
                     <h4 className="mb-3">Billing address</h4>

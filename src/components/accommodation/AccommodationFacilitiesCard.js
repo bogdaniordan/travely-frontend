@@ -15,7 +15,7 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                             <br/>
                             <p className="card-text mb-auto">The price for this accommodation is ${accommodation.pricePerNight} per night.</p>
                         </div>
-                        <img height="250px" width="200px" src="https://image.freepik.com/free-vector/beach-house-logo-design-template-beach-resort-villa-beach-hotel-logo_98702-711.jpg" className="card-img-right flex-auto d-none d-md-block"
+                        <img height="250px" width="200px" src="https://cdn3.iconfinder.com/data/icons/business-outline-29/32/business-03-512.png" className="card-img-right flex-auto d-none d-md-block"
                              data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>
                     </div>
                 </div>
@@ -30,7 +30,7 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                             <br/>
                             {accommodation.facilities.map(facility => <p className="card-text mb-auto">{facility.replace("_", " ")}</p>)}
                         </div>
-                        <img  height="250px" width="200px" src="https://static.vecteezy.com/system/resources/previews/001/483/727/non_2x/hotel-services-and-facilities-banner-vector.jpg" className="card-img-right flex-auto d-none d-md-block"
+                        <img  height="250px" width="200px" src="https://www.kindpng.com/picc/m/584-5847848_hotel-facilities-icon-png-transparent-png.png" className="card-img-right flex-auto d-none d-md-block"
                               data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>
                     </div>
                 </div>

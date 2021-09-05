@@ -12,6 +12,9 @@ import UpdateProfile from "../customer/UpdateProfile"
 import QuestionForm from "../questions/QuestionForm";
 import QuestionsPage from "../questions/QuestionsPage";
 import AddTestimonial from "../testimonial/AddTestimonial";
+import CleanersPage from "../cleaner/CleanersPage";
+// import 'semantic-ui-css/semantic.min.css'
+
 
 const Routes = () => {
     return (
@@ -28,6 +31,7 @@ const Routes = () => {
                     <Route path="/ask-question/:bookingId" exact component={QuestionForm} />
                     <Route path="/questions/:hostId" exact component={QuestionsPage} />
                     <Route path="/add-testimonial" exact component={AddTestimonial} />
+                    <Route path="/cleaners" exact component={CleanersPage} />
                 </Switch>
             </Router>
         </div>

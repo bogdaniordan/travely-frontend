@@ -7,17 +7,6 @@ import "../../styling/BookingCard.scss"
 import {customStyles} from "../../styling/ModalStyling";
 import TestimonialService from "../../service/TestimonialService";
 import AuthService from "../../service/AuthService";
-//
-// const customStyles = {
-//     content: {
-//         top: '50%',
-//         left: '50%',
-//         right: 'auto',
-//         bottom: 'auto',
-//         marginRight: '-50%',
-//         transform: 'translate(-50%, -50%)',
-//     },
-// };
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking}) => {
