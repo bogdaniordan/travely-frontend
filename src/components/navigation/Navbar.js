@@ -48,7 +48,7 @@ const Navbar = ({title, subtitle}) => {
                                 <li className="nav-item">
                                     <Notifications />
                                 </li>
-                                <li className="nav-item" style={{marginLeft: "850px"}}>
+                                <li className="nav-item" style={{marginLeft: "900px"}}>
                                     <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>
                             </ul>

@@ -35,18 +35,30 @@ const ResetPassword = (props) => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            console.log("XD")
             if (!(password === confirmationPassword)) {
                 setMessage("Your passwords don't match.");
                 setShowMessage(false);
             }
+            AuthService.savePassword(password, token).then(
+                res => {
+                    setMessage(res.data);
+                    setShowMessage(true);
+                    setTimeout(() => {
+                        history.push("/login")
+                    }, 2000)
+                },
+                error => {
+                    setMessage(error.response.data);
+                    setShowMessage(false);;
+                }
+            )
         }
     }
 
     return (
         <div>
             <Navbar title={"Reset your password"}/>
-            <div className="container" style={{width: "20%"}}>
+            <div className="container" style={{width: "30%"}}>
                 {message && (
                     <div className="form-group">
                         <div

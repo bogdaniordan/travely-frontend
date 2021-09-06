@@ -42,6 +42,17 @@ class AuthService {
     verifyResetPasswordToken(token) {
         return axios.get(`${API_URL}/verify-password-token/${token}`)
     }
+
+    savePassword(password, token) {
+        return axios.post(`${API_URL}/save-password`, {
+            token: token,
+            password: password
+        })
+    }
+
+    sendResetPasswordEmail(data) {
+        return axios.get(`${API_URL}/reset-password/${data.email}`)
+    }
 }
 
 export default new AuthService();

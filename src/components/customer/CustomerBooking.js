@@ -97,7 +97,6 @@ const CustomerBooking = ({booking}) => {
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
                         style={customStyles}
-                        contentLabel="Example Modal"
                     >
                         <div className="modal-dialog modal-confirm">
                             <div className="modal-content">

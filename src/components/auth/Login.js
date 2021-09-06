@@ -5,7 +5,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -15,6 +14,11 @@ import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "./AuthStyles";
 import Navbar from "../navigation/Navbar";
+import {Link} from "@material-ui/core";
+import Modal from 'react-modal';
+import {customStyles} from "../../styling/ModalStyling";
+import ResetPassword from "./ResetPassword";
+import ResetPasswordModal from "./ResetPasswordModal";
 
 const Login = () => {
     const classes = useStyles();
@@ -22,10 +26,20 @@ const Login = () => {
     const checkBtn = useRef();
     const history = useHistory();
 
+    const [modalIsOpen, setIsOpen] = useState(false)
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
     const [password, setPassword] = useState();
     const [username, setUsername] = useState();
+
+    const openModal = () => {
+        setIsOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsOpen(false);
+    }
+
 
     const onChangeUsername = event => {
         setUsername(event.target.value)
@@ -58,6 +72,10 @@ const Login = () => {
                 }
             )
         }
+    }
+
+    const sendResetPasswordEmail = () => {
+
     }
 
     return (
@@ -122,8 +140,24 @@ const Login = () => {
                             </Grid>
                         </Grid>
                         <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                        <Grid container>
+                            <Grid item xs>
+                                <Link variant="body2" onClick={openModal}>
+                                    Forgot password?
+                                </Link>
+                            </Grid>
+                        </Grid>
                     </Form>
                 </div>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                >
+                <ResetPasswordModal
+                    closeModal={closeModal}
+                />
+                </Modal>
             </Container>
         </>
     );
