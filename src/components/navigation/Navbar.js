@@ -7,17 +7,17 @@ import plane from "./plane.png"
 import Notifications from "./Notifications";
 import SavedAccommodations from "./SavedAccommodations";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//         '& > *': {
+//             margin: theme.spacing(1),
+//         },
+//     },
+// }));
 
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
-    const classes = useStyles();
+    // const classes = useStyles();
     const isHomePage = title === "Welcome to Travely."
 
     const logout = () => {

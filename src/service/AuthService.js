@@ -38,6 +38,10 @@ class AuthService {
     getCurrentUser() {
         return JSON.parse(localStorage.getItem("user"));
     }
+
+    verifyResetPasswordToken(token) {
+        return axios.get(`${API_URL}/verify-password-token/${token}`)
+    }
 }
 
 export default new AuthService();
