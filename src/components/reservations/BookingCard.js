@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -7,8 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {TextField} from "@material-ui/core";
+import {TextField, Tooltip} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
+import Avatar from "@material-ui/core/Avatar";
+import HostService from "../../service/HostService";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +39,11 @@ const BookingCard = ({customer, accommodation}) => {
     const [checkoutDate, setCheckoutDate] = useState();
     const [message, setMessage] = useState("");
     const [successful, setSuccessful] = useState(false);
+    const [hostBadges, setHostBadges] = useState([]);
+
+    useEffect(() => {
+        HostService.getHostBadges(accommodation.host.id).then(res => setHostBadges(res.data))
+    }, [])
 
     const submitForm = e => {
         e.preventDefault();
@@ -84,6 +91,20 @@ const BookingCard = ({customer, accommodation}) => {
                         <Typography gutterBottom variant="h6" component="h5">
                             Host: {accommodation.host.firstName} {accommodation.host.lastName}
                         </Typography>
+                        <div style={{display: "flex"}}>
+                            {
+                                hostBadges.map(
+                                    badge => (
+                                        <div style={{margin: "5px"}}>
+                                            <small>{badge.name}</small>
+                                            <Tooltip title={badge.description}>
+                                                <Avatar style={{margin: "15px", height: "50px", width: "50px"}} src={`http://localhost:8080/hosts/image/badge/${badge.picture}/download`} />
+                                            </Tooltip>
+                                        </div>
+                                    )
+                                )
+                            }
+                        </div>
                     </CardContent>
                 </CardActionArea>
                 {message && (

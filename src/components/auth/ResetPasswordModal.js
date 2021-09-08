@@ -16,7 +16,6 @@ const ResetPasswordModal = ({closeModal}) => {
                         <h4>Enter your email address</h4>
                         <p>Your will receive an email in a few moments.</p>
                         <form onSubmit={handleSubmit((data) => {
-                            console.log("XD")
                             AuthService.sendResetPasswordEmail(data);
                             closeModal();
                         })}>

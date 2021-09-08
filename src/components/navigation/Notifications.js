@@ -30,7 +30,7 @@ const Notifications = () => {
     return (
         <div className={classes.root}>
             <Badge badgeContent={0} color="primary">
-                <Button variant="contained" style={{backgroundColor: "#212529"}}><NotificationsActiveIcon color="primary" onClick={handleClick}/></Button>
+                <Link><NotificationsActiveIcon color="primary" onClick={handleClick}/></Link>
                 <Popover
                     id={id}
                     open={open}

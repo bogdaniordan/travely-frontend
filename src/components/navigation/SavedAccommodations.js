@@ -31,7 +31,7 @@ const SavedAccommodations = () => {
     return (
         <div className={classes.root}>
             <Badge badgeContent={0} color="primary">
-                <Button variant="contained" style={{backgroundColor: "#212529"}}><BookmarksIcon color="primary" onClick={handleClick}/></Button>
+                <Link><BookmarksIcon color="primary" onClick={handleClick}/></Link>
                 <Popover
                     id={id}
                     open={open}
