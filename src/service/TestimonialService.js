@@ -8,9 +8,10 @@ class TestimonialService {
         return axios.get(`${TESTIMONIAL_SERVICE_API_URL}/get-all-for-accommodation/${id}`, {headers: AuthHeader()})
     }
 
-    addTestimonial(accommodationId, customerId, data) {
+    addTestimonial(accommodationId, customerId, data, rating) {
         return axios.post(`${TESTIMONIAL_SERVICE_API_URL}/add/${accommodationId}/${customerId}`, {
-            message: data.message
+            message: data.message,
+            rating: rating
         }, {headers: AuthHeader()})
     }
 
@@ -18,6 +19,9 @@ class TestimonialService {
         return axios.get(`${TESTIMONIAL_SERVICE_API_URL}/accommodation-is-reviewed/${accommodationId}/${customerId}`, {headers: AuthHeader()});
     }
 
+    getAverageRating(accommodationId) {
+        return axios.get(`${TESTIMONIAL_SERVICE_API_URL}/average-rating/${accommodationId}`, {headers: AuthHeader()});
+    }
 }
 
 export default new TestimonialService;

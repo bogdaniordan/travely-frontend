@@ -9,7 +9,7 @@ import TestimonialService from "../../service/TestimonialService";
 import AuthService from "../../service/AuthService";
 
 Modal.setAppElement('#root');
-const CustomerBooking = ({booking}) => {
+const CustomerBooking = ({booking, bookings, setBookings}) => {
     const history = useHistory();
 
     const [modalIsOpen, setIsOpen] = useState(false)
@@ -35,6 +35,7 @@ const CustomerBooking = ({booking}) => {
         BookingService.deleteBooking(booking.id);
         closeModal();
         history.push("/profile")
+        setBookings(bookings.filter(book => book.id !== booking.id));
     }
 
     const leaveQuestion = () => {
@@ -75,6 +76,11 @@ const CustomerBooking = ({booking}) => {
                             <div className="postcard__preview-txt">Accommodation type: {booking.accommodation.placeType}</div>
                             <br/>
                             <div className="postcard__preview-txt">Host: {booking.host.firstName} {booking.host.lastName}</div>
+                            {
+                                new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
+                                    <div className="postcard__preview-txt" style={{marginLeft: "auto"}}>Past booking</div>
+                                )
+                            }
                             <ul className="postcard__tagbox">
                                 <li className="tag__item play green" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
                                 <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>

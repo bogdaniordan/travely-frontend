@@ -5,13 +5,24 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import AccommodationService from "../../service/AccommodationService";
 import AuthService from "../../service/AuthService";
+import { RatingView } from 'react-simple-star-rating'
+import TestimonialService from "../../service/TestimonialService";
+
 
 const AccommodationCards = ({place}) => {
     const history = useHistory();
     const [jobIsSaved, setJobIsSaved] = useState(false)
+    const [rating, setRating] = useState(0);
 
     useEffect(() => {
         AccommodationService.accommodationIsSaved(place.id, AuthService.getCurrentUser().id).then(res => setJobIsSaved(res.data))
+        TestimonialService.getAllForAccommodation(place.id).then(
+            res => {
+                if (res.data.length > 0) {
+                    TestimonialService.getAverageRating(place.id).then(res => setRating(res.data))
+                }
+            }
+        )
     }, [])
 
     const saveOrUnsaveAccommodation = () => {
@@ -29,6 +40,14 @@ const AccommodationCards = ({place}) => {
                             <img alt="Responsive image" className="img-fluid" style={{height: "250px"}}  src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
                             <div className="card-body">
                                 <p className="card-text"><strong>{place.title}</strong></p>
+                                {
+                                    rating !== 0 && (
+                                        <div>
+                                            <small><RatingView ratingValue={Math.round(rating)}/></small>
+                                        </div>
+                                    )
+                                }
+
                                 <small>{place.location}</small>
                                 <br/>
                                 <small>Place type: {place.placeType}</small>

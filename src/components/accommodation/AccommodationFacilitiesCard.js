@@ -1,6 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import TestimonialService from "../../service/TestimonialService";
+import { RatingView } from 'react-simple-star-rating'
 
-const AccommodationFacilitiesCard = ({accommodation}) => {
+
+const AccommodationFacilitiesCard = ({accommodation, hostNumber}) => {
+    const [rating, setRating] = useState(0);
+    const [reviews, setReviews] = useState(0)
+
+    useEffect(() => {
+        TestimonialService.getAverageRating(accommodation.id).then(res => setRating(res.data))
+        TestimonialService.getAllForAccommodation(accommodation.id).then(r => setReviews(r.data))
+    }, [])
+
     return (
         <div className="container">
             <div className="row mb-2" >
@@ -22,7 +33,17 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                 <div className="col-md-6">
                     <div className="card flex-md-row mb-4 box-shadow h-md-250" >
                         <div className="card-body d-flex flex-column align-items-start">
-                            <strong className="d-inline-block mb-2 text-primary">This accommodation offers</strong>
+                            {/*<strong className="d-inline-block mb-2 text-primary">This accommodation offers</strong>*/}
+                            {
+                                reviews.length > 0 ? (
+                                    <div>
+                                        <p><RatingView ratingValue={Math.round(rating)}/> {rating.toFixed(1)} - {reviews.length} review(s)</p>
+                                        {/*<small>{reviews.length} review(s)</small>*/}
+                                    </div>
+                                ) : (
+                                    <p>There are no reviews yet.</p>
+                                )
+                            }
                             <h3 className="mb-0">
                                 <a className="text-dark" href="#">Facilities</a>
                             </h3>

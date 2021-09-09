@@ -21,6 +21,7 @@
     "react-responsive-carousel": "^3.2.21",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-simple-star-rating": "^3.0.0",
     "react-validation": "^3.0.7",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
@@ -54,6 +55,7 @@
   "devDependencies": {
     "@material-ui/icons": "^4.11.2",
     "dateformat": "^4.5.1",
+    "react-rating-stars-component": "^2.2.0",
     "sass": "^1.38.1"
   }
 }

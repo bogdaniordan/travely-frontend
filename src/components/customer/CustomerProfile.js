@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
-import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
-import Button from "@material-ui/core/Button";
 import ProfileCard from "./ProfileCard";
 import BookingService from "../../service/BookingService";
 import CustomerBooking from "./CustomerBooking";
@@ -23,14 +21,13 @@ const CustomerProfile = () => {
                     <div className="container mt-5">
                         {/*<h5>My bookings</h5>*/}
                         <hr className="mb-4"/>
-
                         <section>
                             <div className="container py-2">
                                 {/*<div className="h1 text-center text-dark" id="pageHeaderTitle">My bookings</div>*/}
                                 {
                                     bookings.length > 0 ? (
                                         bookings.map(
-                                            booking => <CustomerBooking key={booking.id} booking={booking} />
+                                            booking => <CustomerBooking key={booking.id} booking={booking} bookings={bookings} setBookings={setBookings}/>
                                         )
                                     ) : (
                                         <h4 style={{margin: "auto"}}>No bookings at the moment.</h4>

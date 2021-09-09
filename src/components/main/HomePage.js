@@ -4,6 +4,8 @@ import AccommodationService from "../../service/AccommodationService"
 import AccommodationCards from "../accommodation/AccommodationCards";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../navigation/Footer";
+import {Link, List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 
 
 const HomePage = () => {
@@ -11,6 +13,7 @@ const HomePage = () => {
     const [searchInput, setSearchInput] = useState();
     const [results, setResults] = useState();
     const [placeType, setPlaceType] = useState()
+    const exploreCities = [["Toronto", "https://image.flaticon.com/icons/png/512/185/185286.png"], ["Paris", "https://image.flaticon.com/icons/png/512/1969/1969369.png"], ["London", "https://image.flaticon.com/icons/png/512/555/555970.png"], ["Mumbai", "https://image.flaticon.com/icons/png/512/1533/1533062.png"]]
 
 
     const search = () => {
@@ -25,6 +28,10 @@ const HomePage = () => {
         } else if (!location && placeType) {
             AccommodationService.getByPlaceType(placeType).then(r => setResults(r.data));
         }
+    }
+
+    const searchByCity = (city) => {
+        AccommodationService.getByLocation(city).then(res => setResults(res.data))
     }
 
     return (
@@ -88,13 +95,39 @@ const HomePage = () => {
                                     results.map(
                                         place => <AccommodationCards place={place}/>
                                     )
-                                        // <AccommodationCards places={results}/>
                                     ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>There are no results for your search...</h3>)
                                 ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)
                             }
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="container">
+                <h4 style={{textAlign:'center', marginTop: "100px"}}>
+                    Explore famous cities
+                </h4>
+                <List style={{display: "flex"}}>
+                    {
+                        exploreCities.map(
+                            city => (
+                                <Paper elevation={2} style={{margin: "65px"}}>
+                                    <ListItem alignItems="center" style={{height: "100px"}}>
+                                        <Link onClick={() => searchByCity(city[0])}>
+
+                                            <ListItemAvatar>
+                                                    <Avatar alt="Remy Sharp" src={city[1]} style={{height: "70px", width: "70px"}} />
+                                            </ListItemAvatar>
+                                        </Link>
+
+                                        <ListItemText>
+                                            <h4 style={{margin: "10px"}}>{city[0]}</h4>
+                                        </ListItemText>
+                                    </ListItem>
+                                </Paper>
+                            )
+                        )
+                    }
+                </List>
             </div>
             <Footer />
         </div>
