@@ -40,7 +40,6 @@ const Login = () => {
         setIsOpen(false);
     }
 
-
     const onChangeUsername = event => {
         setUsername(event.target.value)
     }
@@ -73,11 +72,7 @@ const Login = () => {
             )
         }
     }
-
-    const sendResetPasswordEmail = () => {
-
-    }
-
+    
     return (
         <>
             <Navbar title={"Log in as customer"} subtitle={"Please fill in your user credentials."}/>

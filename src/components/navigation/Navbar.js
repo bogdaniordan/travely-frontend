@@ -1,23 +1,11 @@
 import React, {useState} from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
 import AuthService from "../../service/AuthService";
 import plane from "./plane.png"
 import Notifications from "./Notifications";
 import SavedAccommodations from "./SavedAccommodations";
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//         '& > *': {
-//             margin: theme.spacing(1),
-//         },
-//     },
-// }));
-
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
-    // const classes = useStyles();
     const isHomePage = title === "Welcome to Travely."
 
     const logout = () => {

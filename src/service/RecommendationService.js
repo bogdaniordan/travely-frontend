@@ -12,6 +12,10 @@ class RecommendationService {
     findAllForCustomer(id) {
         return axios.get(`${RECOMMENDATION_SERVICE_API_URL}/all-for/${id}`, {headers: AuthHeader()});
     }
+
+    getUsersWhoCanGetRecommendations(senderId, accommodationId) {
+        return axios.get(`${RECOMMENDATION_SERVICE_API_URL}/get-all-receivers/${senderId}/${accommodationId}`, {headers: AuthHeader()})
+    }
 }
 
 export default new RecommendationService;

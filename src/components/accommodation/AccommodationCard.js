@@ -97,6 +97,7 @@ const AccommodationCard = ({place}) => {
                     >
                         <RecommendationModal
                             closeModal={closeModal}
+                            accommodation={place}
                         />
                     </Modal>
         </>
