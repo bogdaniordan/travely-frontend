@@ -23,6 +23,11 @@ const Recommendations = () => {
                                 <Avatar src={`http://localhost:8080/customers/image/${recommendation.sender.id}/download` ? `http://localhost:8080/customers/image/${recommendation.sender.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} style={{margin: "auto"}}/>
                                 <br/>
                                 <h6 className="card-subtitle mb-2 text-muted">recommended you this</h6>
+                                {
+                                    recommendation.message && (
+                                        <p className="card-subtitle mb-2 text-muted">"{recommendation.message}"</p>
+                                    )
+                                }
                                 <AccommodationCard place={recommendation.accommodation}/>
                             </div>
                         </div>

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import RecommendationService from "../../service/RecommendationService";
 import AuthService from "../../service/AuthService";
 import {List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
+import AddRecommendationForm from "./AddRecommendationForm";
 
 const RecommendationModal = ({closeModal, accommodation}) => {
     const [users, setUsers] = useState([]);
@@ -15,8 +15,10 @@ const RecommendationModal = ({closeModal, accommodation}) => {
         })
     }, [])
 
-    const recommendAccommodation = () => {
-
+    const recommendAccommodation = (data, receiverId) => {
+        RecommendationService.saveRecommendation(data, AuthService.getCurrentUser().id, receiverId, accommodation.id).then(
+            res => setUsers(users.filter(u => u.id !== receiverId))
+        )
     }
 
     return (
@@ -31,30 +33,12 @@ const RecommendationModal = ({closeModal, accommodation}) => {
                                 users.length > 0 ? (
                                     users.map(
                                         user => (
-                                            <Paper elevation={2} style={{margin: "30px", width: "350px"}}>
-                                                <ListItem alignItems="center">
-                                                    <ListItemAvatar>
-                                                        <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${user.id}/download`} />
-                                                    </ListItemAvatar>
-                                                    <ListItemText
-                                                        key={user.id}
-                                                        primary={
-                                                            <>
-                                                                <h5>{user.firstName} {user.lastName}</h5>
-                                                                <input type="text" style={{marginBottom: "10px"}}/>
-                                                            </>
-                                                        }
-                                                        secondary={
-                                                            <>
-
-                                                                <small>
-                                                                    <Button  variant="contained" color="primary">Recommend</Button>
-                                                                </small>
-                                                            </>
-                                                        }
-                                                    />
-                                                </ListItem>
-                                            </Paper>
+                                            <AddRecommendationForm
+                                                users={users}
+                                                setUsers={setUsers}
+                                                accommodation={accommodation}
+                                                user={user}
+                                            />
                                         )
                                     )
                                 ) : (<h5>No other users to recommend to.</h5>)
