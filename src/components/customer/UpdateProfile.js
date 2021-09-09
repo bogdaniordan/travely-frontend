@@ -45,9 +45,12 @@ const UpdateProfile = () => {
             gender: data.get("gender"),
             age: data.get("age"),
         }
-        CustomerService.updateCustomer(newCustomer, customer.id);
-        uploadImage();
-        history.push(`/profile`);
+        CustomerService.updateCustomer(newCustomer, customer.id).then(
+            result => {
+                uploadImage();
+                history.push(`/profile`);
+            }
+        )
     }
 
     const uploadImage = () => {

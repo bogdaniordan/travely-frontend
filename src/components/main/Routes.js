@@ -13,6 +13,7 @@ import QuestionForm from "../questions/QuestionForm";
 import QuestionsPage from "../questions/QuestionsPage";
 import AddTestimonial from "../testimonial/AddTestimonial";
 import ResetPassword from "../auth/ResetPassword";
+import Community from "../community/Community";
 
 
 const Routes = () => {
@@ -31,6 +32,7 @@ const Routes = () => {
                     <Route path="/questions/:hostId" exact component={QuestionsPage} />
                     <Route path="/add-testimonial" exact component={AddTestimonial} />
                     <Route path="/reset-password/:token" component={ResetPassword}/>
+                    <Route path="/community" component={Community} />
                 </Switch>
             </Router>
         </div>

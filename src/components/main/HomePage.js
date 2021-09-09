@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService"
-import AccommodationCards from "../accommodation/AccommodationCards";
+import AccommodationCard from "../accommodation/AccommodationCard";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../navigation/Footer";
 import {Link, List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
@@ -93,7 +93,7 @@ const HomePage = () => {
                             {
                                 results ? ( results.length > 0 ? (
                                     results.map(
-                                        place => <AccommodationCards place={place}/>
+                                        place => <AccommodationCard place={place}/>
                                     )
                                     ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>There are no results for your search...</h3>)
                                 ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)

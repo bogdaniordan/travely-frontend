@@ -9,7 +9,7 @@ import { RatingView } from 'react-simple-star-rating'
 import TestimonialService from "../../service/TestimonialService";
 
 
-const AccommodationCards = ({place}) => {
+const AccommodationCard = ({place}) => {
     const history = useHistory();
     const [jobIsSaved, setJobIsSaved] = useState(false)
     const [rating, setRating] = useState(0);
@@ -41,9 +41,13 @@ const AccommodationCards = ({place}) => {
                             <div className="card-body">
                                 <p className="card-text"><strong>{place.title}</strong></p>
                                 {
-                                    rating !== 0 && (
+                                    rating !== 0 ? (
                                         <div>
                                             <small><RatingView ratingValue={Math.round(rating)}/></small>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <small><RatingView ratingValue={0} /></small>
                                         </div>
                                     )
                                 }
@@ -73,4 +77,4 @@ const AccommodationCards = ({place}) => {
     );
 };
 
-export default AccommodationCards;
+export default AccommodationCard;
