@@ -45,7 +45,7 @@ const Navbar = ({title, subtitle}) => {
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/community">Community</a>
                                 </li>
-                                <li className="nav-item" style={{marginLeft: "470px"}}>
+                                <li className="nav-item" style={{marginLeft: "370px"}}>
                                    <SavedAccommodations />
                                 </li>
                                 <li className="nav-item">
