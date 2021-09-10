@@ -34,6 +34,10 @@ class CustomerService {
     cardDetailsExist(id) {
         return axios.get(`${CUSTOMER_SERVICE_API_URL}/card-details-exist/${id}`, {headers: AuthHeader()});
     }
+
+    getAllCustomersExcept(id) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/all-customers-except/${id}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CustomerService;

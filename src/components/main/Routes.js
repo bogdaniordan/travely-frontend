@@ -14,6 +14,7 @@ import QuestionsPage from "../questions/QuestionsPage";
 import AddTestimonial from "../testimonial/AddTestimonial";
 import ResetPassword from "../auth/ResetPassword";
 import Community from "../community/Community";
+import Chat from "../chat/Chat";
 
 
 const Routes = () => {
@@ -33,6 +34,7 @@ const Routes = () => {
                     <Route path="/add-testimonial" exact component={AddTestimonial} />
                     <Route path="/reset-password/:token" component={ResetPassword}/>
                     <Route path="/community" component={Community} />
+                    <Route path="/chat/:userId" component={Chat}/>
                 </Switch>
             </Router>
         </div>

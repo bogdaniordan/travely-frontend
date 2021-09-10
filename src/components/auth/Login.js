@@ -14,10 +14,9 @@ import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "./AuthStyles";
 import Navbar from "../navigation/Navbar";
-import {Link} from "@material-ui/core";
+import {Link, Paper} from "@material-ui/core";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
-import ResetPassword from "./ResetPassword";
 import ResetPasswordModal from "./ResetPasswordModal";
 
 const Login = () => {
@@ -76,84 +75,86 @@ const Login = () => {
     return (
         <>
             <Navbar title={"Log in as customer"} subtitle={"Please fill in your user credentials."}/>
-            <Container maxWidth="xs" className="sign-up-container">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign up
-                    </Typography>
-                    {message && (
-                        <div className="form-group">
-                            <div
-                                className={
-                                    successful ? "alert alert-success" : "alert alert-danger"
-                                }
-                                role="alert"
-                            >
-                                {message}
+            <Paper style={{width: "600px", height: "500px", margin: "auto"}} elevation={3}>
+                <Container maxWidth="xs" className="sign-up-container">
+                    <CssBaseline />
+                    <div className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign up
+                        </Typography>
+                        {message && (
+                            <div className="form-group">
+                                <div
+                                    className={
+                                        successful ? "alert alert-success" : "alert alert-danger"
+                                    }
+                                    role="alert"
+                                >
+                                    {message}
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    <br/>
-                    <Form onSubmit={submitForm} ref={form}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <div className="form-group">
-                                    <label htmlFor="username">Username</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="username"
-                                        value={username}
-                                        onChange={onChangeUsername}
-                                        validations={[required, validUsername]}
-                                    />
-                                </div>
+                        )}
+                        <br/>
+                        <Form onSubmit={submitForm} ref={form}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <div className="form-group">
+                                        <label htmlFor="username">Username</label>
+                                        <Input
+                                            type="text"
+                                            className="form-control"
+                                            name="username"
+                                            value={username}
+                                            onChange={onChangeUsername}
+                                            validations={[required, validUsername]}
+                                        />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <div className="form-group">
+                                        <label htmlFor="password">Password</label>
+                                        <Input
+                                            type="password"
+                                            className="form-control"
+                                            name="password"
+                                            value={password}
+                                            onChange={onChangePassword}
+                                            validations={[required, validPassword]}
+                                        />
+                                    </div>
+                                </Grid>
+                                <br/>
+                                <br/>
+                                <Grid xs={12}>
+                                    <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
+                                        <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
+                                    </div>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12}>
-                                <div className="form-group">
-                                    <label htmlFor="password">Password</label>
-                                    <Input
-                                        type="password"
-                                        className="form-control"
-                                        name="password"
-                                        value={password}
-                                        onChange={onChangePassword}
-                                        validations={[required, validPassword]}
-                                    />
-                                </div>
+                            <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link variant="body2" onClick={openModal}>
+                                        Forgot password?
+                                    </Link>
+                                </Grid>
                             </Grid>
-                            <br/>
-                            <br/>
-                            <Grid xs={12}>
-                                <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                    <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
-                                </div>
-                            </Grid>
-                        </Grid>
-                        <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                        <Grid container>
-                            <Grid item xs>
-                                <Link variant="body2" onClick={openModal}>
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                        </Grid>
-                    </Form>
-                </div>
-                <Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                >
-                <ResetPasswordModal
-                    closeModal={closeModal}
-                />
-                </Modal>
-            </Container>
+                        </Form>
+                    </div>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                    >
+                    <ResetPasswordModal
+                        closeModal={closeModal}
+                    />
+                    </Modal>
+                </Container>
+            </Paper>
         </>
     );
 }
