@@ -20,7 +20,7 @@ const Customers = () => {
                     otherUsers.map(
                         user => (
                             <div className="h5">
-                                <Link to="/">
+                                <Link to={`/chat/${user.id}`}>
                                     <Avatar src={`http://localhost:8080/customers/image/${user.id}/download`} style={{margin: "auto"}}/>
                                 </Link>
                                 <small>{user.firstName} {user.lastName}</small>
