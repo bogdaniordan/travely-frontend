@@ -3,68 +3,79 @@ import Navbar from "../navigation/Navbar";
 import CustomerService from "../../service/CustomerService";
 import Footer from "../navigation/Footer";
 import Button from "@material-ui/core/Button";
-import SockJsClient from 'react-stomp';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
 const Chat = (props) => {
-    let connected = false;
     let socket = new SockJS("http://localhost:8080/ws");
     let stompClient = Stomp.over(socket);
 
-    const send = () => {
-        // // console.log(socket)
-        // console.log(stompClient)
-        // console.log(stompClient.connect)
-        // console.log(stompClient && stompClient.connected)
-        if (stompClient) {
-            const msg = { content: message, sender: "Me" };
-            stompClient.send("/app/chat/sendMessage", {}, JSON.stringify(msg));
-        }
-    }
-    const connect =()=> {
-        // socket = new SockJS("http://localhost:8080/ws");
-        // stompClient = Stomp.over(socket);
-        stompClient.connect(
-            {},
-            frame => {
-                connected = true;
-                stompClient.subscribe("/topic/public", tick => {
-                });
-            },
-            error => {
-                console.log(error);
-                connected = false;
-            }
-        );
-    }
-    // const disconnect =()=> {
-    //     if (stompClient) {
-    //         stompClient.disconnect();
-    //     }
-    //     connected = false;
-    // }
-    // const tickleConnection =()=> {
-    //     connected ? disconnect() : connect();
-    // }
-
+    const [connected, setConnected] = useState(false);
     const otherUserId = props.match.params.userId;
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [otherUser, setOtherUser] = useState({})
 
+
+    const send = () => {
+        if (connected) {
+            const msg = { content: message, sender: "Me" };
+            stompClient.send("/app/chat/sendMessage", {}, JSON.stringify(msg));
+            setMessages([...messages, message])
+        }
+    }
+
+    const connect =()=> {
+        socket = new SockJS("http://localhost:8080/ws");
+        stompClient = Stomp.over(socket);
+        stompClient.connect(
+            {},
+            frame => {
+                setConnected(true);
+                stompClient.subscribe("/topic/public", tick => {
+                });
+            },
+            error => {
+                console.log(error);
+                setConnected(false);
+            }
+        );
+    }
+    const disconnect =()=> {
+        if (stompClient) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+    }
+    //
+    // const tickleConnection =()=> {
+    //     connected ? disconnect() : connect();
+    // }
+
     useEffect(() => {
         CustomerService.getCustomerById(otherUserId).then(res => setOtherUser(res.data))
-        connect();
-        // console.log(socket)
-        // console.log(stompClient)
-        // console.log(stompClient.connect)
+        // connect();
     }, [])
 
     return (
         <div>
             <Navbar title={"Chat"} subtitle={`Conversation with ${otherUser.firstName} ${otherUser.lastName}`}/>
             <div className="container">
+                {
+                    connected ? (
+                        <div>
+                            <Button variant="contained" color="primary" disabled>Connect</Button>
+                            <Button variant="contained" color="secondary" onClick={disconnect}>Disconnect</Button>
+                        </div>
+                    ) : (
+                        <div>
+                            <Button variant="contained" color="primary" onClick={connect}>Connect</Button>
+                            <Button variant="contained" color="secondary" disabled>Disconnect</Button>
+                        </div>
+                    )
+                }
+                    {/*<Button variant="contained" color="primary">Connect</Button>*/}
+                    {/*<Button variant="contained" color="secondary">Disconnect</Button>*/}
                     <div className="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12" >
                         <div className="card">
                             <div className="card-header">Chat</div>
@@ -114,6 +125,23 @@ const Chat = (props) => {
                                             </div>
                                         </div>
                                     </li>
+                                    {
+                                        messages.map(
+                                            message => (
+                                                <li className="out">
+                                                    <div className="chat-img">
+                                                        <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png"/>
+                                                    </div>
+                                                    <div className="chat-body">
+                                                        <div className="chat-message">
+                                                            <h5>Serena</h5>
+                                                            <p>{message}</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            )
+                                        )
+                                    }
                                 </ul>
                             </div>
                             <input className="form-control" type="text" onChange={e => setMessage(e.target.value)}/>
