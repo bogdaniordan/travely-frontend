@@ -27,7 +27,7 @@ const QuestionsPage = (props) => {
         <div>
             <Navbar title={"My questions"}/>
             {/*<h4 style={{marginTop: "20px", marginBottom: "20px"}}>My questions</h4>*/}
-            <div className="container" style={{justifyContent: "center"}}>
+            <div className="container" style={{justifyContent: "center", height: "400px"}}>
             {
                 questions.length > 0 ? (
                     <TableContainer component={Paper}>

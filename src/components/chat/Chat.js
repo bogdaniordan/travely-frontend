@@ -1,15 +1,64 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import CustomerService from "../../service/CustomerService";
 import Footer from "../navigation/Footer";
 import Button from "@material-ui/core/Button";
+import SockJsClient from 'react-stomp';
+import SockJS from 'sockjs-client';
+import Stomp from 'stompjs';
 
 const Chat = (props) => {
+    let connected = false;
+    let socket = new SockJS("http://localhost:8080/ws");
+    let stompClient = Stomp.over(socket);
+
+    const send = () => {
+        // // console.log(socket)
+        // console.log(stompClient)
+        // console.log(stompClient.connect)
+        // console.log(stompClient && stompClient.connected)
+        if (stompClient) {
+            const msg = { content: message, sender: "Me" };
+            stompClient.send("/app/chat/sendMessage", {}, JSON.stringify(msg));
+        }
+    }
+    const connect =()=> {
+        // socket = new SockJS("http://localhost:8080/ws");
+        // stompClient = Stomp.over(socket);
+        stompClient.connect(
+            {},
+            frame => {
+                connected = true;
+                stompClient.subscribe("/topic/public", tick => {
+                });
+            },
+            error => {
+                console.log(error);
+                connected = false;
+            }
+        );
+    }
+    // const disconnect =()=> {
+    //     if (stompClient) {
+    //         stompClient.disconnect();
+    //     }
+    //     connected = false;
+    // }
+    // const tickleConnection =()=> {
+    //     connected ? disconnect() : connect();
+    // }
+
     const otherUserId = props.match.params.userId;
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
     const [otherUser, setOtherUser] = useState({})
 
     useEffect(() => {
-        CustomerService.getCustomerById(otherUserId).then(res => setOtherUser(res.data));
+        CustomerService.getCustomerById(otherUserId).then(res => setOtherUser(res.data))
+        connect();
+        // console.log(socket)
+        // console.log(stompClient)
+        // console.log(stompClient.connect)
     }, [])
 
     return (
@@ -67,8 +116,8 @@ const Chat = (props) => {
                                     </li>
                                 </ul>
                             </div>
-                            <input className="form-control" type="text"/>
-                            <Button variant="contained" color="primary">Send</Button>
+                            <input className="form-control" type="text" onChange={e => setMessage(e.target.value)}/>
+                            <Button variant="contained" color="primary" onClick={send}>Send</Button>
                         </div>
                     </div>
             </div>
