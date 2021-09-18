@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import AccommodationService from "../../service/AccommodationService"
 import AccommodationCard from "../accommodation/AccommodationCard";
@@ -6,15 +6,23 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../navigation/Footer";
 import {Link, List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
+import AuthService from "../../service/AuthService";
+import {useHistory} from "react-router-dom";
 
 
 const HomePage = () => {
+    const history = useHistory();
     const [location, setLocation] = useState();
     const [searchInput, setSearchInput] = useState();
     const [results, setResults] = useState();
     const [placeType, setPlaceType] = useState()
     const exploreCities = [["Toronto", "https://image.flaticon.com/icons/png/512/185/185286.png"], ["Paris", "https://image.flaticon.com/icons/png/512/1969/1969369.png"], ["London", "https://image.flaticon.com/icons/png/512/555/555970.png"], ["Mumbai", "https://image.flaticon.com/icons/png/512/1533/1533062.png"]]
 
+    useEffect(() => {
+        if (!AuthService.getCurrentUser()) {
+            history.push("/login")
+        }
+    }, [])
 
     const search = () => {
         if (!location && !placeType && searchInput) {
@@ -37,7 +45,6 @@ const HomePage = () => {
     return (
         <div>
             <Navbar title={"Welcome to Travely."} subtitle={"Travel anywhere around the globe with just one click!"}/>
-            {/*<ImageCarousel />*/}
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 card-margin">

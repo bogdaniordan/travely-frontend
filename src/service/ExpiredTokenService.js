@@ -1,5 +1,6 @@
 import jwtDecode from "jwt-decode";
 import AuthService from "./AuthService";
+import {useHistory} from "react-router-dom";
 
 export default function ExpiredTokenService() {
     let token = localStorage.getItem("user");

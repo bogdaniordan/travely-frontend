@@ -8,7 +8,6 @@ import {required, validPassword} from "../../utils/Validations"
 import CheckButton from "react-validation/build/button";
 import Button from "@material-ui/core/Button";
 
-
 const ResetPassword = (props) => {
     const history = useHistory();
     const token = props.match.params.token;

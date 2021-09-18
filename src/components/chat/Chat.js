@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import CustomerService from "../../service/CustomerService";
 import Footer from "../navigation/Footer";
@@ -19,28 +19,30 @@ const Chat = (props) => {
     const [otherUser, setOtherUser] = useState({})
 
     const send = () => {
-        if (connected) {
+        if (connected && message.length > 0) {
             const msg = {
                 content: message,
                 messageSenderId: AuthService.getCurrentUser().id,
                 messageReceiverId: otherUserId,
-                // sender: { #Todo vezi cu id acolo jos ca nu vede idul cand creezi obiectu
-                //     id: AuthService.getCurrentUser().id
-                // }
+                // sender: {},
+                // receiver: {},
+                time: new Date(),
+                type: "SENT"
             };
             stompClient.send(`/app/chat/send-message`, {}, JSON.stringify(msg));
-            setMessages([...messages, message])
         }
     }
 
-    const connect =()=> {
+    const connect = () => {
         socket = new SockJS("http://localhost:8080/ws");
         stompClient = Stomp.over(socket);
         stompClient.connect(
             {},
             frame => {
                 setConnected(true);
-                stompClient.subscribe("/topic/public", tick => {
+                stompClient.subscribe("/topic/public", function(chatMessage) {
+                    console.log(JSON.parse(chatMessage.body))
+                    setMessages(messages => [...messages, JSON.parse(chatMessage.body)])
                 });
             },
             error => {
@@ -56,11 +58,17 @@ const Chat = (props) => {
         setConnected(false);
     }
 
-
     useEffect(() => {
         CustomerService.getCustomerById(otherUserId).then(res => setOtherUser(res.data))
         ChatService.getMessagesForConversation(AuthService.getCurrentUser().id, otherUserId).then(res => setMessages(res.data));
     }, [])
+
+    const getFormattedDateAndTime = (time) => {
+        if (time instanceof Date) {
+            return time.toString();
+        }
+        return time[0] + "-" + time[1] + "-" + time[2] + " " + time[3] + ":" + time[4] + ":" + time[5];
+    }
 
     return (
         <div>
@@ -108,32 +116,28 @@ const Chat = (props) => {
                                         {/*        </div>*/}
                                         {/*    </div>*/}
                                         {/*</li>*/}
-                                        {/*<li className="in">*/}
-                                        {/*    <div className="chat-img">*/}
-                                        {/*        <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar1.png"/>*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="chat-body">*/}
-                                        {/*        <div className="chat-message">*/}
-                                        {/*            <h5 className="name">Jimmy Willams</h5>*/}
-                                        {/*            <p>Will stumptown scenes coffee viral.</p>*/}
-                                        {/*        </div>*/}
-                                        {/*    </div>*/}
-                                        {/*</li>*/}
-                                        {/*<li className="out">*/}
-                                        {/*    <div className="chat-img">*/}
-                                        {/*        <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png"/>*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className="chat-body">*/}
-                                        {/*        <div className="chat-message">*/}
-                                        {/*            <h5>Serena</h5>*/}
-                                        {/*            <p>Tofu master best deal</p>*/}
-                                        {/*        </div>*/}
-                                        {/*    </div>*/}
-                                        {/*</li>*/}
+                                        {/*{*/}
+                                        {/*    messages.map(*/}
+                                        {/*        message => (*/}
+                                        {/*            <li className="out">*/}
+                                        {/*                <div className="chat-img">*/}
+                                        {/*                    <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png"/>*/}
+                                        {/*                </div>*/}
+                                        {/*                <div className="chat-body">*/}
+                                        {/*                    <div className="chat-message">*/}
+                                        {/*                        <h5>Serena</h5>*/}
+                                        {/*                        <p>{message.content}</p>*/}
+                                        {/*                        /!*<small>{getFormattedDateAndTime(message.time)}</small>*!/*/}
+                                        {/*                    </div>*/}
+                                        {/*                </div>*/}
+                                        {/*            </li>*/}
+                                        {/*        )*/}
+                                        {/*    )*/}
+                                        {/*}*/}
                                         {
                                             messages.map(
                                                 message => (
-                                                    <li className={message.sender.id === AuthService.getCurrentUser().id ? "out" : "in"}>
+                                                    <li className={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? "out" : "in"}>
                                                         <div className="chat-img">
                                                             <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png"/>
                                                         </div>
@@ -141,6 +145,7 @@ const Chat = (props) => {
                                                             <div className="chat-message">
                                                                 <h5>Serena</h5>
                                                                 <p>{message.content}</p>
+                                                                {/*<small>{getFormattedDateAndTime(message.time)}</small>*/}
                                                             </div>
                                                         </div>
                                                     </li>
