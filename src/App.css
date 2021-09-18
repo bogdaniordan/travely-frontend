@@ -808,6 +808,8 @@ h3 {
 .chat-list {
   padding: 0;
   font-size: .8rem;
+  /*overflow: auto;*/
+  /*height: 600px;*/
 }
 
 .chat-list li {
@@ -881,6 +883,12 @@ h3 {
   text-align: right;
 }
 
+.chat-list .in .chat-body {
+  float: left;
+  margin-right: 50px;
+  text-align: left;
+}
+
 .chat-list .out .chat-message {
   background: #fc6d4c;
 }
@@ -910,4 +918,3 @@ h3 {
   margin-top:40px;
 }
 
-/*height*/
