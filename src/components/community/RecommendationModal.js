@@ -2,24 +2,15 @@ import React, {useEffect, useState} from 'react';
 import Button from "@material-ui/core/Button";
 import RecommendationService from "../../service/RecommendationService";
 import AuthService from "../../service/AuthService";
-import {List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
+import {List} from "@material-ui/core";
 import AddRecommendationForm from "./AddRecommendationForm";
 
 const RecommendationModal = ({closeModal, accommodation}) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        RecommendationService.getUsersWhoCanGetRecommendations(AuthService.getCurrentUser().id, accommodation.id).then(res => {
-            setUsers(res.data)
-            console.log(res.data)
-        })
+        RecommendationService.getUsersWhoCanGetRecommendations(AuthService.getCurrentUser().id, accommodation.id).then(res => setUsers(res.data))
     }, [])
-
-    const recommendAccommodation = (data, receiverId) => {
-        RecommendationService.saveRecommendation(data, AuthService.getCurrentUser().id, receiverId, accommodation.id).then(
-            res => setUsers(users.filter(u => u.id !== receiverId))
-        )
-    }
 
     return (
         <div>

@@ -36,7 +36,6 @@ const AccommodationDetails = (props) => {
             <div>
                 <Navbar title={accommodation.title} subtitle={accommodation.location}/>
                 <div className="container">
-                    {/*<h1 className="my-4">{accommodation.title}</h1>*/}
                     <div className="row">
                         <div className="col-md-8">
                             <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt=""/>
@@ -48,7 +47,6 @@ const AccommodationDetails = (props) => {
                             </div>
                         </div>
                     </div>
-                    {/*<h6 className="my-4">Other pictures</h6>*/}
                     <div className="row" style={{marginTop: "20px"}}>
                         <div className="col-md-3 col-sm-6 mb-4">
                             <a href="#">

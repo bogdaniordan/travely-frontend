@@ -16,6 +16,14 @@ class BookingService {
         return axios.delete(`${BOOKING_SERVICE_API_URL}/${id}`, { headers: AuthHeader() });
     }
 
+    accommodationCanBeBooked(checkInDate, checkOutDate, accommodationId) {
+        const bookingsDatesDto = {
+            checkIn: checkInDate,
+            checkOut: checkOutDate
+        }
+        return axios.post(`${BOOKING_SERVICE_API_URL}/accommodation-can-be-booked/${accommodationId}`, bookingsDatesDto, {headers: AuthHeader()})
+    }
+
 }
 
 export default new BookingService;

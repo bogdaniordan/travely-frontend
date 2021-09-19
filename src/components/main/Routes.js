@@ -29,7 +29,7 @@ const Routes = () => {
                     <Route path="/payment" exact component={Payment} />
                     <Route path="/profile" exact component={CustomerProfile} />
                     <Route path="/update-profile" exact component={UpdateProfile} />
-                    <Route path="/ask-question/:bookingId" exact component={QuestionForm} />
+                    <Route path="/ask-question" exact component={QuestionForm} />
                     <Route path="/questions/:hostId" exact component={QuestionsPage} />
                     <Route path="/add-testimonial" exact component={AddTestimonial} />
                     <Route path="/reset-password/:token" component={ResetPassword}/>

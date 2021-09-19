@@ -48,56 +48,56 @@ const AccommodationCard = ({place}) => {
 
     return (
         <>
-                    <div className="col">
-                        <div className="card shadow-sm">
-                            <img alt="Responsive image" className="img-fluid" style={{height: "250px"}}  src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
-                            <div className="card-body">
-                                <p className="card-text"><strong>{place.title}</strong></p>
-                                {
-                                    rating !== 0 ? (
-                                        <div>
-                                            <small><RatingView ratingValue={Math.round(rating)}/></small>
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            <small><RatingView ratingValue={0} /></small>
-                                        </div>
-                                    )
-                                }
-
-                                <small>{place.location}</small>
-                                <br/>
-                                <small>Place type: {place.placeType}</small>
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="btn-group">
-                                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>
-                                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={saveOrUnsaveAccommodation}>
-                                            {
-                                                !jobIsSaved ? (
-                                                    <BookmarkBorderIcon />
-                                                ) : (
-                                                    <BookmarkIcon />
-                                                )
-                                            }
-                                        </button>
-                                        <button type="button" className="btn btn-sm  btn-outline-secondary" onClick={openModal}><SupervisedUserCircleIcon /></button>
-                                    </div>
-                                    <small className="text-muted">${place.pricePerNight}/night</small>
+            <div className="col">
+                <div className="card shadow-sm">
+                    <img alt="Responsive image" className="img-fluid" style={{height: "250px"}}  src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
+                    <div className="card-body">
+                        <p className="card-text"><strong>{place.title}</strong></p>
+                        {
+                            rating !== 0 ? (
+                                <div>
+                                    <small><RatingView ratingValue={Math.round(rating)}/></small>
                                 </div>
+                            ) : (
+                                <div>
+                                    <small><RatingView ratingValue={0} /></small>
+                                </div>
+                            )
+                        }
+
+                        <small>{place.location}</small>
+                        <br/>
+                        <small>Place type: {place.placeType}</small>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="btn-group">
+                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>
+                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={saveOrUnsaveAccommodation}>
+                                    {
+                                        !jobIsSaved ? (
+                                            <BookmarkBorderIcon />
+                                        ) : (
+                                            <BookmarkIcon />
+                                        )
+                                    }
+                                </button>
+                                <button type="button" className="btn btn-sm  btn-outline-secondary" onClick={openModal}><SupervisedUserCircleIcon /></button>
                             </div>
+                            <small className="text-muted">${place.pricePerNight}/night</small>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                    >
-                        <RecommendationModal
-                            closeModal={closeModal}
-                            accommodation={place}
-                        />
-                    </Modal>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+            >
+                <RecommendationModal
+                    closeModal={closeModal}
+                    accommodation={place}
+                />
+            </Modal>
         </>
     );
 };

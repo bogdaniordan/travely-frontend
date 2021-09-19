@@ -18,7 +18,6 @@ const ChatNotifications = () => {
 
     useEffect(() => {
         ChatService.getAsUnseenMessages(AuthService.getCurrentUser().id).then(res => {
-            console.log(res.data)
             setChatMessagesPerUser(res.data);
             setNotificationsNumber(res.data.filter(conversation => conversation.length > 0).length)
         })
