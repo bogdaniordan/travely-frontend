@@ -10,9 +10,7 @@ import { RatingView } from 'react-simple-star-rating'
 import TestimonialService from "../../service/TestimonialService";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
-import ResetPasswordModal from "../auth/ResetPasswordModal";
 import RecommendationModal from "../community/RecommendationModal";
-
 
 
 const AccommodationCard = ({place}) => {

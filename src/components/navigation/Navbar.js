@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import AuthService from "../../service/AuthService";
-import plane from "./plane.png"
-import Notifications from "./Notifications";
+import plane from "../../images/plane.png"
+import QuestionsNotifications from "./QuestionsNotifications";
 import SavedAccommodations from "./SavedAccommodations";
+import ChatNotifications from "./ChatNotifications";
 
 const Navbar = ({title, subtitle}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
@@ -13,7 +14,6 @@ const Navbar = ({title, subtitle}) => {
     }
 
     return (
-
         <div style={{border: "1px solid white"}}>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
@@ -36,8 +36,11 @@ const Navbar = ({title, subtitle}) => {
                                 <li className="nav-item" style={{marginLeft: "370px"}}>
                                    <SavedAccommodations />
                                 </li>
+                                <li>
+                                    <ChatNotifications />
+                                </li>
                                 <li className="nav-item">
-                                    <Notifications />
+                                    <QuestionsNotifications />
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/login" onClick={logout}>Logout</a>

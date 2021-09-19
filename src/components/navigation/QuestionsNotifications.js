@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Badge, Popover} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import Typography from "@material-ui/core/Typography";
 import Link from "react-router-dom/Link";
 import QuestionService from "../../service/QuestionService";
 import {useStyles} from "../../styling/NavbarBadgeStyling";
 
-const Notifications = () => {
+const QuestionsNotifications = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const [questions, setQuestions] = useState([]);
@@ -71,4 +70,4 @@ const Notifications = () => {
     );
 };
 
-export default Notifications;
+export default QuestionsNotifications;

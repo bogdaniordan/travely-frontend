@@ -739,7 +739,7 @@ h3 {
 #masthead {
   min-height:270px;
   background-color:#212529;
-  color:#aaaacc;
+  color:#fff;
   margin-bottom: 80px;
 }
 
@@ -808,8 +808,6 @@ h3 {
 .chat-list {
   padding: 0;
   font-size: .8rem;
-  /*overflow: auto;*/
-  /*height: 600px;*/
 }
 
 .chat-list li {
@@ -918,3 +916,10 @@ h3 {
   margin-top:40px;
 }
 
+.chat-input-container {
+  display: flex;
+}
+
+.chat-send-button {
+  width: 10%;
+}

@@ -15,15 +15,15 @@ const ChatPage = (props) => {
     let stompClient = Stomp.over(socket);
     const messagesEndRef = useRef(null)
 
-    const scrollToBottom = () => {
-        messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end"})
-    }
-
     const [connected, setConnected] = useState(false);
     const otherUserId = props.match.params.userId;
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [otherUser, setOtherUser] = useState({})
+
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end"})
+    }
 
     const send = () => {
         if (connected && message.length > 0) {
@@ -35,6 +35,7 @@ const ChatPage = (props) => {
                 type: "SENT"
             };
             stompClient.send(`/app/chat/send-message`, {}, JSON.stringify(msg));
+            setMessage("")
         }
     }
 
@@ -46,7 +47,6 @@ const ChatPage = (props) => {
             frame => {
                 setConnected(true);
                 stompClient.subscribe("/topic/public", function(chatMessage) {
-                    // console.log(JSON.parse(chatMessage.body))
                     setMessages(messages => [...messages, JSON.parse(chatMessage.body)])
                     scrollToBottom();
                 });
@@ -94,7 +94,7 @@ const ChatPage = (props) => {
                     <br/>
                         <div className="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12" >
                             <div className="card">
-                                <div className="card-header">Chat</div>
+                                <div className="card-header">{otherUser.firstName} {otherUser.lastName}</div>
                                 <div className="card-body height3" style={{overflow: "auto", height: "600px"}} >
                                     <ul className="chat-list">
                                         {
@@ -110,13 +110,12 @@ const ChatPage = (props) => {
                                                                 <h5>{message.content}</h5>
                                                                 {
                                                                     Array.isArray(message.time) ? (
-                                                                        <small>{moment(message.time.slice(0, 5)).format("Do-MM-YYYY, h:mm:ss a")}</small>
+                                                                        <small>{moment(message.time.slice(0, 5)).format("DD-MM-YYYY, h:mm:ss a")}</small>
                                                                     ) : (
-                                                                        <small>{moment(message.time).format("Do-MM-YYYY, h:mm:ss a")}</small>
+                                                                        <small>{moment(message.time).format("DD-MM-YYYY, h:mm:ss a")}</small>
                                                                     )
                                                                 }
                                                                 <br/>
-                                                                {/*<small>{message.type.toLowerCase()}</small>*/}
                                                             </div>
                                                         </div>
                                                     </li>
@@ -127,8 +126,11 @@ const ChatPage = (props) => {
                                         <div ref={messagesEndRef}></div>
                                     </ul>
                                 </div>
-                                <input className="form-control" type="text" onChange={e => setMessage(e.target.value)}/>
-                                <Button variant="contained" color="primary" onClick={send}>Send</Button>
+                                <div className="chat-input-container">
+                                    <input className="form-control" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
+                                    <Button className="chat-send-button" variant="contained" color="primary" onClick={send}>Send</Button>
+                                </div>
+
                             </div>
                         </div>
                 </div>
