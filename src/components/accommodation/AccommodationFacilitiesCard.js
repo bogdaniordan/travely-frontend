@@ -47,6 +47,7 @@ const AccommodationFacilitiesCard = ({accommodation, hostNumber}) => {
                             <h3 className="mb-0">
                                 <a className="text-dark" href="#">Facilities</a>
                             </h3>
+                            <p>Cleanliness: {accommodation.cleaningStatus.toLowerCase().replace("_", " ")}</p>
                             {/*<div className="mb-1 text-muted">This {accommodation.placeType} offers</div>*/}
                             <br/>
                             {accommodation.facilities.map(facility => <p className="card-text mb-auto">{facility.replace("_", " ")}</p>)}

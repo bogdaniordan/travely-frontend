@@ -6,7 +6,7 @@ import Login from "../auth/Login";
 import AuthService from "../../service/AuthService";
 import HomePage from "./HomePage";
 import AccommodationDetails from "../accommodation/AccommodationDetails";
-import Payment from "../customer/Payment";
+import Payment from "../payment/Payment";
 import CustomerProfile from "../customer/CustomerProfile";
 import UpdateProfile from "../customer/UpdateProfile"
 import QuestionForm from "../questions/QuestionForm";
@@ -15,6 +15,7 @@ import AddTestimonial from "../testimonial/AddTestimonial";
 import ResetPassword from "../auth/ResetPassword";
 import Community from "../community/Community";
 import ChatPage from "../chat/ChatPage";
+import EditPaymentDetails from "../payment/EditPaymentDetails";
 
 
 const Routes = () => {
@@ -29,12 +30,12 @@ const Routes = () => {
                     <Route path="/payment" exact component={Payment} />
                     <Route path="/profile" exact component={CustomerProfile} />
                     <Route path="/update-profile" exact component={UpdateProfile} />
-                    <Route path="/ask-question" exact component={QuestionForm} />
+                    <Route path="/ask-question/:bookingId" exact component={QuestionForm} />
                     <Route path="/questions/:hostId" exact component={QuestionsPage} />
                     <Route path="/add-testimonial" exact component={AddTestimonial} />
-                    <Route path="/reset-password/:token" component={ResetPassword}/>
-                    <Route path="/community" component={Community} />
-                    <Route path="/chat/:userId" component={ChatPage}/>
+                    <Route path="/reset-password/:token" exact component={ResetPassword}/>
+                    <Route path="/community" exact component={Community} />
+                    <Route path="/chat/:userId" exact component={ChatPage}/>
                 </Switch>
             </Router>
         </div>

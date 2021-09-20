@@ -642,10 +642,10 @@ h3 {
 
 /*testimonials*/
 
-.testimonials-clean {
-  color:#313437;
-  background-color:#eef4f7;
-}
+/*.testimonials-clean {*/
+/*  color:#313437;*/
+/*  background-color:#eef4f7;*/
+/*}*/
 
 .testimonials-clean p {
   color:#7d8285;
@@ -692,8 +692,9 @@ h3 {
 
 .testimonials-clean .item .box {
   padding:30px;
-  background-color:#fff;
+  /*background-color:#fff;*/
   position:relative;
+  background-color: #eef4f7;
 }
 
 .testimonials-clean .item .box:after {
@@ -739,7 +740,7 @@ h3 {
 #masthead {
   min-height:270px;
   background-color:#212529;
-  color:#fff;
+  color:#aaaccc;
   margin-bottom: 80px;
 }
 
@@ -922,4 +923,9 @@ h3 {
 
 .chat-send-button {
   width: 10%;
+}
+
+
+.modal-button-container {
+  text-align: right;
 }

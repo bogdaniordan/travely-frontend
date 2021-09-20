@@ -16,7 +16,6 @@ const CustomerProfile = () => {
         return (
             <div>
                 <Navbar title={"User profile"} subtitle={"View profile information or view bookings"}/>
-                {/*<div className="page-content page-container" id="page-content">*/}
                     <ProfileCard/>
                     <div className="container mt-5">
                         {/*<h5>My bookings</h5>*/}
@@ -24,6 +23,8 @@ const CustomerProfile = () => {
                         <section>
                             <div className="container py-2">
                                 {/*<div className="h1 text-center text-dark" id="pageHeaderTitle">My bookings</div>*/}
+                                <h4>My bookings</h4>
+                                <br/>
                                 {
                                     bookings.length > 0 ? (
                                         bookings.map(
@@ -37,7 +38,6 @@ const CustomerProfile = () => {
                         </section>
                         <hr className="mb-4"/>
                     </div>
-                {/*</div>*/}
                 <Footer />
             </div>
         );
