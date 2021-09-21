@@ -10,7 +10,7 @@ import CustomerService from "../../service/CustomerService";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 
-const EditPaymentDetails = ({closeModal}) => {
+const SavePaymentDetails = ({closeModal}) => {
     const classes = useStyles();
     const history = useHistory();
 
@@ -34,7 +34,7 @@ const EditPaymentDetails = ({closeModal}) => {
                             })
                         }>
                             <Typography component="h1" variant="h4" align="center">
-                                Save card details
+                                Save new card details
                             </Typography>
                             <br/>
                             <Grid container spacing={3}>
@@ -97,4 +97,4 @@ const EditPaymentDetails = ({closeModal}) => {
     );
 }
 
-export default EditPaymentDetails;
+export default SavePaymentDetails;

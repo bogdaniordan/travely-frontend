@@ -5,7 +5,7 @@ import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
 import {customStyles} from "../../styling/ModalStyling";
 import Modal from "react-modal";
-import EditPaymentDetails from "../payment/EditPaymentDetails";
+import SavePaymentDetails from "../payment/SavePaymentDetails";
 
 const ProfileCard = () => {
     const history = useHistory();
@@ -86,9 +86,8 @@ const ProfileCard = () => {
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
                     style={customStyles}
-
                 >
-                    <EditPaymentDetails
+                    <SavePaymentDetails
                         closeModal={closeModal}
                     />
                 </Modal>

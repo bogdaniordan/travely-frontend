@@ -98,7 +98,6 @@ const Payment = () => {
         }, 2000)
     }
 
-
     const submitForm = e => {
         e.preventDefault();
         setMessage("");
@@ -120,52 +119,52 @@ const Payment = () => {
         }
     }
 
-        return (
-            <>
-                <Navbar title={"Payment"} subtitle={"Please fill in your billing address along with your payment info."}/>
-                <br/>
-                {message && (
-                    <div className="form-group">
-                        <div
-                            className={
-                                successful ? "alert alert-success" : "alert alert-danger"
-                            }
-                            role="alert"
-                        >
-                            {message}
-                        </div>
+    return (
+        <>
+            <Navbar title={"Payment"} subtitle={"Please fill in your billing address along with your payment info."}/>
+            <br/>
+            {message && (
+                <div className="form-group">
+                    <div
+                        className={
+                            successful ? "alert alert-success" : "alert alert-danger"
+                        }
+                        role="alert"
+                    >
+                        {message}
                     </div>
-                )}
-                <PaymentForm
-                    accommodation={accommodation}
-                    booking={booking}
-                    bookingDurationInDays={bookingDurationInDays}
-                    submitForm={submitForm}
-                    form={form}
-                    firstName={firstName}
-                    onChangeFirstName={onChangeFirstName}
-                    lastName={lastName}
-                    onChangeLastName={onChangeLastName}
-                    email={email}
-                    onChangeEmail={onChangeEmail}
-                    address={address}
-                    onChangeAddress={onChangeAddress}
-                    cardNumber={cardNumber}
-                    onChangeCardNumber={onChangeCardNumber}
-                    nameOnCard={nameOnCard}
-                    onChangeNameOnCard={onChangeNameOnCard}
-                    expirationDate={expirationDate}
-                    onChangeExpirationDate={onChangeExpirationDate}
-                    cvv={cvv}
-                    onChangeCvv={onChangeCvv}
-                    setSaveCardDetails={setSaveCardDetails}
-                    saveCardDetails={saveCardDetails}
-                    checkBtn={checkBtn}
-                    cardDetailsExist={cardDetailsExist}
-                />
-                <Footer />
-            </>
-        );
+                </div>
+            )}
+            <PaymentForm
+                accommodation={accommodation}
+                booking={booking}
+                bookingDurationInDays={bookingDurationInDays}
+                submitForm={submitForm}
+                form={form}
+                firstName={firstName}
+                onChangeFirstName={onChangeFirstName}
+                lastName={lastName}
+                onChangeLastName={onChangeLastName}
+                email={email}
+                onChangeEmail={onChangeEmail}
+                address={address}
+                onChangeAddress={onChangeAddress}
+                cardNumber={cardNumber}
+                onChangeCardNumber={onChangeCardNumber}
+                nameOnCard={nameOnCard}
+                onChangeNameOnCard={onChangeNameOnCard}
+                expirationDate={expirationDate}
+                onChangeExpirationDate={onChangeExpirationDate}
+                cvv={cvv}
+                onChangeCvv={onChangeCvv}
+                setSaveCardDetails={setSaveCardDetails}
+                saveCardDetails={saveCardDetails}
+                checkBtn={checkBtn}
+                cardDetailsExist={cardDetailsExist}
+            />
+            <Footer />
+        </>
+    );
 };
 
 export default Payment;

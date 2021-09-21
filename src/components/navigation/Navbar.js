@@ -33,7 +33,7 @@ const Navbar = ({title, subtitle}) => {
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/community">Community</a>
                                 </li>
-                                <li className="nav-item" style={{marginLeft: "370px"}}>
+                                <li className="nav-item">
                                    <SavedAccommodations />
                                 </li>
                                 <li>

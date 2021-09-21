@@ -26,7 +26,7 @@ const AccommodationFacilitiesCard = ({accommodation, hostNumber}) => {
                             <br/>
                             <p className="card-text mb-auto">The price for this accommodation is ${accommodation.pricePerNight} per night.</p>
                         </div>
-                        <img height="250px" width="200px" src="https://cdn3.iconfinder.com/data/icons/business-outline-29/32/business-03-512.png" className="card-img-right flex-auto d-none d-md-block"
+                        <img height="250px" width="200px" src="https://www.mcicon.com/wp-content/uploads/2020/12/Architecture_Hotel_1-copy.jpg" className="card-img-right flex-auto d-none d-md-block"
                              data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ const AccommodationFacilitiesCard = ({accommodation, hostNumber}) => {
                             <br/>
                             {accommodation.facilities.map(facility => <p className="card-text mb-auto">{facility.replace("_", " ")}</p>)}
                         </div>
-                        <img  height="250px" width="200px" src="https://www.kindpng.com/picc/m/584-5847848_hotel-facilities-icon-png-transparent-png.png" className="card-img-right flex-auto d-none d-md-block"
+                        <img  height="250px" width="200px" src="https://media.istockphoto.com/vectors/hotel-icons-vector-id693744314?b=1&k=20&m=693744314&s=612x612&w=0&h=EgQTJwQK-F_fVviWu48LCN2oIHD1ntsFJATLE9aPB9I=" className="card-img-right flex-auto d-none d-md-block"
                               data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>
                     </div>
                 </div>

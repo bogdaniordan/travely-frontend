@@ -77,13 +77,8 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     <div className="postcard__preview-txt">Accommodation type: {booking.accommodation.placeType}</div>
                     <br/>
                     <div className="postcard__preview-txt">Host: {booking.host.firstName} {booking.host.lastName}</div>
-                    {
-                        new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
-                            <div className="postcard__preview-txt" style={{marginLeft: "auto"}}>Past booking</div>
-                        )
-                    }
                     <ul className="postcard__tagbox">
-                        <li className="tag__item play green" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
+                        <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
                         <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>
                         {
                             new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (

@@ -75,7 +75,7 @@ const ChatPage = (props) => {
 
     return (
         <div>
-            <Navbar title={"ChatPage"} subtitle={`Conversation with ${otherUser.firstName} ${otherUser.lastName}`}/>
+            <Navbar title={"Chat page"} subtitle={`Conversation with ${otherUser.firstName} ${otherUser.lastName}`}/>
                 <div className="container">
                     <h5>You have to connect to be able to send or receive messages.</h5>
                     {
