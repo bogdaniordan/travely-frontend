@@ -1,33 +1,38 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Footer from "../navigation/Footer";
 import Navbar from "../navigation/Navbar";
 import Recommendations from "./Recommendations";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
 import Customers from "./Customers";
-import Avatar from "@material-ui/core/Avatar";
 import BookingService from "../../service/BookingService";
-import {Divider} from "@material-ui/core";
 import UserPost from "./UserPost";
 import PostService from "../../service/PostService";
+import {useForm} from "react-hook-form";
 
 const Community = () => {
     const [user, setUser] = useState({})
     const [bookings, setBookings] = useState([])
     const [posts, setPosts] = useState([])
 
+    const { register, handleSubmit, formState: {errors} } = useForm();
+
     useEffect(() => {
         CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(
             res => setUser(res.data)
         )
-        BookingService.getAllByCustomerId().then(res => setBookings(res.data))
-        PostService.findAll().then(res => setPosts(res.data))
+        BookingService.getAllByCustomerId().then(res => setBookings(res.data));
+        getAllPosts();
+
     }, [])
+
+    const getAllPosts = () => {
+        PostService.findAll().then(res => setPosts(res.data))
+    }
 
     return (
         <div>
-            <Navbar title={"Community"} subtitle={"Browse different communities."}/>
-
+            <Navbar title={"Community"} subtitle={"Interact with other users of Travely."}/>
             <div className="container">
                 <div className="container-fluid gedf-wrapper" style={{backgroundColor: "white"}}>
                     <div className="row">
@@ -57,32 +62,33 @@ const Community = () => {
                                         <div className="tab-pane fade show active" id="posts" role="tabpanel"
                                              aria-labelledby="posts-tab">
                                             <div className="form-group">
-                                                <label className="sr-only" htmlFor="message">post</label>
-                                                <textarea className="form-control" id="message" rows="3"
-                                                          placeholder="What are you thinking?"></textarea>
+                                                <form onSubmit={
+                                                    handleSubmit((data) => {
+                                                        PostService.addPost(data).then(res => getAllPosts())
+                                                    })
+                                                }>
+                                                    <label className="sr-only" htmlFor="message">Title</label>
+                                                    <input
+                                                        className="form-control"
+                                                        type="text" id="message"
+                                                        style={{width: "100%"}}
+                                                        placeholder="Post title"
+                                                        {...register("title", {required: true, minLength: 5})}
+                                                    />
+                                                    {errors.title && <span style={{color:"red"}}>Title's length has to be at least 5 characters.</span>}
+                                                    <label className="sr-only" htmlFor="message">Content</label>
+                                                    <textarea
+                                                        className="form-control"
+                                                        id="message"
+                                                        rows="3"
+                                                        placeholder="What are you thinking?"
+                                                        {...register("content", {required: true, minLength: 5})}
+                                                    ></textarea>
+                                                    {errors.content && <span style={{color:"red"}}>Post content length has to be at least 5 characters.</span>}
+                                                    <button type="submit" className="btn btn-primary">POST</button>
+                                                </form>
                                             </div>
-
                                         </div>
-                                    </div>
-                                    <div className="btn-toolbar justify-content-between">
-                                        <div className="btn-group">
-                                            <button type="submit" className="btn btn-primary">POST</button>
-                                        </div>
-                                        {/*<div className="btn-group">*/}
-                                        {/*    <button id="btnGroupDrop1" type="button"*/}
-                                        {/*            className="btn btn-link dropdown-toggle" data-toggle="dropdown"*/}
-                                        {/*            aria-haspopup="true"*/}
-                                        {/*            aria-expanded="false">*/}
-                                        {/*        <i className="fa fa-globe"></i>*/}
-                                        {/*    </button>*/}
-                                        {/*    <div className="dropdown-menu dropdown-menu-right"*/}
-                                        {/*         aria-labelledby="btnGroupDrop1">*/}
-                                        {/*        <a className="dropdown-item" href="#"><i className="fa fa-globe"></i> Public</a>*/}
-                                        {/*        <a className="dropdown-item" href="#"><i*/}
-                                        {/*            className="fa fa-users"></i> Friends</a>*/}
-                                        {/*        <a className="dropdown-item" href="#"><i className="fa fa-user"></i> Just me</a>*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
                                     </div>
                                 </div>
                             </div>
@@ -91,10 +97,6 @@ const Community = () => {
                                     post => <UserPost post={post}/>
                                 )
                             }
-
-
-
-
                         </div>
                     <Recommendations />
                     </div>

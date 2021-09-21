@@ -933,3 +933,7 @@ h3 {
 .center-avatar-container {
   text-align: center;
 }
+
+.likes-container {
+  float: right;
+}
