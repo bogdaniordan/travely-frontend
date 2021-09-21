@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {Chip, Divider} from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
 import CommentService from "../../service/CommentService";
 import Comment from "./Comment";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PostService from "../../service/PostService";
+import {Collapse} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 const UserPost = ({post}) => {
-
     const [comments, setComments] = useState([]);
     const [likesNumber, setLikesNumber] = useState(0);
     const [postIsLiked, setPostIsLiked] = useState(false);
+    const [showCommentInput, setShowCommentInput] = useState(false);
 
     useEffect(() => {
         CommentService.getAllForPost(post.id).then(res => setComments(res.data));
@@ -31,6 +31,10 @@ const UserPost = ({post}) => {
             setLikesNumber(likesNumber - 1);
             setPostIsLiked(false);
         })
+    }
+
+    const showCommentInputContainer = () => {
+        setShowCommentInput(!showCommentInput)
     }
 
     return (
@@ -78,13 +82,19 @@ const UserPost = ({post}) => {
             <div className="card-footer">
                 {
                     postIsLiked ? (
-                        <a href="#" className="card-link" onClick={unLikePost}><i className="fa fa-gittip"></i> Unlike</a>
+                        <Button variant="outlined" color="primary" onClick={unLikePost} style={{margin: "5px"}}>Unlike</Button>
                     ) : (
-                        <a href="#" className="card-link" onClick={likePost}><i className="fa fa-gittip"></i> Like</a>
+                        <Button variant="outlined" color="primary" onClick={likePost} style={{margin: "5px"}}>Like</Button>
                     )
                 }
-                <a href="#" className="card-link"><i className="fa fa-comment"></i> Comment</a>
+                <Button variant="outlined" color="primary" onClick={showCommentInputContainer}>Comment</Button>
             </div>
+            <Collapse in={showCommentInput}>
+                {/*<h4 style={{textAlign:"center"}}>Bookings of {accommodation.title}</h4>*/}
+                <div className="comments-section">
+
+                </div>
+            </Collapse>
         </div>
     );
 };

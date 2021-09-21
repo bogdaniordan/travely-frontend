@@ -9,6 +9,7 @@ import BookingService from "../../service/BookingService";
 import UserPost from "./UserPost";
 import PostService from "../../service/PostService";
 import {useForm} from "react-hook-form";
+import Button from "@material-ui/core/Button";
 
 const Community = () => {
     const [user, setUser] = useState({})
@@ -85,7 +86,7 @@ const Community = () => {
                                                         {...register("content", {required: true, minLength: 5})}
                                                     ></textarea>
                                                     {errors.content && <span style={{color:"red"}}>Post content length has to be at least 5 characters.</span>}
-                                                    <button type="submit" className="btn btn-primary">POST</button>
+                                                    <Button type="submit" variant="outlined" color="primary">POST</Button>
                                                 </form>
                                             </div>
                                         </div>
