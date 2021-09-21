@@ -8,16 +8,20 @@ import Customers from "./Customers";
 import Avatar from "@material-ui/core/Avatar";
 import BookingService from "../../service/BookingService";
 import {Divider} from "@material-ui/core";
+import UserPost from "./UserPost";
+import PostService from "../../service/PostService";
 
 const Community = () => {
     const [user, setUser] = useState({})
     const [bookings, setBookings] = useState([])
+    const [posts, setPosts] = useState([])
 
     useEffect(() => {
         CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(
             res => setUser(res.data)
         )
         BookingService.getAllByCustomerId().then(res => setBookings(res.data))
+        PostService.findAll().then(res => setPosts(res.data))
     }, [])
 
     return (
@@ -32,10 +36,9 @@ const Community = () => {
                                 <div className="card-body">
                                     <div className="h5">@{user.firstName} {user.lastName}</div>
                                     <div className="h7 text-muted">Email : {user.email}</div>
-                                    {/*<div className="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby,*/}
-                                    {/*    Java, Node.js,*/}
-                                    {/*    etc.*/}
-                                    {/*</div>*/}
+                                    <br/>
+                                    <div className="h7">Favourite cities: Miami, Copenhagen, Rotterdam, L.A. and Stockholm.
+                                    </div>
                                 </div>
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item">
@@ -46,23 +49,9 @@ const Community = () => {
                                 </ul>
                             </div>
                         </div>
-                        {/*<Customers />*/}
                         <div className="col-md-6 gedf-main">
 
                             <div className="card gedf-card">
-                                {/*<div className="card-header">*/}
-                                {/*    <ul className="nav nav-tabs card-header-tabs" id="myTab" role="tablist">*/}
-                                {/*        <li className="nav-item">*/}
-                                {/*            <a className="nav-link active" id="posts-tab" data-toggle="tab" href="#posts"*/}
-                                {/*               role="tab" aria-controls="posts" aria-selected="true">Make*/}
-                                {/*                a publication</a>*/}
-                                {/*        </li>*/}
-                                {/*        <li className="nav-item">*/}
-                                {/*            <a className="nav-link" id="images-tab" data-toggle="tab" role="tab"*/}
-                                {/*               aria-controls="images" aria-selected="false" href="#images">Images</a>*/}
-                                {/*        </li>*/}
-                                {/*    </ul>*/}
-                                {/*</div>*/}
                                 <div className="card-body">
                                     <div className="tab-content" id="myTabContent">
                                         <div className="tab-pane fade show active" id="posts" role="tabpanel"
@@ -97,74 +86,14 @@ const Community = () => {
                                     </div>
                                 </div>
                             </div>
+                            {
+                                posts.map(
+                                    post => <UserPost post={post}/>
+                                )
+                            }
 
-                            <div className="card gedf-card">
-                                <div className="card-header">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="d-flex justify-content-between align-items-center">
-                                            <div className="mr-2">
-                                                <img className="rounded-circle" width="45" src="https://picsum.photos/50/50"
-                                                     alt=""/>
-                                            </div>
-                                            <div className="ml-2">
-                                                <div className="h5 m-0">@LeeCross</div>
-                                                <div className="h7 text-muted">Miracles Lee Cross</div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            {/*<div className="dropdown">*/}
-                                            {/*    <button className="btn btn-link dropdown-toggle" type="button"*/}
-                                            {/*            id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true"*/}
-                                            {/*            aria-expanded="false">*/}
-                                            {/*        <i className="fa fa-ellipsis-h"></i>*/}
-                                            {/*    </button>*/}
-                                            {/*    /!*<div className="dropdown-menu dropdown-menu-right"*!/*/}
-                                            {/*    /!*     aria-labelledby="gedf-drop1">*!/*/}
-                                            {/*    /!*    <div className="h6 dropdown-header">Configuration</div>*!/*/}
-                                            {/*    /!*    <a className="dropdown-item" href="#">Save</a>*!/*/}
-                                            {/*    /!*    <a className="dropdown-item" href="#">Hide</a>*!/*/}
-                                            {/*    /!*    <a className="dropdown-item" href="#">Report</a>*!/*/}
-                                            {/*    /!*</div>*!/*/}
-                                            {/*</div>*/}
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div className="card-body">
-                                    <div className="text-muted h7 mb-2"><i className="fa fa-clock-o"></i>10 min ago</div>
-                                    <a className="card-link" href="#">
-                                        <h5 className="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
-                                    </a>
 
-                                    <p className="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem
-                                        eos ipsa praesentium esse magnam nemo dolor
-                                        sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
-                                    </p>
-                                </div>
-                                <Divider variant="caption" component="li" />
-                                <br/>
-                                <p>Comments</p>
-                                <div className="card-body">
-                                    <div className="text-muted h7 mb-2"><i className="fa fa-clock-o"></i>10 min ago</div>
-                                    {/*<a className="card-link" href="#">*/}
-                                    {/*    <h5 className="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>*/}
-                                    {/*</a>*/}
-                                    <div className="center-avatar-container">
-                                        <Avatar style={{margin: "auto"}} />
-                                    </div>
-                                    <p className="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem
-                                        eos ipsa praesentium esse magnam nemo dolor
-                                        sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
-                                    </p>
-                                </div>
-                                <div className="card-footer">
-                                    <a href="#" className="card-link"><i className="fa fa-gittip"></i> Like</a>
-                                    <a href="#" className="card-link"><i className="fa fa-comment"></i> Comment</a>
-                                    <a href="#" className="card-link"><i className="fa fa-mail-forward"></i> Share</a>
-                                </div>
-                            </div>
 
                         </div>
                     <Recommendations />
