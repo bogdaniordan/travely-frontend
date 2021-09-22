@@ -18,6 +18,10 @@ class RecommendationService {
     getUsersWhoCanGetRecommendations(senderId, accommodationId) {
         return axios.get(`${RECOMMENDATION_SERVICE_API_URL}/get-all-receivers/${senderId}/${accommodationId}`, {headers: AuthHeader()})
     }
+
+    deleteRecommendation(id) {
+        return axios.delete(`${RECOMMENDATION_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new RecommendationService;
