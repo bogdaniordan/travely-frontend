@@ -7,19 +7,20 @@ import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
 import {useHistory} from "react-router-dom";
 import FamousCityBar from "../../utils/FamousCityBar";
-import {Divider} from "@material-ui/core";
 
 const HomePage = () => {
     const history = useHistory();
     const [location, setLocation] = useState();
     const [searchInput, setSearchInput] = useState();
     const [results, setResults] = useState();
-    const [placeType, setPlaceType] = useState()
+    const [placeType, setPlaceType] = useState();
+    const [savedAccommodations, setSavedAccommodations] = useState([]);
 
     useEffect(() => {
         if (!AuthService.getCurrentUser()) {
             history.push("/login")
         }
+        AccommodationService.getAllSavedAccommodations(AuthService.getCurrentUser().id).then(res => setSavedAccommodations(res.data));
     }, [])
 
     const search = () => {
@@ -42,7 +43,7 @@ const HomePage = () => {
 
     return (
         <div>
-            <Navbar title={"Welcome to Travely."} subtitle={"Thousands of accommodations around the globe at your finger tips."}/>
+            <Navbar title={"Welcome to Travely."} subtitle={"Thousands of accommodations around the globe at your finger tips."} savedAccommodations={savedAccommodations}/>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 card-margin">
@@ -98,7 +99,7 @@ const HomePage = () => {
                             {
                                 results ? ( results.length > 0 ? (
                                     results.map(
-                                        place => <AccommodationCard place={place}/>
+                                        place => <AccommodationCard place={place} savedAccommodations={savedAccommodations} setSavedAccommodations={setSavedAccommodations}/>
                                     )
                                     ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>There are no results for your search...</h3>)
                                 ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)

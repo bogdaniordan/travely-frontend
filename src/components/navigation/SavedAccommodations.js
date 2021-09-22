@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useStyles} from "../../styling/NavbarBadgeStyling";
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import {Badge, Popover} from "@material-ui/core";
@@ -7,17 +7,16 @@ import Link from "react-router-dom/Link";
 import AccommodationService from "../../service/AccommodationService";
 import AuthService from "../../service/AuthService";
 
-const SavedAccommodations = () => {
+const SavedAccommodations = ({savedAccommodations}) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
-    const [savedAccommodations, setSavedAccommodations] = useState([]);
-
-    useEffect(() => {
-        AccommodationService.getAllSavedAccommodations(AuthService.getCurrentUser().id).then(res => setSavedAccommodations(res.data));
-    }, [])
-
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined
+    const [userSavedAccommodations, setUserSavedAccommodations] = useState([]);
+
+    useEffect(() => {
+        AccommodationService.getAllSavedAccommodations(AuthService.getCurrentUser().id).then(res => setUserSavedAccommodations(res.data));
+    }, [])
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -47,24 +46,45 @@ const SavedAccommodations = () => {
                 >
                     <Typography className={classes.typography}>
                         {
-                            savedAccommodations.length > 0 ? (
-                                savedAccommodations.map(
-                                    accommodation => (
-                                        <div>
-                                            <p>
-                                                <Link
-                                                    to={`/accommodation/${accommodation.id}`}
-                                                >
-                                                    <strong>{accommodation.title}</strong>
-                                                </Link>
-                                                <br/>
-                                                 - <small>{accommodation.location}</small>
-                                            </p>
-                                            <br />
-                                        </div>
+                            savedAccommodations ? (
+                                savedAccommodations.length > 0 ? (
+                                    savedAccommodations.map(
+                                        accommodation => (
+                                            <div>
+                                                <p>
+                                                    <Link
+                                                        to={`/accommodation/${accommodation.id}`}
+                                                    >
+                                                        <strong>{accommodation.title}</strong>
+                                                    </Link>
+                                                    <br/>
+                                                    - <small>{accommodation.location}</small>
+                                                </p>
+                                                <br />
+                                            </div>
+                                        )
                                     )
-                                )
-                            ) : ("No saved accommodations")
+                                ) : ("No saved accommodations")
+                            ) : (
+                                userSavedAccommodations.length > 0 ? (
+                                    userSavedAccommodations.map(
+                                        accommodation => (
+                                            <div>
+                                                <p>
+                                                    <Link
+                                                        to={`/accommodation/${accommodation.id}`}
+                                                    >
+                                                        <strong>{accommodation.title}</strong>
+                                                    </Link>
+                                                    <br/>
+                                                    - <small>{accommodation.location}</small>
+                                                </p>
+                                                <br />
+                                            </div>
+                                        )
+                                    )
+                                ) : ("No saved accommodations")
+                            )
                         }
                     </Typography>
                 </Popover>

@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AuthService from "../../service/AuthService";
 import plane from "../../images/plane.png"
 import QuestionsNotifications from "./QuestionsNotifications";
 import SavedAccommodations from "./SavedAccommodations";
 import ChatNotifications from "./ChatNotifications";
 
-const Navbar = ({title, subtitle}) => {
+const Navbar = ({title, subtitle, savedAccommodations}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
     const isHomePage = title === "Welcome to Travely."
 
@@ -26,7 +26,6 @@ const Navbar = ({title, subtitle}) => {
                     <div className="collapse navbar-collapse" id="navbarsExample07">
                         {currentUser ? (
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/profile">Profile</a>
                                 </li>
@@ -34,7 +33,7 @@ const Navbar = ({title, subtitle}) => {
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/community">Community</a>
                                 </li>
                                 <li className="nav-item">
-                                   <SavedAccommodations />
+                                   <SavedAccommodations savedAccommodations={savedAccommodations} />
                                 </li>
                                 <li>
                                     <ChatNotifications />

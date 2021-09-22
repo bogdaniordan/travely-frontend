@@ -13,7 +13,7 @@ import {customStyles} from "../../styling/ModalStyling";
 import RecommendationModal from "../community/RecommendationModal";
 
 
-const AccommodationCard = ({place}) => {
+const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations}) => {
     const history = useHistory();
     const [jobIsSaved, setJobIsSaved] = useState(false)
     const [rating, setRating] = useState(0);
@@ -40,9 +40,15 @@ const AccommodationCard = ({place}) => {
 
     const saveOrUnsaveAccommodation = () => {
         if (jobIsSaved) {
-            AccommodationService.removeFromFavorites(place.id, AuthService.getCurrentUser().id).then(res => setJobIsSaved(false))
+            AccommodationService.removeFromFavorites(place.id, AuthService.getCurrentUser().id).then(res => {
+                setJobIsSaved(false)
+                setSavedAccommodations(savedAccommodations.filter(accommodation => accommodation.id !== place.id))
+            })
         } else {
-            AccommodationService.saveToFavorites(place.id, AuthService.getCurrentUser().id).then(res => setJobIsSaved(true))
+            AccommodationService.saveToFavorites(place.id, AuthService.getCurrentUser().id).then(res => {
+                setJobIsSaved(true)
+                AccommodationService.getById(place.id).then(res => setSavedAccommodations([...savedAccommodations, res.data]))
+            })
         }
     }
 
@@ -71,15 +77,19 @@ const AccommodationCard = ({place}) => {
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="btn-group">
                                 <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>
-                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={saveOrUnsaveAccommodation}>
-                                    {
-                                        !jobIsSaved ? (
-                                            <BookmarkBorderIcon />
-                                        ) : (
-                                            <BookmarkIcon />
-                                        )
-                                    }
-                                </button>
+                                {
+                                    savedAccommodations && (
+                                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={saveOrUnsaveAccommodation}>
+                                            {
+                                                !jobIsSaved ? (
+                                                    <BookmarkBorderIcon />
+                                                ) : (
+                                                    <BookmarkIcon />
+                                                )
+                                            }
+                                        </button>
+                                    )
+                                }
                                 <button type="button" className="btn btn-sm  btn-outline-secondary" onClick={openModal}><SupervisedUserCircleIcon /></button>
                             </div>
                             <small className="text-muted">${place.pricePerNight}/night</small>
