@@ -32,6 +32,10 @@ class PostService {
         }
         return axios.post(`${POST_SERVICE_API_URL}/add-post/${AuthService.getCurrentUser().id}`, post, {headers: AuthHeader()});
     }
+
+    deletePost(id) {
+        return axios.delete(`${POST_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new PostService;

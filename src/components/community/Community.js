@@ -10,7 +10,6 @@ import UserPost from "./UserPost";
 import PostService from "../../service/PostService";
 import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
-import CloseIcon from '@mui/icons-material/Close';
 
 const Community = () => {
     const [user, setUser] = useState({})
@@ -116,7 +115,7 @@ const Community = () => {
                             </div>
                             {
                                 posts.map(
-                                    post => <UserPost post={post}/>
+                                    post => <UserPost post={post} posts={posts} setPosts={setPosts}/>
                                 )
                             }
                         </div>

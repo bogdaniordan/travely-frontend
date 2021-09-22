@@ -6,8 +6,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import PostService from "../../service/PostService";
 import {Collapse} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import CloseIcon from '@mui/icons-material/Close';
+import AuthService from "../../service/AuthService";
 
-const UserPost = ({post}) => {
+const UserPost = ({post, posts, setPosts}) => {
     const [commentInput, setCommentInput] = useState("");
     const [comments, setComments] = useState([]);
     const [likesNumber, setLikesNumber] = useState(0);
@@ -45,6 +47,10 @@ const UserPost = ({post}) => {
         }
     }
 
+    const deletePost = () => {
+        PostService.deletePost(post.id).then(res => setPosts(posts.filter(p => p.id !== post.id)));
+    }
+
     return (
         <div className="card gedf-card">
             <div className="card-header">
@@ -57,7 +63,6 @@ const UserPost = ({post}) => {
                         <div className="ml-2">
                             <div className="h5 m-0">@{post.author.firstName} {post.author.lastName}</div>
                             {/*<div className="h7 text-muted">Miracles Lee Cross</div>*/}
-
                         </div>
                     </div>
                     <div className="likes-container">
@@ -66,6 +71,11 @@ const UserPost = ({post}) => {
                 </div>
             </div>
             <div className="card-body">
+                {
+                    post.author.id === AuthService.getCurrentUser().id && (
+                        <CloseIcon color="error" style={{float: "right"}} onClick={deletePost}/>
+                    )
+                }
                 <div className="text-muted h7 mb-2"><i className="fa fa-clock-o"></i>{moment(post.time.slice(0, 5)).format("DD-MM-YYYY, h:mm:ss a")}</div>
                 <a className="card-link" href="#">
                     <h5>{post.title}</h5>
