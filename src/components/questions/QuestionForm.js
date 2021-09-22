@@ -4,6 +4,7 @@ import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import Button from "@material-ui/core/Button";
 import QuestionService from "../../service/QuestionService";
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 
 const QuestionForm = () => {
     const location = useLocation();
@@ -13,7 +14,6 @@ const QuestionForm = () => {
     const [question, setQuestion] = useState();
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
-
 
     const submitQuestion = e => {
         e.preventDefault();
@@ -38,12 +38,14 @@ const QuestionForm = () => {
     return (
         <div>
             <Navbar title={"Leave a question"}/>
-            <div className="container contact-form" style={{height: "400px"}}>
+            <div className="container" style={{height: "300px"}}>
                 <div className="contact-image">
-                    <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+                    <LiveHelpIcon style={{margin: "auto", height: "100px", width: "100px"}} color="primary"/>
                 </div>
+                <br/>
                 <form method="post" onSubmit={submitQuestion}>
-                    <h3 style={{color: "black"}}>Drop {booking.host.firstName} {booking.host.lastName} a Question</h3>
+                    <h4 style={{color: "black"}}>Drop {booking.host.firstName} {booking.host.lastName} a question</h4>
+                    <br/>
                     <div className="row">
                         {message && (
                             <div className="form-group">
@@ -60,11 +62,11 @@ const QuestionForm = () => {
                         <div className="col-md-12">
                             <div className="form-group">
                                 <textarea name="txtMsg" className="form-control" placeholder="Your question *"
-                                          style={{width: "100%", height: "150px"}} required onChange={(event) => setQuestion(event.target.value)}></textarea>
+                                          style={{width: "75%", height: "150px", margin: "auto"}} required onChange={(event) => setQuestion(event.target.value)}></textarea>
                             </div>
                             <br/>
                             <div className="form-group">
-                                <Button type="submit" variant="contained" name="btnSubmit" className="btnContact" value="Send question">Submit</Button>
+                                <Button type="submit" variant="contained" color="primary" value="Send question">Submit</Button>
                             </div>
                         </div>
                     </div>

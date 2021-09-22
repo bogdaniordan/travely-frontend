@@ -15,7 +15,6 @@ import AddTestimonial from "../testimonial/AddTestimonial";
 import ResetPassword from "../auth/ResetPassword";
 import Community from "../community/Community";
 import ChatPage from "../chat/ChatPage";
-import SavePaymentDetails from "../payment/SavePaymentDetails";
 
 
 const Routes = () => {

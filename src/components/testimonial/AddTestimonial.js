@@ -7,7 +7,7 @@ import {useForm} from 'react-hook-form';
 import AuthService from "../../service/AuthService";
 import TestimonialService from "../../service/TestimonialService";
 import { Rating, RatingView } from 'react-simple-star-rating'
-
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 const AddTestimonial = () => {
     const location = useLocation();
@@ -24,12 +24,13 @@ const AddTestimonial = () => {
     return (
         <div>
             <Navbar title={"Accommodation review"}/>
-            <div className="container contact-form">
+            <div className="container" style={{height: "300px"}}>
+                <ReviewsIcon style={{margin: "auto", height: "100px", width: "100px", marginBottom: "20px"}} color="primary"/>
                 <form onSubmit={handleSubmit((data) => {
                     TestimonialService.addTestimonial(accommodation.id, AuthService.getCurrentUser().id, data, rating);
                     history.push("/profile")
                 })}>
-                    <h3 style={{color: "black"}}>Leave a review for your booking at {accommodation.title}, {accommodation.location}</h3>
+                    <h4 style={{color: "black"}}>Leave a review for your booking at {accommodation.title}, {accommodation.location}</h4>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
@@ -38,14 +39,14 @@ const AddTestimonial = () => {
                                           className="form-control"
                                           placeholder="Message"
                                           name="message"
-                                          style={{width: "100%", height: "150px"}}
+                                          style={{width: "75%", height: "150px", margin: "auto", marginTop: "20px"}}
                                           {...register("message", {required: true, minLength: 5})}
                                 ></textarea>
                                 {errors.message && <span style={{color:"red"}}>Please enter a message which is at least 5 characters long!</span>}
                             </div>
                             <br/>
                             <div className="form-group">
-                                <Button type="submit" variant="contained" name="btnSubmit" className="btnContact" value="Send question">Submit</Button>
+                                <Button type="submit" variant="contained" color="primary">Submit</Button>
                             </div>
                         </div>
                     </div>
