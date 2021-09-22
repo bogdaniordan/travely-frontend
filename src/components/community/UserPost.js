@@ -80,7 +80,7 @@ const UserPost = ({post}) => {
                         {
                             comments.map(
                                 comment => (
-                                   <Comment comment={comment} />
+                                   <Comment comment={comment} comments={comments} setComments={setComments}/>
                                 )
                             )
                         }

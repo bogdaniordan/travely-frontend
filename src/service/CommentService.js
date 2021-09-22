@@ -15,6 +15,10 @@ class CommentService {
         }
         return axios.post(`${COMMENT_SERVICE_API_URL}/save-comment/${postId}/${AuthService.getCurrentUser().id}`, comment, {headers: AuthHeader()});
     }
+
+    deleteComment(id) {
+        return axios.delete(`${COMMENT_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new CommentService;
