@@ -8,6 +8,7 @@ import {Collapse} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
 const UserPost = ({post}) => {
+    const [commentInput, setCommentInput] = useState("");
     const [comments, setComments] = useState([]);
     const [likesNumber, setLikesNumber] = useState(0);
     const [postIsLiked, setPostIsLiked] = useState(false);
@@ -35,6 +36,13 @@ const UserPost = ({post}) => {
 
     const showCommentInputContainer = () => {
         setShowCommentInput(!showCommentInput)
+    }
+
+
+    const leaveComment = () => {
+        if (commentInput.length > 0) {
+            CommentService.leaveComment(commentInput, post.id).then(res => CommentService.getAllForPost(post.id).then(response => setComments(response.data)))
+        }
     }
 
     return (
@@ -90,9 +98,9 @@ const UserPost = ({post}) => {
                 <Button variant="outlined" color="primary" onClick={showCommentInputContainer}>Comment</Button>
             </div>
             <Collapse in={showCommentInput}>
-                {/*<h4 style={{textAlign:"center"}}>Bookings of {accommodation.title}</h4>*/}
                 <div className="comments-section">
-
+                    <input type="text" className="form-control" onChange={e => setCommentInput(e.target.value)} placeholder="Leave a comment"/>
+                    <Button variant="outlined" color="primary" onClick={leaveComment}>Submit</Button>
                 </div>
             </Collapse>
         </div>

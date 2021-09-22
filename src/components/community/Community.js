@@ -23,13 +23,9 @@ const Community = () => {
             res => setUser(res.data)
         )
         BookingService.getAllByCustomerId().then(res => setBookings(res.data));
-        getAllPosts();
+        PostService.findAll().then(res => setPosts(res.data))
 
     }, [])
-
-    const getAllPosts = () => {
-        PostService.findAll().then(res => setPosts(res.data))
-    }
 
     return (
         <div>
@@ -65,7 +61,10 @@ const Community = () => {
                                             <div className="form-group">
                                                 <form onSubmit={
                                                     handleSubmit((data) => {
-                                                        PostService.addPost(data).then(res => getAllPosts())
+                                                        PostService.addPost(data).then(res => {
+                                                            setPosts([])
+                                                            PostService.findAll().then(r => setPosts(r.data))
+                                                        })
                                                     })
                                                 }>
                                                     <label className="sr-only" htmlFor="message">Title</label>
