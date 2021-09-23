@@ -2,11 +2,8 @@ import React from 'react';
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LandingPage.css";
 import Button from "@material-ui/core/Button";
-import {useHistory} from "react-router-dom";
 
 const HostLandingPage = () => {
-    const history = useHistory();
-
     return (
         <div>
             <LandingPageNavbar />
@@ -16,7 +13,7 @@ const HostLandingPage = () => {
                 <div className="content">
                     <div className="textBox">
                         <h2>
-                            <span style={{ color: "red" }}>Travely for hosts</span>
+                            <span>Travely for hosts</span>
                         </h2>
                         <br/>
                         <p>

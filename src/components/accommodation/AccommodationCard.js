@@ -12,7 +12,6 @@ import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
 import RecommendationModal from "../community/RecommendationModal";
 
-
 const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations}) => {
     const history = useHistory();
     const [jobIsSaved, setJobIsSaved] = useState(false)
@@ -58,7 +57,7 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations})
                 <div className="card shadow-sm">
                     <img alt="Responsive image" className="img-fluid" style={{height: "250px"}}  src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
                     <div className="card-body">
-                        <p className="card-text"><strong>{place.title}</strong></p>
+                        <h5 className="card-text"><strong>{place.title}</strong></h5>
                         {
                             rating !== 0 ? (
                                 <div>
@@ -71,9 +70,8 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations})
                             )
                         }
 
-                        <small>{place.location}</small>
-                        <br/>
-                        <small>Place type: {place.placeType}</small>
+                        <p className="card-text">{place.location}</p>
+                        <p className="card-text">Place type: {place.placeType}</p>
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="btn-group">
                                 <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>

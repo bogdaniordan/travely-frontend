@@ -14,7 +14,7 @@ const LandingPageNavbar = () => {
         <div>
             <nav style={{paddingTop: "35px", paddingBottom: "35px"}} className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
-                    <a style={{color: "#aaaccc"}} className="navbar-brand" href="/">Travely</a>
+                    <a style={{color: "#aaaccc"}} className="navbar-brand" href="#">Travely</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -26,10 +26,10 @@ const LandingPageNavbar = () => {
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="#">About us</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/customer-landing-page">Login as customer</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/customer-landing-page">Customer</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/host-landing-page">Login as host</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/host-landing-page">Host</a>
                                 </li>
                             </ul>
                     </div>

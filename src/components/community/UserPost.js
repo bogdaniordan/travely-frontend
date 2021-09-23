@@ -43,7 +43,10 @@ const UserPost = ({post, posts, setPosts}) => {
 
     const leaveComment = () => {
         if (commentInput.length > 0) {
-            CommentService.leaveComment(commentInput, post.id).then(res => CommentService.getAllForPost(post.id).then(response => setComments(response.data)))
+            CommentService.leaveComment(commentInput, post.id).then(res => CommentService.getAllForPost(post.id).then(response => {
+                setComments(response.data);
+                setCommentInput("");
+            }))
         }
     }
 
@@ -109,7 +112,7 @@ const UserPost = ({post, posts, setPosts}) => {
             </div>
             <Collapse in={showCommentInput}>
                 <div className="comments-section">
-                    <input type="text" className="form-control" onChange={e => setCommentInput(e.target.value)} placeholder="Leave a comment"/>
+                    <input type="text" className="form-control" value={commentInput} onChange={e => setCommentInput(e.target.value)} placeholder="Leave a comment"/>
                     <Button variant="outlined" color="primary" onClick={leaveComment}>Submit</Button>
                 </div>
             </Collapse>

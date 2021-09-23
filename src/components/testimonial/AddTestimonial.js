@@ -26,11 +26,14 @@ const AddTestimonial = () => {
             <Navbar title={"Accommodation review"}/>
             <div className="container" style={{height: "300px"}}>
                 <ReviewsIcon style={{margin: "auto", height: "100px", width: "100px", marginBottom: "20px"}} color="primary"/>
+                <br/>
                 <form onSubmit={handleSubmit((data) => {
                     TestimonialService.addTestimonial(accommodation.id, AuthService.getCurrentUser().id, data, rating);
                     history.push("/profile")
                 })}>
+                    <br/>
                     <h4 style={{color: "black"}}>Leave a review for your booking at {accommodation.title}, {accommodation.location}</h4>
+                    <br/>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">

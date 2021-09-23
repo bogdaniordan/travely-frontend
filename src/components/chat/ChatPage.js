@@ -9,6 +9,7 @@ import ChatService from "../../service/ChatService";
 import AuthService from "../../service/AuthService";
 import moment from "moment";
 import Avatar from "@material-ui/core/Avatar";
+import {Link} from "react-router-dom";
 
 const ChatPage = (props) => {
     let socket = new SockJS("http://localhost:8080/ws");
@@ -77,16 +78,18 @@ const ChatPage = (props) => {
         <div>
             <Navbar title={"Chat page"} subtitle={`Conversation with ${otherUser.firstName} ${otherUser.lastName}`}/>
                 <div className="container">
+                    <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
                     <h5>You have to connect to be able to send or receive messages.</h5>
+                    <br/>
                     {
                         connected ? (
                             <div>
-                                <Button variant="contained" color="primary" disabled>Connect</Button>
+                                <Button variant="contained" color="primary" disabled style={{marginRight: "10px"}}>Connect</Button>
                                 <Button variant="contained" color="secondary" onClick={disconnect}>Disconnect</Button>
                             </div>
                         ) : (
                             <div>
-                                <Button variant="contained" color="primary" onClick={connect}>Connect</Button>
+                                <Button variant="contained" color="primary" onClick={connect} style={{marginRight: "10px"}}>Connect</Button>
                                 <Button variant="contained" color="secondary" disabled>Disconnect</Button>
                             </div>
                         )
@@ -122,7 +125,6 @@ const ChatPage = (props) => {
                                                 )
                                             )
                                         }
-                                        {/*empty div for scrolling to bottom of the chat*/}
                                         <div ref={messagesEndRef}></div>
                                     </ul>
                                 </div>
