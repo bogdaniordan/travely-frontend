@@ -18,6 +18,7 @@ import {Link, Paper} from "@material-ui/core";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
 import ResetPasswordModal from "./ResetPasswordModal";
+import LandingPageNavbar from "../navigation/LandingPageNavbar";
 
 const Login = () => {
     const classes = useStyles();
@@ -74,11 +75,13 @@ const Login = () => {
     
     return (
         <>
-            <Navbar title={"Log in as customer"} subtitle={"Please fill in your user credentials."}/>
+            <LandingPageNavbar />
+            {/*<Navbar title={"Log in as customer"} subtitle={"Please fill in your user credentials."}/>*/}
             <Paper style={{width: "600px", height: "500px", margin: "auto"}} elevation={3}>
                 <Container maxWidth="xs" className="sign-up-container">
                     <CssBaseline />
                     <div className={classes.paper}>
+                        <br/>
                         <Avatar className={classes.avatar}>
                             <LockOutlinedIcon />
                         </Avatar>

@@ -14,7 +14,7 @@ const Navbar = ({title, subtitle, savedAccommodations}) => {
     }
 
     return (
-        <div style={{border: "1px solid white"}}>
+        <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
                     <a style={{color: "#aaaccc"}} className="navbar-brand" href="/">Travely</a>

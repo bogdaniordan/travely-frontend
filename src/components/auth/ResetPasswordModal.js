@@ -14,7 +14,9 @@ const ResetPasswordModal = ({closeModal}) => {
                 <div className="modal-content">
                     <div className="modal-body text-center">
                         <h4>Enter your email address</h4>
-                        <p>Your will receive an email in a few moments.</p>
+                        <br/>
+                        <h6>Your will receive an email in a few moments.</h6>
+                        <br/>
                         <form onSubmit={handleSubmit((data) => {
                             AuthService.sendResetPasswordEmail(data);
                             closeModal();
