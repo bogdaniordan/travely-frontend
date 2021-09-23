@@ -6,7 +6,6 @@ import SavedAccommodations from "./SavedAccommodations";
 import ChatNotifications from "./ChatNotifications";
 import QuestionsNotifications from "./QuestionsNotifications";
 import plane from "../../images/plane.png";
-import logo from "./traveling-icon-15.jpg"
 
 
 const LandingPageNavbar = () => {
@@ -24,10 +23,13 @@ const LandingPageNavbar = () => {
                     <div className="collapse navbar-collapse" id="navbarsExample07">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/customer-landing-page">Use as customer</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="#">About us</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/host-landing-page">Use as host</a>
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/customer-landing-page">Login as customer</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/host-landing-page">Login as host</a>
                                 </li>
                             </ul>
                     </div>
