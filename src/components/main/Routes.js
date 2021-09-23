@@ -17,14 +17,15 @@ import Community from "../community/Community";
 import ChatPage from "../chat/ChatPage";
 import CustomerLandingPage from "./CustomerLandingPage";
 import HostLandingPage from "./HostLandingPage";
-
+import PeoplePage from "../community/PeoplePage";
 
 const Routes = () => {
     return (
         <div>
             <Router>
                 <Switch>
-                    <Route path="/" exact render={() => AuthService.getCurrentUser() ? <HomePage /> : <Redirect to="/login"/>} />
+                    <Route path="/" exact component={CustomerLandingPage}/>
+                    <Route path="/home" exact component={HomePage} />
                     <Route path="/register" exact render={() => !AuthService.getCurrentUser() ? <Register /> : <Redirect to="/"/>} />
                     <Route path="/login" exact render={() => !AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
                     <Route path="/accommodation/:id" exact component={AccommodationDetails}/>
@@ -39,6 +40,7 @@ const Routes = () => {
                     <Route path="/chat/:userId" exact component={ChatPage}/>
                     <Route path="/customer-landing-page" exact component={CustomerLandingPage} />
                     <Route path="/host-landing-page" exact component={HostLandingPage} />
+                    <Route path="/people" exact component={PeoplePage} />
                 </Switch>
             </Router>
         </div>

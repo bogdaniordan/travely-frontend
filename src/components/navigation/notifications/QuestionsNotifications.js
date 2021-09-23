@@ -3,8 +3,8 @@ import {Badge, Popover} from "@material-ui/core";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import Typography from "@material-ui/core/Typography";
 import Link from "react-router-dom/Link";
-import QuestionService from "../../service/QuestionService";
-import {useStyles} from "../../styling/NavbarBadgeStyling";
+import QuestionService from "../../../service/QuestionService";
+import {useStyles} from "../../../styling/NavbarBadgeStyling";
 
 const QuestionsNotifications = () => {
     const classes = useStyles();

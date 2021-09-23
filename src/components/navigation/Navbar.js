@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import AuthService from "../../service/AuthService";
 import plane from "../../images/plane.png"
-import QuestionsNotifications from "./QuestionsNotifications";
-import SavedAccommodations from "./SavedAccommodations";
-import ChatNotifications from "./ChatNotifications";
+import QuestionsNotifications from "./notifications/QuestionsNotifications";
+import SavedAccommodations from "./notifications/SavedAccommodations";
+import ChatNotifications from "./notifications/ChatNotifications";
 
 const Navbar = ({title, subtitle, savedAccommodations}) => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
@@ -17,7 +17,7 @@ const Navbar = ({title, subtitle, savedAccommodations}) => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
-                    <a style={{color: "#aaaccc"}} className="navbar-brand" href="/">Travely</a>
+                    <a style={{color: "#aaaccc"}} className="navbar-brand" href="/home">Travely</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"
                             aria-label="Toggle navigation">

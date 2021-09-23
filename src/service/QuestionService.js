@@ -1,5 +1,5 @@
 import axios from "axios"
-import AuthHeader from "./AuthHeader";
+import AuthHeader from "./auth-helpers/AuthHeader";
 
 const QUESTION_SERVICE_API_URL = "http://localhost:8080/questions";
 

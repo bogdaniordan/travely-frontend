@@ -5,7 +5,7 @@ import AuthService from "../../service/AuthService";
 import Link from "react-router-dom/Link";
 
 
-const Customers = () => {
+const Friends = () => {
     const [otherUsers, setOtherUsers] = useState([]);
 
     useEffect(() => {
@@ -32,4 +32,4 @@ const Customers = () => {
     );
 };
 
-export default Customers;
+export default Friends;

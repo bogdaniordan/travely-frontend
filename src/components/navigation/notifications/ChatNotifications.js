@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {useStyles} from "../../styling/NavbarBadgeStyling";
+import {useStyles} from "../../../styling/NavbarBadgeStyling";
 import {Badge, Popover} from "@material-ui/core";
 import Link from "react-router-dom/Link";
 import Typography from "@material-ui/core/Typography";
 import ChatIcon from '@material-ui/icons/Chat';
-import ChatService from "../../service/ChatService";
-import AuthService from "../../service/AuthService";
+import ChatService from "../../../service/ChatService";
+import AuthService from "../../../service/AuthService";
 
 const ChatNotifications = () => {
     const classes = useStyles();

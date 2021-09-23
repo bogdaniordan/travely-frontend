@@ -4,7 +4,7 @@ import Navbar from "../navigation/Navbar";
 import Recommendations from "./Recommendations";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
-import Customers from "./Customers";
+import Friends from "./Friends";
 import BookingService from "../../service/BookingService";
 import UserPost from "./UserPost";
 import PostService from "../../service/PostService";
@@ -20,7 +20,7 @@ const Community = () => {
 
     useEffect(() => {
         CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => setUser(res.data))
-        BookingService.getAllByCustomerId().then(res => setBookings(res.data));
+        BookingService.getAllByCustomerId(AuthService.getCurrentUser().id).then(res => setBookings(res.data));
         PostService.findAll().then(res => setPosts(res.data))
     }, [])
 
@@ -69,7 +69,7 @@ const Community = () => {
                                         <div className="h6 text-muted">Trips</div>
                                         <div className="h5">{bookings.length}</div>
                                     </li>
-                                    <Customers />
+                                    <Friends />
                                 </ul>
                             </div>
                         </div>

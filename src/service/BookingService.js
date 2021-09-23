@@ -1,5 +1,5 @@
 import axios from "axios";
-import AuthHeader from "./AuthHeader";
+import AuthHeader from "./auth-helpers/AuthHeader";
 import AuthService from "./AuthService";
 
 const BOOKING_SERVICE_API_URL = "http://localhost:8080/bookings";
@@ -9,8 +9,8 @@ class BookingService {
         return axios.post(`${BOOKING_SERVICE_API_URL}/add-booking/host/${hostId}/customer/${customerId}/accommodation/${accommodationId}`, booking, { headers: AuthHeader() });
     }
 
-    getAllByCustomerId() {
-        return axios.get(`${BOOKING_SERVICE_API_URL}/customer/${AuthService.getCurrentUser().id}`, { headers: AuthHeader() });
+    getAllByCustomerId(id) {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/customer/${id}`, { headers: AuthHeader() });
     }
 
     deleteBooking(id) {

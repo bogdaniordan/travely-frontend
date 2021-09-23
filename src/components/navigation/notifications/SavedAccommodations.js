@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {useStyles} from "../../styling/NavbarBadgeStyling";
+import {useStyles} from "../../../styling/NavbarBadgeStyling";
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import {Badge, Popover} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Link from "react-router-dom/Link";
-import AccommodationService from "../../service/AccommodationService";
-import AuthService from "../../service/AuthService";
+import AccommodationService from "../../../service/AccommodationService";
+import AuthService from "../../../service/AuthService";
 
 const SavedAccommodations = ({savedAccommodations}) => {
     const classes = useStyles();

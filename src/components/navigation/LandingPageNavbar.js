@@ -1,15 +1,8 @@
-
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import AuthService from "../../service/AuthService";
-import SavedAccommodations from "./SavedAccommodations";
-import ChatNotifications from "./ChatNotifications";
-import QuestionsNotifications from "./QuestionsNotifications";
-import plane from "../../images/plane.png";
+import React from "react";
+import {useHistory} from "react-router-dom";
 
 
 const LandingPageNavbar = () => {
-    const history = useHistory();
     return (
         <div>
             <nav style={{paddingTop: "35px", paddingBottom: "35px"}} className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">

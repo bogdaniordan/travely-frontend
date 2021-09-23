@@ -13,7 +13,6 @@ import CheckButton from "react-validation/build/button";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "./AuthStyles";
-import Navbar from "../navigation/Navbar";
 import {Link, Paper} from "@material-ui/core";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
@@ -62,7 +61,7 @@ const Login = () => {
                     setMessage("You have signed in. Redirecting to home page...")
                     setSuccessful(true)
                     setTimeout(() => {
-                        history.push("/")
+                        history.push("/home")
                     }, 2500)
                 },
                 error => {
@@ -76,8 +75,7 @@ const Login = () => {
     return (
         <>
             <LandingPageNavbar />
-            {/*<Navbar title={"Log in as customer"} subtitle={"Please fill in your user credentials."}/>*/}
-            <Paper style={{width: "600px", height: "500px", margin: "auto"}} elevation={3}>
+            <Paper style={{width: "500px", height: "500px", margin: "auto", marginTop: "300px"}} elevation={3}>
                 <Container maxWidth="xs" className="sign-up-container">
                     <CssBaseline />
                     <div className={classes.paper}>
