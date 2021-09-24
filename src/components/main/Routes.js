@@ -17,7 +17,7 @@ import Community from "../community/Community";
 import ChatPage from "../chat/ChatPage";
 import CustomerLandingPage from "./CustomerLandingPage";
 import HostLandingPage from "./HostLandingPage";
-import PeoplePage from "../community/PeoplePage";
+import PeoplePage from "../community/users/PeoplePage";
 
 const Routes = () => {
     return (

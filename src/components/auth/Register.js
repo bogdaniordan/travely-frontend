@@ -13,7 +13,7 @@ import Select from "react-validation/build/select"
 import AuthService from "../../service/AuthService";
 import {required, nameValidation, validEmail, validUsername, validPassword, validPhoneNumber, validAge} from "../../utils/Validations"
 import {Grid} from "@material-ui/core";
-import {useStyles} from "./AuthStyles";
+import {useStyles} from "../../styling/AuthStyles";
 
 const Register = () => {
     const classes = useStyles();

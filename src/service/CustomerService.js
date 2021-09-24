@@ -38,6 +38,30 @@ class CustomerService {
     getAllCustomersExcept(id) {
         return axios.get(`${CUSTOMER_SERVICE_API_URL}/all-customers-except/${id}`, {headers: AuthHeader()})
     }
+
+    addFriend(friendId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/add-friend/${AuthService.getCurrentUser().id}/${friendId}`, {headers: AuthHeader()})
+    }
+
+    removeFriend(friendId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/remove-friend/${AuthService.getCurrentUser().id}/${friendId}`, {headers: AuthHeader()})
+    }
+
+    getFriends() {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/get-friends/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()});
+    }
+
+    getSuggestedPeople() {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/get-suggested/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()});
+    }
+
+    personIsFriend(personId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/people-are-friends/${AuthService.getCurrentUser().id}/${personId}`, {headers: AuthHeader()});
+    }
+
+    getMutualFriends(id) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/get-mutual-friends/${AuthService.getCurrentUser().id}/${id}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CustomerService;

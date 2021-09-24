@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import Footer from "../navigation/Footer";
 import Navbar from "../navigation/Navbar";
-import Recommendations from "./Recommendations";
+import Recommendations from "../recommendation/Recommendations";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
-import Friends from "./Friends";
+import Friends from "./users/Friends";
 import BookingService from "../../service/BookingService";
 import UserPost from "./UserPost";
 import PostService from "../../service/PostService";
 import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
+import {useHistory} from "react-router-dom";
 
 const Community = () => {
+    const history = useHistory();
     const [user, setUser] = useState({})
     const [bookings, setBookings] = useState([])
     const [posts, setPosts] = useState([])
@@ -50,6 +52,8 @@ const Community = () => {
                                         <option value="my_posts">My posts</option>
                                         <option value="other_posts">Other's posts</option>
                                     </select>
+                                    <br/>
+                                    <Button variant="outlined" color="primary" onClick={() => history.push("/people")}>People</Button>
                                 </div>
                                     {/*<br/>*/}
                                     {/*<div className="h7">Favourite cities: Miami, Copenhagen, Rotterdam, L.A. and Stockholm.*/}

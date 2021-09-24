@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import PersonCard from "./PersonCard";
-import Navbar from "../navigation/Navbar";
-import Footer from "../navigation/Footer";
-import CustomerService from "../../service/CustomerService";
-import AuthService from "../../service/AuthService";
+import Navbar from "../../navigation/Navbar";
+import Footer from "../../navigation/Footer";
+import CustomerService from "../../../service/CustomerService";
+import AuthService from "../../../service/AuthService";
 import {Link} from "react-router-dom";
 
 const PeoplePage = () => {

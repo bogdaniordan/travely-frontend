@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Avatar from "@material-ui/core/Avatar";
-import CustomerService from "../../service/CustomerService";
-import AuthService from "../../service/AuthService";
+import CustomerService from "../../../service/CustomerService";
+import AuthService from "../../../service/AuthService";
 import Link from "react-router-dom/Link";
 
 
@@ -14,7 +14,7 @@ const Friends = () => {
 
     return (
             <li className="list-group-item">
-                <h5>Chat with others</h5>
+                <h5>Chat with friends</h5>
                 <br/>
                 {
                     otherUsers.map(

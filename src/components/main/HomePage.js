@@ -9,7 +9,6 @@ import {useHistory} from "react-router-dom";
 import FamousCityBar from "../../utils/FamousCityBar";
 
 const HomePage = () => {
-    const history = useHistory();
     const [location, setLocation] = useState();
     const [searchInput, setSearchInput] = useState();
     const [results, setResults] = useState();
@@ -17,9 +16,6 @@ const HomePage = () => {
     const [savedAccommodations, setSavedAccommodations] = useState([]);
 
     useEffect(() => {
-        if (!AuthService.getCurrentUser()) {
-            history.push("/login")
-        }
         AccommodationService.getAllSavedAccommodations(AuthService.getCurrentUser().id).then(res => setSavedAccommodations(res.data));
     }, [])
 

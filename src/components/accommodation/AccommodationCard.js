@@ -10,7 +10,7 @@ import { RatingView } from 'react-simple-star-rating'
 import TestimonialService from "../../service/TestimonialService";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
-import RecommendationModal from "../community/RecommendationModal";
+import RecommendationModal from "../recommendation/RecommendationModal";
 
 const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations}) => {
     const history = useHistory();

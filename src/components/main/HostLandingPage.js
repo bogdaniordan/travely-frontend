@@ -28,7 +28,7 @@ const HostLandingPage = () => {
                             Register as host
                         </a></Button>
                     </div>
-                    <a href="/clinicPage">
+                    <a href="/host-landing-page">
                         <div className="imgBox">
                             <img
                                 src="https://i.pinimg.com/originals/d6/11/3b/d6113b031ac40ecc19a85eda0ae55436.png"
