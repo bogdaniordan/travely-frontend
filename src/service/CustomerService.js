@@ -62,6 +62,22 @@ class CustomerService {
     getMutualFriends(id) {
         return axios.get(`${CUSTOMER_SERVICE_API_URL}/get-mutual-friends/${AuthService.getCurrentUser().id}/${id}`, {headers: AuthHeader()})
     }
+
+    acceptFriendRequest(receiverId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/accept-friend-request/${AuthService.getCurrentUser().id}/${receiverId}`, {headers: AuthHeader()})
+    }
+
+    denyFriendRequest(receiverId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/deny-friend-request/${AuthService.getCurrentUser().id}/${receiverId}`, {headers: AuthHeader()})
+    }
+
+    friendRequestSentToUser(receiverId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/sent-friend-request/${AuthService.getCurrentUser().id}/${receiverId}`, {headers: AuthHeader()})
+    }
+
+    cancelFriendRequest(receiverId) {
+        return axios.delete(`${CUSTOMER_SERVICE_API_URL}/cancel-friend-request/${AuthService.getCurrentUser().id}/${receiverId}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CustomerService;
