@@ -28,9 +28,7 @@ const TestimonialCard = ({accommodationId}) => {
                                 {/*    )*/}
                                 {/*}*/}
                                 <div className="row people">
-                                    <h4 className="text-center">Check what other guests had to say </h4>
-                                    <br/>
-                                    <br/>
+                                    <h4 className="text-center" style={{marginBottom: "30px"}}>Check what other guests had to say </h4>
                                     {
                                             testimonials.map(
                                                 testimonial => <div className="col-md-6 col-lg-4 item">

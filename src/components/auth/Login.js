@@ -19,7 +19,7 @@ import {customStyles} from "../../styling/ModalStyling";
 import ResetPasswordModal from "./ResetPasswordModal";
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"
-import login_background from "./login_background.jpg"
+import login_background from "./18963121.jpg"
 
 const Login = () => {
     const classes = useStyles();

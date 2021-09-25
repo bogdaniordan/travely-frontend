@@ -946,3 +946,13 @@ h3 {
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
+
+.flexed-container {
+  display: flex;
+}
+
+.people-filter-container {
+  width: 300px;
+  margin-top: 30px;
+  margin-left: 45%;
+}

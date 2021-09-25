@@ -37,13 +37,13 @@ const Footer = () => {
                                     <small className="rights"><span>&#174;</span> Travely All Rights Reserved.</small>
                                 </div>
                                 <div className="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
-                                    <h6 className="mt-55 mt-2 text-muted bold-text"><b>ANIRUDH SINGLA</b></h6><small> <span><i
-                                    className="fa fa-envelope" aria-hidden="true"></i></span> anirudh@gmail.com</small>
+                                    <h6 className="mt-55 mt-2 text-muted bold-text"><b>BOGDAN IORDAN</b></h6><small> <span><i
+                                    className="fa fa-envelope" aria-hidden="true"></i></span> bogdan.iordan47@gmail.com</small>
                                 </div>
-                                <div className="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3 ">
-                                    <h6 className="text-muted bold-text"><b>RISHABH SHEKHAR</b></h6><small><span><i
-                                    className="fa fa-envelope" aria-hidden="true"></i></span> rishab@gmail.com</small>
-                                </div>
+                                {/*<div className="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3 ">*/}
+                                {/*    <h6 className="text-muted bold-text"><b>RISHABH SHEKHAR</b></h6><small><span><i*/}
+                                {/*    className="fa fa-envelope" aria-hidden="true"></i></span> rishab@gmail.com</small>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </div>

@@ -78,6 +78,10 @@ class CustomerService {
     cancelFriendRequest(receiverId) {
         return axios.delete(`${CUSTOMER_SERVICE_API_URL}/cancel-friend-request/${AuthService.getCurrentUser().id}/${receiverId}`, {headers: AuthHeader()})
     }
+
+    receivedFriendRequest(senderId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/received-friend-request/${senderId}/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new CustomerService;

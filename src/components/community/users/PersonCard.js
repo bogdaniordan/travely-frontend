@@ -7,9 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import BookingService from "../../../service/BookingService";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonAddDisabledIcon from '@mui/icons-material/PersonAddDisabled';
-// import PersonIcon from '@mui/icons-material/Person';
 import CustomerService from "../../../service/CustomerService";
-import AuthService from "../../../service/AuthService";
 
 const useStyles = makeStyles({
     root: {
@@ -24,12 +22,14 @@ const PersonCard = ({person}) => {
     const [bookings, setBookings] = useState([])
     const [isFriend, setIsFriend] = useState(false);
     const [friendRequestSent, setFriendRequestSent] = useState(false);
+    const [receivedFriendRequest, setReceivedFriendRequest] = useState(false);
     const [mutualFriends, setMutualFriends] = useState(0);
 
     useEffect(() => {
         BookingService.getAllByCustomerId(person.id).then(res => setBookings(res.data));
         personIsFriend();
         CustomerService.getMutualFriends(person.id).then(res => setMutualFriends(res.data.length))
+        CustomerService.receivedFriendRequest(person.id).then(res => setReceivedFriendRequest(res.data));
     }, [])
 
     const personIsFriend = () => {
@@ -47,11 +47,23 @@ const PersonCard = ({person}) => {
     }
 
     const removeFriend = () => {
-        CustomerService.removeFriend(person.id).then(response => setIsFriend(false));
+        CustomerService.removeFriend(person.id).then(response => {
+            setIsFriend(false);
+            setReceivedFriendRequest(false);
+            setFriendRequestSent(false);
+        });
     }
 
     const cancelFriendRequest = () => {
-        CustomerService.cancelFriendRequest(person.id).then(response => setFriendRequestSent(false))
+        CustomerService.cancelFriendRequest(person.id).then(response => setFriendRequestSent(false));
+    }
+
+    const acceptFriendRequest = () => {
+        CustomerService.acceptFriendRequest(person.id).then(response => setIsFriend(true));
+    }
+
+    const denyFriendRequest = () => {
+        CustomerService.denyFriendRequest(person.id).then(response => setReceivedFriendRequest(false));
     }
 
     return (
@@ -70,25 +82,25 @@ const PersonCard = ({person}) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <div style={{display: "block"}}>
+                <div className="flexed-container">
                     <Typography variant="body2" component="p">
                         Trips: {bookings.length}
                     </Typography>
-                    <Typography variant="body2" component="p">
+                    <Typography variant="body2" component="p" style={{marginLeft: "55px"}}>
                         {mutualFriends} mutual friend(s)
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="p" style={{float: "right", marginLeft: "80px"}}>
                         {
                             isFriend ?
-                                <PersonAddDisabledIcon color="error" onClick={removeFriend}/>
+                                <PersonAddDisabledIcon color="error" onClick={removeFriend}/> : receivedFriendRequest ?
+                                    (<div className="flexed-container">
+                                        <PersonAddIcon color="success" onClick={acceptFriendRequest} style={{marginRight: "10px"}}/>
+                                        <PersonAddDisabledIcon color="error" onClick={denyFriendRequest}/>
+                                    </div>)
                                 : friendRequestSent ? <PersonAddDisabledIcon style={{color: "yellow"}} onClick={cancelFriendRequest}/> : < PersonAddIcon color="primary" onClick={addFriend}/>
                         }
                     </Typography>
                 </div>
-
-                {/*<IconButton aria-label="delete">*/}
-                {/*    <DeleteIcon />*/}
-                {/*</IconButton>*/}
             </CardActions>
         </Card>
     );
