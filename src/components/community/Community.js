@@ -46,20 +46,17 @@ const Community = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <div className="h5">Filter posts</div>
-                                    <div className="h7 text-muted">
-                                    <select className="form-control" onChange={filterPosts}>
-                                        <option value="all_posts">All posts</option>
-                                        <option value="my_posts">My posts</option>
-                                        <option value="other_posts">Other's posts</option>
-                                    </select>
-                                    <br/>
-                                    <Button variant="outlined" color="primary" onClick={() => history.push("/people")}>People</Button>
+                                        <div className="h7 text-muted">
+                                            <select className="form-control" onChange={filterPosts}>
+                                                <option value="all_posts">All posts</option>
+                                                <option value="my_posts">My posts</option>
+                                                <option value="other_posts">Other's posts</option>
+                                            </select>
+                                            <br/>
+                                            <Button variant="outlined" color="primary" onClick={() => history.push("/people")}>People</Button>
+                                        </div>
+                                    </div>
                                 </div>
-                                    {/*<br/>*/}
-                                    {/*<div className="h7">Favourite cities: Miami, Copenhagen, Rotterdam, L.A. and Stockholm.*/}
-                                    {/*</div>*/}
-                                </div>
-                            </div>
                             <div className="card">
                                 <div className="card-body">
                                     <div className="h5">@{user.firstName} {user.lastName}</div>

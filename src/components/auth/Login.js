@@ -13,13 +13,15 @@ import CheckButton from "react-validation/build/button";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "../../styling/AuthStyles";
-import {Link, Paper} from "@material-ui/core";
+import {Paper} from "@material-ui/core";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/ModalStyling";
 import ResetPasswordModal from "./ResetPasswordModal";
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"
-import login_background from "./18963121.jpg"
+import login_background from "../../images/auth_backgound.jpg"
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
     const classes = useStyles();
@@ -78,8 +80,8 @@ const Login = () => {
         <>
             <LandingPageNavbar />
             <div className="login-image-container">
-                <img src={login_background}/>
-                <Paper style={{position: "absolute", width: "500px", height: "500px", margin: "auto", marginTop: "300px"}} elevation={3}>
+                <img src={login_background} alt="Login background"/>
+                <Paper style={{position: "absolute", width: "500px", height: "700px", margin: "auto"}} elevation={3}>
                     <Container maxWidth="xs" className="sign-up-container">
                         <CssBaseline />
                         <div className={classes.paper}>
@@ -142,6 +144,11 @@ const Login = () => {
                                 <CheckButton style={{ display: "none" }} ref={checkBtn} />
                                 <Grid container>
                                     <Grid item xs>
+                                        <Link to="/register" variant="body2">
+                                            Don't have an account? Register!
+                                        </Link>
+                                        <br/>
+                                        <br/>
                                         <Link variant="body2" onClick={openModal}>
                                             Forgot password?
                                         </Link>
