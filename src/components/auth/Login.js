@@ -69,7 +69,7 @@ const Login = () => {
                     }, 2500)
                 },
                 error => {
-                    setMessage("User doesn't exist or credentials don't match.");
+                    setMessage("Username doesn't exist or credentials don't match.");
                     setSuccessful(false);
                 }
             )

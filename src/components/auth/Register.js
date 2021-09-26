@@ -31,7 +31,7 @@ const Register = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            AuthService.register(firstName, lastName, username, password, email, address, phoneNumber, gender, age).then(
+            AuthService.register(firstName, lastName, username, password, email).then(
                 res => {
                     setMessage(res.data.message);
                     setSuccessful(true);
@@ -52,10 +52,6 @@ const Register = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [username, setUsername] = useState();
-    const [gender, setGender] = useState();
-    const [phoneNumber, setPhoneNumber] = useState();
-    const [address, setAddress] = useState();
-    const [age, setAge] = useState();
 
     const [successful, setSuccessful] = useState(false);
     const [message, setMessage] = useState("");
@@ -79,22 +75,6 @@ const Register = () => {
     const onChangePassword = event => {
         setPassword(event.target.value)
     }
-
-    // const onChangeGender = event => {
-    //     setGender(event.target.value)
-    // }
-    //
-    // const onChangePhoneNumber = event => {
-    //     setPhoneNumber(event.target.value)
-    // }
-    //
-    // const onChangeAddress = event => {
-    //     setAddress(event.target.value)
-    // }
-    //
-    // const onChangeAge = event => {
-    //     setAge(event.target.value)
-    // }
 
     return (
         <>
@@ -191,61 +171,6 @@ const Register = () => {
                                             />
                                         </div>
                                     </Grid>
-                                    {/*<Grid xs={12} sm={6}>*/}
-                                    {/*    <div className="form-group" style={{marginRight: "5px"}}>*/}
-                                    {/*        <label htmlFor="gender">Gender</label>*/}
-                                    {/*        <Select*/}
-                                    {/*            className="form-control"*/}
-                                    {/*            name="email"*/}
-                                    {/*            value={gender}*/}
-                                    {/*            onChange={onChangeGender}*/}
-                                    {/*            validations={[required]}*/}
-                                    {/*        >*/}
-                                    {/*            <option value="" selected disabled hidden>Choose gender</option>*/}
-                                    {/*            <option value="Male">Male</option>*/}
-                                    {/*            <option value="Female">Female</option>*/}
-                                    {/*        </Select>*/}
-                                    {/*    </div>*/}
-                                    {/*</Grid>*/}
-                                    {/*<Grid xs={12} sm={6}>*/}
-                                    {/*    <div className="form-group" style={{marginLeft: "5px"}}>*/}
-                                    {/*        <label htmlFor="phoneNumber">Phone number</label>*/}
-                                    {/*        <Input*/}
-                                    {/*            type="number"*/}
-                                    {/*            className="form-control"*/}
-                                    {/*            name="phoneNumber"*/}
-                                    {/*            value={phoneNumber}*/}
-                                    {/*            onChange={onChangePhoneNumber}*/}
-                                    {/*            validations={[required, validPhoneNumber]}*/}
-                                    {/*        />*/}
-                                    {/*    </div>*/}
-                                    {/*</Grid>*/}
-                                    {/*<Grid xs={12} sm={6}>*/}
-                                    {/*    <div className="form-group" style={{marginRight: "5px"}}>*/}
-                                    {/*        <label htmlFor="Address">Address</label>*/}
-                                    {/*        <Input*/}
-                                    {/*            type="text"*/}
-                                    {/*            className="form-control"*/}
-                                    {/*            name="address"*/}
-                                    {/*            value={address}*/}
-                                    {/*            onChange={onChangeAddress}*/}
-                                    {/*            validations={[required]}*/}
-                                    {/*        />*/}
-                                    {/*    </div>*/}
-                                    {/*</Grid>*/}
-                                    {/*<Grid xs={12} sm={6}>*/}
-                                    {/*    <div className="form-group" style={{marginLeft: "5px"}}>*/}
-                                    {/*        <label htmlFor="age">Age</label>*/}
-                                    {/*        <Input*/}
-                                    {/*            type="number"*/}
-                                    {/*            className="form-control"*/}
-                                    {/*            name="age"*/}
-                                    {/*            value={age}*/}
-                                    {/*            onChange={onChangeAge}*/}
-                                    {/*            validations={[required, validAge]}*/}
-                                    {/*        />*/}
-                                    {/*    </div>*/}
-                                    {/*</Grid>*/}
                                     <br/>
                                     <br/>
                                     <Grid xs={12}>

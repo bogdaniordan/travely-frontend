@@ -32,10 +32,10 @@ const QuestionsPage = (props) => {
     return (
         <div>
             <Navbar title={"Questions"} subtitle={`View your questions with ${host.firstName} ${host.lastName}`}/>
-            <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
-            <br/>
-            <br/>
             <div className="container" style={{justifyContent: "center", height: "400px"}}>
+                <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
+                <br/>
+                <br/>
                 {
                     questions.length > 0 ? (
                         <TableContainer component={Paper}>

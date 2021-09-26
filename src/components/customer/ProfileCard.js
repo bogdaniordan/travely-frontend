@@ -24,6 +24,13 @@ const ProfileCard = () => {
         CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => setCustomer(res.data))
     }, [])
 
+    const updateProfile = () => {
+        history.push({
+            pathname: "/update-profile",
+            // state: {customer: customer}
+        })
+    }
+
     return (
         <>
             <div className="padding" style={{justifyContent: "center"}}>
@@ -37,7 +44,7 @@ const ProfileCard = () => {
                                             src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="100px" width="100px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
                                         <h6 className="f-w-600" style={{color: "black"}}>{customer.firstName} {customer.lastName}</h6>
-                                        <p><Button variant="contained" color="secondary" onClick={() => history.push(`/update-profile`)}>Update</Button></p>
+                                        <p><Button variant="contained" color="secondary" onClick={updateProfile}>Update</Button></p>
                                     </div>
                                 </div>
                                 <div className="col-sm-8">

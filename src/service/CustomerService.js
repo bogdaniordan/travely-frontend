@@ -27,8 +27,18 @@ class CustomerService {
         })
     }
 
-    updateCustomer(customer, id) {
-        return axios.put(`${CUSTOMER_SERVICE_API_URL}/update/${id}`, customer, { headers: AuthHeader() });
+    updateCustomer(data) {
+        const customer = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            phoneNumber: data.phoneNumber,
+            gender: data.gender,
+            address: data.address,
+            age: data.age
+
+        }
+        return axios.put(`${CUSTOMER_SERVICE_API_URL}/update/${AuthService.getCurrentUser().id}`, customer, { headers: AuthHeader() });
     }
 
     cardDetailsExist(id) {

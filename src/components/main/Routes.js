@@ -18,6 +18,7 @@ import ChatPage from "../chat/ChatPage";
 import CustomerLandingPage from "./CustomerLandingPage";
 import HostLandingPage from "./HostLandingPage";
 import PeoplePage from "../community/users/PeoplePage";
+// import 'bulma/css/bulma.min.css';
 
 const Routes = () => {
     return (
@@ -25,12 +26,12 @@ const Routes = () => {
             <Router>
                 <Switch>
                     <Route path="/" exact component={CustomerLandingPage}/>
-                    <Route path="/home" exact component={HomePage} />
-                    <Route path="/register" exact render={() => !AuthService.getCurrentUser() ? <Register /> : <Redirect to="/"/>} />
-                    <Route path="/login" exact render={() => !AuthService.getCurrentUser() ? <Login /> : <Redirect to="/"/>} />
+                    <Route path="/home" exact render={() => AuthService.getCurrentUser() ? <HomePage /> : <Redirect to="/"/>} />
+                    <Route path="/register" exact component={Register} />
+                    <Route path="/login" exact component={Login} />
                     <Route path="/accommodation/:id" exact component={AccommodationDetails}/>
                     <Route path="/payment" exact component={Payment} />
-                    <Route path="/profile" exact component={CustomerProfile} />
+                    <Route path="/profile" exact render={() => AuthService.getCurrentUser() ? <CustomerProfile /> : <Redirect to="/"/>} />
                     <Route path="/update-profile" exact component={UpdateProfile} />
                     <Route path="/ask-question/:bookingId" exact component={QuestionForm} />
                     <Route path="/questions/:hostId" exact component={QuestionsPage} />

@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 const LandingPageNavbar = () => {
     return (
         <div>
-            <nav style={{paddingTop: "35px", paddingBottom: "35px"}} className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
                     <a style={{color: "#aaaccc"}} className="navbar-brand" href="#">Travely</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"

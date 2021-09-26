@@ -29,7 +29,7 @@ const CustomerProfile = () => {
                     <hr className="mb-4"/>
                     <section>
                         {
-                            bookings.length > 0 && (
+                            bookings.length > 0 ? (
                                 <div className="container py-2">
                                     <h4>Current and future bookings</h4>
                                     <br/>
@@ -39,7 +39,7 @@ const CustomerProfile = () => {
                                         )
                                     }
                                 </div>
-                            )
+                            ) : (<h4>No current bookings</h4>)
                         }
 
                         {
