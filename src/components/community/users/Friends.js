@@ -35,8 +35,6 @@ const Friends = () => {
                         <p className="p text-muted">You have don't have any users added as friends.</p>
                     )
                 }
-
-
             </li>
     );
 };

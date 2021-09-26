@@ -92,6 +92,10 @@ class CustomerService {
     receivedFriendRequest(senderId) {
         return axios.get(`${CUSTOMER_SERVICE_API_URL}/received-friend-request/${senderId}/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()});
     }
+
+    getAllReceivedFriendRequests() {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/all-received-friend-requests/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()});
+    }
 }
 
 export default new CustomerService;

@@ -25,10 +25,7 @@ const ProfileCard = () => {
     }, [])
 
     const updateProfile = () => {
-        history.push({
-            pathname: "/update-profile",
-            // state: {customer: customer}
-        })
+        history.push("/update-profile");
     }
 
     return (
@@ -41,9 +38,9 @@ const ProfileCard = () => {
                                 <div className="col-sm-4 bg-c-lite-blue user-profile" style={{backgroundColor: "lightblue"}}>
                                     <div className="card-block text-center text-white">
                                         <div className="m-b-25"><img
-                                            src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="100px" width="100px"
+                                            src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="130px" width="130px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
-                                        <h6 className="f-w-600" style={{color: "black"}}>{customer.firstName} {customer.lastName}</h6>
+                                        <h6 className="f-w-600" style={{color: "black", marginBottom: "20px"}}>{customer.firstName} {customer.lastName}</h6>
                                         <p><Button variant="contained" color="secondary" onClick={updateProfile}>Update</Button></p>
                                     </div>
                                 </div>

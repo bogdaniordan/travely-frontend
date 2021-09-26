@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import AuthService from "../../service/AuthService";
 import plane from "../../images/plane.png"
-import QuestionsNotifications from "./notifications/QuestionsNotifications";
+import Notifications from "./notifications/Notifications";
 import SavedAccommodations from "./notifications/SavedAccommodations";
 import ChatNotifications from "./notifications/ChatNotifications";
 
@@ -39,7 +39,7 @@ const Navbar = ({title, subtitle, savedAccommodations}) => {
                                     <ChatNotifications />
                                 </li>
                                 <li className="nav-item">
-                                    <QuestionsNotifications />
+                                    <Notifications />
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link active"  style={{color: "#aaaccc"}}aria-current="page" href="/login" onClick={logout}>Logout</a>

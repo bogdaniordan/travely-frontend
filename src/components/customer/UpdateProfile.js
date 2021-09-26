@@ -4,17 +4,17 @@ import Navbar from "../navigation/Navbar";
 import Button from "@material-ui/core/Button";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
-import {useHistory, useLocation} from "react-router-dom";
-import {Form} from "react-bootstrap";
+import {Link, useHistory} from "react-router-dom";
 import Footer from "../navigation/Footer";
 import {useStyles} from "../../styling/AuthStyles";
 import {useForm} from "react-hook-form";
+import {Form} from "react-bootstrap";
 
 const UpdateProfile = () => {
     const classes = useStyles();
-    const location = useLocation();
     const history = useHistory();
     const [file, setFile] = useState();
+    const [customer, setCustomer] = useState({});
     // const [preloadedValues, setPreloadedValues] = useState({
     //     // firstName: "Bogdan",
     //     // lastName: location.state.customer.lastName,
@@ -30,7 +30,10 @@ const UpdateProfile = () => {
     });
 
     useEffect(() => {
-        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => reset(res.data))
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {
+            setCustomer(res.data)
+            reset(res.data)
+        })
     }, [reset])
 
 
@@ -42,7 +45,7 @@ const UpdateProfile = () => {
         const formData = new FormData();
         formData.append("file", file);
         if (file) {
-            CustomerService.setImage(location.state.customer.id, formData);
+            CustomerService.setImage(customer.id, formData);
         }
     }
 
@@ -50,10 +53,11 @@ const UpdateProfile = () => {
         <div>
             <Navbar title={"Update user"} subtitle={"Please fill in any user detail you want to update."}/>
                 <div className="container">
-                    <Paper elevation={2} style={{height: "600px"}}>
+                    <Paper elevation={2} style={{height: "750px", width: "700px", margin: "auto"}}>
                         <Container maxWidth="xs" className="sign-up-container">
+                            <br/>
+                            <h3 className="update-user-header">Update user details</h3>
                             <CssBaseline />
-
                             <div className={classes.paper}>
                                 <form onSubmit={handleSubmit((data) => {
                                     CustomerService.updateCustomer(data).then(
@@ -63,19 +67,19 @@ const UpdateProfile = () => {
                                         }
                                     )
                                 })}>
+                                    <div>
+                                        <Link to="profile" style={{float: "left"}}>Back to profile</Link>
+                                    </div>
                                     <Grid container spacing={2}>
-                                        <Grid item={12} sm={6} >
+                                        <Grid item={12} sm={6}>
                                             <div className="form-group">
                                                 <label htmlFor="firstName">First name</label>
-                                                    <input
+                                                <input
                                                         type="text"
                                                         className="form-control"
                                                         name="firstName"
                                                         {...register("firstName", {required: true, minLength: 3})}
                                                     />
-                                                    <span className="icon is-small is-left">
-                                                        <i className="fas fa-user"></i>
-                                                    </span>
                                             </div>
                                             {errors.firstName && <span style={{color:"red"}}>This field needs at least 3 characters.!</span>}
                                         </Grid>
@@ -163,7 +167,7 @@ const UpdateProfile = () => {
                                         </Grid>
                                         <br/>
                                         <br/>
-                                        <Grid container>
+                                        <Grid container style={{marginTop: "25px"}}>
                                             <Grid items xs>
                                                 <Button variant="contained" type="submit" color="primary">Submit</Button>
                                             </Grid>
