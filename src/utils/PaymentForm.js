@@ -145,6 +145,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                     onChange={onChangeCvv}
                                     validations={[required, validCVV]}
                                 />
+                                <small className="text-muted">3 digits</small>
                             </div>
                         </div>
                         <hr className="mb-4"/>

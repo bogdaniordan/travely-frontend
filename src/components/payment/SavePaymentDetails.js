@@ -66,6 +66,7 @@ const SavePaymentDetails = ({closeModal}) => {
                                         label="Expiry date"
                                         {...register("expirationDate", {required: true, minLength: 3, maxLength: 5})}
                                         fullWidth
+                                        helperText="Card expiration date in month/year format"
                                         autoComplete="cc-exp"
                                         variant="standard"
                                     />

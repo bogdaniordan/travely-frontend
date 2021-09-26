@@ -18,6 +18,7 @@ import ChatPage from "../chat/ChatPage";
 import CustomerLandingPage from "./CustomerLandingPage";
 import HostLandingPage from "./HostLandingPage";
 import PeoplePage from "../community/users/PeoplePage";
+import SuccessfulPayment from "../payment/SuccessfulPayment";
 // import 'bulma/css/bulma.min.css';
 
 const Routes = () => {
@@ -42,6 +43,7 @@ const Routes = () => {
                     <Route path="/customer-landing-page" exact component={CustomerLandingPage} />
                     <Route path="/host-landing-page" exact component={HostLandingPage} />
                     <Route path="/people" exact component={PeoplePage} />
+                    <Route path="/success-payment" exact component={SuccessfulPayment} />
                 </Switch>
             </Router>
         </div>

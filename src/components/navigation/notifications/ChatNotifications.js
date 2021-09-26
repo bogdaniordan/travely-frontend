@@ -79,7 +79,7 @@ const ChatNotifications = () => {
                                                         to={`/chat/${chatMessages[0].sender.id}`}
                                                         onClick={() => markMessagesAsSeen(chatMessages)}
                                                     >
-                                                        <strong>{chatMessages.length} new messages</strong>
+                                                        <strong>{chatMessages.length} new message(s)</strong>
                                                     </Link>
                                                 </p>
                                                 <small>{`- ${chatMessages[0].sender.firstName} ${chatMessages[0].sender.lastName}`}</small>

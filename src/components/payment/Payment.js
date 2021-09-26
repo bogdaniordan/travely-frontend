@@ -107,9 +107,8 @@ const Payment = () => {
             BookingService.saveBooking(booking, accommodation.host.id, customer.id, accommodation.id)
                 .then(
                     response => {
-                            setMessage("You're booking was successful.")
-                            setSuccessful(true);
                             saveCustomerCardDetails();
+                            history.push("/success-payment")
                         },
                         error => {
                             setMessage("Something went wrong with the billing details.")

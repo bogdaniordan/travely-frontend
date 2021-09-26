@@ -104,6 +104,7 @@ const BookingCard = ({customer, accommodation}) => {
                         <Typography variant="body2" component="p">
                             Choose your check in and check out dates.
                         </Typography>
+                        <br/>
                         <TextField
                             id="date"
                             label="Check-in"

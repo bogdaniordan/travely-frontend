@@ -8,8 +8,9 @@ const HostLandingPage = () => {
         <div>
             <LandingPageNavbar />
             <section className="landing-page-container">
-                <div className="circle" style={{ background: "orange" }}></div>
+                <div className="circle" style={{ background: "blue" }}></div>
                 <div className="second-circle"></div>
+                <div className="third-circle"></div>
                 <div className="content">
                     <div className="textBox">
                         <h2>
@@ -21,12 +22,24 @@ const HostLandingPage = () => {
                             add new accommodation or clean them. They can also earn badges.
                         </p>
                         <br/>
-                        <Button variant="contained" color="primary"><a href="http://localhost:3001/login">
-                            Login as host
-                        </a></Button>
-                        <Button variant="contained" color="primary" style={{marginLeft: "10px"}}><a href="http://localhost:3001/register">
-                            Register as host
-                        </a></Button>
+                        {
+                            !JSON.parse(localStorage.getItem("host")) ? (
+                                <div>
+                                    <Button variant="contained" color="primary"><a href="http://localhost:3001/login">
+                                        Login as host
+                                    </a></Button>
+                                    <Button variant="contained" color="primary" style={{marginLeft: "10px"}}><a href="http://localhost:3001/register">
+                                        Register as host
+                                    </a></Button>
+                                </div>
+                            ) : (
+                                <div>
+                                    <Button variant="contained" color="primary"><a href="http://localhost:3001/">
+                                        Home
+                                    </a></Button>
+                                </div>
+                            )
+                        }
                     </div>
                     <a href="/host-landing-page">
                         <div className="imgBox">

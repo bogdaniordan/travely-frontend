@@ -107,3 +107,14 @@
     clip-path: circle(1400px at right 1700px);
     background: #212529;
 }
+
+
+.third-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(850px at left 800px);
+    background: orange;
+}

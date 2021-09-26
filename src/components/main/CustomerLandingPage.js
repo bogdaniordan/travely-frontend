@@ -3,6 +3,7 @@ import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LandingPage.css"
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
+import AuthService from "../../service/AuthService";
 
 const CustomerLandingPage = () => {
     const history = useHistory();
@@ -13,6 +14,7 @@ const CustomerLandingPage = () => {
             <section className="landing-page-container">
                 <div className="circle"></div>
                 <div className="second-circle"></div>
+                <div className="third-circle"></div>
                 <div className="content">
                     <div className="textBox">
                         <h2>
@@ -24,12 +26,26 @@ const CustomerLandingPage = () => {
                             They can also manage their bookings and access the community features where they can interact with other travellers.
                         </p>
                         <br/>
-                        <Button variant="contained" color="primary" onClick={() => history.push("/login")}>
-                            Login as customer
-                        </Button>
-                        <Button variant="contained" color="primary" onClick={() => history.push("/register")} style={{marginLeft: "10px"}}>
-                            Register as customer
-                        </Button>
+                        {
+                            !AuthService.getCurrentUser() ? (
+                                <div>
+                                    <Button variant="contained" color="primary" onClick={() => history.push("/login")}>
+                                        Login as customer
+                                    </Button>
+                                    <Button variant="contained" color="primary" onClick={() => history.push("/register")} style={{marginLeft: "10px"}}>
+                                        Register as customer
+                                    </Button>
+                                </div>
+                            ) : (
+                                <div>
+                                    <Button variant="contained" color="primary" onClick={() => history.push("/home")}>
+                                        Home
+                                    </Button>
+                                </div>
+                            )
+                        }
+
+
                     </div>
                     <a href="/customer-landing-page">
                         <div className="imgBox">
