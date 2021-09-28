@@ -108,7 +108,10 @@ const Payment = () => {
                 .then(
                     response => {
                             saveCustomerCardDetails();
-                            history.push("/success-payment")
+                            history.push({
+                                pathname: "/success-payment",
+                                state: {booking: response.data}
+                            })
                         },
                         error => {
                             setMessage("Something went wrong with the billing details.")

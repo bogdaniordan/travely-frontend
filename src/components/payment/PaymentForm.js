@@ -15,6 +15,8 @@ import CheckButton from "react-validation/build/button";
 import StripeCheckout from "react-stripe-checkout";
 import CustomerService from "../../service/CustomerService";
 import {useHistory} from "react-router-dom";
+import BookingService from "../../service/BookingService";
+import AuthService from "../../service/AuthService";
 
 const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm, form, firstName, onChangeFirstName, lastName ,onChangeLastName, email, onChangeEmail, address, onChangeAddress, nameOnCard, onChangeNameOnCard, cardNumber, onChangeCardNumber,
                      expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn, cardDetailsExist}) => {
@@ -23,7 +25,13 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
     const handleToken = (token) => {
         const amount = bookingDurationInDays * accommodation.pricePerNight;
         CustomerService.payWithStripe(token, amount).then(
-            res => history.push("/success-payment"),
+            res => {
+                BookingService.saveBooking(booking, accommodation.host.id, AuthService.getCurrentUser().id, accommodation.id)
+                    .then(response => history.push({
+                        pathname: "/success-payment",
+                        state: {booking: response.data}
+                    }))
+            },
             error => console.error(error)
         )
     }
@@ -161,13 +169,8 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <small className="text-muted">3 digits</small>
                             </div>
                         </div>
-                        <StripeCheckout
-                            stripeKey="pk_test_51JediMF8Clxej3cvDhlrQQrHdpK2xvTsIhFgdI1nAZEJPQ4ciYaRSMZjhrLMjP9nO6E07mGqQsuc74FUI4sjbRX9004hVSsslc"
-                            token={handleToken}
-                            // billingAddress
-                            amount={bookingDurationInDays * accommodation.pricePerNight * 100}
-                            name={accommodation.title}
-                        />
+
+
                         <hr className="mb-4"/>
                         {
                             !cardDetailsExist && (
@@ -178,7 +181,21 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             )
                         }
                         <hr className="mb-4"/>
-                        <Button variant="contained" color="primary" type="submit">Book</Button>
+                        <Button variant="contained" color="primary" type="submit" style={{marginRight: "10px"}}>PAY</Button>
+                        <StripeCheckout
+                            stripeKey="pk_test_51JediMF8Clxej3cvDhlrQQrHdpK2xvTsIhFgdI1nAZEJPQ4ciYaRSMZjhrLMjP9nO6E07mGqQsuc74FUI4sjbRX9004hVSsslc"
+                            token={handleToken}
+                            billingAddress
+                            // zipCode={false}
+                            image={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}
+                            amount={bookingDurationInDays * accommodation.pricePerNight * 100}
+                            name={accommodation.title}
+                            // email={email}
+                            description="Enter your details for Stripe payment"
+                        >
+                            <Button color="secondary" variant="contained">PAY WITH STRIPE</Button>
+                        </StripeCheckout>
+
                         <CheckButton style={{ display: "none" }} ref={checkBtn} />
                     </Form>
                 </div>

@@ -5,7 +5,6 @@ import AccommodationCard from "../accommodation/AccommodationCard";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
-import {useHistory} from "react-router-dom";
 import FamousCityBar from "../../utils/FamousCityBar";
 
 const HomePage = () => {
