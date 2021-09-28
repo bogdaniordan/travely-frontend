@@ -8,6 +8,7 @@ import Map from "../../utils/Map";
 import Testimonials from "../testimonial/Testimonials";
 import AccommodationFacilitiesCard from "./AccommodationFacilitiesCard";
 import Footer from "../navigation/Footer";
+import Geocode from "react-geocode";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;

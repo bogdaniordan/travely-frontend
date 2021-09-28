@@ -961,3 +961,7 @@ h3 {
 .update-user-header{
   margin-top: 30px;
 }
+
+.right-align-container {
+  text-align: right;
+}

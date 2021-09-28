@@ -40,7 +40,7 @@ const BookingCard = ({customer, accommodation}) => {
             }, )
         } else {
             if (startingDate < new Date()) {
-                setMessage("You cannot book a date in the past.");
+                setMessage("You cannot book current day or a date in the past.");
             } else {
                 setMessage("Check-in needs to be before check-out date.");
             }

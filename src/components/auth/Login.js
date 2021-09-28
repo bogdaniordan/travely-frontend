@@ -92,6 +92,7 @@ const Login = () => {
                             <Typography component="h1" variant="h5">
                                 Sign up
                             </Typography>
+                            <br/>
                             {message && (
                                 <div className="form-group">
                                     <div

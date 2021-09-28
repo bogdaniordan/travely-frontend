@@ -14,7 +14,9 @@ const RecommendationModal = ({closeModal, accommodation}) => {
 
     return (
         <div>
-            <Button onClick={closeModal} color="secondary" variant="contained">X</Button>
+            <div className="right-align-container">
+                <Button onClick={closeModal} color="secondary" variant="contained">X</Button>
+            </div>
             <div className="modal-dialog modal-confirm">
                 <div className="modal-content">
                     <div className="modal-body text-center" >

@@ -12,11 +12,11 @@ const SuccessfulPayment = () => {
             <Navbar title="Congratulations" />
             <div className="payment-success-card">
                 <div className="payment-success-container">
-                    <i className="checkmark">✓</i>
+                    <i id="success-checkmark" className="checkmark">✓</i>
                 </div>
                 <h1 className="payment-success-header">Success</h1>
                 <p className="payment-success-message">Your payment has been made successfully!<br/> You can view your bookings in your profile page.<br/>
-                <Button variant="contained" color="primary" onClick={() => history.push("/profile")} style={{marginTop: "25px"}}>Go to profile</Button>
+                <Button variant="contained" color="primary" onClick={() => history.push("/home")} style={{marginTop: "25px"}}>Go to profile</Button>
                 </p>
             </div>
         </body>

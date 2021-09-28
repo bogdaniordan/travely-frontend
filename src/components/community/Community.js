@@ -45,7 +45,7 @@ const Community = () => {
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="h5">Filter posts</div>
+                                    <h4 className="h5">Filter posts</h4>
                                         <div className="h7 text-muted">
                                             <select className="form-control" onChange={filterPosts}>
                                                 <option value="all_posts">All posts</option>

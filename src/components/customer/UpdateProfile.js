@@ -15,15 +15,6 @@ const UpdateProfile = () => {
     const history = useHistory();
     const [file, setFile] = useState();
     const [customer, setCustomer] = useState({});
-    // const [preloadedValues, setPreloadedValues] = useState({
-    //     // firstName: "Bogdan",
-    //     // lastName: location.state.customer.lastName,
-    //     // phoneNumber: location.state.customer.phoneNumber,
-    //     // email: location.state.customer.email,
-    //     // age: location.state.customer.age,
-    //     // address: location.state.customer.address
-    // })
-
 
     const { register, handleSubmit, formState: {errors}, reset } = useForm({
         defaultValues: {}
@@ -67,9 +58,9 @@ const UpdateProfile = () => {
                                         }
                                     )
                                 })}>
-                                    <div>
-                                        <Link to="profile" style={{float: "left"}}>Back to profile</Link>
-                                    </div>
+                                    {/*<div>*/}
+                                    {/*    <Link to="profile" style={{float: "left"}}>Back to profile</Link>*/}
+                                    {/*</div>*/}
                                     <Grid container spacing={2}>
                                         <Grid item={12} sm={6}>
                                             <div className="form-group">
@@ -169,7 +160,8 @@ const UpdateProfile = () => {
                                         <br/>
                                         <Grid container style={{marginTop: "25px"}}>
                                             <Grid items xs>
-                                                <Button variant="contained" type="submit" color="primary">Submit</Button>
+                                                <Button variant="contained" type="submit" color="primary" style={{float: "left", marginLeft: "15px"}}>Submit</Button>
+                                                <Button variant="contained" color="secondary" style={{float: "right"}} onClick={() => history.push("/profile")}>Back</Button>
                                             </Grid>
                                         </Grid>
                                     </Grid>

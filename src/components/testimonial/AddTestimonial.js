@@ -24,7 +24,7 @@ const AddTestimonial = () => {
     return (
         <div>
             <Navbar title={"Accommodation review"}/>
-            <div className="container" style={{height: "300px"}}>
+            <div className="container" style={{height: "350px"}}>
                 <ReviewsIcon style={{margin: "auto", height: "100px", width: "100px", marginBottom: "20px"}} color="primary"/>
                 <br/>
                 <form onSubmit={handleSubmit((data) => {

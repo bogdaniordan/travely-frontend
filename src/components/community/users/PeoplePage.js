@@ -30,7 +30,7 @@ const PeoplePage = () => {
     return (
         <div>
             <Navbar title="People" subtitle="Interact with people of Travely"/>
-            <div className="container">
+            <div className="container" style={{height: "500px"}}>
                 <Link to={`/community`} style={{float: "left", marginBottom: "20px"}}>Back to community</Link>
                 <div className="people-filter-container">
                     <p>Filter people</p>

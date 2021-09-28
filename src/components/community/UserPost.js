@@ -108,7 +108,7 @@ const UserPost = ({post, posts, setPosts}) => {
                         <Button variant="outlined" color="primary" onClick={likePost} style={{margin: "5px"}}>Like</Button>
                     )
                 }
-                <Button variant="outlined" color="primary" onClick={showCommentInputContainer}>Comment</Button>
+                <Button variant="outlined" color="primary" onClick={showCommentInputContainer}>{!showCommentInput ? "Comment" : "Hide"}</Button>
             </div>
             <Collapse in={showCommentInput}>
                 <div className="comments-section">

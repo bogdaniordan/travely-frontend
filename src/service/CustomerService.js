@@ -96,6 +96,13 @@ class CustomerService {
     getAllReceivedFriendRequests() {
         return axios.get(`${CUSTOMER_SERVICE_API_URL}/all-received-friend-requests/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()});
     }
+
+    payWithStripe(token, amount) {
+        return axios.post(`http://localhost:8080/charge-card`, {
+            token: token.id,
+            amount: amount
+        }, {headers: AuthHeader()})
+    }
 }
 
 export default new CustomerService;

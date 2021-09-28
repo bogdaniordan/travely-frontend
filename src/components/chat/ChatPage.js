@@ -98,41 +98,40 @@ const ChatPage = (props) => {
                         <div className="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12" >
                             <div className="card">
                                 <div className="card-header">{otherUser.firstName} {otherUser.lastName}</div>
-                                <div className="card-body height3" style={{overflow: "auto", height: "600px"}} >
-                                    <ul className="chat-list">
-                                        {
-                                            messages.map(
-                                                message => (
-                                                    <li className={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? "out" : "in"}>
-                                                        <div className="chat-img">
-                                                            <Avatar alt="Avatar" src={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` : `http://localhost:8080/customers/image/${otherUserId}/download`}/>
-                                                        </div>
-                                                        <div className="chat-body" >
-                                                            <div className="chat-message" style={{width: "300px"}}>
-                                                                {/*<h5>Serena</h5>*/}
-                                                                <h5>{message.content}</h5>
-                                                                {
-                                                                    Array.isArray(message.time) ? (
-                                                                        <small>{moment(message.time.slice(0, 5)).format("DD-MM-YYYY, h:mm:ss a")}</small>
-                                                                    ) : (
-                                                                        <small>{moment(message.time).format("DD-MM-YYYY, h:mm:ss a")}</small>
-                                                                    )
-                                                                }
-                                                                <br/>
+                                    <div className="card-body height3" style={{overflow: "auto", height: "600px"}} >
+                                        <ul className="chat-list">
+                                            {
+                                                messages.map(
+                                                    message => (
+                                                        <li className={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? "out" : "in"}>
+                                                            <div className="chat-img">
+                                                                <Avatar alt="Avatar" src={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` : `http://localhost:8080/customers/image/${otherUserId}/download`}/>
                                                             </div>
-                                                        </div>
-                                                    </li>
+                                                            <div className="chat-body" >
+                                                                <div className="chat-message" style={{width: "300px"}}>
+                                                                    {/*<h5>Serena</h5>*/}
+                                                                    <h5>{message.content}</h5>
+                                                                    {
+                                                                        Array.isArray(message.time) ? (
+                                                                            <small>{moment(message.time.slice(0, 5)).format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                        ) : (
+                                                                            <small>{moment(message.time).format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                        )
+                                                                    }
+                                                                    <br/>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    )
                                                 )
-                                            )
-                                        }
-                                        <div ref={messagesEndRef}></div>
-                                    </ul>
-                                </div>
+                                            }
+                                            <div ref={messagesEndRef}></div>
+                                        </ul>
+                                    </div>
                                 <div className="chat-input-container">
                                     <input className="form-control" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
                                     <Button className="chat-send-button" variant="contained" color="primary" onClick={send}>Send</Button>
                                 </div>
-
                             </div>
                         </div>
                 </div>

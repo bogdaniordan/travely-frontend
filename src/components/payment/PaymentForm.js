@@ -1,5 +1,5 @@
 import React from 'react';
-import AccommodationCard from "../components/accommodation/AccommodationCard";
+import AccommodationCard from "../accommodation/AccommodationCard";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import {
@@ -9,12 +9,25 @@ import {
     validCreditCardNumber, validCVV,
     validEmail,
     validExpirationDate
-} from "./Validations";
+} from "../../utils/Validations";
 import Button from "@material-ui/core/Button";
 import CheckButton from "react-validation/build/button";
+import StripeCheckout from "react-stripe-checkout";
+import CustomerService from "../../service/CustomerService";
+import {useHistory} from "react-router-dom";
 
 const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm, form, firstName, onChangeFirstName, lastName ,onChangeLastName, email, onChangeEmail, address, onChangeAddress, nameOnCard, onChangeNameOnCard, cardNumber, onChangeCardNumber,
                      expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn, cardDetailsExist}) => {
+    const history = useHistory();
+
+    const handleToken = (token) => {
+        const amount = bookingDurationInDays * accommodation.pricePerNight;
+        CustomerService.payWithStripe(token, amount).then(
+            res => history.push("/success-payment"),
+            error => console.error(error)
+        )
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -148,6 +161,13 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <small className="text-muted">3 digits</small>
                             </div>
                         </div>
+                        <StripeCheckout
+                            stripeKey="pk_test_51JediMF8Clxej3cvDhlrQQrHdpK2xvTsIhFgdI1nAZEJPQ4ciYaRSMZjhrLMjP9nO6E07mGqQsuc74FUI4sjbRX9004hVSsslc"
+                            token={handleToken}
+                            // billingAddress
+                            amount={bookingDurationInDays * accommodation.pricePerNight * 100}
+                            name={accommodation.title}
+                        />
                         <hr className="mb-4"/>
                         {
                             !cardDetailsExist && (

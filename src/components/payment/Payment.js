@@ -3,7 +3,7 @@ import Navbar from "../navigation/Navbar";
 import {useHistory, useLocation} from "react-router-dom";
 import BookingService from "../../service/BookingService";
 import CustomerService from "../../service/CustomerService";
-import PaymentForm from "../../utils/PaymentForm";
+import PaymentForm from "./PaymentForm";
 import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
 
