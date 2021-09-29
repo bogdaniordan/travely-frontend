@@ -7,7 +7,7 @@ const LandingPageNavbar = () => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
                 <div className="container" >
-                    <a href="/home">
+                    <a href="/customer-landing-page">
                         <img src={simple_logo} style={{width: "110px", height: "100px"}} alt="logo"/>
                     </a>
                     {/*<a style={{color: "#aaaccc"}} className="navbar-brand" href="#">Travely</a>*/}

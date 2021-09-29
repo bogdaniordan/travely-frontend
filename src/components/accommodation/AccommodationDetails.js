@@ -8,7 +8,6 @@ import Map from "../../utils/Map";
 import Testimonials from "../testimonial/Testimonials";
 import AccommodationFacilitiesCard from "./AccommodationFacilitiesCard";
 import Footer from "../navigation/Footer";
-import Geocode from "react-geocode";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
@@ -59,18 +58,26 @@ const AccommodationDetails = (props) => {
                                 <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
                             </a>
                         </div>
-                        <div className="col-md-3 col-sm-6 mb-4">
-                            <a href="#">
-                                <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
-                            </a>
+                        <div className="col-md-6 col-sm-6 mb-8">
+                            <div className="card flex-md-row mb-4 box-shadow h-md-250">
+                                <div className="card-body d-flex flex-column align-items-start" style={{height: "170px"}}>
+                                    <strong className="d-inline-block mb-2 text-primary">Cleanliness: {accommodation.cleaningStatus.toLowerCase().replace("_", " ")}</strong>
+                                    <h3 className="mb-0">
+                                        <a className="text-dark" href="#">{accommodation.placeType}</a>
+                                    </h3>
+                                    <div className="mb-1 text-muted" style={{marginTop: "10px"}}>Location: {accommodation.location}</div>
+                                    <br/>
+                                    {/*<p className="card-text mb-auto">The price for this accommodation is ${accommodation.pricePerNight} per night.</p>*/}
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <a href="#">
-                                <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
-                            </a>
-                        </div>
-                        <div style={{marginBottom: "20px"}}>
+                        {/*<div class="col-md-3 col-sm-6 mb-4">*/}
+                        {/*    <a href="#">*/}
+                        {/*        <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>*/}
+                        {/*    </a>*/}
+                        {/*</div>*/}
+                        <div className="google-maps-container">
                             <Map
                                 // api key = AIzaSyBtJ-at-3HxnIdCfaeplBDJJaNuZ18rFgg
                                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtJ-at-3HxnIdCfaeplBDJJaNuZ18rFgg"

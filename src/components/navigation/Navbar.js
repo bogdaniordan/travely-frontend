@@ -34,23 +34,22 @@ const Navbar = ({title, subtitle, savedAccommodations}) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarsExample07">
                         {AuthService.getCurrentUser() ? (
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{width: "100%"}}>
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/profile">Profile</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/community">Community</a>
                                 </li>
-                                {
-                                    AuthService.getCurrentUser() && (
-                                        <li className="nav-item">
-                                            <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="#">Logged in as {user.firstName}</a>
-                                        </li>
-                                    )
-                                }
-
+                                {/*{*/}
+                                {/*    AuthService.getCurrentUser() && (*/}
+                                {/*        <li className="nav-item">*/}
+                                {/*            <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="#">Logged in as {user.firstName}</a>*/}
+                                {/*        </li>*/}
+                                {/*    )*/}
+                                {/*}*/}
                                 <li className="nav-item">
-                                   <SavedAccommodations savedAccommodations={savedAccommodations} />
+                                    <SavedAccommodations savedAccommodations={savedAccommodations} />
                                 </li>
                                 <li>
                                     <ChatNotifications />
@@ -58,6 +57,8 @@ const Navbar = ({title, subtitle, savedAccommodations}) => {
                                 <li className="nav-item">
                                     <Notifications />
                                 </li>
+                                <li className="nav-item" style={{width: "65%"}}></li>
+
                                 <li className="nav-item">
                                     <a className="nav-link active"  style={{color: "#aaaccc"}}aria-current="page" href="/login" onClick={logout}>Logout</a>
                                 </li>

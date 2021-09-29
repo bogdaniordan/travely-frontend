@@ -118,3 +118,13 @@
     clip-path: circle(850px at left 800px);
     background: orange;
 }
+
+.fourth-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(800px at 900px 200px);
+    background: mediumvioletred;
+}

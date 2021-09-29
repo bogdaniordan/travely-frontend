@@ -9,13 +9,15 @@ const ResetPasswordModal = ({closeModal}) => {
 
     return (
         <div>
-            <Button onClick={closeModal} color="secondary" variant="contained">X</Button>
+            <div className="right-align-container">
+                <Button onClick={closeModal} color="secondary" variant="contained">X</Button>
+            </div>
             <div className="modal-dialog modal-confirm">
                 <div className="modal-content">
                     <div className="modal-body text-center">
                         <h4>Enter your email address</h4>
                         <br/>
-                        <h6>Your will receive an email in a few moments.</h6>
+                        <h6>Your will receive a reset password email in a few moments.</h6>
                         <br/>
                         <form onSubmit={handleSubmit((data) => {
                             AuthService.sendResetPasswordEmail(data);

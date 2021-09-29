@@ -965,3 +965,7 @@ h3 {
 .right-align-container {
   text-align: right;
 }
+
+.google-maps-container {
+  margin-bottom: 20px;
+}
