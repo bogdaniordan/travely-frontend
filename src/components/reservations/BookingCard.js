@@ -125,6 +125,7 @@ const BookingCard = ({customer, accommodation}) => {
 
                         />
                         <br/>
+                        <br/>
                         <Button size="large" type="submit" color="primary" variant="contained" style={{marginTop: "10px"}}>
                             BOOK
                         </Button>

@@ -8,6 +8,7 @@ import {Collapse} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CloseIcon from '@mui/icons-material/Close';
 import AuthService from "../../service/AuthService";
+import Divider from '@mui/material/Divider';
 
 const UserPost = ({post, posts, setPosts}) => {
     const [commentInput, setCommentInput] = useState("");

@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
 import FamousCityBar from "../../utils/FamousCityBar";
+import {Divider} from "@material-ui/core";
 
 const HomePage = () => {
     const [location, setLocation] = useState();
@@ -95,14 +96,15 @@ const HomePage = () => {
                                 results ? ( results.length > 0 ? (
                                     results.map(
                                         place => <AccommodationCard place={place} savedAccommodations={savedAccommodations} setSavedAccommodations={setSavedAccommodations}/>
-                                    )
-                                    ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>There are no results for your search...</h3>)
-                                ) : (<h3 style={{marginTop: "20px", marginBottom: "60px"}}>Where would you like to go...</h3>)
+                                        )
+                                    ) : (<h3 className="search-result-header">There are no results for your search...</h3>)
+                                ) : (<h3 className="search-result-header">Where would you like to go...</h3>)
                             }
                         </div>
                     </div>
                 </div>
             </div>
+            <Divider variant="middle" />
             <FamousCityBar searchByCity={searchByCity} />
             <Footer />
         </div>

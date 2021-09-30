@@ -969,3 +969,16 @@ h3 {
 .google-maps-container {
   margin-bottom: 20px;
 }
+
+.search-result-header {
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.red-colored {
+  color: red;
+}
+
+.blue-colored {
+  color: blue;
+}

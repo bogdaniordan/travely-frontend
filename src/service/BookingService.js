@@ -25,6 +25,18 @@ class BookingService {
         return axios.post(`${BOOKING_SERVICE_API_URL}/accommodation-can-be-booked/${accommodationId}`, bookingsDatesDto, {headers: AuthHeader()})
     }
 
+    accommodationIsBookedNow(id) {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/accommodation-is-booked-now/${id}`, {headers: AuthHeader()})
+    }
+
+    accommodationHasFutureBookings(accommodationId) {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/accommodation-has-future-bookings/${accommodationId}`, {headers: AuthHeader()})
+    }
+
+    getClosestFutureBooking(id) {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/closest-future-booking/${id}`, {headers: AuthHeader()});
+    }
+
 }
 
 export default new BookingService;

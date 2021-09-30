@@ -109,7 +109,9 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                         </div>
                         <div className="modal-body text-center">
                             <h4>Are you sure you want to cancel this appointment?</h4>
+                            <br/>
                             <p>Your funds will be refunded in 14 working days.</p>
+                            <br/>
                             <Button variant="contained" color="primary" style={{marginRight: "5px", padding: "10px"}} onClick={cancelBooking}>Yes</Button>
                             <Button variant="contained" color="secondary" style={{padding: "10px"}} onClick={closeModal}>No</Button>
                         </div>

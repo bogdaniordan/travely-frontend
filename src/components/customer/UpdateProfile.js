@@ -44,7 +44,7 @@ const UpdateProfile = () => {
         <div>
             <Navbar title={"Update user"} subtitle={"Please fill in any user detail you want to update."}/>
                 <div className="container">
-                    <Paper elevation={2} style={{height: "750px", width: "700px", margin: "auto"}}>
+                    <Paper elevation={2} style={{height: "900px", width: "700px", margin: "auto"}}>
                         <Container maxWidth="xs" className="sign-up-container">
                             <br/>
                             <h3 className="update-user-header">Update user details</h3>
@@ -72,7 +72,7 @@ const UpdateProfile = () => {
                                                         {...register("firstName", {required: true, minLength: 3})}
                                                     />
                                             </div>
-                                            {errors.firstName && <span style={{color:"red"}}>This field needs at least 3 characters.!</span>}
+                                            {errors.firstName && <span style={{color:"red"}}>This field needs at least 3 characters.</span>}
                                         </Grid>
                                         <Grid item={12} sm={6}>
                                             <div className="form-group">
@@ -84,7 +84,7 @@ const UpdateProfile = () => {
                                                     {...register("lastName", {required: true, minLength: 3})}
                                                 />
                                             </div>
-                                            {errors.lastName && <span style={{color:"red"}}>This field needs at least 3 characters.!</span>}
+                                            {errors.lastName && <span style={{color:"red"}}>This field needs at least 3 characters.</span>}
                                         </Grid>
                                         <Grid item xs={12}>
                                             <div className="form-group">

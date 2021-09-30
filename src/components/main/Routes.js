@@ -19,7 +19,7 @@ import CustomerLandingPage from "./CustomerLandingPage";
 import HostLandingPage from "./HostLandingPage";
 import PeoplePage from "../community/users/PeoplePage";
 import SuccessfulPayment from "../payment/SuccessfulPayment";
-// import 'bulma/css/bulma.min.css';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Routes = () => {
     return (

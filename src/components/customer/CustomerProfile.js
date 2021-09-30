@@ -41,7 +41,6 @@ const CustomerProfile = () => {
                                 </div>
                             ) : (<h4>No current bookings</h4>)
                         }
-
                         {
                             pastBookings.length > 0 && (
                                 <div className="container py-2">
