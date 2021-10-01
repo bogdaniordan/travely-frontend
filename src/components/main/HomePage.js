@@ -97,8 +97,8 @@ const HomePage = () => {
                                     results.map(
                                         place => <AccommodationCard place={place} savedAccommodations={savedAccommodations} setSavedAccommodations={setSavedAccommodations}/>
                                         )
-                                    ) : (<h3 className="search-result-header">There are no results for your search...</h3>)
-                                ) : (<h3 className="search-result-header">Where would you like to go...</h3>)
+                                    ) : (<h4>There are no results for your search...</h4>)
+                                ) : (<h4>Where would you like to go...</h4>)
                             }
                         </div>
                     </div>

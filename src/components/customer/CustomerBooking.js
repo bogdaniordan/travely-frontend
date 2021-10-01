@@ -49,10 +49,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
     }
 
     const leaveReview = () => {
-        history.push({
-          pathname: `/add-testimonial/`,
-          state: {accommodation: booking.accommodation}
-        })
+        history.push(`/add-testimonial/${booking.accommodation.id}`)
     }
 
     return (

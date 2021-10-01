@@ -8,12 +8,17 @@ import AuthService from "../../service/AuthService";
 import TestimonialService from "../../service/TestimonialService";
 import { Rating, RatingView } from 'react-simple-star-rating'
 import ReviewsIcon from '@mui/icons-material/Reviews';
+import AccommodationService from "../../service/AccommodationService";
 
-const AddTestimonial = () => {
-    const location = useLocation();
-    const accommodation = location.state.accommodation;
+const AddTestimonial = (props) => {
+    const accommodationId = props.match.params.accommodationId;
     const history = useHistory();
     const [rating, setRating] = useState(0)
+    const [accommodation, setAccommodation] = useState({})
+
+    useEffect(() => {
+       AccommodationService.getById(accommodationId).then(res => setAccommodation(res.data))
+    },[])
 
     const { register, handleSubmit, formState: {errors} } = useForm();
 
@@ -28,8 +33,9 @@ const AddTestimonial = () => {
                 <ReviewsIcon style={{margin: "auto", height: "100px", width: "100px", marginBottom: "20px"}} color="primary"/>
                 <br/>
                 <form onSubmit={handleSubmit((data) => {
-                    TestimonialService.addTestimonial(accommodation.id, AuthService.getCurrentUser().id, data, rating);
-                    history.push("/profile")
+                    TestimonialService.addTestimonial(accommodationId, AuthService.getCurrentUser().id, data, rating).then(
+                        res => history.push("/profile")
+                    )
                 })}>
                     <br/>
                     <h4 style={{color: "black"}}>Leave a review for your booking at {accommodation.title}, {accommodation.location}</h4>

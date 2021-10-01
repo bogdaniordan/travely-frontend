@@ -36,7 +36,7 @@ const Routes = () => {
                     <Route path="/update-profile" exact component={UpdateProfile} />
                     <Route path="/ask-question/:bookingId" exact component={QuestionForm} />
                     <Route path="/questions/:hostId" exact component={QuestionsPage} />
-                    <Route path="/add-testimonial" exact component={AddTestimonial} />
+                    <Route path="/add-testimonial/:accommodationId" exact component={AddTestimonial} />
                     <Route path="/reset-password/:token" exact component={ResetPassword}/>
                     <Route path="/community" exact component={Community} />
                     <Route path="/chat/:userId" exact component={ChatPage}/>

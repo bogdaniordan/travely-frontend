@@ -7,9 +7,9 @@ const FamousCityBar = ({searchByCity}) => {
 
     return (
         <div className="container">
-            <h4 style={{textAlign:'center', marginTop: "100px"}}>
+            <h3 className="explore-header">
                 Explore famous cities
-            </h4>
+            </h3>
             <List style={{display: "flex"}}>
                 {
                     exploreCities.map(

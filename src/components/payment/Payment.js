@@ -6,6 +6,7 @@ import CustomerService from "../../service/CustomerService";
 import PaymentForm from "./PaymentForm";
 import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
+import moment from "moment";
 
 const Payment = () => {
     const booking = useLocation().state.booking;
@@ -102,6 +103,8 @@ const Payment = () => {
         e.preventDefault();
         setMessage("");
         setSuccessful(false);
+        booking.checkInDate = moment(booking.checkInDate).format("YYYY-MM-DD");
+        booking.checkoutDate = moment(booking.checkoutDate).format("YYYY-MM-DD");
         form.current.validateAll();
         if (checkBtn.current.context._errors.length === 0) {
             BookingService.saveBooking(booking, accommodation.host.id, customer.id, accommodation.id)

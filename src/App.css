@@ -982,3 +982,8 @@ h3 {
 .blue-colored {
   color: blue;
 }
+
+.explore-header {
+  margin-top: 100px;
+  text-align: center;
+}

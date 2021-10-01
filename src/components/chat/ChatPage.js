@@ -10,6 +10,8 @@ import AuthService from "../../service/AuthService";
 import moment from "moment";
 import Avatar from "@material-ui/core/Avatar";
 import {Link} from "react-router-dom";
+import SendIcon from '@mui/icons-material/Send';
+
 
 const ChatPage = (props) => {
     let socket = new SockJS("http://localhost:8080/ws");
@@ -130,7 +132,10 @@ const ChatPage = (props) => {
                                     </div>
                                 <div className="chat-input-container">
                                     <input className="form-control" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
-                                    <Button className="chat-send-button" variant="contained" color="primary" onClick={send}>Send</Button>
+                                    <Button variant="contained" color="primary" onClick={send} startIcon={<SendIcon />}>
+                                        Send
+                                    </Button>
+                                    {/*<Button className="chat-send-button" variant="contained" color="primary" onClick={send}>Send</Button>*/}
                                 </div>
                             </div>
                         </div>

@@ -17,6 +17,7 @@ import CustomerService from "../../service/CustomerService";
 import {useHistory} from "react-router-dom";
 import BookingService from "../../service/BookingService";
 import AuthService from "../../service/AuthService";
+import moment from "moment";
 
 const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm, form, firstName, onChangeFirstName, lastName ,onChangeLastName, email, onChangeEmail, address, onChangeAddress, nameOnCard, onChangeNameOnCard, cardNumber, onChangeCardNumber,
                      expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn, cardDetailsExist}) => {
@@ -52,9 +53,9 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <br/>
                                 <small className="text-muted">Type: {accommodation.placeType}</small>
                                 <br/>
-                                <small className="text-muted">Check-in: {booking.checkInDate}</small>
+                                <small className="text-muted">Check-in: {moment(booking.checkInDate).format("DD-MM-YYYY")}</small>
                                 <br/>
-                                <small className="text-muted">Checkout: {booking.checkoutDate}</small>
+                                <small className="text-muted">Checkout: {moment(booking.checkoutDate).format("DD-MMMM-YYYY")}</small>
                                 <br/>
                                 <small className="text-muted">{bookingDurationInDays} nights</small>
                             </div>

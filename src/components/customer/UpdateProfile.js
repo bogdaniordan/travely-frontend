@@ -44,12 +44,13 @@ const UpdateProfile = () => {
         <div>
             <Navbar title={"Update user"} subtitle={"Please fill in any user detail you want to update."}/>
                 <div className="container">
-                    <Paper elevation={2} style={{height: "900px", width: "700px", margin: "auto"}}>
-                        <Container maxWidth="xs" className="sign-up-container">
+                    <Paper elevation={2} style={{height: "900px", margin: "auto", textAlign: "left", width: "80%"}}>
+                        <Container style={{margin: "auto", fontWeight: "bold"}}>
                             <br/>
-                            <h3 className="update-user-header">Update user details</h3>
-                            <CssBaseline />
-                            <div className={classes.paper}>
+                            <h4 className="center-avatar-container">Please enter the details you want to update</h4>
+                            <br/>
+                            {/*<CssBaseline />*/}
+                            {/*<div className={classes.paper}>*/}
                                 <form onSubmit={handleSubmit((data) => {
                                     CustomerService.updateCustomer(data).then(
                                         res => {
@@ -58,11 +59,8 @@ const UpdateProfile = () => {
                                         }
                                     )
                                 })}>
-                                    {/*<div>*/}
-                                    {/*    <Link to="profile" style={{float: "left"}}>Back to profile</Link>*/}
-                                    {/*</div>*/}
-                                    <Grid container spacing={2}>
-                                        <Grid item={12} sm={6}>
+                                    {/*<Grid container spacing={2} style={{width: "100%"}}>*/}
+                                    {/*    <Grid item={12} sm={6}>*/}
                                             <div className="form-group">
                                                 <label htmlFor="firstName">First name</label>
                                                 <input
@@ -73,8 +71,8 @@ const UpdateProfile = () => {
                                                     />
                                             </div>
                                             {errors.firstName && <span style={{color:"red"}}>This field needs at least 3 characters.</span>}
-                                        </Grid>
-                                        <Grid item={12} sm={6}>
+                                        {/*</Grid>*/}
+                                        {/*<Grid item={12} sm={6}>*/}
                                             <div className="form-group">
                                                 <label htmlFor="username">Last name</label>
                                                 <input
@@ -85,8 +83,8 @@ const UpdateProfile = () => {
                                                 />
                                             </div>
                                             {errors.lastName && <span style={{color:"red"}}>This field needs at least 3 characters.</span>}
-                                        </Grid>
-                                        <Grid item xs={12}>
+                                        {/*</Grid>*/}
+                                        {/*<Grid item xs={12}>*/}
                                             <div className="form-group">
                                                 <label htmlFor="email">Email</label>
                                                 <input
@@ -97,8 +95,8 @@ const UpdateProfile = () => {
                                                 />
                                             </div>
                                             {errors.email && <span style={{color:"red"}}>Please enter a valid email!</span>}
-                                        </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        {/*</Grid>*/}
+                                        {/*<Grid item xs={12} sm={6}>*/}
                                             <div className="form-group">
                                                 <label htmlFor="phoneNumber" className="form-label">
                                                     Phone Number
@@ -111,8 +109,8 @@ const UpdateProfile = () => {
                                                 />
                                             </div>
                                             {errors.phoneNumber && <span style={{color:"red"}}>Please enter a valid phone number!</span>}
-                                        </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        {/*</Grid>*/}
+                                        {/*<Grid item xs={12} sm={6}>*/}
                                             <label htmlFor="gender" className="form-label">
                                                 Gender
                                             </label>
@@ -121,13 +119,13 @@ const UpdateProfile = () => {
                                                 name="gender"
                                                 {...register("gender", {required: true })}
                                             >
-                                                <option disabled>Pick a gender</option>
+                                                <option value="" selected disabled hidden>Pick a gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
                                             {errors.gender && <span style={{color:"red"}}>Please pick a gender!</span>}
-                                        </Grid>
-                                        <Grid item={12} sm={6}>
+                                        {/*</Grid>*/}
+                                        {/*<Grid item={12} sm={6}>*/}
                                             <label htmlFor="address" className="form-label">
                                                 Address
                                             </label>
@@ -138,8 +136,8 @@ const UpdateProfile = () => {
                                                 {...register("address", {required: true , minLength: 10, maxLength: 40})}
                                             />
                                             {errors.address && <span style={{color:"red"}}>Enter a valid address!</span>}
-                                        </Grid>
-                                        <Grid item={12} sm={6}>
+                                        {/*</Grid>*/}
+                                        {/*<Grid item={12} sm={6}>*/}
                                             <label htmlFor="age" className="form-label">
                                                 Age
                                             </label>
@@ -151,22 +149,22 @@ const UpdateProfile = () => {
                                                 {...register("age", {required: true, min: 18, pattern: /^[0-9]*$/})}
                                             />
                                             {errors.address && <span style={{color:"red"}}>You have to be at least 18 years old.</span>}
-                                        </Grid>
-                                        <Grid item xs={12}>
+                                        {/*</Grid>*/}
+                                        {/*<Grid item xs={12}>*/}
                                             <Form.Label>Profile picture</Form.Label>
                                             <Form.Control type="file" onChange={getProfilePicture}/>
-                                        </Grid>
+                                        {/*</Grid>*/}
                                         <br/>
                                         <br/>
-                                        <Grid container style={{marginTop: "25px"}}>
-                                            <Grid items xs>
+                                        {/*<Grid container style={{marginTop: "25px"}}>*/}
+                                            {/*<Grid items xs>*/}
                                                 <Button variant="contained" type="submit" color="primary" style={{float: "left", marginLeft: "15px"}}>Submit</Button>
                                                 <Button variant="contained" color="secondary" style={{float: "right"}} onClick={() => history.push("/profile")}>Back</Button>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
+                                            {/*</Grid>*/}
+                                        {/*</Grid>*/}
+                                    {/*</Grid>*/}
                                 </form>
-                            </div>
+                            {/*</div>*/}
                         </Container>
                     </Paper>
                 </div>
