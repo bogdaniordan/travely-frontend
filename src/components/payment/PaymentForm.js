@@ -23,11 +23,16 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                      expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn, cardDetailsExist}) => {
     const history = useHistory();
 
+    const convertedBooking = {
+        checkInDate: moment(booking.checkInDate).format("YYYY-MM-DD"),
+        checkoutDate: moment(booking.checkoutDate).format("YYYY-MM-DD")
+    }
+
     const handleToken = (token) => {
         const amount = bookingDurationInDays * accommodation.pricePerNight;
         CustomerService.payWithStripe(token, amount).then(
             res => {
-                BookingService.saveBooking(booking, accommodation.host.id, AuthService.getCurrentUser().id, accommodation.id)
+                BookingService.saveBooking(convertedBooking, accommodation.host.id, AuthService.getCurrentUser().id, accommodation.id)
                     .then(response => history.push({
                         pathname: "/success-payment",
                         state: {booking: response.data}
@@ -171,7 +176,6 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             </div>
                         </div>
 
-
                         <hr className="mb-4"/>
                         {
                             !cardDetailsExist && (
@@ -187,11 +191,9 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             stripeKey="pk_test_51JediMF8Clxej3cvDhlrQQrHdpK2xvTsIhFgdI1nAZEJPQ4ciYaRSMZjhrLMjP9nO6E07mGqQsuc74FUI4sjbRX9004hVSsslc"
                             token={handleToken}
                             billingAddress
-                            // zipCode={false}
                             image={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}
                             amount={bookingDurationInDays * accommodation.pricePerNight * 100}
                             name={accommodation.title}
-                            // email={email}
                             description="Enter your details for Stripe payment"
                         >
                             <Button color="secondary" variant="contained">PAY WITH STRIPE</Button>

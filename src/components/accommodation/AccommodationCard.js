@@ -55,7 +55,7 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations})
         <>
             <div className="col">
                 <div className="card shadow-sm">
-                    <img alt="Responsive image" className="img-fluid" style={{height: "250px"}}  src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
+                    <img alt="Responsive image" className="img-fluid" style={{height: "250px"}} src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
                     <div className="card-body">
                         <h5 className="card-text"><strong>{place.title}</strong></h5>
                         {

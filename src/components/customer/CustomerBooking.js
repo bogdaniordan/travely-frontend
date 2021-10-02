@@ -56,7 +56,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
         <>
             <article className="postcard light blue">
                 <a className="postcard__img_link" href="#">
-                    <img className="postcard__img" src={`http://localhost:8080/accommodations/image/${booking.accommodation.id}/firstImage/download`} alt="Image Title"/>
+                    <img className="postcard__img" onClick={() => history.push(`/accommodation/${booking.accommodation.id}`)} src={`http://localhost:8080/accommodations/image/${booking.accommodation.id}/firstImage/download`} alt="Image Title"/>
                 </a>
                 <div className="postcard__text t-dark">
                     <h1 className="postcard__title blue"><a href="#">{booking.accommodation.title}</a></h1>

@@ -13,17 +13,14 @@ import {useStyles} from "../../styling/DatePickerWindowStyling";
 import BookingService from "../../service/BookingService";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { Calendar } from 'react-date-range';
 import DateRange from "react-date-range/dist/components/DateRange";
 import moment from "moment";
 
 const BookingCard = ({customer, accommodation}) => {
     const classes = useStyles();
     const history = useHistory();
-    // const [checkinDate, setCheckinDate] = useState();
-    // const [checkoutDate, setCheckoutDate] = useState();
-    const [message, setMessage] = useState("");
-    const [successful, setSuccessful] = useState(false);
+    // const [message, setMessage] = useState("");
+    // const [successful, setSuccessful] = useState(false);
     const [hostBadges, setHostBadges] = useState([]);
     const [state, setState] = useState([
         {
@@ -32,57 +29,53 @@ const BookingCard = ({customer, accommodation}) => {
             key: 'selection'
         }
     ]);
+    const [disabledDates, setDisabledDates] = useState([]);
 
 
     useEffect(() => {
-        HostService.getHostBadges(accommodation.host.id).then(res => setHostBadges(res.data))
+        HostService.getHostBadges(accommodation.host.id).then(res => setHostBadges(res.data));
+        getBookedDates();
     }, [])
 
-    const bookAccommodation = (checkInDate, checkoutDate, startingDate, endingDate) => {
-        if (startingDate < endingDate && startingDate >= new Date()) {
-            history.push({
-                pathname: "/payment",
-                state: {
-                    booking: {
-                        checkInDate: state[0].startDate.toString(),
-                        checkoutDate: state[0].endDate.toString()
-                    },
-                    accommodation: accommodation,
-                    customer: customer
-                }
-            }, )
-        } else {
-            if (startingDate < new Date()) {
-                setMessage("You cannot book current day or a date in the past.");
-            } else {
-                setMessage("Check-in needs to be before check-out date.");
+    const getBookedDates = () => {
+        BookingService.getBookedDatesForAccommodation(accommodation.id).then(res => {
+            let dates = [];
+            res.data.forEach( date => {
+                const converted = new Date(moment(date).format("YYYY-MM-DD"));
+                converted.setMonth(converted.getMonth() - 1)
+                dates.push(converted)
+            });
+            setDisabledDates(dates);
+        })
+    }
+
+    const bookAccommodation = () => {
+        history.push({
+            pathname: "/payment",
+            state: {
+                booking: {
+                    checkInDate: state[0].startDate.toString(),
+                    checkoutDate: state[0].endDate.toString()
+                },
+                accommodation: accommodation,
+                customer: customer
             }
-        }
+        }, )
     }
 
     const submitForm = e => {
         e.preventDefault();
-        const startingDate = new Date(state[0].startDate);
-        const endingDate = new Date(moment.state[0].endDate);
-        console.log(startingDate)
-        console.log(endingDate)
-        // if checkout date is after arriving date and arriving date is later than today and if there is a booking between those dates...
-        BookingService.accommodationCanBeBooked(startingDate, endingDate, accommodation.id).then(
-            res => {
-                if (res.data) {
-                    console.log(res.data)
-                    bookAccommodation(moment(state[0].startDate).format("DD-MM-YYYY"), moment(state[0].endDate).format("DD-MM-YYYY"), startingDate, endingDate)
-                } else {
-                    setMessage("Accommodation is already booked between those dates.");
-                }
-            })
+        // const startingDate = moment(state[0].startDate).format("YYYY-MM-DD");
+        // const endingDate = moment(state[0].endDate).format("YYYY-MM-DD");
+        // BookingService.accommodationCanBeBooked(startingDate, endingDate, accommodation.id).then(
+        //     res => {
+        //         if (res.data) {
+                    bookAccommodation()
+                // } else {
+                //     setMessage("Accommodation is already booked between those dates.");
+                // }
+            // })
     }
-
-    // const print = () => {
-    //     console.log(state[0].startDate)
-    //     console.log(typeof state[0].startDate)
-    //     console.log(moment(state[0].endDate).format("DD-MM-YYYY"))
-    // }
 
     return (
         <>
@@ -109,63 +102,34 @@ const BookingCard = ({customer, accommodation}) => {
                         </div>
                     </CardContent>
                 </CardActionArea>
-                {message && (
-                    <div className="form-group">
-                        <div
-                            className={
-                                successful ? "alert alert-success" : "alert alert-danger"
-                            }
-                            role="alert"
-                        >
-                            {message}
-                        </div>
-                    </div>
-                )}
+                {/*{message && (*/}
+                {/*    <div className="form-group">*/}
+                {/*        <div*/}
+                {/*            className={*/}
+                {/*                successful ? "alert alert-success" : "alert alert-danger"*/}
+                {/*            }*/}
+                {/*            role="alert"*/}
+                {/*        >*/}
+                {/*            {message}*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*)}*/}
                 <CardActions>
                     <form className={classes.container}>
-                        <Typography variant="body2" component="p">
-                            Choose your check in and check out dates.
-                        </Typography>
-                        <br/>
-                        {/*<Calendar*/}
-                        {/*    date={new Date()}*/}
-                        {/*    />*/}
+                        {/*<Typography variant="body2" component="p">*/}
+                        {/*    Choose your check in and check out dates.*/}
+                        {/*</Typography>*/}
+                        {/*<br/>*/}
                         <DateRange
-                            editableDateInputs={true}
+                            // editableDateInputs={true}
                             onChange={item => setState([item.selection])}
                             moveRangeOnFirstSelection={false}
                             ranges={state}
+                            disabledDates={disabledDates}
+                            minDate={new Date()}
                         />
-                        {/*<Button variant="contained" onClick={print}>LOG</Button>*/}
-                        {/*<TextField*/}
-                        {/*    id="date"*/}
-                        {/*    label="Check-in"*/}
-                        {/*    type="date"*/}
-                        {/*    className={classes.textField}*/}
-                        {/*    required*/}
-                        {/*    inputProps={{*/}
-                        {/*        min: new Date().toISOString().slice(0, 16),*/}
-                        {/*    }}*/}
-                        {/*    InputLabelProps={{shrink: true}}*/}
-                        {/*    onChange={(event) => {*/}
-                        {/*        setCheckinDate(event.target.value)*/}
-                        {/*        console.log(event.target.value)*/}
-                        {/*    }}*/}
-                        {/*/>*/}
-                        {/*<TextField*/}
-                        {/*    id="date"*/}
-                        {/*    label="Check-out"*/}
-                        {/*    type="date"*/}
-                        {/*    className={classes.textField}*/}
-                        {/*    required*/}
-                        {/*    onChange={(event) => setCheckoutDate(event.target.value)}*/}
-                        {/*    InputLabelProps={{shrink: true}}*/}
-
-                        {/*/>*/}
-                        {/*<br/>*/}
-                        {/*<br/>*/}
                         <Button size="large" type="submit" color="primary" variant="contained" style={{marginTop: "10px"}}>
-                            BOOK
+                            Reserve
                         </Button>
                     </form>
                 </CardActions>
