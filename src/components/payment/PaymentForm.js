@@ -18,6 +18,7 @@ import {useHistory} from "react-router-dom";
 import BookingService from "../../service/BookingService";
 import AuthService from "../../service/AuthService";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm, form, firstName, onChangeFirstName, lastName ,onChangeLastName, email, onChangeEmail, address, onChangeAddress, nameOnCard, onChangeNameOnCard, cardNumber, onChangeCardNumber,
                      expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn, cardDetailsExist}) => {
@@ -74,6 +75,8 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                     <AccommodationCard place={accommodation}/>
                 </div>
                 <div className="col-md-8 order-md-1">
+                    <Link to={`/accommodation/${accommodation.id}`} style={{float: "left"}}>Back to accommodation</Link>
+                    <br/>
                     <h4 className="mb-3">Billing address</h4>
                     <Form className="needs-validation" onSubmit={submitForm} ref={form}>
 
@@ -186,7 +189,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             )
                         }
                         <hr className="mb-4"/>
-                        <Button variant="contained" color="primary" type="submit" style={{marginRight: "10px"}}>PAY</Button>
+                        <Button variant="contained" color="primary" type="submit" style={{marginRight: "10px"}}>REGULAR PAY</Button>
                         <StripeCheckout
                             stripeKey="pk_test_51JediMF8Clxej3cvDhlrQQrHdpK2xvTsIhFgdI1nAZEJPQ4ciYaRSMZjhrLMjP9nO6E07mGqQsuc74FUI4sjbRX9004hVSsslc"
                             token={handleToken}
