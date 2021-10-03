@@ -5,6 +5,7 @@ import Footer from "../navigation/Footer";
 import Button from "@material-ui/core/Button";
 import QuestionService from "../../service/QuestionService";
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+import {Link} from "react-router-dom";
 
 const QuestionForm = () => {
     const location = useLocation();
@@ -39,12 +40,14 @@ const QuestionForm = () => {
         <div>
             <Navbar title={"Leave a question"}/>
             <div className="container" style={{height: "300px"}}>
+                <Link to="/profile" style={{float: "left"}}>Back to profile</Link>
+                <br/>
                 <div className="contact-image">
                     <LiveHelpIcon style={{margin: "auto", height: "100px", width: "100px"}} color="primary"/>
                 </div>
                 <br/>
                 <form method="post" onSubmit={submitQuestion}>
-                    <h4 style={{color: "black"}}>Drop {booking.host.firstName} {booking.host.lastName} a question</h4>
+                    <h4 style={{color: "black", marginBottom: "20px"}}>Have a question about your reservation? You can ask {booking.host.firstName} {booking.host.lastName} anything.</h4>
                     <br/>
                     <div className="row">
                         {message && (

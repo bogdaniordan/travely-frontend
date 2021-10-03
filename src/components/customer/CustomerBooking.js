@@ -7,6 +7,7 @@ import "../../styling/BookingCard.scss"
 import {customStyles} from "../../styling/ModalStyling";
 import TestimonialService from "../../service/TestimonialService";
 import AuthService from "../../service/AuthService";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking, bookings, setBookings}) => {
@@ -69,7 +70,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                         </time>
                     </div>
                     <div className="postcard__bar"></div>
-                    <div className="postcard__preview-txt">Location: {booking.accommodation.location}</div>
+                    <div className="postcard__preview-txt"><LocationOnIcon /> {booking.accommodation.location}</div>
                     <br/>
                     <div className="postcard__preview-txt">Accommodation type: {booking.accommodation.placeType}</div>
                     <br/>
@@ -105,7 +106,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                             </div>
                         </div>
                         <div className="modal-body text-center">
-                            <h4>Are you sure you want to cancel this appointment?</h4>
+                            <h4>Are you sure you want to cancel this booking?</h4>
                             <br/>
                             <p>Your funds will be refunded in 14 working days.</p>
                             <br/>

@@ -28,7 +28,8 @@ class PostService {
     addPost(data) {
         const post = {
             title: data.title,
-            content: data.content
+            content: data.content,
+            location: data.location
         }
         return axios.post(`${POST_SERVICE_API_URL}/add-post/${AuthService.getCurrentUser().id}`, post, {headers: AuthHeader()});
     }

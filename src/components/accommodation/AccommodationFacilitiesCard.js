@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import TestimonialService from "../../service/TestimonialService";
 import { RatingView } from 'react-simple-star-rating'
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
 const AccommodationFacilitiesCard = ({accommodation, hostNumber}) => {
@@ -22,7 +23,7 @@ const AccommodationFacilitiesCard = ({accommodation, hostNumber}) => {
                             <h3 className="mb-0">
                                 <a className="text-dark" href="#">{accommodation.placeType}</a>
                             </h3>
-                            <div className="mb-1 text-muted" style={{marginTop: "10px"}}>Location: {accommodation.location}</div>
+                            <div className="mb-1 text-muted" style={{marginTop: "10px"}}><LocationOnIcon /> {accommodation.location}</div>
                             <br/>
                             <p className="card-text mb-auto">The price for this accommodation is ${accommodation.pricePerNight} per night.</p>
                         </div>
@@ -41,7 +42,11 @@ const AccommodationFacilitiesCard = ({accommodation, hostNumber}) => {
                                         {/*<small>{reviews.length} review(s)</small>*/}
                                     </div>
                                 ) : (
-                                    <p>There are no reviews yet.</p>
+                                    // <p>There are no reviews yet.</p>
+                                    <div>
+                                        <RatingView ratingValue={0}/>
+                                        <p>There are no reviews yet.</p>
+                                    </div>
                                 )
                             }
                             <h3 className="mb-0">

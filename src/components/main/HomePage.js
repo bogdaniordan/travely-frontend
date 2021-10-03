@@ -6,7 +6,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
 import FamousCityBar from "../../utils/FamousCityBar";
-import {Divider} from "@material-ui/core";
 
 const HomePage = () => {
     const [location, setLocation] = useState();
@@ -62,7 +61,6 @@ const HomePage = () => {
                                                         <option value="London">London</option>
                                                         <option value="Boston">Boston</option>
                                                         <option value="Mumbai">Mumbai</option>
-                                                        <option value="New York">New York</option>
                                                         <option value="Toronto">Toronto</option>
                                                         <option value="Paris">Paris</option>
                                                     </select>

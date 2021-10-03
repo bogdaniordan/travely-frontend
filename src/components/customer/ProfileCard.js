@@ -41,7 +41,7 @@ const ProfileCard = () => {
                                             src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="130px" width="130px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
                                         <h6 className="f-w-600" style={{color: "black", marginBottom: "20px"}}>{customer.firstName} {customer.lastName}</h6>
-                                        <p><Button variant="contained" color="secondary" onClick={updateProfile}>Update</Button></p>
+                                        <p><Button variant="contained" color="primary" onClick={updateProfile}>Update profile</Button></p>
                                     </div>
                                 </div>
                                 <div className="col-sm-8">
@@ -77,7 +77,7 @@ const ProfileCard = () => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">Card details</p>
-                                                <h6 className="text-muted f-w-400"><Button color="secondary" variant="contained" onClick={openModal}>EDIT</Button></h6>
+                                                <h6 className="text-muted f-w-400"><Button color="primary" variant="contained" onClick={openModal}>EDIT</Button></h6>
                                             </div>
                                         </div>
                                     </div>

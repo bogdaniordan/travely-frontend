@@ -105,6 +105,7 @@ const Payment = () => {
         setSuccessful(false);
         booking.checkInDate = moment(booking.checkInDate).format("YYYY-MM-DD");
         booking.checkoutDate = moment(booking.checkoutDate).format("YYYY-MM-DD");
+        booking.price = bookingDurationInDays * accommodation.pricePerNight;
         form.current.validateAll();
         if (checkBtn.current.context._errors.length === 0) {
             BookingService.saveBooking(booking, accommodation.host.id, customer.id, accommodation.id)

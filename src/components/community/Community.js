@@ -98,6 +98,19 @@ const Community = () => {
                                                         {...register("title", {required: true, minLength: 5})}
                                                     />
                                                     {errors.title && <span style={{color:"red"}}>Title's length has to be at least 5 characters.</span>}
+                                                    <label className="sr-only">Location</label>
+                                                    <select
+                                                        className="form-control"
+                                                        {...register("location", {required: true})}
+                                                    >
+                                                        <option value="" selected disabled hidden>City</option>
+                                                        <option value="London">London</option>
+                                                        <option value="Boston">Boston</option>
+                                                        <option value="Mumbai">Mumbai</option>
+                                                        <option value="Toronto">Toronto</option>
+                                                        <option value="Paris">Paris</option>
+                                                    </select>
+                                                    {errors.location && <span style={{color:"red"}}>Select a location</span>}
                                                     <label className="sr-only" htmlFor="message">Content</label>
                                                     <textarea
                                                         className="form-control"

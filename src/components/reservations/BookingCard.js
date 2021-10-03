@@ -82,10 +82,10 @@ const BookingCard = ({customer, accommodation}) => {
             <Card className={classes.root} onSubmit={submitForm}>
                 <CardActionArea>
                     <CardContent align="center">
-                        <Avatar style={{height: "80px", width: "80px", marginBottom: "5px"}} src={`http://localhost:8080/hosts/image/${accommodation.host.id}/download` ? `http://localhost:8080/hosts/image/${accommodation.host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>
-                        <Typography gutterBottom variant="h6" component="h5">
-                            {accommodation.host.firstName} {accommodation.host.lastName}
-                        </Typography>
+                        {/*<Avatar style={{height: "80px", width: "80px", marginBottom: "5px"}} src={`http://localhost:8080/hosts/image/${accommodation.host.id}/download` ? `http://localhost:8080/hosts/image/${accommodation.host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>*/}
+                        {/*<Typography gutterBottom variant="h6" component="h5">*/}
+                        {/*    {accommodation.host.firstName} {accommodation.host.lastName}*/}
+                        {/*</Typography>*/}
                         <div style={{display: "flex"}}>
                             {
                                 hostBadges.map(

@@ -69,7 +69,6 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations})
                                 </div>
                             )
                         }
-
                         <small className="card-text">{place.location}</small>
                         <br/>
                         <small className="card-text">{place.placeType}</small>

@@ -10,6 +10,8 @@ import AccommodationFacilitiesCard from "./AccommodationFacilitiesCard";
 import Footer from "../navigation/Footer";
 import BookingService from "../../service/BookingService";
 import moment from "moment";
+import Avatar from "@material-ui/core/Avatar";
+import AccommodationHostDetails from "./AccommodationHostDetails";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
@@ -80,40 +82,40 @@ const AccommodationDetails = (props) => {
                                 <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
                             </a>
                         </div>
-                        <div className="col-md-6 col-sm-6 mb-8">
-                            <div className="card flex-md-row mb-4 box-shadow h-md-250">
-                                <div className="card-body d-flex flex-column align-items-start" style={{height: "170px"}}>
-                                    {/*<strong className="d-inline-block mb-2 text-primary">Cleanliness: {accommodation.cleaningStatus.toLowerCase().replace("_", " ")}</strong>*/}
-                                    {/*<h3 className="mb-0">*/}
-                                    {/*    /!*<a className="text-dark" href="#">{accommodation.placeType}</a>*!/*/}
-                                    {/*</h3>*/}
-                                    {
-                                        accommodation.cleaningStatus === "CLEAN" ? (
-                                            <h4 className="blue-colored">CLEAN</h4>
-                                        ) : (
-                                            <h4 className="red-colored">DIRTY</h4>
-                                        )
-                                    }
-                                    {
-                                        isBookedAtm ? (
-                                            <h5>This accommodation is currently booked.</h5>
-                                        ) : (
-                                            hasFutureBookings ? (
-                                                <div className="mb-1 text-muted">
-                                                    Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).format("DD-MM-YYYY")}</strong> and ends on <strong>{moment(closestFutureBooking.checkoutDate).format("DD-MM-YYYY")}</strong>
-                                                </div>
-                                            ) : (
-                                                <h5>This accommodation has no future bookings.</h5>
+                        {/*<div className="col-md-6 col-sm-6 mb-8">*/}
+                        {/*    <div className="card flex-md-row mb-4 box-shadow h-md-250">*/}
+                        {/*        <div className="card-body d-flex flex-column align-items-start" style={{height: "170px"}}>*/}
+                        {/*            <div style={{display: "flex"}}>*/}
+                        {/*                <Avatar style={{height: "70px", width: "70px", marginBottom: "5px"}} src={`http://localhost:8080/hosts/image/${accommodation.host.id}/download` ? `http://localhost:8080/hosts/image/${accommodation.host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>*/}
+                        {/*                <h4 style={{marginTop: "20px", marginLeft: "20px"}}>Your host: {accommodation.host.firstName} {accommodation.host.lastName}</h4>*/}
+                        {/*            </div>*/}
 
-                                            )
-                                        )
-                                    }
-                                    {/*<div className="mb-1 text-muted" style={{marginTop: "10px"}}>Location: {accommodation.location}</div>*/}
-                                    <br/>
-                                    {/*<p className="card-text mb-auto">The price for this accommodation is ${accommodation.pricePerNight} per night.</p>*/}
-                                </div>
-                            </div>
-                        </div>
+                        {/*            {*/}
+                        {/*                accommodation.cleaningStatus === "CLEAN" ? (*/}
+                        {/*                    <h4 className="blue-colored">Cleanliness: CLEAN</h4>*/}
+                        {/*                ) : (*/}
+                        {/*                    <h4 className="red-colored">Cleanliness: DIRTY</h4>*/}
+                        {/*                )*/}
+                        {/*            }*/}
+                        {/*            {*/}
+                        {/*                isBookedAtm ? (*/}
+                        {/*                    <h5>This accommodation is currently booked.</h5>*/}
+                        {/*                ) : (*/}
+                        {/*                    hasFutureBookings ? (*/}
+                        {/*                        <div className="mb-1 text-muted">*/}
+                        {/*                            Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).format("DD-MM-YYYY")}</strong> and ends on <strong>{moment(closestFutureBooking.checkoutDate).format("DD-MM-YYYY")}</strong>*/}
+                        {/*                        </div>*/}
+                        {/*                    ) : (*/}
+                        {/*                        <h5>This accommodation has no future bookings.</h5>*/}
+
+                        {/*                    )*/}
+                        {/*                )*/}
+                        {/*            }*/}
+                        {/*            <br/>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+                        <AccommodationHostDetails accommodation={accommodation} isBookedAtm={isBookedAtm} hasFutureBookings={hasFutureBookings} closestFutureBooking={closestFutureBooking}/>
 
                         <div className="google-maps-container">
                             <Map

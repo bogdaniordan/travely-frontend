@@ -8,7 +8,7 @@ import {Collapse} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CloseIcon from '@mui/icons-material/Close';
 import AuthService from "../../service/AuthService";
-import Divider from '@mui/material/Divider';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const UserPost = ({post, posts, setPosts}) => {
     const [commentInput, setCommentInput] = useState("");
@@ -70,6 +70,9 @@ const UserPost = ({post, posts, setPosts}) => {
                         </div>
                     </div>
                     <div className="likes-container">
+                        {
+                            post.location && <small className="post-location-text">{post.location} <LocationOnIcon /></small>
+                        }
                         {likesNumber} <FavoriteIcon />
                     </div>
                 </div>

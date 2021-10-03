@@ -1232,3 +1232,18 @@ h3 {
     left: 0;
   }
 }
+
+
+
+
+.post-location-text {
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid lightblue;
+  color: lightblue;
+}
+
+.host-name-header {
+  margin-top: 20px;
+  margin-left: 20px;
+}

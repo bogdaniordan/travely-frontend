@@ -4,7 +4,7 @@ import "../../styling/LandingPage.css"
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
-
+import picture from "../../images/customer_landing_page_picture.png"
 const CustomerLandingPage = () => {
     const history = useHistory();
 
@@ -45,36 +45,18 @@ const CustomerLandingPage = () => {
                                 </div>
                             )
                         }
-
-
                     </div>
                     <a href="/customer-landing-page">
                         <div className="imgBox">
                             <img
-                                src="https://cdn.shopify.com/s/files/1/0040/5317/2339/products/printypet9_900x.png?v=1548857905"
+                                src={picture}
                                 alt="pet"
                                 className="petImage"
-                                style={{ marginTop: "-110px", width: "700px" }}
+                                style={{ marginTop: "-110px", width: "800px" }}
                             />
                         </div>
                     </a>
                 </div>
-                {/*<ul className="thumb">*/}
-                {/*    <li>*/}
-                {/*        <img*/}
-                {/*            src="https://cdn2.iconfinder.com/data/icons/general-health-1/24/clinic2-512.png"*/}
-                {/*            alt="clinicSide"*/}
-                {/*            // onClick={redirectToClinicPage}*/}
-                {/*        />*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*        <img*/}
-                {/*            src="https://static.thenounproject.com/png/2404351-200.png"*/}
-                {/*            alt="clientSide"*/}
-                {/*            // onClick={redirectToCustomerPage}*/}
-                {/*        />*/}
-                {/*    </li>*/}
-                {/*</ul>*/}
             </section>
         </div>
     );
