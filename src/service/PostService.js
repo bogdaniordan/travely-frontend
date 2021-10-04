@@ -37,6 +37,10 @@ class PostService {
     deletePost(id) {
         return axios.delete(`${POST_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
     }
+
+    searchPosts(searchInput) {
+        return axios.get(`${POST_SERVICE_API_URL}/search-posts/${searchInput}`, {headers: AuthHeader()})
+    }
 }
 
 export default new PostService;

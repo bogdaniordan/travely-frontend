@@ -5,10 +5,13 @@ import ProfileCard from "./ProfileCard";
 import BookingService from "../../service/BookingService";
 import CustomerBooking from "./CustomerBooking";
 import Footer from "../navigation/Footer";
+import Button from "@material-ui/core/Button";
+import {Collapse} from "@material-ui/core";
 
 const CustomerProfile = () => {
     const [bookings, setBookings] = useState([]);
     const [pastBookings, setPastBookings] = useState([]);
+    const [showPastBookings, setShowPastBookings] = useState(false);
 
     useEffect(() => {
         BookingService.getAllByCustomerId(AuthService.getCurrentUser().id).then(response => {
@@ -41,21 +44,35 @@ const CustomerProfile = () => {
                                 </div>
                             ) : (<h4>No current bookings</h4>)
                         }
-                        {
-                            pastBookings.length > 0 && (
-                                <div className="container py-2">
-                                    <h4>Past bookings</h4>
-                                    <br/>
-                                    {
-                                        pastBookings.map(
-                                            booking => <CustomerBooking key={booking.id} booking={booking} bookings={bookings} setBookings={setBookings}/>
-                                        )
-                                    }
-                                </div>
-                            )
-                        }
+                        {/*{*/}
+                        {/*    pastBookings.length > 0 && (*/}
+                        {/*        <div className="container py-2">*/}
+                        {/*            <h4>Past bookings</h4>*/}
+                        {/*            <br/>*/}
+                        {/*            {*/}
+                        {/*                pastBookings.map(*/}
+                        {/*                    booking => <CustomerBooking key={booking.id} booking={booking} bookings={bookings} setBookings={setBookings}/>*/}
+                        {/*                )*/}
+                        {/*            }*/}
+                        {/*        </div>*/}
+                        {/*    )*/}
+                        {/*}*/}
                     </section>
-                    <hr className="mb-4"/>
+                    {
+                        pastBookings.length > 0 && <Button variant="contained" color="primary" onClick={() => setShowPastBookings(!showPastBookings)}>{showPastBookings ? "Hide past bookings" : "Past bookings"}</Button>
+                    }
+                    <Collapse in={showPastBookings}>
+                        <div className="container py-2">
+                            {/*<h4>Past bookings</h4>*/}
+                            <br/>
+                            {
+                                pastBookings.map(
+                                    booking => <CustomerBooking key={booking.id} booking={booking} bookings={bookings} setBookings={setBookings}/>
+                                )
+                            }
+                        </div>
+                    </Collapse>
+                    {/*<hr className="mb-4"/>*/}
                 </div>
             <Footer />
         </div>

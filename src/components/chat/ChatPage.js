@@ -81,6 +81,7 @@ const ChatPage = (props) => {
             <Navbar title={"Chat page"} subtitle={`Conversation with ${otherUser.firstName} ${otherUser.lastName}`}/>
                 <div className="container">
                     <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
+                    <br/>
                     <h5>You have to connect to be able to send or receive messages.</h5>
                     <br/>
                     {

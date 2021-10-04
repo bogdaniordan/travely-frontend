@@ -11,12 +11,16 @@ import PostService from "../../service/PostService";
 import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
+import {Collapse} from "@material-ui/core";
 
 const Community = () => {
     const history = useHistory();
     const [user, setUser] = useState({})
     const [bookings, setBookings] = useState([])
     const [posts, setPosts] = useState([])
+    const [showSearch, setShowSearch] = useState(false)
+    const [searchInput, setSearchInput] = useState("");
+    const [showAddPost, setShowAddPost] = useState(true);
 
     const { register, handleSubmit, formState: {errors} } = useForm();
 
@@ -33,6 +37,20 @@ const Community = () => {
             PostService.findAll().then(res => setPosts(res.data.filter(post => post.author.id === AuthService.getCurrentUser().id)))
         } else {
             PostService.findAll().then(res => setPosts(res.data.filter(post => post.author.id !== AuthService.getCurrentUser().id)))
+        }
+    }
+
+    const showSearchBar = () => {
+        setShowSearch(!showSearch)
+        setShowAddPost(!showAddPost)
+    }
+
+    const search = () => {
+        if(searchInput.length > 0) {
+            PostService.searchPosts(searchInput).then(res => {
+                setPosts([])
+                setPosts(res.data)
+            })
         }
     }
 
@@ -53,7 +71,7 @@ const Community = () => {
                                                 <option value="other_posts">Other's posts</option>
                                             </select>
                                             <br/>
-                                            <Button variant="outlined" color="primary" onClick={() => history.push("/people")}>People</Button>
+                                            <Button variant="outlined" color="primary" onClick={showSearchBar}>{showSearch ? "Hide search" : "Search Posts"}</Button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,6 +88,7 @@ const Community = () => {
                                         <div className="h6 text-muted">Trips</div>
                                         <div className="h5">{bookings.length}</div>
                                     </li>
+                                    <Button variant="outlined" color="primary" onClick={() => history.push("/people")}>People of Travely</Button>
                                     <Friends />
                                 </ul>
                             </div>
@@ -81,47 +100,58 @@ const Community = () => {
                                         <div className="tab-pane fade show active" id="posts" role="tabpanel"
                                              aria-labelledby="posts-tab">
                                             <div className="form-group">
-                                                <form onSubmit={
-                                                    handleSubmit((data) => {
-                                                        PostService.addPost(data).then(res => {
-                                                            setPosts([])
-                                                            PostService.findAll().then(r => setPosts(r.data))
+                                                <Collapse in={showAddPost}>
+                                                    <form onSubmit={
+                                                        handleSubmit((data) => {
+                                                            PostService.addPost(data).then(res => {
+                                                                setPosts([])
+                                                                PostService.findAll().then(r => setPosts(r.data))
+                                                            })
                                                         })
-                                                    })
-                                                }>
-                                                    <label className="sr-only" htmlFor="message">Title</label>
-                                                    <input
-                                                        className="form-control"
-                                                        type="text" id="message"
-                                                        style={{width: "100%"}}
-                                                        placeholder="Post title"
-                                                        {...register("title", {required: true, minLength: 5})}
-                                                    />
-                                                    {errors.title && <span style={{color:"red"}}>Title's length has to be at least 5 characters.</span>}
-                                                    <label className="sr-only">Location</label>
-                                                    <select
-                                                        className="form-control"
-                                                        {...register("location", {required: true})}
-                                                    >
-                                                        <option value="" selected disabled hidden>City</option>
-                                                        <option value="London">London</option>
-                                                        <option value="Boston">Boston</option>
-                                                        <option value="Mumbai">Mumbai</option>
-                                                        <option value="Toronto">Toronto</option>
-                                                        <option value="Paris">Paris</option>
-                                                    </select>
-                                                    {errors.location && <span style={{color:"red"}}>Select a location</span>}
-                                                    <label className="sr-only" htmlFor="message">Content</label>
-                                                    <textarea
-                                                        className="form-control"
-                                                        id="message"
-                                                        rows="3"
-                                                        placeholder="What are you thinking?"
-                                                        {...register("content", {required: true, minLength: 5})}
-                                                    ></textarea>
-                                                    {errors.content && <span style={{color:"red"}}>Post content length has to be at least 5 characters.</span>}
-                                                    <Button type="submit" variant="outlined" color="primary">POST</Button>
-                                                </form>
+                                                    }>
+                                                        <label className="sr-only" htmlFor="message">Title</label>
+                                                        <input
+                                                            className="form-control"
+                                                            type="text" id="message"
+                                                            style={{width: "100%"}}
+                                                            placeholder="Post title"
+                                                            {...register("title", {required: true, minLength: 5})}
+                                                        />
+                                                        {errors.title && <span style={{color:"red"}}>Title's length has to be at least 5 characters.</span>}
+                                                        <label className="sr-only">Location</label>
+                                                        <select
+                                                            className="form-control"
+                                                            {...register("location", {required: true})}
+                                                        >
+                                                            <option value="" selected disabled hidden>City</option>
+                                                            <option value="London">London</option>
+                                                            <option value="Boston">Boston</option>
+                                                            <option value="Mumbai">Mumbai</option>
+                                                            <option value="Toronto">Toronto</option>
+                                                            <option value="Paris">Paris</option>
+                                                        </select>
+                                                        {errors.location && <span style={{color:"red"}}>Select a location</span>}
+                                                        <label className="sr-only" htmlFor="message">Content</label>
+                                                        <textarea
+                                                            className="form-control"
+                                                            id="message"
+                                                            rows="3"
+                                                            placeholder="What are you thinking?"
+                                                            {...register("content", {required: true, minLength: 5})}
+                                                        ></textarea>
+                                                        {errors.content && <span style={{color:"red"}}>Post content length has to be at least 5 characters.</span>}
+                                                        <Button type="submit" variant="outlined" color="primary">POST</Button>
+                                                    </form>
+                                                </Collapse>
+
+                                                <Collapse in={showSearch}>
+                                                    <div>
+                                                        <br/>
+                                                        <h5>Search posts</h5>
+                                                        <input className="form-control" type="text" onChange={e => setSearchInput(e.target.value)}/>
+                                                        <Button variant="outlined" color="primary" onClick={search}>Search</Button>
+                                                    </div>
+                                                </Collapse>
                                             </div>
                                         </div>
                                     </div>

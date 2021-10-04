@@ -60,15 +60,17 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     <img className="postcard__img" onClick={() => history.push(`/accommodation/${booking.accommodation.id}`)} src={`http://localhost:8080/accommodations/image/${booking.accommodation.id}/firstImage/download`} alt="Image Title"/>
                 </a>
                 <div className="postcard__text t-dark">
-                    <h1 className="postcard__title blue"><a href="#">{booking.accommodation.title}</a></h1>
-                    <div className="postcard__subtitle small">
-                        <time dateTime="2020-05-25 12:00:00">
-                            <i className="fas fa-calendar-alt mr-2"></i>Check in: {getFormattedDate(booking.checkInDate)}
-                            <br/>
-                            <i className="fas fa-calendar-alt mr-2"></i>Check out: {getFormattedDate(booking.checkoutDate)}
-
-                        </time>
+                    <div className="flexed-container">
+                        <h1 className="postcard__title blue" style={{width: "50%"}}><a href="#">{booking.accommodation.title}</a></h1>
+                        <div className="postcard__subtitle small" style={{float: "left", width: "30%"}}>
+                            <time dateTime="2020-05-25 12:00:00">
+                                <i className="fas fa-calendar-alt mr-2"></i>Check in: {getFormattedDate(booking.checkInDate)}
+                                <br/>
+                                <i className="fas fa-calendar-alt mr-2"></i>Check out: {getFormattedDate(booking.checkoutDate)}
+                            </time>
+                        </div>
                     </div>
+
                     <div className="postcard__bar"></div>
                     <div className="postcard__preview-txt"><LocationOnIcon /> {booking.accommodation.location}</div>
                     <br/>
@@ -77,7 +79,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     <div className="postcard__preview-txt">Host: {booking.host.firstName} {booking.host.lastName}</div>
                     <ul className="postcard__tagbox">
                         <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
-                        <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Leave question</li>
+                        <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Contact</li>
                         {
                             new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
                                 !bookingIsReviewed && (
