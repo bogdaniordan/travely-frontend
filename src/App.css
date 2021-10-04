@@ -1247,3 +1247,19 @@ h3 {
   margin-top: 20px;
   margin-left: 20px;
 }
+
+.badge-container {
+  margin: 5px;
+}
+
+.all-badges-container {
+  display: flex;
+  float: right;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.details-container {
+  display: flex;
+  width: 100%;
+}

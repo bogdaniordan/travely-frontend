@@ -5,10 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {TextField, Tooltip} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
-import Avatar from "@material-ui/core/Avatar";
-import HostService from "../../service/HostService";
 import {useStyles} from "../../styling/DatePickerWindowStyling";
 import BookingService from "../../service/BookingService";
 import 'react-date-range/dist/styles.css';
@@ -19,9 +16,6 @@ import moment from "moment";
 const BookingCard = ({customer, accommodation}) => {
     const classes = useStyles();
     const history = useHistory();
-    // const [message, setMessage] = useState("");
-    // const [successful, setSuccessful] = useState(false);
-    const [hostBadges, setHostBadges] = useState([]);
     const [state, setState] = useState([
         {
             startDate: new Date(),
@@ -33,7 +27,6 @@ const BookingCard = ({customer, accommodation}) => {
 
 
     useEffect(() => {
-        HostService.getHostBadges(accommodation.host.id).then(res => setHostBadges(res.data));
         getBookedDates();
     }, [])
 
@@ -65,16 +58,8 @@ const BookingCard = ({customer, accommodation}) => {
 
     const submitForm = e => {
         e.preventDefault();
-        // const startingDate = moment(state[0].startDate).format("YYYY-MM-DD");
-        // const endingDate = moment(state[0].endDate).format("YYYY-MM-DD");
-        // BookingService.accommodationCanBeBooked(startingDate, endingDate, accommodation.id).then(
-        //     res => {
-        //         if (res.data) {
-                    bookAccommodation()
-                // } else {
-                //     setMessage("Accommodation is already booked between those dates.");
-                // }
-            // })
+        bookAccommodation()
+
     }
 
     return (
@@ -82,44 +67,13 @@ const BookingCard = ({customer, accommodation}) => {
             <Card className={classes.root} onSubmit={submitForm}>
                 <CardActionArea>
                     <CardContent align="center">
-                        {/*<Avatar style={{height: "80px", width: "80px", marginBottom: "5px"}} src={`http://localhost:8080/hosts/image/${accommodation.host.id}/download` ? `http://localhost:8080/hosts/image/${accommodation.host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>*/}
-                        {/*<Typography gutterBottom variant="h6" component="h5">*/}
-                        {/*    {accommodation.host.firstName} {accommodation.host.lastName}*/}
-                        {/*</Typography>*/}
-                        <div style={{display: "flex"}}>
-                            {
-                                hostBadges.map(
-                                    badge => (
-                                        <div style={{margin: "5px"}}>
-                                            <small>{badge.name}</small>
-                                            <Tooltip title={badge.description}>
-                                                <Avatar style={{margin: "15px", height: "50px", width: "50px"}} src={`http://localhost:8080/hosts/image/badge/${badge.picture}/download`} />
-                                            </Tooltip>
-                                        </div>
-                                    )
-                                )
-                            }
-                        </div>
+                        <Typography gutterBottom variant="h6" component="h5">
+                            Enter your booking dates
+                        </Typography>
                     </CardContent>
                 </CardActionArea>
-                {/*{message && (*/}
-                {/*    <div className="form-group">*/}
-                {/*        <div*/}
-                {/*            className={*/}
-                {/*                successful ? "alert alert-success" : "alert alert-danger"*/}
-                {/*            }*/}
-                {/*            role="alert"*/}
-                {/*        >*/}
-                {/*            {message}*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*)}*/}
                 <CardActions>
                     <form className={classes.container}>
-                        {/*<Typography variant="body2" component="p">*/}
-                        {/*    Choose your check in and check out dates.*/}
-                        {/*</Typography>*/}
-                        {/*<br/>*/}
                         <DateRange
                             // editableDateInputs={true}
                             onChange={item => setState([item.selection])}
