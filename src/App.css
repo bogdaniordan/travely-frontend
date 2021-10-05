@@ -642,10 +642,11 @@ h3 {
 
 /*testimonials*/
 
-/*.testimonials-clean {*/
-/*  color:#313437;*/
-/*  background-color:#eef4f7;*/
-/*}*/
+.testimonials-clean {
+  color:#313437;
+  background-color:#eef4f7;
+  border-radius: 25px;
+}
 
 .testimonials-clean p {
   color:#7d8285;
@@ -1262,4 +1263,12 @@ h3 {
 .details-container {
   display: flex;
   width: 100%;
+}
+
+.city-name-header {
+  margin: 10px;
+}
+
+.right-floated {
+  float: right;
 }

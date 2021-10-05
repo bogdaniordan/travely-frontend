@@ -21,7 +21,7 @@ import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"
 import login_background from "../../images/auth_backgound.jpg"
 import { Link } from "react-router-dom";
-
+import PersonPinIcon from '@mui/icons-material/PersonPin';
 
 const Login = () => {
     const classes = useStyles();
@@ -75,19 +75,20 @@ const Login = () => {
             )
         }
     }
-    
+
     return (
         <>
             <LandingPageNavbar />
             <div className="login-image-container">
                 <img src={login_background} alt="Login background"/>
-                <Paper style={{borderRadius: "25px", position: "absolute", width: "500px", height: "700px", margin: "auto"}} elevation={3}>
+                <Paper className={classes.container} elevation={3}>
                     <Container maxWidth="xs" className="sign-up-container">
                         <CssBaseline />
                         <div className={classes.paper}>
                             <br/>
                             <Avatar className={classes.avatar}>
-                                <LockOutlinedIcon />
+                                <PersonPinIcon />
+                                {/*<LockOutlinedIcon />*/}
                             </Avatar>
                             <Typography component="h1" variant="h5">
                                 Sign in as customer

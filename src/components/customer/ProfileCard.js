@@ -6,6 +6,7 @@ import AuthService from "../../service/AuthService";
 import {customStyles} from "../../styling/ModalStyling";
 import Modal from "react-modal";
 import SavePaymentDetails from "../payment/SavePaymentDetails";
+import StatsBar from "./StatsBar";
 
 const ProfileCard = () => {
     const history = useHistory();
@@ -38,7 +39,7 @@ const ProfileCard = () => {
                                 <div className="col-sm-4 bg-c-lite-blue user-profile" style={{backgroundColor: "lightblue"}}>
                                     <div className="card-block text-center text-white">
                                         <div className="m-b-25"><img
-                                            src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="130px" width="130px"
+                                            src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="150px" width="150px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
                                         <h6 className="f-w-600" style={{color: "black", marginBottom: "20px"}}>{customer.firstName} {customer.lastName}</h6>
                                         <p><Button variant="contained" color="primary" onClick={updateProfile}>Update profile</Button></p>
@@ -82,6 +83,8 @@ const ProfileCard = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <br/>
+                                <StatsBar />
                             </div>
                         </div>
                     </div>

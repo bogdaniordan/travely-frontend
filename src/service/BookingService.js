@@ -41,6 +41,10 @@ class BookingService {
         return axios.get(`${BOOKING_SERVICE_API_URL}/booked-dates/${id}`, {headers: AuthHeader()});
     }
 
+    getNumberOfBookedNights() {
+        return axios.get(`${BOOKING_SERVICE_API_URL}/booked-nights-number/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()})
+    }
+
 }
 
 export default new BookingService;

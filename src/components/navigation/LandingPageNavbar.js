@@ -1,5 +1,5 @@
 import React from "react";
-import simple_logo from "./travely_logo.png";
+import simple_logo from "../../images/travely_logo.png";
 
 
 const LandingPageNavbar = () => {

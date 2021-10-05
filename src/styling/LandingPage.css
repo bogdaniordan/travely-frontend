@@ -99,6 +99,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    clip-path: circle(800px at 900px 200px);
-    background: mediumvioletred;
+    clip-path: circle(1300px at 1200px 600px);
+    background: pink;
 }

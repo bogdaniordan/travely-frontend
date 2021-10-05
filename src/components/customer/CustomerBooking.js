@@ -8,14 +8,17 @@ import {customStyles} from "../../styling/ModalStyling";
 import TestimonialService from "../../service/TestimonialService";
 import AuthService from "../../service/AuthService";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import moment from "moment";
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking, bookings, setBookings}) => {
     const history = useHistory();
     const [modalIsOpen, setIsOpen] = useState(false)
     const [bookingIsReviewed, setBookingIsReviewed] = useState(false);
+    const [bookingDurationInDays, setBookingDurationInDays] = useState();
 
     useEffect(() => {
+        setBookingDuration();
         TestimonialService.accommodationIsReviewedByUser(booking.accommodation.id, AuthService.getCurrentUser().id).then(res => setBookingIsReviewed(res.data));
     }, [])
 
@@ -25,10 +28,6 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
 
     const closeModal = () => {
         setIsOpen(false);
-    }
-
-    const getFormattedDate = (date) => {
-        return date[0] + "-" + date[1] + "-" + date[2]
     }
 
     const cancelBooking = () => {
@@ -53,6 +52,13 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
         history.push(`/add-testimonial/${booking.accommodation.id}`)
     }
 
+    const setBookingDuration = () => {
+        const arriveDate = new Date(booking.checkInDate);
+        const leavingDate = new Date(booking.checkoutDate);
+        const differenceInTime = leavingDate.getTime() - arriveDate.getTime();
+        setBookingDurationInDays(differenceInTime / (1000 * 3600 * 24))
+    }
+
     return (
         <>
             <article className="postcard light blue">
@@ -64,14 +70,16 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                         <h1 className="postcard__title blue" style={{width: "50%"}}><a href="#">{booking.accommodation.title}</a></h1>
                         <div className="postcard__subtitle small" style={{float: "left", width: "30%"}}>
                             <time dateTime="2020-05-25 12:00:00">
-                                <i className="fas fa-calendar-alt mr-2"></i>Check in: {getFormattedDate(booking.checkInDate)}
+                                <i className="fas fa-calendar-alt mr-2"></i>Check in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
                                 <br/>
-                                <i className="fas fa-calendar-alt mr-2"></i>Check out: {getFormattedDate(booking.checkoutDate)}
+                                <i className="fas fa-calendar-alt mr-2"></i>Check out: {moment(booking.checkoutDate).format("DD-MM-YYYY")}
                             </time>
                         </div>
                     </div>
 
                     <div className="postcard__bar"></div>
+                    <div className="postcard__preview-txt">Amount: ${booking.price} - {bookingDurationInDays} nights/${booking.pricePerNight}</div>
+                    <br/>
                     <div className="postcard__preview-txt"><LocationOnIcon /> {booking.accommodation.location}</div>
                     <br/>
                     <div className="postcard__preview-txt">Accommodation type: {booking.accommodation.placeType}</div>
@@ -81,14 +89,14 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                         <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
                         <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Contact</li>
                         {
-                            new Date(getFormattedDate(booking.checkoutDate)) < new Date() && (
+                            new Date(moment(booking.checkoutDate).format("DD-MM-YYYY")) < new Date() && (
                                 !bookingIsReviewed && (
                                     <li className="tag__item play blue" onClick={leaveReview}><i className="fas fa-clock mr-2"></i>Review</li>
                                 )
                             )
                         }
                         {
-                            new Date(getFormattedDate(booking.checkInDate)) > new Date() && (
+                            new Date(moment(booking.checkInDate).format("DD-MM-YYYY")) > new Date() && (
                                 <li className="tag__item play red" onClick={openModal}>Cancel booking</li>
                             )
                         }

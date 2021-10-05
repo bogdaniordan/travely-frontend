@@ -12,9 +12,9 @@ const CustomerLandingPage = () => {
         <div>
             <LandingPageNavbar />
             <section className="landing-page-container">
+                <div className="fourth-circle"></div>
                 <div className="circle"></div>
                 <div className="second-circle"></div>
-                {/*<div className="fourth-circle"></div>*/}
                 <div className="third-circle"></div>
                 <div className="content">
                     <div className="textBox">

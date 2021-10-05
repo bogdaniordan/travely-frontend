@@ -4,7 +4,7 @@ import plane from "../../images/plane.png"
 import Notifications from "./notifications/Notifications";
 import SavedAccommodations from "./notifications/SavedAccommodations";
 import ChatNotifications from "./notifications/ChatNotifications";
-import simple_logo from "./travely_logo.png";
+import simple_logo from "../../images/travely_logo.png";
 import CustomerService from "../../service/CustomerService";
 
 const Navbar = ({title, subtitle, savedAccommodations}) => {

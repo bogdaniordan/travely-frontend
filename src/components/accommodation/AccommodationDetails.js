@@ -12,6 +12,7 @@ import BookingService from "../../service/BookingService";
 import moment from "moment";
 import Avatar from "@material-ui/core/Avatar";
 import AccommodationHostDetails from "./AccommodationHostDetails";
+import Geocode from "react-geocode";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
@@ -27,6 +28,18 @@ const AccommodationDetails = (props) => {
             setAccommodation(response.data);
             getCustomer();
         })
+        Geocode.setApiKey("AIzaSyBtJ-at-3HxnIdCfaeplBDJJaNuZ18rFgg");
+        Geocode.setLanguage("en");
+        Geocode.fromAddress("Eiffel Tower").then(
+            (response) => {
+                const { lat, lng } = response.results[0].geometry.location;
+                console.log(lat, lng);
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+
     }, [])
 
     const getCustomer = () => {
