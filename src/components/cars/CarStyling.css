@@ -1,0 +1,20 @@
+.car-img {
+    height: 100%;
+    width: 30%;
+    float: left;
+}
+
+.car-info-container {
+    display: block;
+    height: 100%;
+    text-align: left;
+}
+
+.left-car-info {
+    display: block;
+    float: left;
+}
+
+.car-model-header {
+    margin-top: 10px;
+}

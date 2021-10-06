@@ -12,9 +12,16 @@ export const useStyles = makeStyles((theme) => ({
     paper: {
         height: "230px",
         width: "70%",
-        margin: "auto"
+        margin: "auto",
+        marginTop: "30px"
     },
     collapse: {
         marginLeft: "800px"
+    },
+    ageInput: {
+        marginLeft: "150px"
+    },
+    ageContainer: {
+        float: "left"
     }
 }));
