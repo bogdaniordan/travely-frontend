@@ -4,9 +4,10 @@ import Footer from "../navigation/Footer";
 import Button from "@material-ui/core/Button";
 import DateRange from "react-date-range/dist/components/DateRange";
 import {Collapse, Paper} from "@material-ui/core";
-import {useStyles} from "../../styling/NavbarBadgeStyling";
+import {useStyles} from "../../styling/js-styling/NavbarBadgeStyling";
 import CarService from "../../service/CarService";
 import CarCard from "./CarCard";
+import moment from "moment";
 
 const SearchTaxi = () => {
     const classes = useStyles();
@@ -14,7 +15,8 @@ const SearchTaxi = () => {
     const [cars, setCars] = useState([])
     const [showCalendar, setShowCalendar] = useState(false);
     const [location, setLocation] = useState("");
-    const [state, setState] = useState([
+    const [showWarningMessage, setShowWarningMessage] = useState(false);
+    const [dates, setDates] = useState([
         {
             startDate: new Date(),
             endDate: null,
@@ -25,24 +27,33 @@ const SearchTaxi = () => {
     const handleCheckBoxChange = () => {
         setCheckBox(!checkBox);
         if (checkBox) {
-            setCars(cars.filter(car => car.fullInsurance));
+            setCars(cars.filter(car => !car.fullInsurance));
         } else {
             search()
         }
     }
 
     useEffect(() => {
-        CarService.getAll().then(res => {
-            console.log(res.data)
-            setCars(res.data)
-        });
+        CarService.getAll().then(res => setCars(res.data));
     }, [])
 
     const search = () => {
-        if (location.length === 0) {
-           CarService.getAll().then(res => setCars(res.data))
+        if (location.length === 0 || location === "Any") {
+           CarService.getAll().then(res => {
+               if(!checkBox) {
+                   setCars(res.data.filter(car => car.fullInsurance))
+               } else {
+                   setCars(res.data)
+               }
+           })
         } else {
-            CarService.getAllByLocation(location).then(res => setCars(res.data))
+            CarService.getAllByLocation(location).then(res => {
+                if(!checkBox) {
+                    setCars(res.data.filter(car => car.fullInsurance))
+                } else {
+                    setCars(res.data)
+                }
+            })
         }
     }
 
@@ -63,13 +74,10 @@ const SearchTaxi = () => {
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="row no-gutters">
-                                            {/*<div className="col-lg-8 col-md-6 col-sm-12 p-0"  style={{width: "70%"}}>*/}
-                                            {/*    <input type="text" placeholder="Pick up location" className="form-control"*/}
-                                            {/*           id="search" name="search"/>*/}
-                                            {/*</div>*/}
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0" style={{width: "70%"}}>
                                                 <select className="form-control" id="exampleFormControlSelect1" onChange={(event) => setLocation(event.target.value)}>
                                                     <option value="" selected disabled hidden>City</option>
+                                                    <option value="Any">Any city</option>
                                                     <option value="London">London</option>
                                                     <option value="Boston">Boston</option>
                                                     <option value="Mumbai">Mumbai</option>
@@ -99,18 +107,35 @@ const SearchTaxi = () => {
                             </div>
                         </div>
                         <div className={classes.ageContainer}>
-                            <input type="checkbox" className={classes.ageInput} onClick={handleCheckBoxChange}/>
+                            <input type="checkbox" defaultChecked={checkBox} className={classes.ageInput} onClick={handleCheckBoxChange}/>
                             {" "}Driver's age is between 30 and 65.
                         </div>
                         <Collapse in={showCalendar} className={classes.collapse}>
                             <DateRange
-                                onChange={item => setState([item.selection])}
+                                onChange={item => {
+                                    console.log(dates.endDate)
+                                    setDates([item.selection])
+                                    setShowWarningMessage(false);
+                                }}
                                 moveRangeOnFirstSelection={false}
-                                ranges={state}
+                                ranges={dates}
                                 minDate={new Date()}
                             />
                         </Collapse>
                     </div>
+                    {
+                        showWarningMessage && (
+                            <h4 className="car-warning-message">No dates selected! Please enter your car booking dates.</h4>
+                        )
+                    }
+                    {
+                        dates.endDate && (
+                            <div>
+                                <h4>Selected dates: {moment(dates.startDate).format("DD-MM-YYYY")} - {moment(dates.endDate).format("DD-MM-YYYY")}</h4>
+                                <br/>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
             </div>
@@ -118,7 +143,7 @@ const SearchTaxi = () => {
                 {
                     cars.length > 0 ? (
                         cars.map(
-                            car => <CarCard car={car}/>
+                            car => <CarCard dates={dates} car={car} setWarningMessage={setShowWarningMessage}/>
                         )
                     ) : (<div>
                             <br/>

@@ -11,7 +11,7 @@ import Footer from "../navigation/Footer";
 import QuestionService from "../../service/QuestionService";
 import AuthService from "../../service/AuthService";
 import HostService from "../../service/HostService";
-import {useStyles, StyledTableRow, StyledTableCell} from "../../styling/QuestionsTableStyling";
+import {useStyles, StyledTableRow, StyledTableCell} from "../../styling/js-styling/QuestionsTableStyling";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";

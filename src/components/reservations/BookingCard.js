@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {useHistory} from "react-router-dom";
-import {useStyles} from "../../styling/DatePickerWindowStyling";
+import {useStyles} from "../../styling/js-styling/DatePickerWindowStyling";
 import BookingService from "../../service/BookingService";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
@@ -16,7 +16,8 @@ import moment from "moment";
 const BookingCard = ({customer, accommodation}) => {
     const classes = useStyles();
     const history = useHistory();
-    const [state, setState] = useState([
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [dates, setDates] = useState([
         {
             startDate: new Date(),
             endDate: null,
@@ -43,46 +44,55 @@ const BookingCard = ({customer, accommodation}) => {
     }
 
     const bookAccommodation = () => {
-        history.push({
-            pathname: "/payment",
-            state: {
-                booking: {
-                    checkInDate: state[0].startDate.toString(),
-                    checkoutDate: state[0].endDate.toString()
-                },
-                accommodation: accommodation,
-                customer: customer
-            }
-        }, )
-    }
-
-    const submitForm = e => {
-        e.preventDefault();
-        bookAccommodation()
+        if (!dates[0].endDate) {
+            setShowErrorMessage(true);
+        } else {
+            history.push({
+                pathname: "/payment",
+                state: {
+                    booking: {
+                        checkInDate: dates[0].startDate.toString(),
+                        checkoutDate: dates[0].endDate.toString()
+                    },
+                    accommodation: accommodation,
+                    customer: customer
+                }
+            }, )
+        }
 
     }
 
     return (
         <>
-            <Card className={classes.root} onSubmit={submitForm}>
+            <Card className={classes.root}>
                 <CardActionArea>
                     <CardContent align="center">
                         <Typography gutterBottom variant="h6" component="h5">
                             Enter your booking dates
                         </Typography>
+                        {
+                            showErrorMessage && (
+                                <Typography gutterBottom variant="h5" component="h4" className={classes.errorText}>
+                                    Booking dates are missing!
+                                </Typography>
+                            )
+                        }
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
                     <form className={classes.container}>
                         <DateRange
                             // editableDateInputs={true}
-                            onChange={item => setState([item.selection])}
+                            onChange={item => {
+                                setDates([item.selection])
+                                setShowErrorMessage(false);
+                            }}
                             moveRangeOnFirstSelection={false}
-                            ranges={state}
+                            ranges={dates}
                             disabledDates={disabledDates}
                             minDate={new Date()}
                         />
-                        <Button size="large" type="submit" color="primary" variant="contained" style={{marginTop: "10px"}}>
+                        <Button size="large" color="primary" variant="contained" className={classes.bookingButton} onClick={bookAccommodation}>
                             Reserve
                         </Button>
                     </form>

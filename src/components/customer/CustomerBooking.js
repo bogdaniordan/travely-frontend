@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import BookingService from "../../service/BookingService";
 import {useHistory} from "react-router-dom";
 import "../../styling/BookingCard.scss"
-import {customStyles} from "../../styling/ModalStyling";
+import {customStyles} from "../../styling/js-styling/ModalStyling";
 import TestimonialService from "../../service/TestimonialService";
 import AuthService from "../../service/AuthService";
 import LocationOnIcon from '@mui/icons-material/LocationOn';

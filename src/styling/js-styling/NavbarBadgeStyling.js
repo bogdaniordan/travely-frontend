@@ -23,5 +23,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     ageContainer: {
         float: "left"
+    },
+    reserveBtn: {
+        marginRight: "5px"
+    },
+    errorIcon: {
+        color: "orange"
     }
 }));

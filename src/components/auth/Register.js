@@ -12,7 +12,7 @@ import Form from "react-validation/build/form";
 import AuthService from "../../service/AuthService";
 import {nameValidation, required, validEmail, validPassword, validUsername} from "../../utils/Validations"
 import {Grid, Paper} from "@material-ui/core";
-import {useStyles} from "../../styling/AuthStyles";
+import {useStyles} from "../../styling/js-styling/AuthStyles";
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import login_background from "../../images/auth_backgound.jpg";
 

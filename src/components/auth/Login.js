@@ -12,10 +12,10 @@ import {required, validPassword, validUsername} from "../../utils/Validations";
 import CheckButton from "react-validation/build/button";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
-import {useStyles} from "../../styling/AuthStyles";
+import {useStyles} from "../../styling/js-styling/AuthStyles";
 import {Paper} from "@material-ui/core";
 import Modal from 'react-modal';
-import {customStyles} from "../../styling/ModalStyling";
+import {customStyles} from "../../styling/js-styling/ModalStyling";
 import ResetPasswordModal from "./ResetPasswordModal";
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"

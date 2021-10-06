@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import {CssBaseline} from "@material-ui/core";
-import {useStyles} from "../../styling/CardDetailsStyling";
+import {useStyles} from "../../styling/js-styling/CardDetailsStyling";
 import {useForm} from "react-hook-form";
 import CustomerService from "../../service/CustomerService";
 import {useHistory} from "react-router-dom";

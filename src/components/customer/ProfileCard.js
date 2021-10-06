@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import CustomerService from "../../service/CustomerService";
 import AuthService from "../../service/AuthService";
-import {customStyles} from "../../styling/ModalStyling";
+import {customStyles} from "../../styling/js-styling/ModalStyling";
 import Modal from "react-modal";
 import SavePaymentDetails from "../payment/SavePaymentDetails";
 import StatsBar from "./StatsBar";

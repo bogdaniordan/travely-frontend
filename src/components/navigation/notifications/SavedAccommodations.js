@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useStyles} from "../../../styling/NavbarBadgeStyling";
+import {useStyles} from "../../../styling/js-styling/NavbarBadgeStyling";
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import {Badge, Popover} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";

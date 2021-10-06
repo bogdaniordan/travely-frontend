@@ -4,7 +4,7 @@ import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import Typography from "@material-ui/core/Typography";
 import Link from "react-router-dom/Link";
 import QuestionService from "../../../service/QuestionService";
-import {useStyles} from "../../../styling/NavbarBadgeStyling";
+import {useStyles} from "../../../styling/js-styling/NavbarBadgeStyling";
 import CustomerService from "../../../service/CustomerService";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonAddDisabledIcon from '@mui/icons-material/PersonAddDisabled';

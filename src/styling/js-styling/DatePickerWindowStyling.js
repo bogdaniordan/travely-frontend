@@ -17,4 +17,10 @@ export const useStyles = makeStyles((theme) => ({
         width: 150,
         margin: "10px"
     },
+    bookingButton: {
+        marginTop: "10px"
+    },
+    errorText: {
+        color: "red"
+    }
 }));

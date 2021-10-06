@@ -18,3 +18,35 @@
 .car-model-header {
     margin-top: 10px;
 }
+
+.car-right-stats {
+    display: block;
+    float: right;
+    width: 30%;
+    height: 100%;
+    text-align: right;
+}
+
+.car-rating-container {
+    background-color: blue;
+    width: 20%;
+    height: 50px;
+    float: right;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.car-rating {
+    color: white;
+    margin: 10px auto auto;
+}
+
+.car-text-to-left {
+    margin-right: 10px;
+}
+
+.car-warning-message {
+    color: red;
+}
