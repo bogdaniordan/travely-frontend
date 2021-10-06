@@ -9,10 +9,8 @@ import Testimonials from "../testimonial/Testimonials";
 import AccommodationFacilitiesCard from "./AccommodationFacilitiesCard";
 import Footer from "../navigation/Footer";
 import BookingService from "../../service/BookingService";
-import moment from "moment";
-import Avatar from "@material-ui/core/Avatar";
 import AccommodationHostDetails from "./AccommodationHostDetails";
-import Geocode from "react-geocode";
+import {getCityCoordinates} from "../../utils/CityCoordinates";
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
@@ -28,18 +26,6 @@ const AccommodationDetails = (props) => {
             setAccommodation(response.data);
             getCustomer();
         })
-        Geocode.setApiKey("AIzaSyBtJ-at-3HxnIdCfaeplBDJJaNuZ18rFgg");
-        Geocode.setLanguage("en");
-        Geocode.fromAddress("Eiffel Tower").then(
-            (response) => {
-                const { lat, lng } = response.results[0].geometry.location;
-                console.log(lat, lng);
-            },
-            (error) => {
-                console.error(error);
-            }
-        );
-
     }, [])
 
     const getCustomer = () => {
@@ -137,8 +123,8 @@ const AccommodationDetails = (props) => {
                                 loadingElement={<div style={{ height: `100%` }} />}
                                 containerElement={<div style={{ height: `244px` }} />}
                                 mapElement={<div style={{ height: `100%` }} />}
-                                lat={44.439663}
-                                lng={26.096306}
+                                lat={getCityCoordinates(accommodation.location)[0]}
+                                lng={getCityCoordinates(accommodation.location)[1]}
                             />
                         </div>
 

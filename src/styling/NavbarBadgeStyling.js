@@ -9,4 +9,12 @@ export const useStyles = makeStyles((theme) => ({
     typography: {
         padding: theme.spacing(2),
     },
+    paper: {
+        height: "230px",
+        width: "70%",
+        margin: "auto"
+    },
+    collapse: {
+        marginLeft: "800px"
+    }
 }));

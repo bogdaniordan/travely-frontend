@@ -20,31 +20,38 @@ const StatsBar = () => {
     }, [])
 
     return (
-        <>
-            <hr className="mb-4"/>
-            <h5>View stats</h5>
-            <br/>
-            <br/>
-            <div className="row">
-                <div className="col-sm-3">
-                    <p className="m-b-10 f-w-600">Trips</p>
-                    <h6 className="text-muted f-w-400">{trips}</h6>
-                </div>
+        <div>
+            <div className="row container d-flex justify-content-center" style={{height: "auto", margin: "0 auto"}}>
+                <div className="col-xl-6 col-md-12" style={{width: "1200px"}}>
+                    <div className="card user-card-full">
+                        <div className="row m-l-0 m-r-0">
+                            <h5>View stats</h5>
+                            <br/>
+                            <br/>
+                            <div className="row">
+                                <div className="col-sm-3">
+                                    <p className="m-b-10 f-w-600">Trips</p>
+                                    <h6 className="text-muted f-w-400">{trips}</h6>
+                                </div>
 
-                <div className="col-sm-3">
-                    <p className="m-b-10 f-w-600">Nights booked</p>
-                    <h6 className="text-muted f-w-400">{numberOfBookedNights}</h6>
-                </div>
-                <div className="col-sm-3">
-                    <p className="m-b-10 f-w-600">Amount spent</p>
-                    <h6 className="text-muted f-w-400">{amountSpent}</h6>
-                </div>
-                <div className="col-sm-3">
-                    <p className="m-b-10 f-w-600">Friends</p>
-                    <h6 className="text-muted f-w-400">{friends}</h6>
+                                <div className="col-sm-3">
+                                    <p className="m-b-10 f-w-600">Nights booked</p>
+                                    <h6 className="text-muted f-w-400">{numberOfBookedNights}</h6>
+                                </div>
+                                <div className="col-sm-3">
+                                    <p className="m-b-10 f-w-600">Amount spent</p>
+                                    <h6 className="text-muted f-w-400">{amountSpent}</h6>
+                                </div>
+                                <div className="col-sm-3">
+                                    <p className="m-b-10 f-w-600">Friends</p>
+                                    <h6 className="text-muted f-w-400">{friends}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

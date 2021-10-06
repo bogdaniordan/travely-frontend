@@ -41,6 +41,9 @@ const Navbar = ({title, subtitle, savedAccommodations}) => {
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/community">Community</a>
                                 </li>
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "#aaaccc"}} aria-current="page" href="/search-taxi">Cars</a>
+                                </li>
                                 {/*{*/}
                                 {/*    AuthService.getCurrentUser() && (*/}
                                 {/*        <li className="nav-item">*/}

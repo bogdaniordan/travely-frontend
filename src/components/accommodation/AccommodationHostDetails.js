@@ -3,6 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
 import HostService from "../../service/HostService";
 import {Tooltip} from "@material-ui/core";
+import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
 
 const AccommodationHostDetails = ({accommodation, isBookedAtm, hasFutureBookings, closestFutureBooking}) => {
     const [hostBadges, setHostBadges] = useState([]);
@@ -30,13 +31,12 @@ const AccommodationHostDetails = ({accommodation, isBookedAtm, hasFutureBookings
                                     )
                                 )
                             }
-                        </div>
-                    </div>
+                        </div></div>
                     {
                         accommodation.cleaningStatus === "CLEAN" ? (
-                            <h4 className="blue-colored">Cleanliness: CLEAN</h4>
+                            <h4><span className="blue-colored">Cleanliness: CLEAN</span> <SmokeFreeIcon  style={{marginLeft: "190px"}} /> NO SMOKING</h4>
                         ) : (
-                            <h4 className="red-colored">Cleanliness: DIRTY</h4>
+                            <h4><span className="red-colored">Cleanliness: DIRTY</span> <SmokeFreeIcon  style={{marginLeft: "190px"}} /> NO SMOKING</h4>
                         )
                     }
                     {

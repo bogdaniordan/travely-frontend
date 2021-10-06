@@ -41,33 +41,17 @@ const HostLandingPage = () => {
                             )
                         }
                     </div>
-                    <a href="/host-landing-page">
-                        <div className="imgBox">
-                            <img
-                                src="https://i.pinimg.com/originals/d6/11/3b/d6113b031ac40ecc19a85eda0ae55436.png"
-                                alt="pet"
-                                className="petImage"
-                                style={{ marginTop: "-110px", width: "700px" }}
-                            />
-                        </div>
-                    </a>
+                    {/*<a href="/host-landing-page">*/}
+                    {/*    <div className="imgBox">*/}
+                    {/*        <img*/}
+                    {/*            src="https://i.pinimg.com/originals/d6/11/3b/d6113b031ac40ecc19a85eda0ae55436.png"*/}
+                    {/*            alt="pet"*/}
+                    {/*            className="petImage"*/}
+                    {/*            style={{ marginTop: "-110px", width: "700px" }}*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*</a>*/}
                 </div>
-                {/*<ul className="thumb">*/}
-                {/*    <li>*/}
-                {/*        <img*/}
-                {/*            src="https://cdn2.iconfinder.com/data/icons/general-health-1/24/clinic2-512.png"*/}
-                {/*            alt="clinicSide"*/}
-                {/*            // onClick={redirectToClinicPage}*/}
-                {/*        />*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*        <img*/}
-                {/*            src="https://static.thenounproject.com/png/2404351-200.png"*/}
-                {/*            alt="clientSide"*/}
-                {/*            // onClick={redirectToCustomerPage}*/}
-                {/*        />*/}
-                {/*    </li>*/}
-                {/*</ul>*/}
             </section>
         </div>
     );

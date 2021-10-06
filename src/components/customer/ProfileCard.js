@@ -84,11 +84,23 @@ const ProfileCard = () => {
                                     </div>
                                 </div>
                                 <br/>
-                                <StatsBar />
+                                {/*<StatsBar />*/}
                             </div>
                         </div>
                     </div>
                 </div>
+                {/*<div>*/}
+                {/*    <div className="row container d-flex justify-content-center" style={{height: "auto", margin: "0 auto"}}>*/}
+                {/*        <div className="col-xl-6 col-md-12" style={{width: "1200px"}}>*/}
+                {/*            <div className="card user-card-full">*/}
+                {/*                <div className="row m-l-0 m-r-0">*/}
+                {/*                    <StatsBar />*/}
+                {/*                </div>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                <StatsBar />
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}

@@ -78,7 +78,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     </div>
 
                     <div className="postcard__bar"></div>
-                    <div className="postcard__preview-txt">Amount: ${booking.price} - {bookingDurationInDays} nights/${booking.pricePerNight}</div>
+                    <div className="postcard__preview-txt">Amount: <strong>${booking.price}</strong> - {bookingDurationInDays} nights/${booking.accommodation.pricePerNight}</div>
                     <br/>
                     <div className="postcard__preview-txt"><LocationOnIcon /> {booking.accommodation.location}</div>
                     <br/>
