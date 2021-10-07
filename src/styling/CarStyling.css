@@ -83,3 +83,8 @@
 #car-dates-selector {
     width: 20%;
 }
+
+.car-buttons-container {
+    display: flex;
+    float: right;
+}

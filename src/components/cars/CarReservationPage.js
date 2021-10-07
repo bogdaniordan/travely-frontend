@@ -9,12 +9,13 @@ import {getCityCoordinates} from "../../utils/CityCoordinates";
 import Map from "../../utils/Map";
 import moment from "moment";
 import Button from "@material-ui/core/Button";
+import CarExtras from "./CarExtras";
 
 const CarReservationPage = () => {
     const location = useLocation();
     const [childSeatNumber, setChildSeatNumber] = useState(0);
     const [babySeatNumber, setBabySeatNumber] = useState(0);
-    const [gps, setGps] = useState(false);
+    const [gps, setGps] = useState(0);
 
     return (
         <div>
@@ -46,57 +47,7 @@ const CarReservationPage = () => {
                     </div>
                 </div>
                 <br/>
-                <div className="row">
-                    <div className="card">
-                        <div className="card-body">
-                            <h5>Payment and extras</h5>
-                            <p>Please note: Your own car insurance does not cover hire cars.</p>
-                            <div className="card" id="car-extras-card">
-                                <div className="card-body" id="car-extras-body">
-                                    <div className="car-extras-value">
-                                        <h5>Child seat</h5>
-                                    </div>
-                                    <div className="car-extras-button-container">
-                                        <div style={{float: "right", display: "flex"}}>
-                                            <h4 className="car-extras-value-number">{childSeatNumber}</h4>
-                                            <Button color="secondary" variant="outlined" disabled={childSeatNumber === 0} onClick={() => setChildSeatNumber(childSeatNumber - 1)} style={{marginRight: "10px"}}>-</Button>
-                                            <Button color="primary" variant="outlined" disabled={childSeatNumber === 2} onClick={() => setChildSeatNumber(childSeatNumber + 1)}>+</Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card" id="car-extras-card">
-                                <div className="card-body" id="car-extras-body">
-                                    <div className="car-extras-value">
-                                        <h5>Baby seat</h5>
-                                    </div>
-                                    <div className="car-extras-button-container">
-                                        <div style={{float: "right", display: "flex"}}>
-                                            <h4 className="car-extras-value-number">0</h4>
-                                            <Button color="secondary" variant="outlined" style={{marginRight: "10px"}}>-</Button>
-                                            <Button color="primary" variant="outlined" disabled={true}>+</Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="card" id="car-extras-card">
-                                <div className="card-body" id="car-extras-body">
-                                    <div className="car-extras-value">
-                                        <h5>GPS</h5>
-                                    </div>
-                                    <div className="car-extras-button-container">
-                                        <div style={{float: "right", display: "flex"}}>
-                                            <h4 className="car-extras-value-number">0</h4>
-                                            <Button color="secondary" variant="outlined" style={{marginRight: "10px"}}>-</Button>
-                                            <Button color="primary" variant="outlined" disabled={true}>+</Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <CarExtras childSeatNumber={childSeatNumber} setChildSeatNumber={setChildSeatNumber} babySeatNumber={babySeatNumber} setBabySeatNumber={setBabySeatNumber} gps={gps} setGps={setGps}/>
             </div>
             <Footer />
         </div>
