@@ -1,23 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import QuestionService from "../../service/QuestionService";
 import AuthService from "../../service/AuthService";
 import HostService from "../../service/HostService";
-import {useStyles, StyledTableRow, StyledTableCell} from "../../styling/js-styling/QuestionsTableStyling";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import moment from "moment";
 
 const QuestionsPage = (props) => {
-    // const classes = useStyles();
     const hostId = props.match.params.hostId;
     const [questions, setQuestions] = useState([]);
     const [host, setHost] = useState({})

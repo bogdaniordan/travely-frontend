@@ -19,6 +19,10 @@ class CarService {
         }
         return axios.post(`${CARS_SERVICE_API_URL}/filter-by-location/${location}`, bookingsDatesDto, {headers: AuthHeader()})
     }
+
+    getById(id) {
+        return axios.get(`${CARS_SERVICE_API_URL}/${id}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CarService;

@@ -50,3 +50,36 @@
 .car-warning-message {
     color: red;
 }
+
+#car-extras-card {
+    width: 70%;
+    display: block;
+    margin: 5px auto auto;
+}
+
+#car-extras-body {
+    display: flex;
+}
+
+.car-extras-value {
+    text-align: left;
+    float: left;
+    width: 90%;
+}
+
+.car-extras-button-container {
+    text-align: right;
+    float: right;
+}
+
+.car-extras-value-number {
+    margin-right: 10px;
+}
+
+#car-location-selector {
+    width: 70%;
+}
+
+#car-dates-selector {
+    width: 20%;
+}

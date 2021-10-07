@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import DateRange from "react-date-range/dist/components/DateRange";
@@ -7,7 +7,6 @@ import {useStyles} from "../../styling/js-styling/NavbarBadgeStyling";
 import CarService from "../../service/CarService";
 import CarCard from "./CarCard";
 import moment from "moment";
-import CarBookingService from "../../service/CarBookingService";
 
 const SearchTaxi = () => {
     const classes = useStyles();
@@ -34,10 +33,6 @@ const SearchTaxi = () => {
         }
     }
 
-    // useEffect(() => {
-    //     CarService.getAll().then(res => setCars(res.data));
-    // }, [])
-
     const search = () => {
         if (!dates[0].endDate) {
             setShowWarningMessage(true)
@@ -45,41 +40,27 @@ const SearchTaxi = () => {
             if (location.length === 0 || location === "Any") {
                 CarService.getAll(moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
                     if(!checkBox) {
+                        setCars([])
                         setCars(res.data.filter(car => car.fullInsurance))
                     } else {
+                        setCars([])
                         setCars(res.data)
                     }
                 })
-                // carsCanBeBooked();
             } else {
                 CarService.getAllByLocation(location, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
                     if(!checkBox) {
+                        setCars([])
                         setCars(res.data.filter(car => car.fullInsurance))
                     } else {
+                        setCars([])
                         setCars(res.data)
                     }
                 })
-                // carsCanBeBooked();
             }
-
             setSearched(true);
         }
-
     }
-
-    // const carsCanBeBooked = () => {
-    //     console.log(moment(dates[0].startDate).format("YYYY-MM-DD"))
-    //     console.log(moment(dates[0].endDate).format("YYYY-MM-DD"))
-    //
-    //     let carz = [];
-    //     cars.forEach(car => CarBookingService.canBeBooked(car.id, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
-    //         if(res.data) {
-    //             carz.push(car);
-    //         }
-    //     }))
-    //     setCars(carz);
-    //     // setCars(cars.filter(car => CarBookingService.canBeBooked(car.id, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD"))))
-    // }
 
     return (
         <div>
@@ -98,7 +79,7 @@ const SearchTaxi = () => {
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="row no-gutters">
-                                            <div className="col-lg-3 col-md-3 col-sm-12 p-0" style={{width: "70%"}}>
+                                            <div className="col-lg-3 col-md-3 col-sm-12 p-0" id="car-location-selector">
                                                 <select className="form-control" id="exampleFormControlSelect1" onChange={(event) => setLocation(event.target.value)}>
                                                     <option value="" selected disabled hidden>City</option>
                                                     <option value="Any">Any city</option>
@@ -109,7 +90,7 @@ const SearchTaxi = () => {
                                                     <option value="Paris">Paris</option>
                                                 </select>
                                             </div>
-                                            <div className="col-lg-8 col-md-6 col-sm-12 p-0"  style={{width: "20%"}}>
+                                            <div className="col-lg-8 col-md-6 col-sm-12 p-0"  id="car-dates-selector">
                                                 <select className="form-control" onClick={() => setShowCalendar(!showCalendar)}>
                                                     <option value="" selected disabled hidden>Dates</option>
                                                 </select>
@@ -163,16 +144,27 @@ const SearchTaxi = () => {
             </div>
             </div>
             <div className="container">
+                <br/>
                 {
                     cars.length > 0 ? (
-                        cars.map(
-                            car => <CarCard dates={dates[0]} car={car} setWarningMessage={setShowWarningMessage}/>
-                        )
-                    ) : ( searched && (
+                        <div className="row">
+                            <div className="card">
+                                <div className="card-body">
+                                    {
+                                            cars.map(
+                                                car => <CarCard car={car} dates={dates[0]} />
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                         ( searched && (
                         <div>
                             <br/>
                             <h4>No results found for your search.</h4>
                         </div>))
+                    )
                 }
             </div>
             <Footer/>

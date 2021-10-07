@@ -20,6 +20,7 @@ import HostLandingPage from "./HostLandingPage";
 import PeoplePage from "../community/users/PeoplePage";
 import SuccessfulPayment from "../payment/SuccessfulPayment";
 import SearchTaxi from "../cars/CarRentals";
+import CarReservationPage from "../cars/CarReservationPage";
 // import 'react-toastify/dist/ReactToastify.css';
 
 const Routes = () => {
@@ -46,6 +47,7 @@ const Routes = () => {
                     <Route path="/people" exact component={PeoplePage} />
                     <Route path="/success-payment" exact component={SuccessfulPayment} />
                     <Route path="/search-taxi" exact component={SearchTaxi}/>
+                    <Route path="/car-reservation/:carId" exact component={CarReservationPage} />
                 </Switch>
             </Router>
         </div>

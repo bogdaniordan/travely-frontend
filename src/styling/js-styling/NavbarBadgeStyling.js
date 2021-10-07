@@ -27,7 +27,8 @@ export const useStyles = makeStyles((theme) => ({
         float: "left"
     },
     reserveBtn: {
-        marginRight: "5px"
+        marginRight: "5px",
+        marginBottom: "5px"
     },
     errorIcon: {
         color: "orange"

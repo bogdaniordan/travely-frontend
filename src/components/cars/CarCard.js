@@ -9,21 +9,37 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import "../../styling/CarStyling.css"
-import CarBookingService from "../../service/CarBookingService";
+import {useHistory} from "react-router-dom";
 
-const CarCard = ({car, dates, setWarningMessage}) => {
+const CarCard = ({car, dates, hideButton}) => {
     const classes = useStyles();
-    // const [canBeBooked, setCanBeBooked] = useState(false);
+    const history = useHistory();
+    const [bookingDurationInDays, setBookingDurationInDays] = useState(0);
 
-    // const reserve = () => {
-    //     if(!dates.endDate) {
-    //         setWarningMessage(true)
-    //     }
-    // }
+    useEffect(() => {
+        getBookingDuration();
+    }, [])
 
-    // useEffect(() => {
-    //     CarBookingService.canBeBooked(car.id).then(res => setCanBeBooked(res.data))
-    // })
+    const getBookingDuration = () => {
+        const startDate = new Date(dates.startDate);
+        const endDate = new Date(dates.endDate);
+        const differenceInTime = endDate.getTime() - startDate.getTime();
+        let days = differenceInTime / (1000 * 3600 * 24) + 1;
+        if (days < 1) {
+            days = 1;
+        }
+        setBookingDurationInDays(days);
+    }
+
+    const reserveCar = () => {
+        history.push({
+            pathname: `/car-reservation/${car.id}`,
+            state: {
+                car: car,
+                dates: dates
+            }
+        })
+    }
 
     return (
         <Paper elevation={3} className={classes.paper}>
@@ -44,16 +60,12 @@ const CarCard = ({car, dates, setWarningMessage}) => {
                     <br/>
                     <br/>
                     <br/>
-                    <p className="car-text-to-left"><strong>${car.pricePerDay}</strong>/day</p>
-                    {dates.endDate && (
-                        <p className="car-text-to-left">CALCULATE DAYS * PRICE PER DAY</p>
-                    )}
-                    <p className="car-text-to-left">{car.fullInsurance ? <span><CheckCircleIcon color="success"/> Full insurance</span> : <span><ErrorIcon className={classes.errorIcon} /> Partial insurance</span>}</p>
-                    {/*{*/}
-                    {/*    canBeBooked && (*/}
-                            <Button variant="contained" color="primary" className={classes.reserveBtn}>Reserve</Button>
-                        {/*)*/}
-                    {/*}*/}
+                    <small className="car-text-to-left"><strong>${car.pricePerDay}</strong>/day</small>
+                    <h3 className="car-text-to-left">${bookingDurationInDays * car.pricePerDay}</h3>
+                    <p className="car-text-to-left">{car.fullInsurance ? <span><CheckCircleIcon color="success"/> Full insurance</span> : <span><ErrorIcon className={classes.errorIcon} /> Limited cover</span>}</p>
+                    {
+                        !(hideButton === "hide") && <Button variant="contained" color="primary" className={classes.reserveBtn} onClick={reserveCar}>Reserve</Button>
+                    }
                 </div>
             </div>
         </Paper>
