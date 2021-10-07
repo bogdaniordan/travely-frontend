@@ -12,7 +12,7 @@ import Modal from 'react-modal';
 import {customStyles} from "../../styling/js-styling/ModalStyling";
 import RecommendationModal from "../recommendation/RecommendationModal";
 
-const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations}) => {
+const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, showPicture}) => {
     const history = useHistory();
     const [jobIsSaved, setJobIsSaved] = useState(false)
     const [rating, setRating] = useState(0);
@@ -56,7 +56,7 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations})
             <div className="col">
                 <div className="card shadow-sm">
                     {
-                        savedAccommodations && <img alt="Responsive image" className="img-fluid" style={{height: "250px"}} src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
+                        (savedAccommodations || showPicture === "yes") && <img alt="Responsive image" className="img-fluid" style={{height: "250px"}} src={`http://localhost:8080/accommodations/image/${place.id}/firstImage/download`}/>
 
                     }
                     <div className="card-body">

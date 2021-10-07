@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useStyles} from "../../styling/js-styling/NavbarBadgeStyling";
 import Button from "@material-ui/core/Button";
 import {Paper} from "@material-ui/core";
@@ -8,16 +8,22 @@ import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
-import "./CarStyling.css"
+import "../../styling/CarStyling.css"
+import CarBookingService from "../../service/CarBookingService";
 
 const CarCard = ({car, dates, setWarningMessage}) => {
     const classes = useStyles();
+    // const [canBeBooked, setCanBeBooked] = useState(false);
 
-    const reserve = () => {
-        if(!dates.endDate) {
-            setWarningMessage(true)
-        }
-    }
+    // const reserve = () => {
+    //     if(!dates.endDate) {
+    //         setWarningMessage(true)
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     CarBookingService.canBeBooked(car.id).then(res => setCanBeBooked(res.data))
+    // })
 
     return (
         <Paper elevation={3} className={classes.paper}>
@@ -39,9 +45,15 @@ const CarCard = ({car, dates, setWarningMessage}) => {
                     <br/>
                     <br/>
                     <p className="car-text-to-left"><strong>${car.pricePerDay}</strong>/day</p>
-                    <p className="car-text-to-left">{dates.endDate ? "bla bla" : "No dates selected"}</p>
+                    {dates.endDate && (
+                        <p className="car-text-to-left">CALCULATE DAYS * PRICE PER DAY</p>
+                    )}
                     <p className="car-text-to-left">{car.fullInsurance ? <span><CheckCircleIcon color="success"/> Full insurance</span> : <span><ErrorIcon className={classes.errorIcon} /> Partial insurance</span>}</p>
-                    <Button variant="contained" color="primary" className={classes.reserveBtn} onClick={reserve}>Reserve</Button>
+                    {/*{*/}
+                    {/*    canBeBooked && (*/}
+                            <Button variant="contained" color="primary" className={classes.reserveBtn}>Reserve</Button>
+                        {/*)*/}
+                    {/*}*/}
                 </div>
             </div>
         </Paper>

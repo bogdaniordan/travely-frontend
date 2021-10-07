@@ -4,12 +4,20 @@ import AuthHeader from "./auth-helpers/AuthHeader";
 const CARS_SERVICE_API_URL = "http://localhost:8080/cars";
 
 class CarService {
-    getAll() {
-        return axios.get(`${CARS_SERVICE_API_URL}/all`, {headers: AuthHeader()});
+    getAll(startDate, endDate) {
+        const bookingsDatesDto = {
+            checkIn: startDate,
+            checkOut: endDate
+        }
+        return axios.post(`${CARS_SERVICE_API_URL}/all`, bookingsDatesDto, {headers: AuthHeader()});
     }
 
-    getAllByLocation(location) {
-        return axios.get(`${CARS_SERVICE_API_URL}/filter-by-location/${location}`, {headers: AuthHeader()})
+    getAllByLocation(location, startDate, endDate) {
+        const bookingsDatesDto = {
+            checkIn: startDate,
+            checkOut: endDate
+        }
+        return axios.post(`${CARS_SERVICE_API_URL}/filter-by-location/${location}`, bookingsDatesDto, {headers: AuthHeader()})
     }
 }
 

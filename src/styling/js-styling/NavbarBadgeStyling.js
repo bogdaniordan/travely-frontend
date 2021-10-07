@@ -16,7 +16,9 @@ export const useStyles = makeStyles((theme) => ({
         marginTop: "30px"
     },
     collapse: {
-        marginLeft: "800px"
+        marginLeft: "800px",
+        position: "absolute",
+        zIndex: 1
     },
     ageInput: {
         marginLeft: "150px"

@@ -4,12 +4,15 @@ import moment from "moment";
 import HostService from "../../service/HostService";
 import {Tooltip} from "@material-ui/core";
 import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
+import RecommendationService from "../../service/RecommendationService";
 
 const AccommodationHostDetails = ({accommodation, isBookedAtm, hasFutureBookings, closestFutureBooking}) => {
     const [hostBadges, setHostBadges] = useState([]);
+    const [recommendations, setRecommendations] = useState([]);
 
     useEffect(() => {
         HostService.getHostBadges(accommodation.host.id).then(res => setHostBadges(res.data));
+        RecommendationService.getAllForAccommodation(accommodation.id).then(res => setRecommendations(res.data));
     }, [])
 
     return (
@@ -41,14 +44,20 @@ const AccommodationHostDetails = ({accommodation, isBookedAtm, hasFutureBookings
                     }
                     {
                         isBookedAtm ? (
-                            <h5>This accommodation is currently booked.</h5>
+                            <div className="flexed-container">
+                                <h5 >This accommodation is currently booked.</h5>
+                                <h6 className="recommendations-number">{recommendations.length} recommendation(s)</h6>
+                            </div>
                         ) : (
                             hasFutureBookings ? (
                                 <div className="mb-1 text-muted">
-                                    Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).format("DD-MM-YYYY")}</strong> and ends on <strong>{moment(closestFutureBooking.checkoutDate).format("DD-MM-YYYY")}</strong>
+                                    Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).format("DD-MM-YYYY")}</strong> and ends on <strong>{moment(closestFutureBooking.checkoutDate).format("DD-MM-YYYY")}</strong>.
                                 </div>
                             ) : (
-                                <h5>This accommodation has no future bookings.</h5>
+                                <div className="flexed-container">
+                                    <h5>This accommodation has no future bookings.</h5>
+                                    <p className="recommendations-number">{recommendations.length} recommendation(s)</p>
+                                </div>
 
                             )
                         )

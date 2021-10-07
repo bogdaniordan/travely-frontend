@@ -22,6 +22,10 @@ class RecommendationService {
     deleteRecommendation(id) {
         return axios.delete(`${RECOMMENDATION_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
     }
+
+    getAllForAccommodation(id) {
+        return axios.get(`${RECOMMENDATION_SERVICE_API_URL}/get-all-for-accommodation/${id}`, {headers: AuthHeader()})
+    }
 }
 
 export default new RecommendationService;

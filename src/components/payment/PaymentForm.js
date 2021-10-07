@@ -72,7 +72,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             <strong>${bookingDurationInDays * accommodation.pricePerNight}</strong>
                         </li>
                     </ul>
-                    <AccommodationCard place={accommodation}/>
+                    <AccommodationCard place={accommodation} showPicture={"yes"}/>
                 </div>
                 <div className="col-md-8 order-md-1">
                     <Link to={`/accommodation/${accommodation.id}`} style={{float: "left"}}>Back to accommodation</Link>

@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
 import FamousCityBar from "../../utils/FamousCityBar";
+import InfoIcon from '@mui/icons-material/Info';
 
 const HomePage = () => {
     const [location, setLocation] = useState();
@@ -43,6 +44,7 @@ const HomePage = () => {
             <div className="container">
                 <h4>Search accommodations by location, type or name</h4>
                 <br/>
+                <p><InfoIcon style={{color: "orange"}}/> Get the advice you need. Check the latest COVID-19 restrictions before you travel. Learn more</p>
                 <div className="row">
                     <div className="col-lg-12 card-margin">
                         <div className="card search-form">

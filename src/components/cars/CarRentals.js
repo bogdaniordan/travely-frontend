@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
-import Button from "@material-ui/core/Button";
 import DateRange from "react-date-range/dist/components/DateRange";
-import {Collapse, Paper} from "@material-ui/core";
+import {Collapse} from "@material-ui/core";
 import {useStyles} from "../../styling/js-styling/NavbarBadgeStyling";
 import CarService from "../../service/CarService";
 import CarCard from "./CarCard";
 import moment from "moment";
+import CarBookingService from "../../service/CarBookingService";
 
 const SearchTaxi = () => {
     const classes = useStyles();
     const [checkBox, setCheckBox] = useState(true);
-    const [cars, setCars] = useState([])
+    const [cars, setCars] = useState([]);
+    const [searched, setSearched] = useState(false);
     const [showCalendar, setShowCalendar] = useState(false);
     const [location, setLocation] = useState("");
     const [showWarningMessage, setShowWarningMessage] = useState(false);
@@ -33,29 +34,52 @@ const SearchTaxi = () => {
         }
     }
 
-    useEffect(() => {
-        CarService.getAll().then(res => setCars(res.data));
-    }, [])
+    // useEffect(() => {
+    //     CarService.getAll().then(res => setCars(res.data));
+    // }, [])
 
     const search = () => {
-        if (location.length === 0 || location === "Any") {
-           CarService.getAll().then(res => {
-               if(!checkBox) {
-                   setCars(res.data.filter(car => car.fullInsurance))
-               } else {
-                   setCars(res.data)
-               }
-           })
+        if (!dates[0].endDate) {
+            setShowWarningMessage(true)
         } else {
-            CarService.getAllByLocation(location).then(res => {
-                if(!checkBox) {
-                    setCars(res.data.filter(car => car.fullInsurance))
-                } else {
-                    setCars(res.data)
-                }
-            })
+            if (location.length === 0 || location === "Any") {
+                CarService.getAll(moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
+                    if(!checkBox) {
+                        setCars(res.data.filter(car => car.fullInsurance))
+                    } else {
+                        setCars(res.data)
+                    }
+                })
+                // carsCanBeBooked();
+            } else {
+                CarService.getAllByLocation(location, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
+                    if(!checkBox) {
+                        setCars(res.data.filter(car => car.fullInsurance))
+                    } else {
+                        setCars(res.data)
+                    }
+                })
+                // carsCanBeBooked();
+            }
+
+            setSearched(true);
         }
+
     }
+
+    // const carsCanBeBooked = () => {
+    //     console.log(moment(dates[0].startDate).format("YYYY-MM-DD"))
+    //     console.log(moment(dates[0].endDate).format("YYYY-MM-DD"))
+    //
+    //     let carz = [];
+    //     cars.forEach(car => CarBookingService.canBeBooked(car.id, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
+    //         if(res.data) {
+    //             carz.push(car);
+    //         }
+    //     }))
+    //     setCars(carz);
+    //     // setCars(cars.filter(car => CarBookingService.canBeBooked(car.id, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD"))))
+    // }
 
     return (
         <div>
@@ -113,7 +137,6 @@ const SearchTaxi = () => {
                         <Collapse in={showCalendar} className={classes.collapse}>
                             <DateRange
                                 onChange={item => {
-                                    console.log(dates.endDate)
                                     setDates([item.selection])
                                     setShowWarningMessage(false);
                                 }}
@@ -129,9 +152,9 @@ const SearchTaxi = () => {
                         )
                     }
                     {
-                        dates.endDate && (
+                        dates[0].endDate && (
                             <div>
-                                <h4>Selected dates: {moment(dates.startDate).format("DD-MM-YYYY")} - {moment(dates.endDate).format("DD-MM-YYYY")}</h4>
+                                <h4>Selected dates: {moment(dates[0].startDate).format("DD-MM-YYYY")} - {moment(dates[0].endDate).format("DD-MM-YYYY")}</h4>
                                 <br/>
                             </div>
                         )
@@ -143,12 +166,13 @@ const SearchTaxi = () => {
                 {
                     cars.length > 0 ? (
                         cars.map(
-                            car => <CarCard dates={dates} car={car} setWarningMessage={setShowWarningMessage}/>
+                            car => <CarCard dates={dates[0]} car={car} setWarningMessage={setShowWarningMessage}/>
                         )
-                    ) : (<div>
+                    ) : ( searched && (
+                        <div>
                             <br/>
                             <h4>No results found for your search.</h4>
-                        </div>)
+                        </div>))
                 }
             </div>
             <Footer/>
