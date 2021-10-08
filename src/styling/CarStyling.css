@@ -99,3 +99,37 @@
     width: 95%;
     margin: auto;
 }
+
+.total-price-container {
+    display: flex;
+    height: 100%;
+}
+
+.total-price {
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.right-container {
+    float: right;
+}
+
+.error-red {
+    color: red;
+}
+
+.centred-middle {
+    margin: auto;
+}
+
+.cvv-container {
+    margin-left: 85px;
+}
+
+.expiration-date-container {
+    width: 40%;
+}
+
+#flexed {
+
+}

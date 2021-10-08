@@ -1,19 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
-import CarService from "../../service/CarService";
 import CarCard from "./CarCard";
-import {useLocation} from "react-router-dom";
-import {Link} from "react-router-dom";
-import {getCityCoordinates} from "../../utils/CityCoordinates";
+import {Link, useLocation} from "react-router-dom";
+import {getBookingDuration, getCityCoordinates} from "../../utils/CityCoordinates";
 import Map from "../../utils/Map";
 import moment from "moment";
-import Button from "@material-ui/core/Button";
 import CarExtras from "./CarExtras";
 import CarPaymentForm from "./CarPaymentForm";
-import {getBookingDuration} from "../../utils/CityCoordinates";
-import CustomerService from "../../service/CustomerService";
-import AuthService from "../../service/AuthService";
 
 const CarReservationPage = () => {
     const location = useLocation();

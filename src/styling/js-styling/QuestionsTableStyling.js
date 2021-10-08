@@ -14,5 +14,22 @@ export const useStyles = makeStyles({
         width: "90%",
         height: "200px",
         margin: "auto"
+    },
+    updatePaper: {
+        height: "800px",
+        margin: "auto",
+        textAlign: "left",
+        width: "80%"
+    },
+    updateContainer: {
+        margin: "auto",
+        fontWeight: "bold"
+    },
+    updateSubmitBtn: {
+        float: "left",
+        marginLeft: "15px"
+    },
+    updateBackBtn: {
+        float: "right"
     }
 });

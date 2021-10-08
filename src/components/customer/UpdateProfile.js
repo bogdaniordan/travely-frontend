@@ -8,8 +8,10 @@ import {useHistory} from "react-router-dom";
 import Footer from "../navigation/Footer";
 import {useForm} from "react-hook-form";
 import {Form} from "react-bootstrap";
+import {useStyles} from "../../styling/js-styling/QuestionsTableStyling";
 
 const UpdateProfile = () => {
+    const classes = useStyles();
     const history = useHistory();
     const [file, setFile] = useState();
     const [customer, setCustomer] = useState({});
@@ -42,8 +44,8 @@ const UpdateProfile = () => {
         <div>
             <Navbar title={"Update user"} subtitle={"Please fill in any user detail you want to update."}/>
                 <div className="container">
-                    <Paper elevation={2} style={{height: "800px", margin: "auto", textAlign: "left", width: "80%"}}>
-                        <Container style={{margin: "auto", fontWeight: "bold"}}>
+                    <Paper elevation={2} className={classes.updatePaper}>
+                        <Container className={classes.updateContainer}>
                             <br/>
                             <h4 className="center-avatar-container">Please enter the details you want to update</h4>
                             <br/>
@@ -64,7 +66,7 @@ const UpdateProfile = () => {
                                                 {...register("firstName", {required: true, minLength: 3})}
                                             />
                                     </div>
-                                    {errors.firstName && <span style={{color:"red"}}>This field needs at least 3 characters.</span>}
+                                    {errors.firstName && <span className="error-red">This field needs at least 3 characters.</span>}
                                     <div className="form-group">
                                         <label htmlFor="username">Last name</label>
                                         <input
@@ -74,7 +76,7 @@ const UpdateProfile = () => {
                                             {...register("lastName", {required: true, minLength: 3})}
                                         />
                                     </div>
-                                    {errors.lastName && <span style={{color:"red"}}>This field needs at least 3 characters.</span>}
+                                    {errors.lastName && <span className="error-red">This field needs at least 3 characters.</span>}
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
                                         <input
@@ -84,7 +86,7 @@ const UpdateProfile = () => {
                                             {...register("email", {required: true,  pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ })}
                                         />
                                     </div>
-                                    {errors.email && <span style={{color:"red"}}>Please enter a valid email!</span>}
+                                    {errors.email && <span className="error-red">Please enter a valid email!</span>}
                                     <div className="form-group">
                                         <label htmlFor="phoneNumber" className="form-label">
                                             Phone Number
@@ -96,7 +98,7 @@ const UpdateProfile = () => {
                                             {...register("phoneNumber", {required: true, length: 6, pattern: /^[0-9]*$/})}
                                         />
                                     </div>
-                                    {errors.phoneNumber && <span style={{color:"red"}}>Please enter a valid phone number!</span>}
+                                    {errors.phoneNumber && <span className="error-red">Please enter a valid phone number!</span>}
                                     <label htmlFor="gender" className="form-label">
                                         Gender
                                     </label>
@@ -109,7 +111,7 @@ const UpdateProfile = () => {
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
-                                    {errors.gender && <span style={{color:"red"}}>Please pick a gender!</span>}
+                                    {errors.gender && <span className="error-red">Please pick a gender!</span>}
                                     <label htmlFor="address" className="form-label">
                                         Address
                                     </label>
@@ -119,7 +121,7 @@ const UpdateProfile = () => {
                                         name="address"
                                         {...register("address", {required: true , minLength: 10, maxLength: 40})}
                                     />
-                                    {errors.address && <span style={{color:"red"}}>Enter a valid address!</span>}
+                                    {errors.address && <span className="error-red">Enter a valid address!</span>}
                                     <label htmlFor="age" className="form-label">
                                         Age
                                     </label>
@@ -130,13 +132,13 @@ const UpdateProfile = () => {
                                         name="age"
                                         {...register("age", {required: true, min: 18, pattern: /^[0-9]*$/})}
                                     />
-                                    {errors.address && <span style={{color:"red"}}>You have to be at least 18 years old.</span>}
+                                    {errors.address && <span className="error-red">You have to be at least 18 years old.</span>}
                                     <Form.Label>Profile picture</Form.Label>
                                     <Form.Control type="file" onChange={getProfilePicture}/>
                                     <br/>
                                     <br/>
-                                    <Button variant="contained" type="submit" color="primary" style={{float: "left", marginLeft: "15px"}}>Submit</Button>
-                                    <Button variant="contained" color="secondary" style={{float: "right"}} onClick={() => history.push("/profile")}>Back</Button>
+                                    <Button variant="contained" type="submit" color="primary" className={classes.updateSubmitBtn}>Submit</Button>
+                                    <Button variant="contained" color="secondary" className={classes.updateBackBtn} onClick={() => history.push("/profile")}>Back</Button>
                                 </form>
                         </Container>
                     </Paper>
