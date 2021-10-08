@@ -10,6 +10,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import "../../styling/CarStyling.css"
 import {useHistory} from "react-router-dom";
+import {getBookingDuration} from "../../utils/CityCoordinates";
 
 const CarCard = ({car, dates, hideButton}) => {
     const classes = useStyles();
@@ -17,19 +18,8 @@ const CarCard = ({car, dates, hideButton}) => {
     const [bookingDurationInDays, setBookingDurationInDays] = useState(0);
 
     useEffect(() => {
-        getBookingDuration();
+        setBookingDurationInDays(getBookingDuration(dates.startDate, dates.endDate))
     }, [])
-
-    const getBookingDuration = () => {
-        const startDate = new Date(dates.startDate);
-        const endDate = new Date(dates.endDate);
-        const differenceInTime = endDate.getTime() - startDate.getTime();
-        let days = differenceInTime / (1000 * 3600 * 24) + 1;
-        if (days < 1) {
-            days = 1;
-        }
-        setBookingDurationInDays(days);
-    }
 
     const reserveCar = () => {
         history.push({
@@ -60,8 +50,8 @@ const CarCard = ({car, dates, hideButton}) => {
                     <br/>
                     <br/>
                     <br/>
-                    <small className="car-text-to-left"><strong>${car.pricePerDay}</strong>/day</small>
-                    <h3 className="car-text-to-left">${bookingDurationInDays * car.pricePerDay}</h3>
+                    <small className="car-text-to-left">{bookingDurationInDays} days - <strong>${car.pricePerDay}</strong>/day</small>
+                    <h4 className="car-text-to-left">Total: ${bookingDurationInDays * car.pricePerDay}</h4>
                     <p className="car-text-to-left">{car.fullInsurance ? <span><CheckCircleIcon color="success"/> Full insurance</span> : <span><ErrorIcon className={classes.errorIcon} /> Limited cover</span>}</p>
                     {
                         !(hideButton === "hide") && <Button variant="contained" color="primary" className={classes.reserveBtn} onClick={reserveCar}>Reserve</Button>

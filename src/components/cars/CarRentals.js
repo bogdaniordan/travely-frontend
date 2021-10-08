@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import DateRange from "react-date-range/dist/components/DateRange";
-import {Collapse} from "@material-ui/core";
+import {Collapse, Tooltip} from "@material-ui/core";
 import {useStyles} from "../../styling/js-styling/NavbarBadgeStyling";
 import CarService from "../../service/CarService";
 import CarCard from "./CarCard";
 import moment from "moment";
+import InfoIcon from '@mui/icons-material/Info';
 
 const SearchTaxi = () => {
     const classes = useStyles();
@@ -113,7 +114,7 @@ const SearchTaxi = () => {
                         </div>
                         <div className={classes.ageContainer}>
                             <input type="checkbox" defaultChecked={checkBox} className={classes.ageInput} onClick={handleCheckBoxChange}/>
-                            {" "}Driver's age is between 30 and 65.
+                            {" "}Driver's age is between 30 and 65. <Tooltip title="Drivers younger than 30 years old need to have full insurance"><InfoIcon /></Tooltip>
                         </div>
                         <Collapse in={showCalendar} className={classes.collapse}>
                             <DateRange

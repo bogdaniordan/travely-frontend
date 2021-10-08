@@ -127,7 +127,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                         </div>
                         <hr className="mb-4"/>
 
-                        <h4 className="mb-3">Payment</h4>
+                        <h4 className="mb-3">Credit card details</h4>
 
                         <div className="row">
                             <div className="col-md-6 mb-3">
@@ -179,13 +179,17 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             </div>
                         </div>
 
-                        <hr className="mb-4"/>
+
                         {
                             !cardDetailsExist && (
-                                <div className="form-check">
-                                    <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => {setSaveCardDetails(!saveCardDetails)}}/>
-                                    <label className="form-check-label" htmlFor="same-address">Save credit card details</label>
+                                <div>
+                                    <hr className="mb-4"/>
+                                    <div className="form-check">
+                                        <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => {setSaveCardDetails(!saveCardDetails)}}/>
+                                        <label className="form-check-label" htmlFor="same-address">Save credit card details</label>
+                                    </div>
                                 </div>
+
                             )
                         }
                         <hr className="mb-4"/>

@@ -10,10 +10,6 @@ const SuccessfulPayment = () => {
     const location = useLocation();
     const booking = location.state.booking;
 
-    useEffect(() => {
-        console.log(location.state.booking)
-    }, [])
-
     return (
         <body className="payment-success-body">
             <Navbar title="Congratulations" />

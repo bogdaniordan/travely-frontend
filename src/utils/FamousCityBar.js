@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link, List, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
+import {List} from "@material-ui/core";
 import CityCard from "./CityCard";
 
 const FamousCityBar = ({searchByCity}) => {
@@ -10,9 +9,9 @@ const FamousCityBar = ({searchByCity}) => {
         <div className="container">
             <div className="testimonials-clean">
                 <br/>
-                <h3 className="explore-header">
+                <h4 className="explore-header">
                     Explore famous cities
-                </h3>
+                </h4>
                 <List style={{display: "flex"}}>
                     {
                         exploreCities.map(

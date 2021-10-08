@@ -7,6 +7,7 @@ import PaymentForm from "./PaymentForm";
 import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
 import moment from "moment";
+import {getBookingDuration} from "../../utils/CityCoordinates";
 
 const Payment = () => {
     const booking = useLocation().state.booking;
@@ -63,7 +64,8 @@ const Payment = () => {
     }
 
     useEffect(() => {
-        setBookingDuration();
+        // setBookingDuration();
+        setBookingDurationInDays(getBookingDuration(booking.checkInDate, booking.checkoutDate))
         setCardDetailsIfSaved();
         CustomerService.cardDetailsExist(AuthService.getCurrentUser().id).then(res => setCardDetailsExist(res.data))
     }, [])
@@ -78,12 +80,12 @@ const Payment = () => {
         }
     }
 
-    const setBookingDuration = () => {
-        const arriveDate = new Date(booking.checkInDate);
-        const leavingDate = new Date(booking.checkoutDate);
-        const differenceInTime = leavingDate.getTime() - arriveDate.getTime();
-        setBookingDurationInDays(differenceInTime / (1000 * 3600 * 24))
-    }
+    // const setBookingDuration = () => {
+    //     const arriveDate = new Date(booking.checkInDate);
+    //     const leavingDate = new Date(booking.checkoutDate);
+    //     const differenceInTime = leavingDate.getTime() - arriveDate.getTime();
+    //     setBookingDurationInDays(differenceInTime / (1000 * 3600 * 24))
+    // }
 
     const saveCustomerCardDetails = () => {
         if (saveCardDetails) {
@@ -94,9 +96,6 @@ const Payment = () => {
                     setSuccessful(false);
                 })
         }
-        setTimeout(() => {
-            history.push("/")
-        }, 2000)
     }
 
     const submitForm = e => {

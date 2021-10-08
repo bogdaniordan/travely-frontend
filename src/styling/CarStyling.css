@@ -45,6 +45,7 @@
 
 .car-text-to-left {
     margin-right: 10px;
+    margin-top: 8px;
 }
 
 .car-warning-message {
@@ -87,4 +88,14 @@
 .car-buttons-container {
     display: flex;
     float: right;
+}
+
+.notes-header {
+    float: left;
+    margin-left: 25px;
+}
+
+#notes-input {
+    width: 95%;
+    margin: auto;
 }

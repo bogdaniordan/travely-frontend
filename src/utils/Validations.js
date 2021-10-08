@@ -74,7 +74,7 @@ export const validAge = value => {
 
 
 export const validCardName = value => {
-    if (value.length < 5 || value.length > 25) {
+    if (value.length < 7 || value.length > 25 || !value.includes("")) {
         return (
             <div className="alert alert-danger" role="alert">
                 Please enter a valid cardholder name.
@@ -84,7 +84,7 @@ export const validCardName = value => {
 }
 
 export const validCreditCardNumber = value => {
-    if (value.length < 10 || value.length > 25 || !(/^\d+$/.test(value))) {
+    if (value.length !== 16 || !(/^\d+$/.test(value))) {
         return (
             <div className="alert alert-danger" role="alert">
                 Please enter a valid credit card number.

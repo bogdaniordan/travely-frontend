@@ -10,17 +10,20 @@ import Map from "../../utils/Map";
 import moment from "moment";
 import Button from "@material-ui/core/Button";
 import CarExtras from "./CarExtras";
+import CarPayment from "./CarPayment";
+import {getBookingDuration} from "../../utils/CityCoordinates";
 
 const CarReservationPage = () => {
     const location = useLocation();
     const [childSeatNumber, setChildSeatNumber] = useState(0);
     const [babySeatNumber, setBabySeatNumber] = useState(0);
     const [gps, setGps] = useState(0);
+    const [notes, setNotes] = useState("");
+    const [totalPrice, setTotalPrice] = useState(getBookingDuration(location.state.dates.startDate, location.state.dates.endDate) * location.state.car.pricePerDay);
 
     return (
         <div>
             <Navbar title="Reservation" subtitle="Manage your car rental" />
-
             <div className="container">
                 <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
                 <br/>
@@ -47,7 +50,8 @@ const CarReservationPage = () => {
                     </div>
                 </div>
                 <br/>
-                <CarExtras childSeatNumber={childSeatNumber} setChildSeatNumber={setChildSeatNumber} babySeatNumber={babySeatNumber} setBabySeatNumber={setBabySeatNumber} gps={gps} setGps={setGps}/>
+                <CarExtras totalPrice={totalPrice} setTotalPrice={setTotalPrice} childSeatNumber={childSeatNumber} setChildSeatNumber={setChildSeatNumber} babySeatNumber={babySeatNumber} setBabySeatNumber={setBabySeatNumber} gps={gps} setGps={setGps} setNotes={setNotes}/>
+                <CarPayment notes={notes} totalPrice={totalPrice}/>
             </div>
             <Footer />
         </div>
