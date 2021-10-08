@@ -42,12 +42,14 @@ const CarExtras = ({totalPrice, setTotalPrice, childSeatNumber, setChildSeatNumb
             <div className="card">
                 <div className="card-body">
                     <h5>Extra car features</h5>
-                    <p><InfoIcon className={classes.infoIcon}/> Please note: Your own car insurance does not cover hire cars.</p>
+                    <small>If you order any of these extras, you'll pay for them right now. The extras will be ready when you pick your car up.</small>
+                    <br/>
+                    <br/>
                     <div className="card" id="car-extras-card">
                         <div className="card-body" id="car-extras-body">
                             <div className="car-extras-value">
                                 <h5>Child seat</h5>
-                                <small>$30 per rental</small>
+                                <small className="text-muted">$30 per rental</small>
                             </div>
                             <div className="car-extras-button-container">
                                 <div className="car-buttons-container">
@@ -62,7 +64,7 @@ const CarExtras = ({totalPrice, setTotalPrice, childSeatNumber, setChildSeatNumb
                         <div className="card-body" id="car-extras-body">
                             <div className="car-extras-value">
                                 <h5>Baby seat</h5>
-                                <small>$20 per rental</small>
+                                <small className="text-muted">$20 per rental</small>
                             </div>
                             <div className="car-extras-button-container">
                                 <div className="car-buttons-container">
@@ -77,7 +79,7 @@ const CarExtras = ({totalPrice, setTotalPrice, childSeatNumber, setChildSeatNumb
                         <div className="card-body" id="car-extras-body">
                             <div className="car-extras-value">
                                 <h5>GPS</h5>
-                                <small>$50 per rental</small>
+                                <small className="text-muted">$50 per rental</small>
                             </div>
                             <div className="car-extras-button-container">
                                 <div className="car-buttons-container">

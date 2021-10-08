@@ -64,7 +64,6 @@ const Payment = () => {
     }
 
     useEffect(() => {
-        // setBookingDuration();
         setBookingDurationInDays(getBookingDuration(booking.checkInDate, booking.checkoutDate))
         setCardDetailsIfSaved();
         CustomerService.cardDetailsExist(AuthService.getCurrentUser().id).then(res => setCardDetailsExist(res.data))
@@ -79,13 +78,6 @@ const Payment = () => {
             setCvv(customer.cardDetails.cvv)
         }
     }
-
-    // const setBookingDuration = () => {
-    //     const arriveDate = new Date(booking.checkInDate);
-    //     const leavingDate = new Date(booking.checkoutDate);
-    //     const differenceInTime = leavingDate.getTime() - arriveDate.getTime();
-    //     setBookingDurationInDays(differenceInTime / (1000 * 3600 * 24))
-    // }
 
     const saveCustomerCardDetails = () => {
         if (saveCardDetails) {

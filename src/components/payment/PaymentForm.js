@@ -53,7 +53,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                     </h4>
                     <ul className="list-group mb-3">
                         <li className="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
+                            <div className="text-aligned-left">
                                 <h6 className="my-0">Booking for {accommodation.title}</h6>
                                 <small className="text-muted">Location: {accommodation.location}</small>
                                 <br/>
@@ -128,7 +128,8 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                         <hr className="mb-4"/>
 
                         <h4 className="mb-3">Credit card details</h4>
-
+                        <p>Pay by using your own credit or debit card, or by using the Stripe payment service.</p>
+                        <br/>
                         <div className="row">
                             <div className="col-md-6 mb-3">
                                 <label htmlFor="cc-name">Name on card</label>
@@ -178,8 +179,6 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <small className="text-muted">3 digits</small>
                             </div>
                         </div>
-
-
                         {
                             !cardDetailsExist && (
                                 <div>
@@ -203,7 +202,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                             name={accommodation.title}
                             description="Enter your details for Stripe payment"
                         >
-                            <Button color="secondary" variant="contained">PAY WITH STRIPE</Button>
+                            <Button color="secondary" variant="contained">STRIPE PAYMENT</Button>
                         </StripeCheckout>
 
                         <CheckButton style={{ display: "none" }} ref={checkBtn} />

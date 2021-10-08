@@ -61,41 +61,6 @@ const QuestionsPage = (props) => {
                     }
                 </div>
             </div>
-            {/*<div className="container" style={{justifyContent: "center", height: "400px"}}>*/}
-            {/*    <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>*/}
-            {/*    <br/>*/}
-            {/*    <br/>*/}
-            {/*    {*/}
-            {/*        questions.length > 0 ? (*/}
-            {/*            <TableContainer component={Paper}>*/}
-            {/*                <Table className={classes.table} aria-label="caption table">*/}
-            {/*                    <TableHead>*/}
-            {/*                        <TableRow>*/}
-            {/*                            <StyledTableCell>Question</StyledTableCell>*/}
-            {/*                            <StyledTableCell align="right" >Date</StyledTableCell>*/}
-            {/*                            <StyledTableCell align="right" >Seen</StyledTableCell>*/}
-            {/*                            <StyledTableCell align="right" >Status</StyledTableCell>*/}
-            {/*                            <StyledTableCell align="right">Response</StyledTableCell>*/}
-            {/*                        </TableRow>*/}
-            {/*                    </TableHead>*/}
-            {/*                    <TableBody>*/}
-            {/*                        {questions.map((question) => (*/}
-            {/*                            <StyledTableRow key={question.id}>*/}
-            {/*                                <TableCell component="th" scope="row">*/}
-            {/*                                    {question.text}*/}
-            {/*                                </TableCell>*/}
-            {/*                                <StyledTableCell align="right">{getFormattedDate(question.date)}</StyledTableCell>*/}
-            {/*                                <StyledTableCell align="right">{question.seen ? "seen" : "not seen"}</StyledTableCell>*/}
-            {/*                                <StyledTableCell align="right">{question.solved ? "solved" : "pending"}</StyledTableCell>*/}
-            {/*                                <StyledTableCell align="right">{question.response}</StyledTableCell>*/}
-            {/*                            </StyledTableRow>*/}
-            {/*                        ))}*/}
-            {/*                    </TableBody>*/}
-            {/*                </Table>*/}
-            {/*            </TableContainer>*/}
-            {/*        ) : (<h3>There are no questions at the moment.</h3>)*/}
-            {/*    }*/}
-            {/*</div>*/}
             <Footer />
         </div>
     );

@@ -1277,3 +1277,7 @@ h3 {
   float: right;
   margin-left: 50px;
 }
+
+.text-aligned-left {
+  text-align: left;
+}
