@@ -105,13 +105,11 @@ const UpdateProfile = () => {
                                     <select
                                         className="form-control"
                                         name="gender"
-                                        {...register("gender", {required: true })}
                                     >
                                         <option value="" selected disabled hidden>Pick a gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
-                                    {errors.gender && <span className="error-red">Please pick a gender!</span>}
                                     <label htmlFor="address" className="form-label">
                                         Address
                                     </label>

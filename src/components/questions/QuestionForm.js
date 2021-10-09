@@ -39,7 +39,7 @@ const QuestionForm = () => {
     return (
         <div>
             <Navbar title={"Leave a question"}/>
-            <div className="container" style={{height: "300px"}}>
+            <div className="container" id="car-rentals-container">
                 <Link to="/profile" style={{float: "left"}}>Back to profile</Link>
                 <br/>
                 <div className="contact-image">
@@ -47,7 +47,7 @@ const QuestionForm = () => {
                 </div>
                 <br/>
                 <form method="post" onSubmit={submitQuestion}>
-                    <h4 style={{color: "black", marginBottom: "20px"}}>Have a question about your reservation? You can ask {booking.host.firstName} {booking.host.lastName} anything.</h4>
+                    <h4 className="leave-question-header">Have a question about your reservation? You can ask {booking.host.firstName} {booking.host.lastName} anything.</h4>
                     <br/>
                     <div className="row">
                         {message && (
@@ -65,7 +65,7 @@ const QuestionForm = () => {
                         <div className="col-md-12">
                             <div className="form-group">
                                 <textarea name="txtMsg" className="form-control" placeholder="Your question *"
-                                          style={{width: "75%", height: "150px", margin: "auto"}} required onChange={(event) => setQuestion(event.target.value)}></textarea>
+                                          id="textarea-leave-question" required onChange={(event) => setQuestion(event.target.value)}></textarea>
                             </div>
                             <br/>
                             <div className="form-group">

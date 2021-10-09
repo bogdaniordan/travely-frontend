@@ -23,7 +23,7 @@ const CustomerLandingPage = () => {
                         </h2>
                         <br/>
                         <p>
-                            Users can view and book different accommodations around the globe.
+                            Users can view and book different accommodations or rent cars around the globe.
                             They can also manage their bookings and access the community features where they can interact with other travellers.
                         </p>
                         <br/>
@@ -50,8 +50,7 @@ const CustomerLandingPage = () => {
                         <div className="imgBox">
                             <img
                                 src={picture}
-                                alt="pet"
-                                className="petImage"
+                                alt="Travel picture"
                                 style={{ marginTop: "-110px", width: "800px" }}
                             />
                         </div>

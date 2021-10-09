@@ -21,6 +21,7 @@ import PeoplePage from "../community/users/PeoplePage";
 import SuccessfulPayment from "../payment/SuccessfulPayment";
 import SearchTaxi from "../cars/CarRentals";
 import CarReservationPage from "../cars/CarReservationPage";
+import SuccessfulCarPayment from "../cars/SuccessfulCarPayment";
 // import 'react-toastify/dist/ReactToastify.css';
 
 const Routes = () => {
@@ -48,6 +49,7 @@ const Routes = () => {
                     <Route path="/success-payment" exact component={SuccessfulPayment} />
                     <Route path="/search-taxi" exact component={SearchTaxi}/>
                     <Route path="/car-reservation/:carId" exact component={CarReservationPage} />
+                    <Route path="/successful-car-booking" exact component={SuccessfulCarPayment} />
                 </Switch>
             </Router>
         </div>

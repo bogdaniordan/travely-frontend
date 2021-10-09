@@ -21,7 +21,7 @@ const CityCard = ({searchByCity, city}) => {
 
                 <ListItemText>
                     <h4 className="city-name-header">{city[0]}</h4>
-                    <small className="right-floated">{propertiesNumber} properties</small>
+                    <small id="properties-font" className="right-floated">{propertiesNumber} properties</small>
                 </ListItemText>
             </ListItem>
         </Paper>

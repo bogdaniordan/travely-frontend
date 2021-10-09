@@ -67,7 +67,7 @@ const SearchTaxi = () => {
         <div>
             <Navbar title="Car rentals"/>
             <div className="testimonials-clean">
-            <div className="container">
+            <div className="container" id="car-rentals-container">
                 <br/>
                 <h4>Car hire for any kind of trip</h4>
                 Clean cars. Flexible bookings. Socially distant rental counters.

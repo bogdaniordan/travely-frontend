@@ -1,0 +1,35 @@
+#secondary-picture {
+    height: 172px;
+    width: 306px;
+}
+
+#secondary-picture-container {
+    height: 100px;
+    width: 330px;
+}
+
+#accommodation-details-row {
+    margin-top: 20px;
+}
+
+.footer-container {
+    color: #aaaccc;
+    max-height: 75%;
+    height: 350px;
+    background-color: #212529;
+}
+
+#car-rentals-container {
+    height: 600px;
+}
+
+#textarea-leave-question {
+    width: 75%;
+    height: 150px;
+    margin: auto;
+}
+
+.leave-question-header {
+    color: black;
+    margin-bottom: 20px;
+}

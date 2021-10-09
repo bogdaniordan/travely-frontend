@@ -11,6 +11,7 @@ import Footer from "../navigation/Footer";
 import BookingService from "../../service/BookingService";
 import AccommodationHostDetails from "./AccommodationHostDetails";
 import {getCityCoordinates} from "../../utils/CityCoordinates";
+import "./AccommodationStyling.css"
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;
@@ -70,15 +71,15 @@ const AccommodationDetails = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="row" style={{marginTop: "20px"}}>
-                        <div className="col-md-3 col-sm-6 mb-4">
+                    <div className="row" id="accommodation-details-row">
+                        <div className="col-md-3 col-sm-6 mb-4" id="secondary-picture-container">
                             <a href="#">
-                                <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/secondImage/download`} alt=""/>
+                                <img className="img-fluid" id="secondary-picture" src={`http://localhost:8080/accommodations/image/${accommodation.id}/secondImage/download`} alt=""/>
                             </a>
                         </div>
-                        <div className="col-md-3 col-sm-6 mb-4">
+                        <div className="col-md-3 col-sm-6 mb-4" id="secondary-picture-container">
                             <a href="#">
-                                <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
+                                <img className="img-fluid" id="secondary-picture" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
                             </a>
                         </div>
 

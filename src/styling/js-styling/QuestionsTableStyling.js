@@ -31,5 +31,12 @@ export const useStyles = makeStyles({
     },
     updateBackBtn: {
         float: "right"
+    },
+    carAvatar: {
+        width: "200px",
+        height: "200px"
+    },
+    gotToProfileButton: {
+        marginTop: "25px"
     }
 });

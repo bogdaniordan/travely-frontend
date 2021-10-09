@@ -1281,3 +1281,32 @@ h3 {
 .text-aligned-left {
   text-align: left;
 }
+
+#properties-font {
+  font-size: 15px !important;
+}
+
+.logo-image {
+  width: 110px;
+  height: 100px;
+}
+
+#landing-page-navbar-font {
+  font-size: 20px !important;
+}
+
+#navbar-link-color {
+  color: #aaaccc;
+}
+
+#full-width {
+  width: 100%;
+}
+
+#navbar-space {
+  width: 65%;
+}
+
+.navbar-title {
+  margin-left: 100px;
+}

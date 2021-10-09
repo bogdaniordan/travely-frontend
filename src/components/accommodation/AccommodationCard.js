@@ -72,9 +72,9 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, 
                                 </div>
                             )
                         }
-                        <small className="card-text">{place.location}</small>
+                        <small className="card-text" id="properties-font">{place.location}</small>
                         <br/>
-                        <small className="card-text">{place.placeType}</small>
+                        <small className="card-text" id="properties-font">{place.placeType}</small>
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="btn-group">
                                 <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>

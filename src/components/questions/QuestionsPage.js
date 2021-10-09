@@ -23,7 +23,7 @@ const QuestionsPage = (props) => {
             <Navbar title={"Questions"} subtitle={`View your questions with ${host.firstName} ${host.lastName}`}/>
             <h4>Your question timeline with {host.firstName} {host.lastName}</h4>
             <br/>
-            <div className="container">
+            <div className="container" id="car-rentals-container">
                 <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
                 <br/>
                 <br/>

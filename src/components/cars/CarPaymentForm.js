@@ -27,7 +27,14 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
 
     const handleToken = () => {
         CarBookingService.saveCarBooking(car.id, dates.startDate, dates.endDate, childSeatNumber, babySeatNumber, gps, totalPrice, notes)
-            .then(res => history.push("/home"))
+            .then(res => history.push({
+                pathname: "/successful-car-booking",
+                state: {
+                    car: car,
+                    dates: dates,
+                    totalPrice: totalPrice
+                }
+            }))
     }
 
     return (

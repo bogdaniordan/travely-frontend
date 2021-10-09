@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="container-fluid pb-0 mb-0 justify-content-center text-light " style={{maxHeight: "75%", height: "350px", backgroundColor: "#212529"}}>
+        <div className="footer-container">
             <footer>
                 <div className="container">
                     <div className="row my-5 justify-content-center py-5">

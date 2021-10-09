@@ -2,7 +2,7 @@ import React from 'react';
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LandingPage.css";
 import Button from "@material-ui/core/Button";
-
+import picture from "../../images/host_landing_page_picture.png"
 const HostLandingPage = () => {
     return (
         <div>
@@ -41,16 +41,15 @@ const HostLandingPage = () => {
                             )
                         }
                     </div>
-                    {/*<a href="/host-landing-page">*/}
-                    {/*    <div className="imgBox">*/}
-                    {/*        <img*/}
-                    {/*            src="https://i.pinimg.com/originals/d6/11/3b/d6113b031ac40ecc19a85eda0ae55436.png"*/}
-                    {/*            alt="pet"*/}
-                    {/*            className="petImage"*/}
-                    {/*            style={{ marginTop: "-110px", width: "700px" }}*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
-                    {/*</a>*/}
+                    <a href="/host-landing-page">
+                        <div className="imgBox">
+                            <img
+                                src={picture}
+                                alt="Travel picture"
+                                style={{ marginTop: "-110px", width: "800px" }}
+                            />
+                        </div>
+                    </a>
                 </div>
             </section>
         </div>
