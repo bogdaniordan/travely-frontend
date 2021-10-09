@@ -11,7 +11,7 @@ import Footer from "../navigation/Footer";
 import BookingService from "../../service/BookingService";
 import AccommodationHostDetails from "./AccommodationHostDetails";
 import {getCityCoordinates} from "../../utils/CityCoordinates";
-import "./AccommodationStyling.css"
+import "../../styling/AccommodationStyling.css"
 
 const AccommodationDetails = (props) => {
     const id = props.match.params.id;

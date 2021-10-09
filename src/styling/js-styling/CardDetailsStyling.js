@@ -32,4 +32,15 @@ export const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3),
         marginLeft: theme.spacing(1),
     },
+    calendarIcon: {
+        height: "35px",
+        width: "35px"
+    },
+    yesCancelButton: {
+        marginRight: "5px",
+        padding: "10px"
+    },
+    noCancelButton: {
+        padding: "10px"
+    }
 }));

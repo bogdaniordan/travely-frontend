@@ -38,5 +38,9 @@ export const useStyles = makeStyles({
     },
     gotToProfileButton: {
         marginTop: "25px"
+    },
+    statsIcon: {
+        height: "50px",
+        width: "50px"
     }
 });

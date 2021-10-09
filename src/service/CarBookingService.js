@@ -18,6 +18,14 @@ class CarBookingService {
         }
         return axios.post(`${CAR_BOOKING_SERVICE_API_URL}/save-booking/${AuthService.getCurrentUser().id}/${carId}`, booking, {headers: AuthHeader()})
     }
+
+    getAllByCustomer() {
+        return axios.get(`${CAR_BOOKING_SERVICE_API_URL}/bookings-by-customer/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()})
+    }
+
+    cancelBooking(id) {
+        return axios.delete(`${CAR_BOOKING_SERVICE_API_URL}/cancel-booking/${id}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CarBookingService;

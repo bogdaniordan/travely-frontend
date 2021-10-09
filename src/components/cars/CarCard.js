@@ -50,6 +50,7 @@ const CarCard = ({car, dates, hideButton}) => {
                     <br/>
                     <br/>
                     <br/>
+                    {hideButton === "hide" && <br/>}
                     <small className="car-text-to-left">{bookingDurationInDays} days - <strong>${car.pricePerDay}</strong>/day</small>
                     <h4 className="car-text-to-left">Total: ${bookingDurationInDays * car.pricePerDay}</h4>
                     <p className="car-text-to-left">{car.fullInsurance ? <span><CheckCircleIcon color="success"/> Full insurance</span> : <span><ErrorIcon className={classes.errorIcon} /> Limited cover</span>}</p>

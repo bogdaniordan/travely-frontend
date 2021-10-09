@@ -33,3 +33,30 @@
     color: black;
     margin-bottom: 20px;
 }
+
+.stats-header {
+    margin-top: 20px;
+}
+
+#stats-container {
+    height: auto;
+    margin: 0 auto;
+}
+
+#stats-second-container {
+    width: 1200px;
+}
+
+#booked-accommodation-title {
+    width: 50%;
+}
+
+#booked-accommodation-dates-container {
+    float: left;
+    width: 30%;
+    display: flex;
+}
+
+.calendar-icon-container {
+    width: 40px;
+}

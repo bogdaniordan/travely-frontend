@@ -23,9 +23,10 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                             <h3 className="mb-0">
                                 <a className="text-dark" href="#">{accommodation.placeType}</a>
                             </h3>
-                            <div className="mb-1 text-muted" style={{marginTop: "10px"}}><LocationOnIcon /> {accommodation.location}</div>
+                            <div className="mb-1 text-muted" style={{marginTop: "10px"}}><LocationOnIcon /> {accommodation.location} </div>
+                            <div className="mb-1 text-muted">{accommodation.address}</div>
                             <br/>
-                            <p className="card-text mb-auto">The price for this accommodation is ${accommodation.pricePerNight} per night.</p>
+                            <h5 className="card-text mb-auto">Price: ${accommodation.pricePerNight} per night.</h5>
                         </div>
                         <img height="250px" width="200px" src="https://www.mcicon.com/wp-content/uploads/2020/12/Architecture_Hotel_1-copy.jpg" className="card-img-right flex-auto d-none d-md-block"
                              data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>

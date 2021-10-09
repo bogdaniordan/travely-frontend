@@ -9,10 +9,13 @@ import TestimonialService from "../../service/TestimonialService";
 import AuthService from "../../service/AuthService";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import moment from "moment";
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import {useStyles} from "../../styling/js-styling/CardDetailsStyling";
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking, bookings, setBookings}) => {
     const history = useHistory();
+    const classes = useStyles();
     const [modalIsOpen, setIsOpen] = useState(false)
     const [bookingIsReviewed, setBookingIsReviewed] = useState(false);
     const [bookingDurationInDays, setBookingDurationInDays] = useState();
@@ -67,8 +70,11 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                 </a>
                 <div className="postcard__text t-dark">
                     <div className="flexed-container">
-                        <h1 className="postcard__title blue" style={{width: "50%"}}><a href="#">{booking.accommodation.title}</a></h1>
-                        <div className="postcard__subtitle small" style={{float: "left", width: "30%"}}>
+                        <h1 className="postcard__title blue" id="booked-accommodation-title"><a href="#">{booking.accommodation.title}</a></h1>
+                        <div className="postcard__subtitle small" id="booked-accommodation-dates-container">
+                            <div className="calendar-icon-container">
+                                <DateRangeIcon style={{height: "35px", width: "35px"}}/>
+                            </div>
                             <time dateTime="2020-05-25 12:00:00">
                                 <i className="fas fa-calendar-alt mr-2"></i>Check in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
                                 <br/>
@@ -86,6 +92,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     <br/>
                     <div className="postcard__preview-txt">Host: {booking.host.firstName} {booking.host.lastName}</div>
                     <ul className="postcard__tagbox">
+
                         <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
                         <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Contact</li>
                         {
@@ -120,8 +127,8 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                             <br/>
                             <p>Your funds will be refunded in 14 working days.</p>
                             <br/>
-                            <Button variant="contained" color="primary" style={{marginRight: "5px", padding: "10px"}} onClick={cancelBooking}>Yes</Button>
-                            <Button variant="contained" color="secondary" style={{padding: "10px"}} onClick={closeModal}>No</Button>
+                            <Button variant="contained" color="primary" className={classes.yesCancelButton} onClick={cancelBooking}>Yes</Button>
+                            <Button variant="contained" color="secondary" className={classes.noCancelButton} onClick={closeModal}>No</Button>
                         </div>
                     </div>
                 </div>

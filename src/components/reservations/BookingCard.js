@@ -70,6 +70,7 @@ const BookingCard = ({customer, accommodation}) => {
                         <Typography gutterBottom variant="h6" component="h5">
                             Enter your booking dates
                         </Typography>
+                        <small>Note: Canceling your reservation is free.</small>
                         {
                             showErrorMessage && (
                                 <Typography gutterBottom variant="h5" component="h4" className={classes.errorText}>

@@ -32,5 +32,10 @@ export const useStyles = makeStyles((theme) => ({
     },
     errorIcon: {
         color: "orange"
+    },
+    bookingCardDetailsPaper: {
+        height: "230px",
+        width: "15%",
+        marginTop: "30px"
     }
 }));
