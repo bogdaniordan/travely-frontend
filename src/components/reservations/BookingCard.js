@@ -12,6 +12,7 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import DateRange from "react-date-range/dist/components/DateRange";
 import moment from "moment";
+import {convertDates} from "../../utils/CityCoordinates";
 
 const BookingCard = ({customer, accommodation}) => {
     const classes = useStyles();
@@ -28,20 +29,11 @@ const BookingCard = ({customer, accommodation}) => {
 
 
     useEffect(() => {
-        getBookedDates();
+        BookingService.getBookedDatesForAccommodation(accommodation.id).then(res => {
+            setDisabledDates(convertDates(res.data))
+        })
     }, [])
 
-    const getBookedDates = () => {
-        BookingService.getBookedDatesForAccommodation(accommodation.id).then(res => {
-            let dates = [];
-            res.data.forEach( date => {
-                const converted = new Date(moment(date).format("YYYY-MM-DD"));
-                converted.setMonth(converted.getMonth() - 1)
-                dates.push(converted)
-            });
-            setDisabledDates(dates);
-        })
-    }
 
     const bookAccommodation = () => {
         if (!dates[0].endDate) {
@@ -59,7 +51,6 @@ const BookingCard = ({customer, accommodation}) => {
                 }
             }, )
         }
-
     }
 
     return (
@@ -70,7 +61,7 @@ const BookingCard = ({customer, accommodation}) => {
                         <Typography gutterBottom variant="h6" component="h5">
                             Enter your booking dates
                         </Typography>
-                        <small>Note: Canceling your reservation is free.</small>
+                        <small>Note: Canceling your reservation is <span className="green-text">FREE.</span></small>
                         {
                             showErrorMessage && (
                                 <Typography gutterBottom variant="h5" component="h4" className={classes.errorText}>

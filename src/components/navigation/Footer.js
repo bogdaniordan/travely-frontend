@@ -9,10 +9,10 @@ const Footer = () => {
                         <div className="col-11">
                             <div className="row ">
                                 <div className="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a">
-                                    <h3 className="text-muted mb-md-0 mb-5 bold-text">Travely.</h3>
+                                    <h3 className="text-muted mb-md-0 mb-5 bold-text" id="theme-colored">Travely.</h3>
                                 </div>
                                 <div className="col-xl-2 col-md-4 col-sm-4 col-12">
-                                    <h6 className="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
+                                    <h6 className="mb-3 mb-lg-4 bold-text" id="theme-colored"><b>MENU</b></h6>
                                     <ul className="list-unstyled">
                                         <li>Home</li>
                                         <li>About</li>
@@ -21,7 +21,7 @@ const Footer = () => {
                                     </ul>
                                 </div>
                                 <div className="col-xl-2 col-md-4 col-sm-4 col-12">
-                                    <h6 className="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>ADDRESS</b></h6>
+                                    <h6 className="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5" id="theme-colored"><b>ADDRESS</b></h6>
                                     <p className="mb-1">605, RATAN ICON BUILDING</p>
                                     <p>SEAWOODS SECTOR</p>
                                 </div>
@@ -37,13 +37,9 @@ const Footer = () => {
                                     <small className="rights"><span>&#174;</span> Travely All Rights Reserved.</small>
                                 </div>
                                 <div className="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
-                                    <h6 className="mt-55 mt-2 text-muted bold-text"><b>BOGDAN IORDAN</b></h6><small> <span><i
+                                    <h6 className="mt-55 mt-2 text-muted bold-text" id="theme-colored"><b>BOGDAN IORDAN</b></h6><small> <span><i
                                     className="fa fa-envelope" aria-hidden="true"></i></span> bogdan.iordan47@gmail.com</small>
                                 </div>
-                                {/*<div className="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3 ">*/}
-                                {/*    <h6 className="text-muted bold-text"><b>RISHABH SHEKHAR</b></h6><small><span><i*/}
-                                {/*    className="fa fa-envelope" aria-hidden="true"></i></span> rishab@gmail.com</small>*/}
-                                {/*</div>*/}
                             </div>
                         </div>
                     </div>

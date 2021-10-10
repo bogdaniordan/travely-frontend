@@ -53,6 +53,7 @@ const CustomerProfile = () => {
                                                 carBooking => <CarBookingCard carBooking={carBooking} carBookings={carBookings} setCarBookings={setCarBookings}/>
                                             )
                                         }
+                                        <br/>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import Button from "@material-ui/core/Button";
+import React, {useEffect, useState} from 'react';
 import Modal from 'react-modal';
 import BookingService from "../../service/BookingService";
 import {useHistory} from "react-router-dom";
@@ -10,18 +9,18 @@ import AuthService from "../../service/AuthService";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import moment from "moment";
 import DateRangeIcon from '@mui/icons-material/DateRange';
-import {useStyles} from "../../styling/js-styling/CardDetailsStyling";
+import CancelBookingModal from "./CancelBookingModal";
+import {getBookingDuration} from "../../utils/CityCoordinates";
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking, bookings, setBookings}) => {
     const history = useHistory();
-    const classes = useStyles();
     const [modalIsOpen, setIsOpen] = useState(false)
     const [bookingIsReviewed, setBookingIsReviewed] = useState(false);
     const [bookingDurationInDays, setBookingDurationInDays] = useState();
 
     useEffect(() => {
-        setBookingDuration();
+        setBookingDurationInDays(getBookingDuration(booking.checkInDate, booking.checkoutDate))
         TestimonialService.accommodationIsReviewedByUser(booking.accommodation.id, AuthService.getCurrentUser().id).then(res => setBookingIsReviewed(res.data));
     }, [])
 
@@ -55,11 +54,8 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
         history.push(`/add-testimonial/${booking.accommodation.id}`)
     }
 
-    const setBookingDuration = () => {
-        const arriveDate = new Date(booking.checkInDate);
-        const leavingDate = new Date(booking.checkoutDate);
-        const differenceInTime = leavingDate.getTime() - arriveDate.getTime();
-        setBookingDurationInDays(differenceInTime / (1000 * 3600 * 24))
+    const rescheduleBooking = () => {
+        history.push(`/reschedule-booking/${booking.id}`)
     }
 
     return (
@@ -103,6 +99,11 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                             )
                         }
                         {
+                            new Date(moment(booking.checkoutDate).format("DD-MM-YYYY")) > new Date() && (
+                                <li className="tag__item play blue" onClick={rescheduleBooking}><i className="fas fa-clock mr-2"></i>Reschedule</li>
+                            )
+                        }
+                        {
                             new Date(moment(booking.checkInDate).format("DD-MM-YYYY")) > new Date() && (
                                 <li className="tag__item play red" onClick={openModal}>Cancel booking</li>
                             )
@@ -115,23 +116,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                 onRequestClose={closeModal}
                 style={customStyles}
             >
-                <div className="modal-dialog modal-confirm">
-                    <div className="modal-content">
-                        <div className="modal-header justify-content-center">
-                            <div className="icon-box">
-                                <i className="material-icons">&#xE5CD;</i>
-                            </div>
-                        </div>
-                        <div className="modal-body text-center">
-                            <h4>Are you sure you want to cancel this booking?</h4>
-                            <br/>
-                            <p>Your funds will be refunded in 14 working days.</p>
-                            <br/>
-                            <Button variant="contained" color="primary" className={classes.yesCancelButton} onClick={cancelBooking}>Yes</Button>
-                            <Button variant="contained" color="secondary" className={classes.noCancelButton} onClick={closeModal}>No</Button>
-                        </div>
-                    </div>
-                </div>
+                <CancelBookingModal cancelBooking={cancelBooking} closeModal={closeModal}/>
             </Modal>
         </>
     );

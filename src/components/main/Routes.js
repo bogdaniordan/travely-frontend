@@ -22,7 +22,7 @@ import SuccessfulPayment from "../payment/SuccessfulPayment";
 import SearchTaxi from "../cars/CarRentals";
 import CarReservationPage from "../cars/CarReservationPage";
 import SuccessfulCarPayment from "../cars/SuccessfulCarPayment";
-// import 'react-toastify/dist/ReactToastify.css';
+import RescheduleBooking from "../reservations/RescheduleBooking";
 
 const Routes = () => {
     return (
@@ -50,6 +50,7 @@ const Routes = () => {
                     <Route path="/search-taxi" exact component={SearchTaxi}/>
                     <Route path="/car-reservation/:carId" exact component={CarReservationPage} />
                     <Route path="/successful-car-booking" exact component={SuccessfulCarPayment} />
+                    <Route path="/reschedule-booking/:bookingId" exact component={RescheduleBooking}/>
                 </Switch>
             </Router>
         </div>

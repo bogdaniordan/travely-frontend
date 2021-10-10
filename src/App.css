@@ -1299,6 +1299,10 @@ h3 {
   color: #aaaccc;
 }
 
+#theme-colored {
+  color: #aaaccc !important;
+}
+
 #full-width {
   width: 100%;
 }
@@ -1309,4 +1313,8 @@ h3 {
 
 .navbar-title {
   margin-left: 100px;
+}
+
+.empty-space-container {
+  margin-top: 250px;
 }

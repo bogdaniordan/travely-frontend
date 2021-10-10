@@ -102,6 +102,8 @@ const AccommodationDetails = (props) => {
                 <AccommodationFacilitiesCard accommodation={accommodation} />
 
                 <Testimonials accommodationId={accommodation.id}/>
+                <div className="empty-space-container">
+                </div>
                 <Footer />
             </div>
         );

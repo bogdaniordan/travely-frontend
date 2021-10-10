@@ -1,3 +1,6 @@
+import BookingService from "../service/BookingService";
+import moment from "moment";
+
 export const getCityCoordinates = city => {
     if (city.toLowerCase() === "london") {
         return [51.507351, -0.127758]
@@ -21,4 +24,26 @@ export const getBookingDuration = (rawStartDate, rawEndDate) => {
         days = 1;
     }
     return days
+}
+
+// export const getBookedDates = (accommodationId) => {
+//     BookingService.getBookedDatesForAccommodation(accommodationId).then(res => {
+//         let dates = [];
+//         res.data.forEach( date => {
+//             const converted = new Date(moment(date).format("YYYY-MM-DD"));
+//             converted.setMonth(converted.getMonth() - 1)
+//             dates.push(converted)
+//         });
+//         return dates;
+//     })
+// }
+
+export const convertDates = pulledDates => {
+    let dates = [];
+    pulledDates.forEach( date => {
+        const converted = new Date(moment(date).format("YYYY-MM-DD"));
+        converted.setMonth(converted.getMonth() - 1)
+        dates.push(converted)
+    });
+    return dates;
 }

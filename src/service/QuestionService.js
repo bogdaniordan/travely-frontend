@@ -19,6 +19,10 @@ class QuestionService {
     getAllQuestions() {
         return axios.get(`${QUESTION_SERVICE_API_URL}/all`, {headers: AuthHeader()});
     }
+
+    deleteQuestion(id) {
+        return axios.delete(`${QUESTION_SERVICE_API_URL}/${id}`, {headers: AuthHeader()})
+    }
 }
 
 export default new QuestionService;
