@@ -11,13 +11,14 @@ import moment from "moment";
 import Avatar from "@material-ui/core/Avatar";
 import {Link} from "react-router-dom";
 import SendIcon from '@mui/icons-material/Send';
-
+import ChatIcon from '@mui/icons-material/Chat';
 
 const ChatPage = (props) => {
     let socket = new SockJS("http://localhost:8080/ws");
     let stompClient = Stomp.over(socket);
     const messagesEndRef = useRef(null)
 
+    const [isFriend, setIsFriend] = useState(false);
     const [connected, setConnected] = useState(false);
     const otherUserId = props.match.params.userId;
     const [message, setMessage] = useState('');
@@ -74,6 +75,7 @@ const ChatPage = (props) => {
             setMessages(res.data)
             scrollToBottom();
         });
+        CustomerService.personIsFriend(otherUserId).then(res => setIsFriend(res.data))
     }, [])
 
     return (
@@ -82,7 +84,14 @@ const ChatPage = (props) => {
                 <div className="container">
                     <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
                     <br/>
-                    <h5>You have to connect to be able to send or receive messages.</h5>
+                    <ChatIcon style={{height: "150px", width: "150px"}} color="primary"/>
+                    {
+                        isFriend ? (
+                            <h4>You have to connect to be able to send or receive messages from {otherUser.firstName} {otherUser.lastName}.</h4>
+                        ) : (
+                            <h4>You cannot send or receive messages from {otherUser.firstName} {otherUser.lastName} since he/she is not your friend.</h4>
+                        )
+                    }
                     <br/>
                     {
                         connected ? (
@@ -112,13 +121,12 @@ const ChatPage = (props) => {
                                                             </div>
                                                             <div className="chat-body" >
                                                                 <div className="chat-message" style={{width: "300px"}}>
-                                                                    {/*<h5>Serena</h5>*/}
                                                                     <h5>{message.content}</h5>
                                                                     {
                                                                         Array.isArray(message.time) ? (
-                                                                            <small>{moment(message.time.slice(0, 5)).format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                            <small>{moment(message.time.slice(0, 5)).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
                                                                         ) : (
-                                                                            <small>{moment(message.time).format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                            <small>{moment(message.time).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
                                                                         )
                                                                     }
                                                                     <br/>
@@ -133,10 +141,9 @@ const ChatPage = (props) => {
                                     </div>
                                 <div className="chat-input-container">
                                     <input className="form-control" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
-                                    <Button variant="contained" color="primary" onClick={send} startIcon={<SendIcon />}>
+                                    <Button variant="contained" color="primary" onClick={send} startIcon={<SendIcon />} disabled={!isFriend}>
                                         Send
                                     </Button>
-                                    {/*<Button className="chat-send-button" variant="contained" color="primary" onClick={send}>Send</Button>*/}
                                 </div>
                             </div>
                         </div>

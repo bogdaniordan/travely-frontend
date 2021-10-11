@@ -83,7 +83,7 @@ const UserPost = ({post, posts, setPosts}) => {
                         <CloseIcon color="error" style={{float: "right"}} onClick={deletePost}/>
                     )
                 }
-                <div className="text-muted h7 mb-2"><i className="fa fa-clock-o"></i>{moment(post.time.slice(0, 5)).format("DD-MM-YYYY, h:mm:ss a")}</div>
+                <div className="text-muted h7 mb-2"><i className="fa fa-clock-o"></i>{moment(post.time.slice(0, 5)).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</div>
                 <a className="card-link" href="#">
                     <h5>{post.title}</h5>
                 </a>

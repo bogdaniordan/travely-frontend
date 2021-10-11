@@ -30,19 +30,20 @@ const PeoplePage = () => {
     return (
         <div>
             <Navbar title="People" subtitle="Interact with people of Travely"/>
-            <div className="container" style={{height: "500px"}}>
+            <div className="container" id="people-container">
                 <Link to={`/community`} style={{float: "left", marginBottom: "20px"}}>Back to community</Link>
                 <div className="people-filter-container">
                     <p>Filter people</p>
-                    <select className="form-select" aria-label="Default select example" style={{width: "200px", margin: "auto"}} onChange={filterPeople}>
+                    <select className="form-select" aria-label="Default select example" id="people-filter" onChange={filterPeople}>
                         <option value="allPeople">All people</option>
                         <option value="friends">Friends</option>
                         <option value="notFriends">Not friends</option>
                     </select>
                 </div>
                 <br/>
-                <div className="container" style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px', gridAutoRows: 'minMax(100px, auto)'}}>
-                    {
+                {/*<div className="container" style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px', gridAutoRows: 'minMax(100px, auto)'}}>*/}
+                <div className="container" id="people-grid">
+                {
                         people.map(person => <PersonCard person={person} />)
                     }
                 </div>

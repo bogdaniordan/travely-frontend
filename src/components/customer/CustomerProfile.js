@@ -19,11 +19,8 @@ const CustomerProfile = () => {
 
     useEffect(() => {
         BookingService.getAllByCustomerId(AuthService.getCurrentUser().id).then(response => {
-            setBookings(response.data.filter(booking => new Date(moment(booking.checkoutDate).format("YYYY-MM-DD")) >= new Date()));
+            setBookings(response.data.filter(booking => new Date(moment(booking.checkoutDate).format("YYYY-MM-DD")) >= new Date()).reverse());
             setPastBookings(response.data.filter(booking => new Date(moment(booking.checkoutDate).format("YYYY-MM-DD")) < new Date()))
-            setTimeout(() => {
-                console.log(bookings)
-            }, 1000)
         })
         getCarBookings();
     }, [])
@@ -62,8 +59,6 @@ const CustomerProfile = () => {
                             </div>
                         )
                     }
-
-
                     <div className="card">
                         <div className="card-body">
                             <div className="container mt-5">

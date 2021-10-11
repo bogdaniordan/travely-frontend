@@ -36,7 +36,7 @@ const CarBookingCard = ({carBooking, carBookings, setCarBookings}) => {
                     <h5>{carBooking.babySeat} baby seat(s)</h5>
                     <h5 className="child-seats">{carBooking.childSeat} child seat(s)</h5>
                     {
-                        new Date(moment(dates.startDate).subtract(1, 'months').format("DD-MM-YYYY")) > new Date() ? (
+                        new Date(moment(dates.startDate).subtract(1, 'months').format("YYYY-MM-DD")) > new Date() ? (
                             <Button variant="contained" color="secondary" endIcon={<DeleteIcon />} onClick={cancelBooking}>Cancel</Button>
                         ) : (
                             carBooking.notes && (

@@ -47,7 +47,7 @@ const RescheduleBooking = (props) => {
         if(!dates[0].endDate) {
             setShowErrorMessage(true)
         } else {
-            if (getBookingDuration(moment(dates[0].startDate).format("DD-MM-YYYY"), moment(dates[0].endDate).format("DD-MM-YYYY")) !== bookingDurationInDays) {
+            if (getBookingDuration(dates[0].startDate, dates[0].endDate) !== bookingDurationInDays) {
                 setShowErrorMessage(true)
             } else {
                 BookingService.updateBookingDates(dates[0].startDate, dates[0].endDate, bookingId).then(

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {makeStyles} from "@material-ui/core/styles";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import {Card, CardActions, CardMedia} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -8,14 +7,7 @@ import BookingService from "../../../service/BookingService";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonAddDisabledIcon from '@mui/icons-material/PersonAddDisabled';
 import CustomerService from "../../../service/CustomerService";
-
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 345,
-        flex: "1 0 33%",
-            margin: "5px",
-    },
-});
+import {useStyles} from "../../../styling/js-styling/PersonStyling";
 
 const PersonCard = ({person}) => {
     const classes = useStyles();
@@ -86,10 +78,10 @@ const PersonCard = ({person}) => {
                     <Typography variant="body2" component="p">
                         Trips: {bookings.length}
                     </Typography>
-                    <Typography variant="body2" component="p" style={{marginLeft: "55px"}}>
+                    <Typography variant="body2" component="p" className={classes.mutualFriends}>
                         {mutualFriends} mutual friend(s)
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p" style={{float: "right", marginLeft: "80px"}}>
+                    <Typography variant="body2" color="textSecondary" component="p" className={classes.iconContainer}>
                         {
                             isFriend ?
                                 <PersonAddDisabledIcon color="error" onClick={removeFriend}/> : receivedFriendRequest ?
