@@ -4,7 +4,7 @@ import Footer from "../navigation/Footer";
 import BookingService from "../../service/BookingService";
 import {convertDates} from "../../utils/CityCoordinates";
 import DateRange from "react-date-range/dist/components/DateRange";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import moment from "moment";
 import {getBookingDuration} from "../../utils/CityCoordinates";
 import AccommodationService from "../../service/AccommodationService";
@@ -13,6 +13,7 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import Button from "@material-ui/core/Button";
 
 const RescheduleBooking = (props) => {
+    const history = useHistory();
     const bookingId = props.match.params.bookingId;
     const [showErrorMessage, setShowErrorMessage] = useState()
     const [disabledDates, setDisabledDates] = useState([])
@@ -42,6 +43,20 @@ const RescheduleBooking = (props) => {
         })
     }
 
+    const reschedule = () => {
+        if(!dates[0].endDate) {
+            setShowErrorMessage(true)
+        } else {
+            if (getBookingDuration(moment(dates[0].startDate).format("DD-MM-YYYY"), moment(dates[0].endDate).format("DD-MM-YYYY")) !== bookingDurationInDays) {
+                setShowErrorMessage(true)
+            } else {
+                BookingService.updateBookingDates(dates[0].startDate, dates[0].endDate, bookingId).then(
+                    res => history.push(`/profile`)
+                )
+            }
+        }
+    }
+
     return (
         <div>
             <Navbar title="Reschedule booking"/>
@@ -59,16 +74,19 @@ const RescheduleBooking = (props) => {
                         <h3 style={{marginBottom: "100px"}}>Reschedule your booking at {accommodation.title}</h3>
                         <div style={{display: "flex"}}>
                             <div>
-                                <img style={{width: "400px", height: "350px", borderRadius: "10px"}} src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}  alt="property image"/>
-                                <h5 style={{marginTop: "5px"}}>Hosted by {booking.host.firstName} {booking.host.lastName}</h5>
-                                <Button variant="contained" color="primary" style={{marginTop: "15px"}}>Reschedule</Button>
+                                <img style={{width: "430px", height: "350px", borderRadius: "10px"}} src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}  alt="property image"/>
+                                {/*<h5 style={{marginTop: "5px"}}>Hosted by {booking.host.firstName} {booking.host.lastName}</h5>*/}
+                                <div style={{marginTop: "20px"}}>
+                                    <Button variant="contained" color="primary" style={{marginRight: "5px"}} onClick={reschedule}>Reschedule</Button>
+                                    <Button variant="contained" color="secondary">Cancel</Button>
+                                </div>
+
                             </div>
                             <div style={{width: "40%"}}>
                                 <h5>Current booked dates:</h5>
                                 <p>Check-in: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</p>
                                 <p>Check-out: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</p>
-                                <p>Hosted by {booking.host.firstName} {booking.host.lastName}</p>
-                                <h5 style={{marginTop: "100px"}}>New booking dates:</h5>
+                                <h5 style={{marginTop: "70px"}}>New booking dates:</h5>
                                 {
                                     dates[0].endDate ? (
                                         <div style={{color: "orange"}}>
@@ -82,9 +100,9 @@ const RescheduleBooking = (props) => {
                                         </div>
                                     )
                                 }
-                                <h4>Rescheduling fee: <span style={{textDecoration: "line-through"}}>$50</span> <span style={{color: "green"}}>FREE</span></h4>
-                                {}
-                                <h5 style={{color: "red", marginTop: "30px", padding: "5px", border: "1px solid red", borderRadius: "7px"}}>Try again! Choose a new date range with the same duration: {bookingDurationInDays} day(s).</h5>
+                                <br/>
+                                <h4>Rescheduling fee: <span style={{textDecoration: "line-through"}}>$50</span> <span className="green-text">FREE</span></h4>
+                                {showErrorMessage && <h5 style={{color: "red", marginTop: "70px", padding: "5px", border: "1px solid red", borderRadius: "7px"}}>Try again! Choose a new date range with the same duration: {bookingDurationInDays} day(s).</h5>}
                             </div>
                             <div>
                                 <h5>Pick your dates</h5>
@@ -92,6 +110,7 @@ const RescheduleBooking = (props) => {
                                 <DateRange
                                     onChange={item => {
                                         setDates([item.selection])
+                                        setShowErrorMessage(false)
                                     }}
                                     moveRangeOnFirstSelection={false}
                                     ranges={dates}

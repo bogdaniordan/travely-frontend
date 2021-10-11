@@ -23,15 +23,16 @@ import { Link } from "react-router-dom";
 const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm, form, firstName, onChangeFirstName, lastName ,onChangeLastName, email, onChangeEmail, address, onChangeAddress, nameOnCard, onChangeNameOnCard, cardNumber, onChangeCardNumber,
                      expirationDate, onChangeExpirationDate, cvv, onChangeCvv, setSaveCardDetails, saveCardDetails, checkBtn, cardDetailsExist}) => {
     const history = useHistory();
+    const bookingPrice = bookingDurationInDays * accommodation.pricePerNight;
 
     const convertedBooking = {
         checkInDate: moment(booking.checkInDate).format("YYYY-MM-DD"),
-        checkoutDate: moment(booking.checkoutDate).format("YYYY-MM-DD")
+        checkoutDate: moment(booking.checkoutDate).format("YYYY-MM-DD"),
+        price: bookingPrice
     }
 
     const handleToken = (token) => {
-        const amount = bookingDurationInDays * accommodation.pricePerNight;
-        CustomerService.payWithStripe(token, amount).then(
+        CustomerService.payWithStripe(token, bookingPrice).then(
             res => {
                 BookingService.saveBooking(convertedBooking, accommodation.host.id, AuthService.getCurrentUser().id, accommodation.id)
                     .then(response => history.push({
@@ -59,7 +60,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <br/>
                                 <small className="text-muted">Type: {accommodation.placeType}</small>
                                 <br/>
-                                <small className="text-muted">Check-in: {moment(booking.checkInDate).format("DD-MM-YYYY")}</small>
+                                <small className="text-muted">Check-in: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</small>
                                 <br/>
                                 <small className="text-muted">Checkout: {moment(booking.checkoutDate).format("DD-MMMM-YYYY")}</small>
                                 <br/>

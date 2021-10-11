@@ -17,14 +17,6 @@ class BookingService {
         return axios.delete(`${BOOKING_SERVICE_API_URL}/${id}`, { headers: AuthHeader() });
     }
 
-    // accommodationCanBeBooked(checkInDate, checkOutDate, accommodationId) {
-    //     const bookingsDatesDto = {
-    //         checkIn: checkInDate,
-    //         checkOut: checkOutDate
-    //     }
-    //     return axios.post(`${BOOKING_SERVICE_API_URL}/accommodation-can-be-booked/${accommodationId}`, bookingsDatesDto, {headers: AuthHeader()})
-    // }
-
     accommodationIsBookedNow(id) {
         return axios.get(`${BOOKING_SERVICE_API_URL}/accommodation-is-booked-now/${id}`, {headers: AuthHeader()})
     }
@@ -47,6 +39,14 @@ class BookingService {
 
     getById(id) {
         return axios.get(`${BOOKING_SERVICE_API_URL}/get-by-id/${id}`, {headers: AuthHeader()});
+    }
+
+    updateBookingDates(checkInDate, checkOutDate, id) {
+        const bookingsDatesDto = {
+            checkIn: checkInDate,
+            checkOut: checkOutDate
+        }
+        return axios.put(`${BOOKING_SERVICE_API_URL}/update-booking-dates/${id}`, bookingsDatesDto, {headers: AuthHeader()});
     }
 }
 

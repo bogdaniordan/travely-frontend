@@ -20,6 +20,12 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
     const [bookingDurationInDays, setBookingDurationInDays] = useState();
 
     useEffect(() => {
+        // console.log(booking.id)
+        // console.log(booking.accommodation.title)
+        // console.log(booking.checkInDate)
+        // console.log(new Date(moment(booking.checkInDate).format("YYYY-MM-DD")))
+        // console.log(new Date)
+        // console.log(new Date(moment(booking.checkInDate).format("DD-MM-YYYY")) > new Date())
         setBookingDurationInDays(getBookingDuration(booking.checkInDate, booking.checkoutDate))
         TestimonialService.accommodationIsReviewedByUser(booking.accommodation.id, AuthService.getCurrentUser().id).then(res => setBookingIsReviewed(res.data));
     }, [])
@@ -71,10 +77,10 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                             <div className="calendar-icon-container">
                                 <DateRangeIcon style={{height: "35px", width: "35px"}}/>
                             </div>
-                            <time dateTime="2020-05-25 12:00:00">
-                                <i className="fas fa-calendar-alt mr-2"></i>Check in: {moment(booking.checkInDate).format("DD-MM-YYYY")}
+                            <time dateTime="2020-05-25 12:00:00" className="booking-dates-aligned">
+                                <i className="fas fa-calendar-alt mr-2"></i>Check in: {moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}
                                 <br/>
-                                <i className="fas fa-calendar-alt mr-2"></i>Check out: {moment(booking.checkoutDate).format("DD-MM-YYYY")}
+                                <i className="fas fa-calendar-alt mr-2"></i>Check out: {moment(booking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY")}
                             </time>
                         </div>
                     </div>
@@ -88,23 +94,22 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     <br/>
                     <div className="postcard__preview-txt">Host: {booking.host.firstName} {booking.host.lastName}</div>
                     <ul className="postcard__tagbox">
-
                         <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
                         <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Contact</li>
                         {
-                            new Date(moment(booking.checkoutDate).format("DD-MM-YYYY")) < new Date() && (
+                            new Date(moment(booking.checkoutDate).subtract(1, 'months').format("YYYY-MM-DD")) < new Date() && (
                                 !bookingIsReviewed && (
                                     <li className="tag__item play blue" onClick={leaveReview}><i className="fas fa-clock mr-2"></i>Review</li>
                                 )
                             )
                         }
                         {
-                            new Date(moment(booking.checkoutDate).format("DD-MM-YYYY")) > new Date() && (
+                            new Date(moment(booking.checkInDate).subtract(1, 'months').format("YYYY-MM-DD")) > new Date() && (
                                 <li className="tag__item play blue" onClick={rescheduleBooking}><i className="fas fa-clock mr-2"></i>Reschedule</li>
                             )
                         }
                         {
-                            new Date(moment(booking.checkInDate).format("DD-MM-YYYY")) > new Date() && (
+                            new Date(moment(booking.checkInDate).subtract(1, 'months').format("YYYY-MM-DD")).getTime() > new Date() && (
                                 <li className="tag__item play red" onClick={openModal}>Cancel booking</li>
                             )
                         }

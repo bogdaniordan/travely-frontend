@@ -30,13 +30,13 @@ const CarBookingCard = ({carBooking, carBookings, setCarBookings}) => {
                         <div className="car-calendar-icon-container">
                             <DateRangeIcon style={{width: "35px", height: "35px"}}/>
                         </div>
-                        <p>{moment(dates.startDate).format("DD-MMM-YYYY")} <br/> {moment(dates.endDate).format("DD-MMM-YYYY")}</p>
+                        <p>{moment(dates.startDate).subtract(1, 'months').format("DD-MMM-YYYY")} <br/> {moment(dates.endDate).subtract(1, 'months').format("DD-MMM-YYYY")}</p>
                     </div>
                     <h5>{carBooking.gps ? <CheckCircleIcon color="success" /> : <DoNotDisturbOnIcon color="error"/>} GPS</h5>
                     <h5>{carBooking.babySeat} baby seat(s)</h5>
                     <h5 className="child-seats">{carBooking.childSeat} child seat(s)</h5>
                     {
-                        new Date(moment(dates.startDate).format("DD-MM-YYYY")) > new Date() ? (
+                        new Date(moment(dates.startDate).subtract(1, 'months').format("DD-MM-YYYY")) > new Date() ? (
                             <Button variant="contained" color="secondary" endIcon={<DeleteIcon />} onClick={cancelBooking}>Cancel</Button>
                         ) : (
                             carBooking.notes && (

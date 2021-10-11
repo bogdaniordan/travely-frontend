@@ -51,14 +51,13 @@ const AccommodationHostDetails = ({accommodation, isBookedAtm, hasFutureBookings
                         ) : (
                             hasFutureBookings ? (
                                 <div className="mb-1 text-muted">
-                                    Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).format("DD-MM-YYYY")}</strong> and ends on <strong>{moment(closestFutureBooking.checkoutDate).format("DD-MM-YYYY")}</strong>.
+                                    Next booking starts on <strong>{moment(closestFutureBooking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong> and ends on <strong>{moment(closestFutureBooking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong>.
                                 </div>
                             ) : (
                                 <div className="flexed-container">
                                     <h5>This accommodation has no future bookings.</h5>
                                     <p className="recommendations-number">{recommendations.length} recommendation(s)</p>
                                 </div>
-
                             )
                         )
                     }

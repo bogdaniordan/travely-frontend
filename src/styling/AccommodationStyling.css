@@ -92,3 +92,7 @@
 .green-text {
     color: green;
 }
+
+.booking-dates-aligned {
+    text-align: left;
+}

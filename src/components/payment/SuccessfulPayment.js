@@ -10,6 +10,12 @@ const SuccessfulPayment = () => {
     const location = useLocation();
     const booking = location.state.booking;
 
+    useEffect(() => {
+        console.log(booking.checkInDate)
+        console.log(moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY"))
+        console.log(moment(booking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY"))
+    })
+
     return (
         <body className="payment-success-body">
             <Navbar title="Congratulations" />
@@ -20,9 +26,9 @@ const SuccessfulPayment = () => {
                 <h1 className="payment-success-header">Thank you</h1>
                 <br/>
                 <p className="payment-success-message">Your payment for <strong>{booking.accommodation.title}</strong> has been made successfully!
-                    <br/> Check-in: <strong>{moment(booking.checkInDate).format("DD-MM-YY")}</strong> / Check-out: <strong>{moment(booking.checkoutDate).format("DD-MM-YY")}</strong>.
+                    <br/> Check-in: <strong>{moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong> / Check-out: <strong>{moment(booking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong>.
                     <br/><br/>  You can view your bookings in your profile page. <br/>
-                <Button variant="contained" color="primary" onClick={() => history.push("/home")} style={{marginTop: "25px"}}>Go to profile</Button>
+                <Button variant="contained" color="primary" onClick={() => history.push("/profile")} style={{marginTop: "25px"}}>Go to profile</Button>
                 </p>
             </div>
         </body>
