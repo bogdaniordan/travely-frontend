@@ -16,14 +16,14 @@ const Recommendations = () => {
     const deleteRecommendation = id => {
         RecommendationService.deleteRecommendation(id).then(res => setRecommendations(recommendations.filter(rec => rec.id !== id)));
     }
-    
+
     return (
         <div className="col-md-3">
             {
                 recommendations.length > 0 ? (
                     <div>
                         <div className="card gedf-card">
-                            <div className="h5" style={{padding : "10px"}}>My recommendations</div>
+                            <div className="h5" id="recommendations-header">My recommendations</div>
                         </div>
                         {
                             recommendations.map(
@@ -31,8 +31,7 @@ const Recommendations = () => {
                                     <div className="card gedf-card">
                                         <div className="card-body">
                                             <CloseIcon style={{float: "right"}} color="error" onClick={() => deleteRecommendation(recommendation.id)}/>
-                                            <h5 className="card-title">{recommendation.sender.firstName} {recommendation.sender.lastName}</h5>
-                                            <GroupIcon color="primary"/>
+                                            <h5 className="card-title">{recommendation.sender.firstName} {recommendation.sender.lastName} <GroupIcon color="primary"/></h5>
                                             <Avatar src={`http://localhost:8080/customers/image/${recommendation.sender.id}/download` ? `http://localhost:8080/customers/image/${recommendation.sender.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} style={{margin: "auto"}}/>
                                             <br/>
                                             <h6 className="card-subtitle mb-2 text-muted">recommended you this</h6>

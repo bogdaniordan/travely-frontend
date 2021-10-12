@@ -20,14 +20,13 @@ const SavePaymentDetails = ({closeModal}) => {
         <>
             <CssBaseline />
             <div className="modal-button-container">
-                <Button color="secondary" onClick={closeModal} variant="contained" style={{height: "20px", width: "25px"}}>X</Button>
+                <Button color="secondary" onClick={closeModal} variant="contained">X</Button>
             </div>
             <div className="modal-dialog modal-confirm">
                 <div className="modal-content" >
                     <div className="modal-body text-center" >
                     <main className={classes.layout}>
-                        <form onSubmit={
-                            handleSubmit((data) =>{
+                        <form onSubmit={handleSubmit((data) =>{
                                 CustomerService.saveCardDetails(data.cardName, data.cardNumber, data.expirationDate, data.cvv, AuthService.getCurrentUser().id).then(
                                     res => history.push("/profile")
                                 )
@@ -36,6 +35,7 @@ const SavePaymentDetails = ({closeModal}) => {
                             <Typography component="h1" variant="h4" align="center">
                                 Save new card details
                             </Typography>
+                            <br/>
                             <br/>
                             <Grid container spacing={3}>
                                 <Grid item xs={12}>
@@ -48,7 +48,7 @@ const SavePaymentDetails = ({closeModal}) => {
                                         variant="standard"
                                     />
                                 </Grid>
-                                {errors.cardName && <span style={{color:"red"}}>Please enter a valid card name!</span>}
+                                {errors.cardName && <span className="red-colored">Please enter a valid card name!</span>}
                                 <Grid item xs={12}>
                                     <TextField
                                         id="cardNumber"
@@ -59,7 +59,7 @@ const SavePaymentDetails = ({closeModal}) => {
                                         variant="standard"
                                     />
                                 </Grid>
-                                {errors.cardNumber && <span style={{color:"red"}}>Please enter a valid card number!</span>}
+                                {errors.cardNumber && <span className="red-colored">Please enter a valid card number!</span>}
                                 <Grid item xs={12}>
                                     <TextField
                                         id="expDate"
@@ -71,7 +71,7 @@ const SavePaymentDetails = ({closeModal}) => {
                                         variant="standard"
                                     />
                                 </Grid>
-                                {errors.expirationDate && <span style={{color:"red"}}>Please enter a valid expiration date!</span>}
+                                {errors.expirationDate && <span className="red-colored">Please enter a valid expiration date!</span>}
                                 <Grid item xs={12}>
                                     <TextField
                                         id="cvv"
@@ -83,7 +83,7 @@ const SavePaymentDetails = ({closeModal}) => {
                                         variant="standard"
                                     />
                                 </Grid>
-                                {errors.cvv && <span style={{color:"red"}}>Please enter a valid CVV!</span>}
+                                {errors.cvv && <span className="red-colored">Please enter a valid CVV!</span>}
                                 <Grid item xs={12}>
                                     <Button color="primary" type="submit" style={{margin:"auto"}} variant="contained">save</Button>
                                 </Grid>

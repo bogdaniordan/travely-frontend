@@ -62,7 +62,6 @@ const CustomerProfile = () => {
                     <div className="card">
                         <div className="card-body">
                             <div className="container mt-5">
-                                {/*<hr className="mb-4"/>*/}
                                 <section>
                                     {
                                         bookings.length > 0 ? (
@@ -77,19 +76,6 @@ const CustomerProfile = () => {
                                             </div>
                                         ) : (<h4>No current bookings</h4>)
                                     }
-                                    {/*{*/}
-                                    {/*    pastBookings.length > 0 && (*/}
-                                    {/*        <div className="container py-2">*/}
-                                    {/*            <h4>Past bookings</h4>*/}
-                                    {/*            <br/>*/}
-                                    {/*            {*/}
-                                    {/*                pastBookings.map(*/}
-                                    {/*                    booking => <CustomerBooking key={booking.id} booking={booking} bookings={bookings} setBookings={setBookings}/>*/}
-                                    {/*                )*/}
-                                    {/*            }*/}
-                                    {/*        </div>*/}
-                                    {/*    )*/}
-                                    {/*}*/}
                                 </section>
                                 {
                                     pastBookings.length > 0 && <Button variant="contained" color="primary" onClick={() => setShowPastBookings(!showPastBookings)}>{showPastBookings ? "Hide past bookings" : "Past bookings"}</Button>
@@ -105,7 +91,6 @@ const CustomerProfile = () => {
                                         }
                                     </div>
                                 </Collapse>
-                                {/*<hr className="mb-4"/>*/}
                             </div>
                         </div>
                     </div>

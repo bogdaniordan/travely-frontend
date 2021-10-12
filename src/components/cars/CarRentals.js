@@ -8,6 +8,7 @@ import CarService from "../../service/CarService";
 import CarCard from "./CarCard";
 import moment from "moment";
 import InfoIcon from '@mui/icons-material/Info';
+import CarRentalIcon from '@mui/icons-material/CarRental';
 
 const SearchTaxi = () => {
     const classes = useStyles();
@@ -72,6 +73,7 @@ const SearchTaxi = () => {
                     <div className="testimonials-clean">
                         <div className="container" id="car-rentals-container">
                             <br/>
+                            <CarRentalIcon style={{width: "220px", height: "220px", margin: "auto"}}/>
                             <h4>Car hire for any kind of trip</h4>
                             Clean cars. Flexible bookings. Socially distant rental counters.
                             <br/>
@@ -150,31 +152,33 @@ const SearchTaxi = () => {
                 </div>
         </div>
     </div>
-            <div className="container">
-                <br/>
-                {
-                    cars.length > 0 ? (
-                        <div className="row">
-                            <div className="card">
-                                <div className="card-body">
-                                    {
-                                            cars.map(
-                                                car => <CarCard car={car} dates={dates[0]} />
-                                        )
-                                    }
-                                </div>
+        <div className="container">
+            <br/>
+            {
+                cars.length > 0 ? (
+                    <div className="row">
+                        <div className="card">
+                            <div className="card-body">
+                                {
+                                        cars.map(
+                                            car => <CarCard car={car} dates={dates[0]} />
+                                    )
+                                }
                             </div>
-                        </div>
-                    ) : (
-                         ( searched && (
-                        <div>
                             <br/>
-                            <h4>No results found for your search.</h4>
-                        </div>))
-                    )
-                }
-            </div>
-            <Footer/>
+                        </div>
+
+                    </div>
+                ) : (
+                     ( searched && (
+                    <div>
+                        <br/>
+                        <h4>No results found for your search.</h4>
+                    </div>))
+                )
+            }
+        </div>
+        <Footer/>
         </div>
     );
 };

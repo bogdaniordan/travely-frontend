@@ -1318,3 +1318,7 @@ h3 {
 .empty-space-container {
   margin-top: 250px;
 }
+
+#recommendations-header {
+  padding: 10px;
+}

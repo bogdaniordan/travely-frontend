@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Button from "@material-ui/core/Button";
 import InfoIcon from "@mui/icons-material/Info";
 import {useStyles} from "../../styling/js-styling/QuestionsTableStyling";
@@ -12,7 +12,6 @@ import StripeCheckout from "react-stripe-checkout";
 const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumber, gps, car}) => {
     const classes = useStyles();
     const history = useHistory();
-    const [customer, setCustomer] = useState({})
 
     const { register, handleSubmit, formState: {errors}, reset } = useForm({
         defaultValues: {}
@@ -20,8 +19,14 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
 
     useEffect(() => {
         CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {
-            setCustomer(res.data);
-            reset(res.data);
+            let customer = res.data;
+            if(customer.cardDetails) {
+                customer.cvv = res.data.cardDetails.cvv;
+                customer.expirationDate = res.data.cardDetails.expirationDate;
+                customer.cardNumber = res.data.cardDetails.cardNumber;
+                customer.cardName = res.data.cardDetails.cardName
+            }
+            reset(customer);
         })
     },[reset])
 
@@ -158,7 +163,6 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                         >
                                         <Button variant="contained" color="secondary" style={{marginTop: "25px"}}>STRIPE PAY</Button>
                                         </StripeCheckout>
-
                                     </div>
                                 </div>
                             </div>

@@ -112,3 +112,11 @@
     width: 200px;
     margin: auto;
 }
+
+#add-review-container {
+    height: 600px;
+}
+
+.black-colored {
+    color: black;
+}

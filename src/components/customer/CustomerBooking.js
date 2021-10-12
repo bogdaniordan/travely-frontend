@@ -12,6 +12,7 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import CancelBookingModal from "./CancelBookingModal";
 import {getBookingDuration} from "../../utils/CityCoordinates";
 import SingleBedIcon from '@mui/icons-material/SingleBed';
+import PersonIcon from '@mui/icons-material/Person';
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking, bookings, setBookings}) => {
@@ -21,12 +22,6 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
     const [bookingDurationInDays, setBookingDurationInDays] = useState();
 
     useEffect(() => {
-        // console.log(booking.id)
-        // console.log(booking.accommodation.title)
-        // console.log(booking.checkInDate)
-        // console.log(new Date(moment(booking.checkInDate).format("YYYY-MM-DD")))
-        // console.log(new Date)
-        // console.log(new Date(moment(booking.checkInDate).format("DD-MM-YYYY")) > new Date())
         setBookingDurationInDays(getBookingDuration(booking.checkInDate, booking.checkoutDate))
         TestimonialService.accommodationIsReviewedByUser(booking.accommodation.id, AuthService.getCurrentUser().id).then(res => setBookingIsReviewed(res.data));
     }, [])
@@ -93,7 +88,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     <br/>
                     <div className="postcard__preview-txt"><SingleBedIcon />Accommodation type: {booking.accommodation.placeType}</div>
                     <br/>
-                    <div className="postcard__preview-txt">Host: {booking.host.firstName} {booking.host.lastName}</div>
+                    <div className="postcard__preview-txt"><PersonIcon /> {booking.host.firstName} {booking.host.lastName}</div>
                     <ul className="postcard__tagbox">
                         <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
                         <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Contact</li>

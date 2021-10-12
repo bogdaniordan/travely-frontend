@@ -31,7 +31,7 @@ const QuestionsPage = (props) => {
             {
                 questions.length > 0 ? (
                     <div>
-                        <h4>Your question timeline with {host.firstName} {host.lastName} - {questions.length} questions asked</h4>
+                        <h4>Your question timeline with {host.firstName} {host.lastName} - {questions.length} question(s) asked</h4>
                         <br/>
                         <div className="container" id="car-rentals-container">
                             <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>

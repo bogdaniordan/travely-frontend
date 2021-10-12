@@ -9,6 +9,7 @@ import TestimonialService from "../../service/TestimonialService";
 import { Rating, RatingView } from 'react-simple-star-rating'
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AccommodationService from "../../service/AccommodationService";
+import {Link} from "react-router-dom";
 
 const AddTestimonial = (props) => {
     const accommodationId = props.match.params.accommodationId;
@@ -29,7 +30,10 @@ const AddTestimonial = (props) => {
     return (
         <div>
             <Navbar title={"Accommodation review"}/>
-            <div className="container" style={{height: "350px"}}>
+            <div className="container" id="add-review-container">
+                <Link to="/profile" style={{float: "left"}}>Back to profile</Link>
+                <br/>
+                <br/>
                 <ReviewsIcon style={{margin: "auto", height: "100px", width: "100px", marginBottom: "20px"}} color="primary"/>
                 <br/>
                 <form onSubmit={handleSubmit((data) => {
@@ -38,7 +42,7 @@ const AddTestimonial = (props) => {
                     )
                 })}>
                     <br/>
-                    <h4 style={{color: "black"}}>Leave a review for your booking at {accommodation.title}, {accommodation.location}</h4>
+                    <h4 className="black-colored">Leave a review for your booking at {accommodation.title}, {accommodation.location}</h4>
                     <br/>
                     <div className="row">
                         <div className="col-md-12">
@@ -51,7 +55,7 @@ const AddTestimonial = (props) => {
                                           style={{width: "75%", height: "150px", margin: "auto", marginTop: "20px"}}
                                           {...register("message", {required: true, minLength: 5})}
                                 ></textarea>
-                                {errors.message && <span style={{color:"red"}}>Please enter a message which is at least 5 characters long!</span>}
+                                {errors.message && <span className="red-colored">Please enter a message which is at least 5 characters long!</span>}
                             </div>
                             <br/>
                             <div className="form-group">

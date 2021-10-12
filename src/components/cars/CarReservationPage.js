@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import CarCard from "./CarCard";
@@ -8,6 +8,8 @@ import Map from "../../utils/Map";
 import moment from "moment";
 import CarExtras from "./CarExtras";
 import CarPaymentForm from "./CarPaymentForm";
+import CustomerService from "../../service/CustomerService";
+import AuthService from "../../service/AuthService";
 
 const CarReservationPage = () => {
     const location = useLocation();

@@ -84,7 +84,7 @@ const ChatPage = (props) => {
                 <div className="container">
                     <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
                     <br/>
-                    <ChatIcon style={{height: "150px", width: "150px"}} color="primary"/>
+                    <ChatIcon style={{height: "150px", width: "150px", marginBottom: "50px"}} color="primary"/>
                     {
                         isFriend ? (
                             <h4>You have to connect to be able to send or receive messages from {otherUser.firstName} {otherUser.lastName}.</h4>

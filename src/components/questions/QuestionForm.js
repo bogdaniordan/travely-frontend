@@ -42,6 +42,7 @@ const QuestionForm = () => {
             <div className="container" id="car-rentals-container">
                 <Link to="/profile" style={{float: "left"}}>Back to profile</Link>
                 <br/>
+                <br/>
                 <div className="contact-image">
                     <LiveHelpIcon style={{margin: "auto", height: "100px", width: "100px"}} color="primary"/>
                 </div>

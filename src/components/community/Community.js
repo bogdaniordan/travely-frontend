@@ -117,7 +117,7 @@ const Community = () => {
                                                             placeholder="Post title"
                                                             {...register("title", {required: true, minLength: 5})}
                                                         />
-                                                        {errors.title && <span style={{color:"red"}}>Title's length has to be at least 5 characters.</span>}
+                                                        {errors.title && <span className="red-colored">Title's length has to be at least 5 characters.</span>}
                                                         <label className="sr-only">Location</label>
                                                         <select
                                                             className="form-control"
@@ -130,7 +130,7 @@ const Community = () => {
                                                             <option value="Toronto">Toronto</option>
                                                             <option value="Paris">Paris</option>
                                                         </select>
-                                                        {errors.location && <span style={{color:"red"}}>Select a location</span>}
+                                                        {errors.location && <span className="red-colored">Select a location</span>}
                                                         <label className="sr-only" htmlFor="message">Content</label>
                                                         <textarea
                                                             className="form-control"
@@ -139,7 +139,7 @@ const Community = () => {
                                                             placeholder="What are you thinking?"
                                                             {...register("content", {required: true, minLength: 5})}
                                                         ></textarea>
-                                                        {errors.content && <span style={{color:"red"}}>Post content length has to be at least 5 characters.</span>}
+                                                        {errors.content && <span className="red-colored">Post content length has to be at least 5 characters.</span>}
                                                         <Button type="submit" variant="outlined" color="primary">POST</Button>
                                                     </form>
                                                 </Collapse>
@@ -148,8 +148,11 @@ const Community = () => {
                                                     <div>
                                                         <br/>
                                                         <h5>Search posts</h5>
-                                                        <input className="form-control" type="text" onChange={e => setSearchInput(e.target.value)}/>
-                                                        <Button variant="outlined" color="primary" onClick={search}>Search</Button>
+                                                        <div className="flexed-container">
+                                                            <input id="post-search-bar" className="form-control" type="text" onChange={e => setSearchInput(e.target.value)}/>
+                                                            <Button variant="outlined" color="primary" onClick={search} style={{height: "84%", marginTop: "6px"}}>Search</Button>
+                                                        </div>
+
                                                     </div>
                                                 </Collapse>
                                             </div>

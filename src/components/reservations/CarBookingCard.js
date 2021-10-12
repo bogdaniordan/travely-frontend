@@ -41,7 +41,8 @@ const CarBookingCard = ({carBooking, carBookings, setCarBookings}) => {
                         ) : (
                             carBooking.notes && (
                                 carBooking.notes.length < 20 && (
-                                    <p>Notes: {carBooking.notes}</p>
+                                    <Button variant="contained" disabled>Past booking</Button>
+                                    // <p>Notes: {carBooking.notes}</p>
                                 )
                             )
                         )

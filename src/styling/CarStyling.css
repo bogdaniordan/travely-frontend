@@ -133,3 +133,7 @@
 #flexed {
     display: flex;
 }
+
+#post-search-bar {
+    width: 80%;
+}
