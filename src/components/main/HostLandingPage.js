@@ -8,6 +8,7 @@ const HostLandingPage = () => {
         <div>
             <LandingPageNavbar />
             <section className="landing-page-container">
+                <div className="fifth-circle"></div>
                 <div className="circle" style={{ background: "blue" }}></div>
                 <div className="second-circle"></div>
                 <div className="third-circle"></div>
@@ -43,11 +44,7 @@ const HostLandingPage = () => {
                     </div>
                     <a href="/host-landing-page">
                         <div className="imgBox">
-                            <img
-                                src={picture}
-                                alt="Travel picture"
-                                style={{ marginTop: "-110px", width: "800px" }}
-                            />
+                            <img src={picture} alt="Travel picture" className="landing-page-image"/>
                         </div>
                     </a>
                 </div>

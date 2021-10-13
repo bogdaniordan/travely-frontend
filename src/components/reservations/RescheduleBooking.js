@@ -82,7 +82,7 @@ const RescheduleBooking = (props) => {
                         <div style={{display: "flex", marginLeft: "70px"}}>
                             <div>
                                 <h5>Pick your dates</h5>
-                                <small>Your booking <strong>needs</strong> to have the same duration as before: {bookingDurationInDays} days(s)</small>
+                                <small className="small-font">Your booking <strong>needs</strong> to have the same duration as before: {bookingDurationInDays} days(s)</small>
                                 <div style={{marginTop: "30px"}}></div>
                                 <DateRange
                                     onChange={item => {
@@ -96,14 +96,14 @@ const RescheduleBooking = (props) => {
                                 />
                             </div>
                                 <div style={{width: "650px"}}>
-                                    <img style={{width: "430px", height: "350px", borderRadius: "10px"}} src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}  alt="property image"/>
+                                    <img style={{width: "470px", height: "350px", borderRadius: "10px"}} src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}  alt="property image"/>
                                     {/*<h5 style={{marginTop: "5px"}}>Hosted by {booking.host.firstName} {booking.host.lastName}</h5>*/}
                                         <div style={{marginTop: "20px"}}>
                                             <Button variant="contained" color="primary" style={{marginRight: "5px"}} onClick={reschedule}>Reschedule</Button>
                                             <Button variant="contained" color="secondary" onClick={cancelBooking}>Cancel booking</Button>
                                         </div>
                                         <br/>
-                                        <small><InfoIcon style={{color: "orange"}}/> Note: You won't receive your funds back if you cancel the booking.</small>
+                                        <small className="small-font"><InfoIcon style={{color: "orange"}}/> Note: You won't receive your funds back if you cancel the booking.</small>
                                     </div>
                                 </div>
                             </div>
@@ -138,18 +138,18 @@ const RescheduleBooking = (props) => {
                                         <br/>
                                         <h5>Current booked dates:</h5>
                                         <br/>
-                                        <p>Check-in: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</p>
-                                        <p>Check-out: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</p>
+                                        <p>Check-in: <strong>{moment(booking.checkInDate).format("DD-MMM-YYYY")}</strong></p>
+                                        <p>Check-out: <strong>{moment(booking.checkInDate).format("DD-MMM-YYYY")}</strong></p>
                                     </div>
-                                    <div style={{marginLeft: "200px", textAlign: "left"}}>
+                                    <div style={{marginLeft: "350px", textAlign: "left"}}>
                                         <br/>
                                         <h5>New booking dates:</h5>
                                         <br/>
                                         {
                                             dates[0].endDate ? (
                                                 <div style={{color: "orange"}}>
-                                                    <p>Check-in: {moment(dates[0].startDate).format("DD-MMM-YYYY")}</p>
-                                                    <p>Check-out: {moment(dates[0].endDate).format("DD-MMM-YYYY")}</p>
+                                                    <p>Check-in: <strong>{moment(dates[0].startDate).format("DD-MMM-YYYY")}</strong></p>
+                                                    <p>Check-out: <strong>{moment(dates[0].endDate).format("DD-MMM-YYYY")}</strong></p>
                                                 </div>
                                             ) : (
                                                 <div>

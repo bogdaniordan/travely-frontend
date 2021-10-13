@@ -7,7 +7,7 @@ const FamousCityBar = ({searchByCity}) => {
 
     return (
         <div className="container">
-            <div className="testimonials-clean">
+            {/*<div className="testimonials-clean">*/}
                 <br/>
                 <h4 className="explore-header">
                     Explore famous cities
@@ -19,7 +19,7 @@ const FamousCityBar = ({searchByCity}) => {
                         )
                     }
                 </List>
-            </div>
+            {/*</div>*/}
         </div>
     );
 };

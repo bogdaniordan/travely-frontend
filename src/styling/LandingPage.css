@@ -92,3 +92,19 @@
     clip-path: circle(1300px at 1200px 600px);
     background: pink;
 }
+
+
+.fifth-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(1300px at 1200px 600px);
+    background: #aaaccc;
+}
+
+.landing-page-image {
+    margin-top: -110px;
+    width: 800px;
+}

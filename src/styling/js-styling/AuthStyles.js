@@ -18,4 +18,14 @@ export const useStyles = makeStyles((theme) => ({
         height: "700px",
         margin: "auto"
     },
+    cityCardPaper: {
+        margin: "60px"
+    },
+    cityCardListItem: {
+        height: "120px"
+    },
+    cityCardAvatar: {
+        height: "70px",
+        width: "70px"
+    }
 }));

@@ -4,8 +4,10 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import RecommendationService from "../../service/RecommendationService";
 import AuthService from "../../service/AuthService";
+import {useStyles} from "../../styling/js-styling/RecommendationStyling";
 
 const AddRecommendationForm = ({users, setUsers, accommodation, user}) => {
+    const classes = useStyles();
     const [message, setMessage] = useState("");
 
     const recommendAccommodation = () => {
@@ -15,21 +17,21 @@ const AddRecommendationForm = ({users, setUsers, accommodation, user}) => {
     }
 
     return (
-        <Paper elevation={2} style={{margin: "30px", width: "350px"}}>
+        <Paper elevation={2} className={classes.recommendationPaper}>
                 <ListItem alignItems="center">
                     <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${user.id}/download`} />
+                        <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${user.id}/download`} className={classes.recommendationAvatar}/>
                     </ListItemAvatar>
                     <ListItemText
                         key={user.id}
                         primary={
                             <>
-                                <h5>{user.firstName} {user.lastName}</h5>
+                                <h5 className="recommendation-receiver">{user.firstName} {user.lastName}</h5>
                                 <textarea
                                     placeholder="Message"
                                     name="message"
                                     className="form-control"
-                                    style={{marginBottom: "10px"}}
+                                    id="recommendation-input"
                                     onChange={e => setMessage(e.target.value)}
                                 ></textarea>
                             </>
@@ -37,7 +39,7 @@ const AddRecommendationForm = ({users, setUsers, accommodation, user}) => {
                         secondary={
                             <>
                                 <small>
-                                    <Button variant="contained" color="primary" onClick={recommendAccommodation}>Recommend</Button>
+                                    <Button variant="contained" color="primary" onClick={recommendAccommodation} className={classes.recommendBtn}>Recommend</Button>
                                 </small>
                             </>
                         }

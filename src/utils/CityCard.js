@@ -2,8 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Link, ListItem, ListItemAvatar, ListItemText, Paper} from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import AccommodationService from "../service/AccommodationService";
+import {useStyles} from "../styling/js-styling/AuthStyles";
 
 const CityCard = ({searchByCity, city}) => {
+    const classes = useStyles();
     const [propertiesNumber, setPropertiesNumber] = useState(0);
 
     useEffect(() => {
@@ -11,17 +13,16 @@ const CityCard = ({searchByCity, city}) => {
     }, [])
 
     return (
-        <Paper elevation={2} style={{margin: "60px"}}>
-            <ListItem alignItems="center" style={{height: "120px"}}>
+        <Paper elevation={2} className={classes.cityCardPaper}>
+            <ListItem alignItems="center" className={classes.cityCardListItem}>
                 <Link onClick={() => searchByCity(city[0])}>
                     <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={city[1]} style={{height: "70px", width: "70px"}} />
+                        <Avatar alt="Remy Sharp" src={city[1]} className={classes.cityCardAvatar} />
                     </ListItemAvatar>
                 </Link>
-
                 <ListItemText>
                     <h4 className="city-name-header">{city[0]}</h4>
-                    <small id="properties-font" className="right-floated">{propertiesNumber} properties</small>
+                    <small id="properties-font" className="right-floated">{propertiesNumber} propertie(s)</small>
                 </ListItemText>
             </ListItem>
         </Paper>

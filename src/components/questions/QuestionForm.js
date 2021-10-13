@@ -44,7 +44,7 @@ const QuestionForm = () => {
                 <br/>
                 <br/>
                 <div className="contact-image">
-                    <LiveHelpIcon style={{margin: "auto", height: "100px", width: "100px"}} color="primary"/>
+                    <LiveHelpIcon style={{margin: "auto", height: "100px", width: "100px", marginBottom: "50px"}} color="primary"/>
                 </div>
                 <br/>
                 <form method="post" onSubmit={submitQuestion}>

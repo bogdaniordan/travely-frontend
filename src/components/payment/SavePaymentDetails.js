@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -7,14 +7,18 @@ import {CssBaseline} from "@material-ui/core";
 import {useStyles} from "../../styling/js-styling/CardDetailsStyling";
 import {useForm} from "react-hook-form";
 import CustomerService from "../../service/CustomerService";
-import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 
 const SavePaymentDetails = ({closeModal}) => {
     const classes = useStyles();
-    const history = useHistory();
 
-    const { register, handleSubmit, formState: {errors} } = useForm();
+    const { register, handleSubmit, formState: {errors}, reset } = useForm({
+        defaultValues: {}
+    });
+
+    useEffect(() => {
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => reset(res.data.cardDetails))
+    },[reset])
 
     return (
         <>
@@ -28,7 +32,7 @@ const SavePaymentDetails = ({closeModal}) => {
                     <main className={classes.layout}>
                         <form onSubmit={handleSubmit((data) =>{
                                 CustomerService.saveCardDetails(data.cardName, data.cardNumber, data.expirationDate, data.cvv, AuthService.getCurrentUser().id).then(
-                                    res => history.push("/profile")
+                                    res => closeModal()
                                 )
                             })
                         }>
@@ -85,7 +89,7 @@ const SavePaymentDetails = ({closeModal}) => {
                                 </Grid>
                                 {errors.cvv && <span className="red-colored">Please enter a valid CVV!</span>}
                                 <Grid item xs={12}>
-                                    <Button color="primary" type="submit" style={{margin:"auto"}} variant="contained">save</Button>
+                                    <Button color="primary" type="submit" className={classes.saveCardDetails} variant="contained">Save details</Button>
                                 </Grid>
                             </Grid>
                         </form>

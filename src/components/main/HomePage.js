@@ -45,6 +45,7 @@ const HomePage = () => {
                 <h4>Search accommodations by location, type or name</h4>
                 <br/>
                 <p><InfoIcon style={{color: "orange"}}/> Get the advice you need. Check the latest COVID-19 restrictions before you travel. Learn more</p>
+                <br/>
                 <div className="row">
                     <div className="col-lg-12 card-margin">
                         <div className="card search-form">

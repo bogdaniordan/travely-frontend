@@ -48,10 +48,10 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
         <div className="container">
             <div className="row">
                 <div className="col-md-4 order-md-2 mb-4">
-                    <h4 className="d-flex justify-content-between align-items-center mb-3">
-                        <span className="text-muted">Your booking</span>
-                        <span className="badge badge-secondary badge-pill">3</span>
-                    </h4>
+                    {/*<h4 className="d-flex justify-content-between align-items-center mb-3">*/}
+                    {/*    /!*<span className="text-muted">Your booking</span>*!/*/}
+                    {/*    <span className="badge badge-secondary badge-pill">3</span>*/}
+                    {/*</h4>*/}
                     <ul className="list-group mb-3">
                         <li className="list-group-item d-flex justify-content-between lh-condensed">
                             <div className="text-aligned-left">
@@ -66,7 +66,7 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <br/>
                                 <small className="text-muted">{bookingDurationInDays} nights</small>
                             </div>
-                            <span className="text-muted">${accommodation.pricePerNight}/night</span>
+                            <span className="text-muted"><strong>${accommodation.pricePerNight}/night</strong></span>
                         </li>
                         <li className="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
@@ -185,11 +185,12 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <div>
                                     <hr className="mb-4"/>
                                     <div className="form-check">
-                                        <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => {setSaveCardDetails(!saveCardDetails)}}/>
-                                        <label className="form-check-label" htmlFor="same-address">Save credit card details</label>
+                                        <div className="save-card-details-container">
+                                            <Input type="checkbox" className="form-check-input" id="same-address" onChange={() => {setSaveCardDetails(!saveCardDetails)}}/>
+                                            <label className="form-check-label" htmlFor="same-address">Save credit card details</label>
+                                        </div>
                                     </div>
                                 </div>
-
                             )
                         }
                         <hr className="mb-4"/>
@@ -208,6 +209,8 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
 
                         <CheckButton style={{ display: "none" }} ref={checkBtn} />
                     </Form>
+                    <br/>
+                    <br/>
                 </div>
             </div>
         </div>

@@ -29,7 +29,7 @@ const SearchTaxi = () => {
     const handleCheckBoxChange = () => {
         setCheckBox(!checkBox);
         if (checkBox) {
-            setCars(cars.filter(car => !car.fullInsurance));
+            setCars(cars.filter(car => car.fullInsurance));
         } else {
             search()
         }
@@ -70,7 +70,7 @@ const SearchTaxi = () => {
             <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <div className="testimonials-clean">
+                    {/*<div className="testimonials-clean">*/}
                         <div className="container" id="car-rentals-container">
                             <br/>
                             <CarRentalIcon style={{width: "220px", height: "220px", margin: "auto"}}/>
@@ -148,7 +148,7 @@ const SearchTaxi = () => {
                                 }
                             </div>
                         </div>
-                    </div>
+                    {/*</div>*/}
                 </div>
         </div>
     </div>

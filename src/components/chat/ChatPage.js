@@ -107,7 +107,7 @@ const ChatPage = (props) => {
                         )
                     }
                     <br/>
-                        <div className="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12" >
+                        <div className="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12" id="chat-container">
                             <div className="card">
                                 <div className="card-header">{otherUser.firstName} {otherUser.lastName}</div>
                                     <div className="card-body height3" style={{overflow: "auto", height: "600px"}} >
@@ -141,13 +141,14 @@ const ChatPage = (props) => {
                                     </div>
                                 <div className="chat-input-container">
                                     <input className="form-control" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
-                                    <Button variant="contained" color="primary" onClick={send} startIcon={<SendIcon />} disabled={!isFriend}>
+                                    <Button variant="contained" color="primary" onClick={send} startIcon={<SendIcon />} disabled={!isFriend} style={{height: "88%", marginTop: "7px"}}>
                                         Send
                                     </Button>
                                 </div>
                             </div>
                         </div>
                 </div>
+            <br/>
             <Footer />
         </div>
     );

@@ -1322,3 +1322,8 @@ h3 {
 #recommendations-header {
   padding: 10px;
 }
+
+#chat-container {
+  width: 80%;
+  margin: auto;
+}

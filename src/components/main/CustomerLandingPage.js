@@ -48,11 +48,7 @@ const CustomerLandingPage = () => {
                     </div>
                     <a href="/customer-landing-page">
                         <div className="imgBox">
-                            <img
-                                src={picture}
-                                alt="Travel picture"
-                                style={{ marginTop: "-110px", width: "800px" }}
-                            />
+                            <img src={picture} alt="Travel picture" className="landing-page-image"/>
                         </div>
                     </a>
                 </div>

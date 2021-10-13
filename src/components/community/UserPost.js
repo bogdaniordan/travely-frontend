@@ -4,7 +4,7 @@ import CommentService from "../../service/CommentService";
 import Comment from "./Comment";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PostService from "../../service/PostService";
-import {Collapse} from "@material-ui/core";
+import {Collapse, Divider} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CloseIcon from '@mui/icons-material/Close';
 import AuthService from "../../service/AuthService";

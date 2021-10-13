@@ -42,5 +42,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     noCancelButton: {
         padding: "10px"
+    },
+    saveCardDetails: {
+        margin: "auto"
     }
 }));

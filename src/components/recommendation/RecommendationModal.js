@@ -17,28 +17,38 @@ const RecommendationModal = ({closeModal, accommodation}) => {
             <div className="right-align-container">
                 <Button onClick={closeModal} color="secondary" variant="contained">X</Button>
             </div>
+
             <div className="modal-dialog modal-confirm">
+                {
+                    users.length > 0 && (
+                        <h4>Recommend {accommodation.title} to other users:</h4>
+                    )
+                }
                 <div className="modal-content">
                     <div className="modal-body text-center" >
-                        <h4>Recommend {accommodation.title} to other users:</h4>
-                        <List>
-                            {
-                                users.length > 0 ? (
-                                    users.map(
-                                        user => (
-                                            <AddRecommendationForm
-                                                users={users}
-                                                setUsers={setUsers}
-                                                accommodation={accommodation}
-                                                user={user}
-                                            />
-                                        )
-                                    )
-                                ) : (<h5>No other users to recommend to.</h5>)
-                            }
-                        </List>
+                        {
+                            users.length > 0 ? (
+                                <div>
+                                    <List>
+                                        {
+                                            users.map(
+                                                user => (
+                                                    <AddRecommendationForm
+                                                        users={users}
+                                                        setUsers={setUsers}
+                                                        accommodation={accommodation}
+                                                        user={user}
+                                                    />
+                                                )
+                                            )
+                                        }
+                                    </List>
+                                </div>
+                            ) : (
+                                <h4>You can't recommend {accommodation.title} to other users.</h4>
+                            )
+                        }
                     </div>
-
                 </div>
 
             </div>
