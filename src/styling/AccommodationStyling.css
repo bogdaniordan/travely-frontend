@@ -137,3 +137,9 @@
     display: flex;
     justify-content: center;
 }
+
+.validation-negative {
+    color: red;
+    text-align: left;
+    margin-bottom: 20px;
+}

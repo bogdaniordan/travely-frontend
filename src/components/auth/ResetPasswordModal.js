@@ -15,9 +15,8 @@ const ResetPasswordModal = ({closeModal}) => {
             <div className="modal-dialog modal-confirm">
                 <div className="modal-content">
                     <div className="modal-body text-center">
-                        <h4>Enter your email address</h4>
-                        <br/>
-                        <h6>Your will receive a reset password email in a few moments.</h6>
+                        <h5>Please enter your email address</h5>
+                        <p>Your will receive a reset password email in a few moments.</p>
                         <br/>
                         <form onSubmit={handleSubmit((data) => {
                             AuthService.sendResetPasswordEmail(data);
@@ -32,7 +31,7 @@ const ResetPasswordModal = ({closeModal}) => {
                                 {...register("email", {required: true,  pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ })}
                                 autoComplete="email"
                             />
-                            {errors.email && <span style={{color:"red"}}>Please enter a valid email!</span>}
+                            {errors.email && <span className="red-colored">Please enter a valid email!</span>}
                             <br/>
                             <br/>
                             <Button type="submit" variant="contained" color="primary">Submit</Button>
