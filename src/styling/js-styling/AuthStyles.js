@@ -27,5 +27,8 @@ export const useStyles = makeStyles((theme) => ({
     cityCardAvatar: {
         height: "70px",
         width: "70px"
+    },
+    left: {
+        textAlign: "left"
     }
 }));

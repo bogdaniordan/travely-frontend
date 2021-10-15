@@ -137,3 +137,7 @@
 #post-search-bar {
     width: 80%;
 }
+
+#host-details-container {
+    height: 170px;
+}

@@ -18,7 +18,7 @@ const AccommodationHostDetails = ({accommodation, isBookedAtm, hasFutureBookings
     return (
         <div className="col-md-6 col-sm-6 mb-8">
             <div className="card flex-md-row mb-4 box-shadow h-md-250">
-                <div className="card-body d-flex flex-column align-items-start" style={{height: "170px"}}>
+                <div className="card-body d-flex flex-column align-items-start" id="host-details-container">
                     <div className="details-container">
                         <Avatar src={`http://localhost:8080/hosts/image/${accommodation.host.id}/download` ? `http://localhost:8080/hosts/image/${accommodation.host.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} style={{height: "70px", width: "70px", marginBottom: "5px"}} />
                         <h5 className="host-name-header">{accommodation.host.firstName} {accommodation.host.lastName}</h5>

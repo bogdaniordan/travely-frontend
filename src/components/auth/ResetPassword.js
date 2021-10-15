@@ -12,7 +12,6 @@ import {Paper} from "@material-ui/core";
 import login_background from "../../images/auth_backgound.jpg"
 import {useStyles} from "../../styling/js-styling/AuthStyles";
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
-import PersonPinIcon from "@mui/icons-material/PersonPin";
 import Avatar from "@material-ui/core/Avatar";
 
 const ResetPassword = (props) => {
@@ -44,9 +43,10 @@ const ResetPassword = (props) => {
         if (checkBtn.current.context._errors.length === 0) {
             if (!(password === confirmationPassword)) {
                 setMessage("Your passwords don't match.");
-                setShowMessage(false);
+                setShowMessage(true);
+            } else {
+                AuthService.savePassword(password, token).then(res => history.push("/login"));
             }
-            AuthService.savePassword(password, token).then(res => history.push("/login"));
         }
     }
 
@@ -56,29 +56,28 @@ const ResetPassword = (props) => {
             <div className="login-image-container">
                 <img src={login_background} alt="Login background"/>
 
-                {message && (
-                    <div className="form-group">
-                        <div
-                            className={
-                                showMessage ? "alert alert-success" : "alert alert-danger"
-                            }
-                            role="alert"
-                        >
-                            {message}
-                        </div>
-                    </div>
-                )}
                 <Paper elevation={2} style={{width: "600px", height: "430px", borderRadius: "20px", margin: "auto", position: "absolute"}}>
                     {/*<div className={classes.paper}>*/}
+                    {message && (
+                        <div className="form-group">
+                            <div
+                                className={
+                                    showMessage ? "alert alert-success" : "alert alert-danger"
+                                }
+                                role="alert"
+                            >
+                                {message}
+                            </div>
+                        </div>
+                    )}
                         <Avatar className={classes.avatar} style={{margin: "auto", marginTop: "50px"}}>
                             <RotateLeftIcon />
-                            {/*<LockOutlinedIcon />*/}
                         </Avatar>
                         <Form className="form-group" onSubmit={submitForm} ref={form}>
                             <div className="form-group">
                                 <br/>
                                 <br/>
-                                <label htmlFor="password">Please enter your new password</label>
+                                <label htmlFor="password">Enter your new password</label>
                                 <Input
                                     type="text"
                                     className="form-control"
@@ -109,7 +108,6 @@ const ResetPassword = (props) => {
                     <br/>
                     <br/>
                 </Paper>
-
             </div>
         </div>
     );

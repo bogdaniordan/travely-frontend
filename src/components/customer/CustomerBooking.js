@@ -35,9 +35,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
     }
 
     const cancelBooking = () => {
-        BookingService.deleteBooking(booking.id);
-        closeModal();
-        history.push("/profile")
+        BookingService.deleteBooking(booking.id).then(res => closeModal());
         setBookings(bookings.filter(book => book.id !== booking.id));
     }
 

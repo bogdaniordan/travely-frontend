@@ -98,7 +98,6 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, 
                     </div>
                 </div>
             </div>
-
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

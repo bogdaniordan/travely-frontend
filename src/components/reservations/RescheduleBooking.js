@@ -75,7 +75,6 @@ const RescheduleBooking = (props) => {
                             <LocalHotelIcon color="primary" style={{width: "100px", height: "100px", margin: "auto"}}/>
                             <DateRangeIcon style={{width: "70px", height: "100px", margin: "auto"}}/>
                         </div>
-
                         <h4 style={{marginBottom: "70px", marginTop: "20px"}}>Reschedule your future booking at {accommodation.title}, {accommodation.location}</h4>
                         <div className="card">
                             <div className="card-body">
@@ -95,7 +94,7 @@ const RescheduleBooking = (props) => {
                                     minDate={new Date()}
                                 />
                             </div>
-                                <div style={{width: "650px"}}>
+                            <div style={{width: "650px", marginLeft: "50px"}}>
                                     <img style={{width: "470px", height: "350px", borderRadius: "10px"}} src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}  alt="property image"/>
                                     {/*<h5 style={{marginTop: "5px"}}>Hosted by {booking.host.firstName} {booking.host.lastName}</h5>*/}
                                         <div style={{marginTop: "20px"}}>
@@ -107,29 +106,6 @@ const RescheduleBooking = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            {/*<div style={{width: "40%"}}>*/}
-                            {/*    <h5>Current booked dates:</h5>*/}
-                            {/*    <p>Check-in: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</p>*/}
-                            {/*    <p>Check-out: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</p>*/}
-                            {/*    <h5 style={{marginTop: "70px"}}>New booking dates:</h5>*/}
-                            {/*    {*/}
-                            {/*        dates[0].endDate ? (*/}
-                            {/*            <div style={{color: "orange"}}>*/}
-                            {/*                <p>Check-in: {moment(dates[0].startDate).format("DD-MMM-YYYY")}</p>*/}
-                            {/*                <p>Check-out: {moment(dates[0].endDate).format("DD-MMM-YYYY")}</p>*/}
-                            {/*            </div>*/}
-                            {/*        ) : (*/}
-                            {/*            <div>*/}
-                            {/*                <p>None</p>*/}
-                            {/*                <p>None</p>*/}
-                            {/*            </div>*/}
-                            {/*        )*/}
-                            {/*    }*/}
-                            {/*    <br/>*/}
-                            {/*    <h4>Rescheduling fee: <span style={{textDecoration: "line-through"}}>$50</span> <span className="green-text">FREE</span></h4>*/}
-                            {/*    {showErrorMessage && <h5 style={{color: "red", marginTop: "70px", padding: "5px", border: "1px solid red", borderRadius: "7px"}}>Try again! Choose a new date range with the same duration: {bookingDurationInDays} day(s).</h5>}*/}
-                            {/*</div>*/}
-
                         </div>
                         <div className="card">
                             <div className="card-body">
