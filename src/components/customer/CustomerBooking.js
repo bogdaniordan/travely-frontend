@@ -74,7 +74,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                             <time dateTime="2020-05-25 12:00:00" className="booking-dates-aligned">
                                 <i className="fas fa-calendar-alt mr-2"></i>Check in: {moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}
                                 <br/>
-                                <i className="fas fa-calendar-alt mr-2"></i>Check out: {moment(booking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY")}
+                                <i className="fas fa-calendar-alt mr-2"></i>Check out: {moment(booking.checkoutDate).subtract(1, 'months').add(1, "days").format("DD-MM-YYYY")}
                             </time>
                         </div>
                     </div>

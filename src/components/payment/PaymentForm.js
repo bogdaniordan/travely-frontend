@@ -60,9 +60,9 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                                 <br/>
                                 <small className="text-muted">Type: {accommodation.placeType}</small>
                                 <br/>
-                                <small className="text-muted">Check-in: {moment(booking.checkInDate).format("DD-MMM-YYYY")}</small>
+                                <small className="text-muted">Check-in: {moment(booking.checkInDate).format("DD-MMMM-YYYY")}</small>
                                 <br/>
-                                <small className="text-muted">Checkout: {moment(booking.checkoutDate).format("DD-MMMM-YYYY")}</small>
+                                <small className="text-muted">Checkout: {moment(booking.checkoutDate).add(1, "days").format("DD-MMMM-YYYY")}</small>
                                 <br/>
                                 <small className="text-muted">{bookingDurationInDays} nights</small>
                             </div>

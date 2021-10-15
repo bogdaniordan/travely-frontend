@@ -45,5 +45,10 @@ export const useStyles = makeStyles((theme) => ({
     },
     saveCardDetails: {
         margin: "auto"
+    },exitButton: {
+        maxWidth: "30px",
+        maxHeight: "30px",
+        minWidth: "30px",
+        minHeight: "30px"
     }
 }));

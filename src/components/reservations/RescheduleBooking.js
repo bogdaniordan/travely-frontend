@@ -115,7 +115,7 @@ const RescheduleBooking = (props) => {
                                         <h5>Current booked dates:</h5>
                                         <br/>
                                         <p>Check-in: <strong>{moment(booking.checkInDate).format("DD-MMM-YYYY")}</strong></p>
-                                        <p>Check-out: <strong>{moment(booking.checkInDate).format("DD-MMM-YYYY")}</strong></p>
+                                        <p>Check-out: <strong>{moment(booking.checkInDate).add(1, "days").format("DD-MMM-YYYY")}</strong></p>
                                     </div>
                                     <div style={{marginLeft: "350px", textAlign: "left"}}>
                                         <br/>
@@ -125,7 +125,7 @@ const RescheduleBooking = (props) => {
                                             dates[0].endDate ? (
                                                 <div style={{color: "orange"}}>
                                                     <p>Check-in: <strong>{moment(dates[0].startDate).format("DD-MMM-YYYY")}</strong></p>
-                                                    <p>Check-out: <strong>{moment(dates[0].endDate).format("DD-MMM-YYYY")}</strong></p>
+                                                    <p>Check-out: <strong>{moment(dates[0].endDate).add(1, "days").format("DD-MMM-YYYY")}</strong></p>
                                                 </div>
                                             ) : (
                                                 <div>

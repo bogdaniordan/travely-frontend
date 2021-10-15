@@ -30,5 +30,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     left: {
         textAlign: "left"
+    },
+    exitButton: {
+        maxWidth: "30px",
+        maxHeight: "30px",
+        minWidth: "30px",
+        minHeight: "30px"
     }
 }));

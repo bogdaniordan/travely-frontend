@@ -3,14 +3,16 @@ import Button from "@material-ui/core/Button";
 import {useForm} from "react-hook-form";
 import {TextField} from "@material-ui/core";
 import AuthService from "../../service/AuthService";
+import {useStyles} from "../../styling/js-styling/AuthStyles";
 
 const ResetPasswordModal = ({closeModal}) => {
     const { register, handleSubmit, formState: {errors} } = useForm();
+    const classes = useStyles();
 
     return (
         <div>
             <div className="right-align-container">
-                <Button onClick={closeModal} color="secondary" variant="contained">X</Button>
+                <Button onClick={closeModal} className={classes.exitButton} color="secondary" variant="contained">X</Button>
             </div>
             <div className="modal-dialog modal-confirm">
                 <div className="modal-content">

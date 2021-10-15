@@ -26,7 +26,7 @@ const SuccessfulPayment = () => {
                 <h1 className="payment-success-header">Thank you</h1>
                 <br/>
                 <p className="payment-success-message">Your payment for <strong>{booking.accommodation.title}</strong> has been made successfully!
-                    <br/> Check-in: <strong>{moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong> / Check-out: <strong>{moment(booking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong>.
+                    <br/> Check-in: <strong>{moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}</strong> / Check-out: <strong>{moment(booking.checkoutDate).add(1, "days").subtract(1, 'months').format("DD-MM-YYYY")}</strong>.
                     <br/><br/>  You can view your bookings in your profile page. <br/>
                 <Button variant="contained" color="primary" onClick={() => history.push("/profile")} style={{marginTop: "25px"}}>Go to profile</Button>
                 </p>

@@ -4,9 +4,11 @@ import RecommendationService from "../../service/RecommendationService";
 import AuthService from "../../service/AuthService";
 import {List} from "@material-ui/core";
 import AddRecommendationForm from "./AddRecommendationForm";
+import {useStyles} from "../../styling/js-styling/AuthStyles";
 
 const RecommendationModal = ({closeModal, accommodation}) => {
     const [users, setUsers] = useState([]);
+    const classes = useStyles();
 
     useEffect(() => {
         RecommendationService.getUsersWhoCanGetRecommendations(AuthService.getCurrentUser().id, accommodation.id).then(res => setUsers(res.data))
@@ -15,7 +17,7 @@ const RecommendationModal = ({closeModal, accommodation}) => {
     return (
         <div>
             <div className="right-align-container">
-                <Button onClick={closeModal} color="secondary" variant="contained">X</Button>
+                <Button onClick={closeModal} className={classes.exitButton} color="secondary" variant="contained">X</Button>
             </div>
 
             <div className="modal-dialog modal-confirm">

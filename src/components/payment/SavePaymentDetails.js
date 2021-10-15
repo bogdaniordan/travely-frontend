@@ -24,7 +24,7 @@ const SavePaymentDetails = ({closeModal}) => {
         <>
             <CssBaseline />
             <div className="modal-button-container">
-                <Button color="secondary" onClick={closeModal} variant="contained">X</Button>
+                <Button color="secondary" className={classes.exitButton} onClick={closeModal} variant="contained">X</Button>
             </div>
             <div className="modal-dialog modal-confirm">
                 <div className="modal-content" >
