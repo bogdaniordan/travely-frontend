@@ -38,5 +38,12 @@ export const useStyles = makeStyles((theme) => ({
         width: "15%",
         marginTop: "30px",
         marginRight: "55px"
+    },
+    removeButton: {
+        maxWidth: "20px",
+        maxHeight: "20px",
+        minWidth: "20px",
+        minHeight: "20px",
+        marginLeft: "5px"
     }
 }));

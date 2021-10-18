@@ -7,7 +7,7 @@ import ChatNotifications from "./notifications/ChatNotifications";
 import simple_logo from "../../images/travely_logo.png";
 import CustomerService from "../../service/CustomerService";
 
-const Navbar = ({title, subtitle, savedAccommodations}) => {
+const Navbar = ({title, subtitle, savedAccommodations, setSavedAccommodations}) => {
     const [user, setUser] = useState({});
     const isHomePage = title === "Welcome to Travely."
 
@@ -44,7 +44,7 @@ const Navbar = ({title, subtitle, savedAccommodations}) => {
                                     <a className="nav-link active" id="navbar-link-color" aria-current="page" href="/search-taxi">Cars</a>
                                 </li>
                                 <li className="nav-item">
-                                    <SavedAccommodations savedAccommodations={savedAccommodations} />
+                                    <SavedAccommodations savedAccommodations={savedAccommodations} setSavedAccommodations={setSavedAccommodations}/>
                                 </li>
                                 <li>
                                     <ChatNotifications />

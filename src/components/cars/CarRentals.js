@@ -70,85 +70,83 @@ const SearchTaxi = () => {
             <div className="container">
             <div className="card">
                 <div className="card-body">
-                    {/*<div className="testimonials-clean">*/}
-                        <div className="container" id="car-rentals-container">
-                            <br/>
-                            <CarRentalIcon style={{width: "220px", height: "220px", margin: "auto"}}/>
-                            <h4>Car hire for any kind of trip</h4>
-                            Clean cars. Flexible bookings. Socially distant rental counters.
-                            <br/>
-                            <br/>
-                            <div className="row">
-                                <div className="col-lg-12 card-margin">
-                                    <div className="card search-form">
-                                        <div className="card-body p-0">
-                                            <div className="row">
-                                                <div className="col-12">
-                                                    <div className="row no-gutters">
-                                                        <div className="col-lg-3 col-md-3 col-sm-12 p-0" id="car-location-selector">
-                                                            <select className="form-control" id="exampleFormControlSelect1" onChange={(event) => setLocation(event.target.value)}>
-                                                                <option value="" selected disabled hidden>City</option>
-                                                                <option value="Any">Any city</option>
-                                                                <option value="London">London</option>
-                                                                <option value="Boston">Boston</option>
-                                                                <option value="Mumbai">Mumbai</option>
-                                                                <option value="Toronto">Toronto</option>
-                                                                <option value="Paris">Paris</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="col-lg-8 col-md-6 col-sm-12 p-0"  id="car-dates-selector">
-                                                            <select className="form-control" onClick={() => setShowCalendar(!showCalendar)}>
-                                                                <option value="" selected disabled hidden>Dates</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="col-lg-1 col-md-3 col-sm-12 p-0">
-                                                            <button type="submit" className="btn btn-base" onClick={search}>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                                     stroke-width="2" stroke-linecap="round"
-                                                                     stroke-linejoin="round" className="feather feather-search">
-                                                                    <circle cx="11" cy="11" r="8"></circle>
-                                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
+                    <div className="container" id="car-rentals-container">
+                        <br/>
+                        <CarRentalIcon style={{width: "220px", height: "220px", margin: "auto"}}/>
+                        <h4>Car hire for any kind of trip</h4>
+                        Clean cars. Flexible bookings. Socially distant rental counters.
+                        <br/>
+                        <br/>
+                        <div className="row">
+                            <div className="col-lg-12 card-margin">
+                                <div className="card search-form">
+                                    <div className="card-body p-0">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="row no-gutters">
+                                                    <div className="col-lg-3 col-md-3 col-sm-12 p-0" id="car-location-selector">
+                                                        <select className="form-control" id="exampleFormControlSelect1" onChange={(event) => setLocation(event.target.value)}>
+                                                            <option value="" selected disabled hidden>City</option>
+                                                            <option value="Any">Any city</option>
+                                                            <option value="London">London</option>
+                                                            <option value="Boston">Boston</option>
+                                                            <option value="Mumbai">Mumbai</option>
+                                                            <option value="Toronto">Toronto</option>
+                                                            <option value="Paris">Paris</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-lg-8 col-md-6 col-sm-12 p-0"  id="car-dates-selector">
+                                                        <select className="form-control" onClick={() => setShowCalendar(!showCalendar)}>
+                                                            <option value="" selected disabled hidden>Dates</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-lg-1 col-md-3 col-sm-12 p-0">
+                                                        <button type="submit" className="btn btn-base" onClick={search}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                 stroke-width="2" stroke-linecap="round"
+                                                                 stroke-linejoin="round" className="feather feather-search">
+                                                                <circle cx="11" cy="11" r="8"></circle>
+                                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                            </svg>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={classes.ageContainer}>
-                                        <input type="checkbox" defaultChecked={checkBox} className={classes.ageInput} onClick={handleCheckBoxChange}/>
-                                        {" "}Driver's age is between 30 and 65. <Tooltip title="Drivers younger than 30 years old need to have full insurance"><InfoIcon /></Tooltip>
-                                    </div>
-                                    <Collapse in={showCalendar} className={classes.collapse}>
-                                        <DateRange
-                                            onChange={item => {
-                                                setDates([item.selection])
-                                                setShowWarningMessage(false);
-                                            }}
-                                            moveRangeOnFirstSelection={false}
-                                            ranges={dates}
-                                            minDate={new Date()}
-                                        />
-                                    </Collapse>
                                 </div>
-                                {
-                                    showWarningMessage && (
-                                        <h4 className="car-warning-message">No dates selected! Please enter your car booking dates.</h4>
-                                    )
-                                }
-                                {
-                                    dates[0].endDate && (
-                                        <div>
-                                            <h4>Selected dates: {moment(dates[0].startDate).format("DD-MM-YYYY")} - {moment(dates[0].endDate).format("DD-MM-YYYY")}</h4>
-                                            <br/>
-                                        </div>
-                                    )
-                                }
+                                <div className={classes.ageContainer}>
+                                    <input type="checkbox" defaultChecked={checkBox} className={classes.ageInput} onClick={handleCheckBoxChange}/>
+                                    {" "}Driver's age is between 30 and 65. <Tooltip title="Drivers younger than 30 years old need to have full insurance"><InfoIcon /></Tooltip>
+                                </div>
+                                <Collapse in={showCalendar} className={classes.collapse}>
+                                    <DateRange
+                                        onChange={item => {
+                                            setDates([item.selection])
+                                            setShowWarningMessage(false);
+                                        }}
+                                        moveRangeOnFirstSelection={false}
+                                        ranges={dates}
+                                        minDate={new Date()}
+                                    />
+                                </Collapse>
                             </div>
+                            {
+                                showWarningMessage && (
+                                    <h4 className="car-warning-message">No dates selected! Please enter your car booking dates.</h4>
+                                )
+                            }
+                            {
+                                dates[0].endDate && (
+                                    <div>
+                                        <h4>Selected dates: {moment(dates[0].startDate).format("DD-MM-YYYY")} - {moment(dates[0].endDate).format("DD-MM-YYYY")}</h4>
+                                        <br/>
+                                    </div>
+                                )
+                            }
                         </div>
-                    {/*</div>*/}
+                    </div>
                 </div>
         </div>
     </div>

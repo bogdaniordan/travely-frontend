@@ -6,8 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Link from "react-router-dom/Link";
 import AccommodationService from "../../../service/AccommodationService";
 import AuthService from "../../../service/AuthService";
+import Button from "@material-ui/core/Button";
 
-const SavedAccommodations = ({savedAccommodations}) => {
+const SavedAccommodations = ({savedAccommodations, setSavedAccommodations}) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -25,6 +26,17 @@ const SavedAccommodations = ({savedAccommodations}) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const removeAccommodation = accommodationId => {
+        AccommodationService.removeFromFavorites(accommodationId, AuthService.getCurrentUser().id).then(res => {
+            if(savedAccommodations) {
+                setSavedAccommodations(savedAccommodations.filter(accommodation => accommodation.id !== accommodationId))
+            }
+            if(userSavedAccommodations) {
+                setUserSavedAccommodations(userSavedAccommodations.filter(accommodation => accommodation.id !== accommodationId))
+            }
+        })
+    }
 
     return (
         <div className={classes.root}>
@@ -52,12 +64,14 @@ const SavedAccommodations = ({savedAccommodations}) => {
                                         accommodation => (
                                             <div>
                                                 <p>
-                                                    <Link
-                                                        to={`/accommodation/${accommodation.id}`}
-                                                    >
-                                                        <strong>{accommodation.title}</strong>
-                                                    </Link>
-                                                    <br/>
+                                                    <div className="flexed-container">
+                                                        <Link
+                                                            to={`/accommodation/${accommodation.id}`}
+                                                        >
+                                                            <strong>{accommodation.title}</strong>
+                                                        </Link>
+                                                        <Button className={classes.removeButton} variant="contained" color="secondary" onClick={() => removeAccommodation(accommodation.id)}>X</Button>
+                                                    </div>
                                                     - <small>{accommodation.location}</small>
                                                 </p>
                                                 <br />
@@ -71,12 +85,14 @@ const SavedAccommodations = ({savedAccommodations}) => {
                                         accommodation => (
                                             <div>
                                                 <p>
-                                                    <Link
-                                                        to={`/accommodation/${accommodation.id}`}
-                                                    >
-                                                        <strong>{accommodation.title}</strong>
-                                                    </Link>
-                                                    <br/>
+                                                    <div className="flexed-container">
+                                                        <Link
+                                                            to={`/accommodation/${accommodation.id}`}
+                                                        >
+                                                            <strong>{accommodation.title}</strong>
+                                                        </Link>
+                                                        <Button className={classes.removeButton} variant="contained" color="secondary" onClick={() => removeAccommodation(accommodation.id)}>X</Button>
+                                                    </div>
                                                     - <small>{accommodation.location}</small>
                                                 </p>
                                                 <br />

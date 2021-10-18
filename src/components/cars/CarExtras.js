@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
-import InfoIcon from '@mui/icons-material/Info';
 import {Paper} from "@material-ui/core";
 import {useStyles} from "../../styling/js-styling/QuestionsTableStyling";
 

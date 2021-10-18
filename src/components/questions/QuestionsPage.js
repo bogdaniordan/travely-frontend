@@ -81,7 +81,6 @@ const QuestionsPage = (props) => {
                     </div>
                 )
             }
-
             <Footer />
         </div>
     );

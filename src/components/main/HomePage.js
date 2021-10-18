@@ -40,7 +40,7 @@ const HomePage = () => {
 
     return (
         <div>
-            <Navbar title={"Welcome to Travely."} subtitle={"Thousands of accommodations around the globe at your finger tips."} savedAccommodations={savedAccommodations}/>
+            <Navbar title={"Welcome to Travely."} subtitle={"Thousands of accommodations around the globe at your finger tips."} savedAccommodations={savedAccommodations} setSavedAccommodations={setSavedAccommodations}/>
             <div className="container">
                 <h4>Search accommodations by location, type or name</h4>
                 <br/>
