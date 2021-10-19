@@ -95,7 +95,7 @@ const HomePage = () => {
                 </div>
                 <div className="album py-5">
                     <div className="container">
-                        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style={{textAlign: "center", justifyContent: "center"}}>
+                        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="accommodation-card-container">
                             {
                                 results ? ( results.length > 0 ? (
                                     results.map(
