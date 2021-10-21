@@ -16,14 +16,17 @@ export const useStyles = makeStyles({
         margin: "auto"
     },
     updatePaper: {
-        height: "800px",
+        // height: "800px",
         margin: "auto",
         textAlign: "left",
-        width: "80%"
+        width: "80%",
+        overflow: "auto",
+        marginBottom: "100px"
     },
     updateContainer: {
         margin: "auto",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginBottom: "100px"
     },
     updateSubmitBtn: {
         float: "left",

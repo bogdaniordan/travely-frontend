@@ -20,7 +20,7 @@
 }
 
 #car-rentals-container {
-    height: 600px;
+    min-height: 600px;
 }
 
 #textarea-leave-question {

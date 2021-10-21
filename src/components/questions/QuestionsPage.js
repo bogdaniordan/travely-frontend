@@ -61,7 +61,7 @@ const QuestionsPage = (props) => {
                                                         )
                                                     }
                                                     <div className="">
-                                                        <span className="badge badge-light">{question.seen ? "SEEN" : "NOT SEEN"}</span>
+                                                        <span className="badge badge-light">{question.seen ? "SEEN" : question.solved ? "SEEN" : "NOT SEEN"}</span>
                                                         <span className="badge badge-light">{question.solved ? "SOLVED" : "PENDING"}</span>
                                                     </div>
                                                 </div>

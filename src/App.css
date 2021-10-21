@@ -1098,7 +1098,7 @@ h3 {
 }
 
 .timeline-row:nth-child(even) .timeline-content {
-  background-color: black;
+  background-color: #5a99ee;
   /* Fallback Color */
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fc6d4c), to(#ff5000));
   /* Saf4+, Chrome */

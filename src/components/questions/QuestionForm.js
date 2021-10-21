@@ -13,8 +13,8 @@ const QuestionForm = () => {
     const history = useHistory();
 
     const [question, setQuestion] = useState();
-    const [successful, setSuccessful] = useState(false);
-    const [message, setMessage] = useState("");
+    // const [successful, setSuccessful] = useState(false);
+    // const [message, setMessage] = useState("");
 
     const submitQuestion = e => {
         e.preventDefault();
@@ -22,15 +22,16 @@ const QuestionForm = () => {
             const author = booking.customer.firstName + " " + booking.customer.lastName
             QuestionService.saveQuestion(question, author, booking.customer.id, booking.host.id).then(
                 res => {
-                    setMessage("Question added. Redirecting to profile page...");
-                    setSuccessful(true);
-                    setTimeout(() => {
-                        history.push("/profile");
-                    }, 2000);
-                },
-                error => {
-                    setMessage("Something went wrong. Could not add the question.");
-                    setSuccessful(false);
+                    history.push("/profile")
+                    // setMessage("Question added. Redirecting to profile page...");
+                    // setSuccessful(true);
+                    // setTimeout(() => {
+                    //     history.push("/profile");
+                    // }, 2000);
+                // },
+                // error => {
+                //     setMessage("Something went wrong. Could not add the question.");
+                //     setSuccessful(false);
                 }
             )
         }
@@ -51,18 +52,18 @@ const QuestionForm = () => {
                     <h4 className="leave-question-header">Have a question about your reservation? You can ask {booking.host.firstName} {booking.host.lastName} anything.</h4>
                     <br/>
                     <div className="row">
-                        {message && (
-                            <div className="form-group">
-                                <div
-                                    className={
-                                        successful ? "alert alert-success" : "alert alert-danger"
-                                    }
-                                    role="alert"
-                                >
-                                    {message}
-                                </div>
-                            </div>
-                        )}
+                        {/*{message && (*/}
+                        {/*    <div className="form-group">*/}
+                        {/*        <div*/}
+                        {/*            className={*/}
+                        {/*                successful ? "alert alert-success" : "alert alert-danger"*/}
+                        {/*            }*/}
+                        {/*            role="alert"*/}
+                        {/*        >*/}
+                        {/*            {message}*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
                         <div className="col-md-12">
                             <div className="form-group">
                                 <textarea name="txtMsg" className="form-control" placeholder="Your question *"

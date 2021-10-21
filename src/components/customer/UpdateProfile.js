@@ -66,7 +66,7 @@ const UpdateProfile = () => {
                                                 {...register("firstName", {required: true, minLength: 3})}
                                             />
                                     </div>
-                                    {errors.firstName && <span className="error-red">This field needs at least 3 characters.</span>}
+                                    {errors.firstName && <p className="error-red">This field needs at least 3 characters.</p>}
                                     <div className="form-group">
                                         <label htmlFor="username">Last name</label>
                                         <input
@@ -76,7 +76,7 @@ const UpdateProfile = () => {
                                             {...register("lastName", {required: true, minLength: 3})}
                                         />
                                     </div>
-                                    {errors.lastName && <span className="error-red">This field needs at least 3 characters.</span>}
+                                    {errors.lastName && <p className="error-red">This field needs at least 3 characters.</p>}
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
                                         <input
@@ -86,7 +86,7 @@ const UpdateProfile = () => {
                                             {...register("email", {required: true,  pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ })}
                                         />
                                     </div>
-                                    {errors.email && <span className="error-red">Please enter a valid email!</span>}
+                                    {errors.email && <p className="error-red">Please enter a valid email!</p>}
                                     <div className="form-group">
                                         <label htmlFor="phoneNumber" className="form-label">
                                             Phone Number
@@ -98,7 +98,7 @@ const UpdateProfile = () => {
                                             {...register("phoneNumber", {required: true, length: 6, pattern: /^[0-9]*$/})}
                                         />
                                     </div>
-                                    {errors.phoneNumber && <span className="error-red">Please enter a valid phone number!</span>}
+                                    {errors.phoneNumber && <p className="error-red">Please enter a valid phone number!</p>}
                                     <label htmlFor="gender" className="form-label">
                                         Gender
                                     </label>
@@ -119,7 +119,7 @@ const UpdateProfile = () => {
                                         name="address"
                                         {...register("address", {required: true , minLength: 10, maxLength: 40})}
                                     />
-                                    {errors.address && <span className="error-red">Enter a valid address!</span>}
+                                    {errors.address && <p className="error-red">Enter a valid address!</p>}
                                     <label htmlFor="age" className="form-label">
                                         Age
                                     </label>
@@ -130,7 +130,7 @@ const UpdateProfile = () => {
                                         name="age"
                                         {...register("age", {required: true, min: 18, pattern: /^[0-9]*$/})}
                                     />
-                                    {errors.address && <span className="error-red">You have to be at least 18 years old.</span>}
+                                    {errors.address && <p className="error-red">You have to be at least 18 years old.</p>}
                                     <Form.Label>Profile picture</Form.Label>
                                     <Form.Control type="file" onChange={getProfilePicture}/>
                                     <br/>

@@ -15,8 +15,9 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "25px",
         position: "absolute",
         width: "500px",
-        height: "700px",
-        margin: "auto"
+        // height: "700px",
+        margin: "auto",
+        overflow: "auto"
     },
     cityCardPaper: {
         margin: "60px"
@@ -36,5 +37,8 @@ export const useStyles = makeStyles((theme) => ({
         maxHeight: "30px",
         minWidth: "30px",
         minHeight: "30px"
+    },
+    loginContainer: {
+        marginBottom: "100px"
     }
 }));
