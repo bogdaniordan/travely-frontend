@@ -107,7 +107,7 @@ const Register = () => {
                             <Form onSubmit={submitForm} ref={form}>
                                 <Grid container spacing={2}>
                                     <Grid item={12} sm={6} >
-                                        <div className="form-group" style={{marginRight: "5px"}}>
+                                        <div className="form-group" id="first-name-form">
                                             <label htmlFor="firstName">First name</label>
                                             <Input
                                                 type="text"
@@ -120,7 +120,7 @@ const Register = () => {
                                         </div>
                                     </Grid>
                                     <Grid item={12} sm={6}>
-                                        <div className="form-group" style={{marginLeft: "5px"}}>
+                                        <div className="form-group" id="last-name-form">
                                             <label htmlFor="username">Last name</label>
                                             <Input
                                                 type="text"
@@ -174,13 +174,12 @@ const Register = () => {
                                     <br/>
                                     <br/>
                                     <Grid xs={12}>
-                                        <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                            <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign Up</Button>
-                                            <Button variant="contained" color="secondary" block href="/login">Back to login</Button>
+                                        <div className="form-group" id="login-buttons-container">
+                                            <Button type="submit" variant="contained" color="primary" className={classes.sign}>Sign Up</Button>
                                         </div>
                                     </Grid>
                                 </Grid>
-                                <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                                <CheckButton className={classes.checkBtn} ref={checkBtn} />
                                 <Grid container>
                                     <Grid items xs>
                                         <Link to="/login" variant="body2">

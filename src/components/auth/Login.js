@@ -133,12 +133,12 @@ const Login = () => {
                                     <br/>
                                     <br/>
                                     <Grid xs={12}>
-                                        <div className="form-group" style={{marginTop: "20px", marginBottom: "20px"}}>
-                                            <Button type="submit" variant="contained" color="primary" block style={{margin: "10px"}}>Sign in</Button>
+                                        <div className="form-group" id="login-buttons-container">
+                                            <Button type="submit" variant="contained" color="primary" block className={classes.sign}>Sign in</Button>
                                         </div>
                                     </Grid>
                                 </Grid>
-                                <CheckButton style={{ display: "none" }} ref={checkBtn} />
+                                <CheckButton className={classes.checkBtn} ref={checkBtn} />
                                 <Grid container>
                                     <Grid item xs>
                                         <Link to="/register" variant="body2">

@@ -29,6 +29,7 @@
     "react-bootstrap": "^2.0.0-beta.5",
     "react-bulma-components": "^4.0.7",
     "react-calendar": "^3.4.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-date-range": "^1.4.0",
     "react-dom": "^17.0.2",
     "react-geocode": "^0.2.3",

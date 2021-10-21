@@ -15,7 +15,6 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: "25px",
         position: "absolute",
         width: "500px",
-        // height: "700px",
         margin: "auto",
         overflow: "auto"
     },
@@ -40,5 +39,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     loginContainer: {
         marginBottom: "100px"
+    },
+    checkBtn: {
+        display: "none"
+    },
+    sign: {
+        margin: "10px"
     }
 }));
