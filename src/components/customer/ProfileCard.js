@@ -32,17 +32,16 @@ const ProfileCard = () => {
 
     return (
         <>
-            <div className="padding" style={{justifyContent: "center"}}>
-                <div className="row container d-flex justify-content-center" style={{height: "auto", margin: "0 auto"}}>
-                    <div className="col-xl-6 col-md-12" style={{width: "1200px"}}>
+            <div className="padding" id="profile-container">
+                <div className="row container d-flex justify-content-center" id="profile-inner-container">
+                    <div className="col-xl-6 col-md-12" id="profile-second-inner">
                         <div className="card user-card-full">
                             <div className="row m-l-0 m-r-0">
-                                <div className="col-sm-4 bg-c-lite-blue user-profile" style={{backgroundColor: "lightblue"}}>
+                                <div className="col-sm-4 bg-c-lite-blue user-profile" id="profile-color">
                                     <div className="card-block text-center text-white">
-                                        <div className="m-b-25"><img
-                                            src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="150px" width="150px"
+                                        <div className="m-b-25"><img src={customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="150px" width="150px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
-                                        <h6 className="f-w-600" style={{color: "black", marginBottom: "20px"}}>{customer.firstName} {customer.lastName}</h6>
+                                        <h6 className="f-w-600" id="profile-name-header">{customer.firstName} {customer.lastName}</h6>
                                         <p><Button variant="contained" color="primary" onClick={updateProfile} endIcon={<SystemUpdateAltIcon />}>Update profile</Button></p>
                                     </div>
                                 </div>
@@ -56,7 +55,7 @@ const ProfileCard = () => {
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">PHONE NUMBER</p>
-                                                <h6 className="text-muted f-w-400">{customer.phoneNumber}</h6>
+                                                <h6 className="text-muted f-w-400">{customer.phoneNumber ? customer.phoneNumber : "None"}</h6>
                                             </div>
                                         </div>
                                         {/*<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>*/}
@@ -64,18 +63,18 @@ const ProfileCard = () => {
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">ADDRESS</p>
-                                                <h6 className="text-muted f-w-400">{customer.address}</h6>
+                                                <h6 className="text-muted f-w-400">{customer.address ? customer.address : "None"}</h6>
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">AGE</p>
-                                                <h6 className="text-muted f-w-400">{customer.age}</h6>
+                                                <h6 className="text-muted f-w-400">{customer.age ? customer.age : "None"}</h6>
                                             </div>
                                         </div>
                                         <br/>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">GENDER</p>
-                                                <h6 className="text-muted f-w-400">{customer.gender}</h6>
+                                                <h6 className="text-muted f-w-400">{customer.gender ? customer.gender: "None"}</h6>
                                             </div>
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">CARD DETAILS</p>

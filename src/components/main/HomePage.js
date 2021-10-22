@@ -7,6 +7,7 @@ import Footer from "../navigation/Footer";
 import AuthService from "../../service/AuthService";
 import FamousCityBar from "../../utils/FamousCityBar";
 import InfoIcon from '@mui/icons-material/Info';
+import HouseboatIcon from '@mui/icons-material/Houseboat';
 
 const HomePage = () => {
     const [location, setLocation] = useState();
@@ -53,7 +54,7 @@ const HomePage = () => {
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="row no-gutters">
-                                            <div className="col-lg-3 col-md-3 col-sm-4 p-0" style={{width: "100px"}}>
+                                            <div className="col-lg-3 col-md-3 col-sm-4 p-0" id="search-bar-box">
                                                 <select className="form-control" id="exampleFormControlSelect1" onClick={(event) => setPlaceType(event.target.value)}>
                                                     <option value="" selected disabled hidden>Type</option>
                                                     <option value="Shared">Shared</option>
@@ -61,7 +62,7 @@ const HomePage = () => {
                                                     <option value="Hotels">Hotels</option>
                                                 </select>
                                             </div>
-                                            <div className="col-lg-3 col-md-3 col-sm-12 p-0" style={{width: "100px"}}>
+                                            <div className="col-lg-3 col-md-3 col-sm-12 p-0" id="search-bar-box">
                                                 <select className="form-control" id="exampleFormControlSelect1" onChange={(event) => setLocation(event.target.value)}>
                                                     <option value="" selected disabled hidden>City</option>
                                                     <option value="London">London</option>
@@ -101,7 +102,11 @@ const HomePage = () => {
                                     results.map(
                                         place => <AccommodationCard place={place} savedAccommodations={savedAccommodations} setSavedAccommodations={setSavedAccommodations}/>
                                         )
-                                    ) : (<h4>There are no results for your search...</h4>)
+                                    ) : (
+                                        <div>
+                                            <HouseboatIcon color="primary" style={{height: "100px", width: "100px"}}/>
+                                            <h4>There are no results for your search...</h4>
+                                        </div>)
                                 ) : (<h4>Where would you like to go...</h4>)
                             }
                         </div>

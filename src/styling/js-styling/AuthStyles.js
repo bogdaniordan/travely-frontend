@@ -10,6 +10,7 @@ export const useStyles = makeStyles((theme) => ({
     avatar: {
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
+
     },
     container: {
         borderRadius: "25px",
@@ -45,5 +46,17 @@ export const useStyles = makeStyles((theme) => ({
     },
     sign: {
         margin: "10px"
+    },
+    resetPassPaper: {
+        width: "600px",
+        borderRadius: "20px",
+        margin: "auto",
+        position: "absolute",
+        overflow: "auto"
+    },
+    resetPassAvatar: {
+        margin: "auto",
+        marginTop: "50px",
+        backgroundColor: theme.palette.secondary.main,
     }
 }));

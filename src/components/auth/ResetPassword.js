@@ -36,14 +36,11 @@ const ResetPassword = (props) => {
 
     const submitForm = e => {
         e.preventDefault();
-        // setMessage("");
-        // setShowMessage(false);
         form.current.validateAll();
-
         if (checkBtn.current.context._errors.length === 0) {
             if (!(password === confirmationPassword)) {
                 setMessage("Your passwords don't match.");
-                setShowMessage(true);
+                setShowMessage(false);
             } else {
                 AuthService.savePassword(password, token).then(res => history.push("/login"));
             }
@@ -55,9 +52,12 @@ const ResetPassword = (props) => {
             <LandingPageNavbar />
             <div className="login-image-container">
                 <img src={login_background} alt="Login background"/>
-
-                <Paper elevation={2} style={{width: "600px", height: "430px", borderRadius: "20px", margin: "auto", position: "absolute"}}>
-                    {/*<div className={classes.paper}>*/}
+                <Paper elevation={2} className={classes.resetPassPaper}>
+                    <Avatar className={classes.resetPassAvatar}>
+                        <RotateLeftIcon />
+                    </Avatar>
+                    <br/>
+                    <h5>Please enter your new account password</h5>
                     {message && (
                         <div className="form-group">
                             <div
@@ -70,41 +70,38 @@ const ResetPassword = (props) => {
                             </div>
                         </div>
                     )}
-                        <Avatar className={classes.avatar} style={{margin: "auto", marginTop: "50px"}}>
-                            <RotateLeftIcon />
-                        </Avatar>
-                        <Form className="form-group" onSubmit={submitForm} ref={form}>
-                            <div className="form-group">
-                                <br/>
-                                <br/>
-                                <label htmlFor="password">Enter your new password</label>
-                                <Input
-                                    type="text"
-                                    className="form-control"
-                                    name="password"
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}
-                                    validations={[required, validPassword]}
-                                    style={{width: "80%", margin: "auto"}}
-                                />
-                            </div>
-                            <div className="form-group" style={{marginTop: "25px"}}>
-                                <label htmlFor="confirmPassword">Confirm password</label>
-                                <Input
-                                    type="text"
-                                    className="form-control"
-                                    name="confirmPassword"
-                                    value={confirmationPassword}
-                                    onChange={e => setConfirmationPassword(e.target.value)}
-                                    validations={[required, validPassword]}
-                                    style={{width: "80%", margin: "auto"}}
-                                />
-                            </div>
+                    <Form className="form-group" onSubmit={submitForm} ref={form}>
+                        <div className="form-group">
                             <br/>
-                            <Button type="submit" variant="contained" color="primary">Submit</Button>
-                            <CheckButton style={{ display: "none" }} ref={checkBtn} />
-                        </Form>
-                    {/*</div>*/}
+                            <br/>
+                            <label htmlFor="password">Enter your new password</label>
+                            <Input
+                                type="password"
+                                className="form-control"
+                                name="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                validations={[required, validPassword]}
+                                style={{width: "80%", margin: "auto"}}
+                            />
+                        </div>
+                        <div className="form-group" style={{marginTop: "25px"}}>
+                            <label htmlFor="confirmPassword">Confirm password</label>
+                            <Input
+                                type="password"
+                                className="form-control"
+                                name="confirmPassword"
+                                value={confirmationPassword}
+                                onChange={e => setConfirmationPassword(e.target.value)}
+                                validations={[required, validPassword]}
+                                style={{width: "80%", margin: "auto"}}
+                            />
+                        </div>
+                        <br/>
+                        <Button type="submit" variant="contained" color="primary">Submit</Button>
+                        <CheckButton className={classes.checkBtn} ref={checkBtn} />
+                    </Form>
+                    <br/>
                     <br/>
                     <br/>
                 </Paper>

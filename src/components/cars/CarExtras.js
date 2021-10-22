@@ -98,6 +98,7 @@ const CarExtras = ({totalPrice, setTotalPrice, childSeatNumber, setChildSeatNumb
                         <textarea className="form-control" id="notes-input" onChange={e => setNotes(e.target.value)} placeholder="Enter any car booking notes">
                         </textarea>
                     </Paper>
+                    <br/>
                 </div>
             </div>
         </div>

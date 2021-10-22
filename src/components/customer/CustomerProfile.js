@@ -33,14 +33,8 @@ const CustomerProfile = () => {
         <div>
             <Navbar title={"User profile"} subtitle={"View profile information or view bookings"}/>
                 <div className="container">
-                    {/*<div className="card">*/}
-                    {/*    <div className="card-body">*/}
-                    {/*        <br/>*/}
-                            <h4>View and update your profile, check your current statistics or manage all of yours bookings</h4>
-                            <ProfileCard/>
-                        {/*</div>*/}
-                    {/*</div>*/}
-
+                    <h4>View and update your profile, check your current statistics or manage all of yours bookings</h4>
+                    <ProfileCard/>
                     {
                         carBookings.length > 0 && (
                             <div className="card">
@@ -74,7 +68,10 @@ const CustomerProfile = () => {
                                                     )
                                                 }
                                             </div>
-                                        ) : (<h4>No current bookings</h4>)
+                                        ) : (<div>
+                                                <h4>You don't have any ongoing or future bookings.</h4>
+                                                <br/>
+                                            </div>)
                                     }
                                 </section>
                                 {
@@ -82,7 +79,6 @@ const CustomerProfile = () => {
                                 }
                                 <Collapse in={showPastBookings}>
                                     <div className="container py-2">
-                                        {/*<h4>Past bookings</h4>*/}
                                         <br/>
                                         {
                                             pastBookings.map(

@@ -19,7 +19,7 @@ const ChatNotifications = () => {
     useEffect(() => {
         ChatService.getAsUnseenMessages(AuthService.getCurrentUser().id).then(res => {
             setChatMessagesPerUser(res.data);
-            setNotificationsNumber(res.data.filter(conversation => conversation.length > 0).length)
+            setNotificationsNumber(res.data.filter(conversation => conversation.length > 0).length);
         })
     }, [])
 
@@ -39,14 +39,14 @@ const ChatNotifications = () => {
     const presentUnseenMessages = () => {
         if (chatMessagesPerUser.length === 0) {
             return true;
-        } else if (chatMessagesPerUser.length > 0) {
+        } else {
             chatMessagesPerUser.forEach(conversation => {
                 if (conversation.length > 0) {
                     return false;
                 }
             })
+            return true;
         }
-        return true;
     }
 
     return (

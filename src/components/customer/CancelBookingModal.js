@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from "@material-ui/core/Button";
 import {useStyles} from "../../styling/js-styling/CardDetailsStyling";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const CancelBookingModal = ({cancelBooking, closeModal}) => {
     const classes = useStyles();
@@ -10,7 +11,7 @@ const CancelBookingModal = ({cancelBooking, closeModal}) => {
             <div className="modal-content">
                 <div className="modal-header justify-content-center">
                     <div className="icon-box">
-                        {/*<i className="material-icons">&#xE5CD;</i>*/}
+                        <DeleteForeverIcon style={{width: "50px", height: "50px"}} />
                     </div>
                 </div>
                 <div className="modal-body text-center">

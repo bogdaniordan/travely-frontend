@@ -29,3 +29,33 @@
     width: 100%;
     height: 100%;
 }
+
+#community-container {
+    background-color: white;
+}
+
+#profile-container {
+    justify-content: center;
+}
+
+#profile-inner-container {
+    height: auto;
+    margin: 0 auto;
+}
+
+#profile-second-inner {
+    width: 1200px;
+}
+
+#profile-color {
+    background-color: lightblue;
+}
+
+#profile-name-header {
+    color: black;
+    margin-bottom: 20px;
+}
+
+#search-bar-box {
+    width: 100px;
+}

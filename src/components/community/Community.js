@@ -58,7 +58,7 @@ const Community = () => {
         <div>
             <Navbar title={"Community"} subtitle={"Interact with other users of Travely."}/>
             <div className="container">
-                <div className="container-fluid gedf-wrapper" style={{backgroundColor: "white"}}>
+                <div className="container-fluid gedf-wrapper" id="community-container">
                     <div className="row">
                         <div className="col-md-3">
                             <div className="card">
@@ -119,7 +119,7 @@ const Community = () => {
                                                             placeholder="Post title"
                                                             {...register("title", {required: true, minLength: 5})}
                                                         />
-                                                        {errors.title && <span className="red-colored">Title's length has to be at least 5 characters.</span>}
+                                                        {errors.title && <p className="red-colored">Title's length has to be at least 5 characters.</p>}
                                                         <label className="sr-only">Location</label>
                                                         <select
                                                             className="form-control"
@@ -132,7 +132,7 @@ const Community = () => {
                                                             <option value="Toronto">Toronto</option>
                                                             <option value="Paris">Paris</option>
                                                         </select>
-                                                        {errors.location && <span className="red-colored">Select a location</span>}
+                                                        {errors.location && <p className="red-colored">Select a location</p>}
                                                         <label className="sr-only" htmlFor="message">Content</label>
                                                         <textarea
                                                             className="form-control"
@@ -141,7 +141,7 @@ const Community = () => {
                                                             placeholder="What are you thinking?"
                                                             {...register("content", {required: true, minLength: 5})}
                                                         ></textarea>
-                                                        {errors.content && <span className="red-colored">Post content length has to be at least 5 characters.</span>}
+                                                        {errors.content && <p className="red-colored">Post content length has to be at least 5 characters.</p>}
                                                         <Button type="submit" variant="outlined" color="primary">POST</Button>
                                                     </form>
                                                 </Collapse>

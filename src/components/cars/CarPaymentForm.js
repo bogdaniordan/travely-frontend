@@ -110,7 +110,7 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                     className="form-control"
                                     {...register("cardName", {required: true, minLength: 5})}
                                 />
-                                {errors.cardName && <span className="error-red">Enter a valid card name!</span>}
+                                {errors.cardName && <p className="error-red">Enter a valid card name!</p>}
                             </div>
                             <div className="col-md-6 mb-3">
                                 <label htmlFor="firstName">Card number</label>
@@ -120,7 +120,7 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                     className="form-control"
                                     {...register("cardNumber", {required: true, pattern: /^4[0-9]{12}(?:[0-9]{3})?$/})}
                                 />
-                                {errors.cardNumber && <span className="error-red">Enter a valid card number!</span>}
+                                {errors.cardNumber && <p className="error-red">Enter a valid card number!</p>}
                             </div>
                         </div>
                         <div className="row">
@@ -132,8 +132,8 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                         className="form-control"
                                         {...register("expirationDate", {required: true, pattern: /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/})}
                                     />
+                                    {errors.expirationDate && <p className="error-red">Enter a valid expiration date!</p>}
                                     <small className="text-muted">Month/year</small>
-                                    {errors.expirationDate && <span className="error-red">Enter a valid expiration date!</span>}
                                 </div>
                                 <div className="cvv-container">
                                     <label htmlFor="firstName" className="centered-middle">CVV</label>
@@ -142,8 +142,8 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                         className="form-control"
                                         {...register("cvv", {required: true, minLength: 3, maxLength: 3})}
                                     />
+                                    {errors.cvv && <p className="error-red">Enter a valid CVV!</p>}
                                     <small className="text-muted">Digits on the back of the card</small>
-                                    {errors.cvv && <span className="error-red">Enter a valid CVV!</span>}
                                 </div>
 
                             </div>
