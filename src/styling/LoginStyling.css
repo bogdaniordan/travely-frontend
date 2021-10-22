@@ -59,3 +59,64 @@
 #search-bar-box {
     width: 100px;
 }
+
+.reschedule-icons-container{
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
+.reschedule-header {
+    margin-bottom: 70px;
+    margin-top: 20px;
+}
+
+.reschedule-container {
+    display: flex;
+    margin-left: 70px;
+}
+
+.reschedule-empty {
+    margin-top: 30px;
+}
+
+.reschedule-buttons {
+    width: 650px;
+    margin-left: 50px;
+}
+
+.reschedule-img {
+    width: 470px;
+    height: 350px;
+    border-radius: 10px;
+}
+
+.reschedule-inner-buttons {
+    margin-top: 20px;
+}
+
+.reschedule-dates {
+    margin-left: 200px;
+    text-align: left;
+}
+
+.orange {
+    color: orange
+}
+
+.new-dates {
+    margin-left: 350px;
+    text-align: left;
+}
+
+.reschedule-fee {
+    text-decoration: line-through;
+}
+
+.reschedule-error {
+    color: red;
+    margin-top: 70px;
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 7px;
+}

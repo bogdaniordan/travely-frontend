@@ -11,7 +11,6 @@ import BookingService from "../../service/BookingService";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import DateRange from "react-date-range/dist/components/DateRange";
-import moment from "moment";
 import {convertDates} from "../../utils/CityCoordinates";
 
 const BookingCard = ({customer, accommodation}) => {
@@ -74,7 +73,6 @@ const BookingCard = ({customer, accommodation}) => {
                 <CardActions>
                     <form className={classes.container}>
                         <DateRange
-                            // editableDateInputs={true}
                             onChange={item => {
                                 setDates([item.selection])
                                 setShowErrorMessage(false);

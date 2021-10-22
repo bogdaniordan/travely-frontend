@@ -11,9 +11,7 @@ const AddRecommendationForm = ({users, setUsers, accommodation, user}) => {
     const [message, setMessage] = useState("");
 
     const recommendAccommodation = () => {
-        RecommendationService.saveRecommendation(message, AuthService.getCurrentUser().id, user.id, accommodation.id).then(
-            res => setUsers(users.filter(u => u.id !== user.id))
-        )
+        RecommendationService.saveRecommendation(message, AuthService.getCurrentUser().id, user.id, accommodation.id).then(res => setUsers(users.filter(u => u.id !== user.id)))
     }
 
     return (
