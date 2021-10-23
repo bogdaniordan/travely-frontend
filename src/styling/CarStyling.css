@@ -141,3 +141,11 @@
 #host-details-container {
     height: 170px;
 }
+
+.chat-status {
+    margin-left: 5px;
+}
+
+.message-date {
+    font-size: 15px !important;
+}

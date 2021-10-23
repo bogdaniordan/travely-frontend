@@ -14,11 +14,17 @@ const CustomerLandingPage = () => {
             <LandingPageNavbar />
             <section className="landing-page-container">
                 <div className="fourth-circle"></div>
+                <div className="sixth-circle"></div>
                 <div className="circle"></div>
-                <div className="second-circle"></div>
                 <div className="third-circle"></div>
                 <div className="content">
+                    <a href="/customer-landing-page">
+                        <div className="imgBox">
+                            <img src={picture} alt="Travel picture" className="landing-page-image"/>
+                        </div>
+                    </a>
                     <div className="textBox">
+
                         <h2>
                             <span>Travely for customers</span>
                         </h2>
@@ -47,11 +53,7 @@ const CustomerLandingPage = () => {
                             )
                         }
                     </div>
-                    <a href="/customer-landing-page">
-                        <div className="imgBox">
-                            <img src={picture} alt="Travel picture" className="landing-page-image"/>
-                        </div>
-                    </a>
+
                 </div>
             </section>
         </div>

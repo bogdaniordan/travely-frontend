@@ -9,6 +9,7 @@ import CarCard from "./CarCard";
 import moment from "moment";
 import InfoIcon from '@mui/icons-material/Info';
 import CarRentalIcon from '@mui/icons-material/CarRental';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 
 const SearchTaxi = () => {
     const classes = useStyles();
@@ -31,7 +32,11 @@ const SearchTaxi = () => {
         if (checkBox) {
             setCars(cars.filter(car => car.fullInsurance));
         } else {
-            search()
+            if(location.length === 0 || location === "Any") {
+                CarService.getAll(moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {setCars(res.data)})
+            } else {
+                CarService.getAllByLocation(location, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {setCars(res.data)})
+            }
         }
     }
 
@@ -41,22 +46,19 @@ const SearchTaxi = () => {
         } else {
             if (location.length === 0 || location === "Any") {
                 CarService.getAll(moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
-                    if(!checkBox) {
-                        setCars([])
-                        setCars(res.data.filter(car => car.fullInsurance))
-                    } else {
-                        setCars([])
+                    if(checkBox) {
                         setCars(res.data)
+                    } else {
+                        setCars(res.data.filter(car => car.fullInsurance))
                     }
                 })
             } else {
                 CarService.getAllByLocation(location, moment(dates[0].startDate).format("YYYY-MM-DD"), moment(dates[0].endDate).format("YYYY-MM-DD")).then(res => {
-                    if(!checkBox) {
-                        setCars([])
-                        setCars(res.data.filter(car => car.fullInsurance))
-                    } else {
-                        setCars([])
+                    if(checkBox) {
                         setCars(res.data)
+                    } else {
+                        setCars(res.data.filter(car => car.fullInsurance))
+
                     }
                 })
             }
@@ -140,8 +142,8 @@ const SearchTaxi = () => {
                             {
                                 dates[0].endDate && (
                                     <div>
-                                        <h4>Selected dates: {moment(dates[0].startDate).format("DD-MM-YYYY")} - {moment(dates[0].endDate).format("DD-MM-YYYY")}</h4>
-                                        <br/>
+                                        <h4><EventAvailableIcon color="success" /> Selected dates: {moment(dates[0].startDate).format("DD-MMM-YYYY")} - {moment(dates[0].endDate).format("DD-MM-YYYY")}.</h4>
+                                        {/*<br/>*/}
                                     </div>
                                 )
                             }

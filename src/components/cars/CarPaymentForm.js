@@ -51,8 +51,7 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                 <form onSubmit={
                     handleSubmit(() => {
                         CarBookingService.saveCarBooking(car.id, dates.startDate, dates.endDate, childSeatNumber, babySeatNumber, gps, totalPrice, notes)
-                            .then(res => redirectToPaidPage())
-                    })
+                            .then(res => redirectToPaidPage())})
                 }>
                     <div className="card-body">
                         <h5>Payment</h5>

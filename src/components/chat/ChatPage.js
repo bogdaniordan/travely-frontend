@@ -13,6 +13,8 @@ import {Link} from "react-router-dom";
 import SendIcon from '@mui/icons-material/Send';
 import ChatIcon from '@mui/icons-material/Chat';
 import { Scrollbars } from 'react-custom-scrollbars';
+import DoneIcon from '@mui/icons-material/Done';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
 
 const ChatPage = (props) => {
     let socket = new SockJS("http://localhost:8080/ws");
@@ -88,7 +90,7 @@ const ChatPage = (props) => {
                     <ChatIcon style={{height: "150px", width: "150px", marginBottom: "50px"}} color="primary"/>
                     {
                         isFriend ? (
-                            <h4>You have to connect to be able to send or receive messages from {otherUser.firstName} {otherUser.lastName}.</h4>
+                            <h4>You have to connect to be able to send messages to {otherUser.firstName} {otherUser.lastName}.</h4>
                         ) : (
                             <h4>You cannot send or receive messages from {otherUser.firstName} {otherUser.lastName} since he/she is not your friend.</h4>
                         )
@@ -126,11 +128,12 @@ const ChatPage = (props) => {
                                                                         <h5>{message.content}</h5>
                                                                         {
                                                                             Array.isArray(message.time) ? (
-                                                                                <small>{moment(message.time.slice(0, 5)).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                                <small className="message-date">{moment(message.time.slice(0, 5)).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
                                                                             ) : (
-                                                                                <small>{moment(message.time).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                                <small className="message-date">{moment(message.time).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
                                                                             )
                                                                         }
+                                                                        <small className="chat-status">{message.type === "SENT" ? <DoneIcon /> : <DoneAllIcon />}</small>
                                                                         <br/>
                                                                     </div>
                                                                 </div>

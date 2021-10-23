@@ -7,6 +7,7 @@ import Link from "react-router-dom/Link";
 import AccommodationService from "../../../service/AccommodationService";
 import AuthService from "../../../service/AuthService";
 import Button from "@material-ui/core/Button";
+import CloseIcon from '@mui/icons-material/Close';
 
 const SavedAccommodations = ({savedAccommodations, setSavedAccommodations}) => {
     const classes = useStyles();
@@ -70,7 +71,8 @@ const SavedAccommodations = ({savedAccommodations, setSavedAccommodations}) => {
                                                         >
                                                             <strong>{accommodation.title}</strong>
                                                         </Link>
-                                                        <Button className={classes.removeButton} variant="contained" color="secondary" onClick={() => removeAccommodation(accommodation.id)}>X</Button>
+                                                        <CloseIcon color="error" onClick={() => removeAccommodation(accommodation.id)}/>
+                                                        {/*<Button className={classes.removeButton} variant="contained" color="secondary" onClick={() => removeAccommodation(accommodation.id)}>X</Button>*/}
                                                     </div>
                                                     - <small>{accommodation.location}</small>
                                                 </p>
@@ -91,7 +93,8 @@ const SavedAccommodations = ({savedAccommodations, setSavedAccommodations}) => {
                                                         >
                                                             <strong>{accommodation.title}</strong>
                                                         </Link>
-                                                        <Button className={classes.removeButton} variant="contained" color="secondary" onClick={() => removeAccommodation(accommodation.id)}>X</Button>
+                                                        <CloseIcon color="error" onClick={() => removeAccommodation(accommodation.id)}/>
+                                                        {/*<Button className={classes.removeButton} variant="contained" color="secondary" onClick={() => removeAccommodation(accommodation.id)}>X</Button>*/}
                                                     </div>
                                                     - <small>{accommodation.location}</small>
                                                 </p>

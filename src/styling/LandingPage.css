@@ -108,3 +108,13 @@
     margin-top: -110px;
     width: 800px;
 }
+
+.sixth-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(1200px at 2000px 1600px);
+    background: #212529;
+}
