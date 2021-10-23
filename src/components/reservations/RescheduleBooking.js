@@ -12,6 +12,7 @@ import LocalHotelIcon from '@mui/icons-material/LocalHotel';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import Button from "@material-ui/core/Button";
 import InfoIcon from '@mui/icons-material/Info';
+import EventBusyIcon from '@mui/icons-material/EventBusy';
 
 const RescheduleBooking = (props) => {
     const history = useHistory();
@@ -140,8 +141,7 @@ const RescheduleBooking = (props) => {
                                 </div>
                             </div>
                         </div>
-
-                        {showErrorMessage && <h5 className="reschedule-error">Choose a new date range with the same duration: {bookingDurationInDays} day(s).</h5>}
+                        {showErrorMessage && <h5 className="reschedule-error"><EventBusyIcon color="error"/> Choose a new date range with the same duration: {bookingDurationInDays} day(s).</h5>}
                     </div>
                 </div>
             </div>

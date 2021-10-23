@@ -11,6 +11,7 @@ import TestimonialService from "../../service/TestimonialService";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/js-styling/ModalStyling";
 import RecommendationModal from "../recommendation/RecommendationModal";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, showPicture}) => {
     const history = useHistory();
@@ -72,9 +73,10 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, 
                                 </div>
                             )
                         }
-                        <small className="card-text" id="properties-font">{place.location}</small>
+                        <small className="card-text" id="properties-font"><LocationOnIcon />{place.location} - {place.placeType}</small>
                         <br/>
-                        <small className="card-text" id="properties-font">{place.placeType}</small>
+                        <br/>
+                        {/*<small className="card-text" id="properties-font">{place.placeType}</small>*/}
                         <div className="d-flex justify-content-between align-items-center">
                             <div className="btn-group">
                                 <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => history.push(`/accommodation/${place.id}`)}><PageviewIcon /></button>
@@ -93,7 +95,7 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, 
                                 }
                                 <button type="button" className="btn btn-sm  btn-outline-secondary" onClick={openModal}><SupervisedUserCircleIcon /></button>
                             </div>
-                            <small className="text-muted">${place.pricePerNight}/night</small>
+                            <small><strong>${place.pricePerNight}/night</strong></small>
                         </div>
                     </div>
                 </div>

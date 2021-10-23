@@ -22,6 +22,11 @@ const AccommodationDetails = (props) => {
     const [hasFutureBookings, setHasFutureBookings] = useState(false);
     const [closestFutureBooking, setClosestFutureBooking] = useState({});
 
+    const [mainImage, setMainImage] = useState("firstImage");
+    const [secondaryImage, setSecondaryImage] = useState("secondImage");
+    const [thirdImage, setThirdImage] = useState("thirdImage");
+
+
     useEffect(() => {
         AccommodationService.getById(id).then(response => {
             setAccommodation(response.data);
@@ -55,6 +60,18 @@ const AccommodationDetails = (props) => {
         })
     }
 
+    const pullSecondImage = () => {
+        const temp = mainImage;
+        setMainImage(secondaryImage);
+        setSecondaryImage(temp);
+    }
+
+    const pullThirdImage = () => {
+        const temp = mainImage;
+        setMainImage(thirdImage);
+        setThirdImage(temp);
+    }
+
     if (!isLoading) {
         return (
             <div>
@@ -62,7 +79,7 @@ const AccommodationDetails = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
-                            <img className="img-fluid" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`} alt=""/>
+                            <img className="img-fluid" id="accommodation-main-image" src={`http://localhost:8080/accommodations/image/${accommodation.id}/${mainImage}/download`} alt=""/>
                         </div>
 
                         <div className="col-md-4">
@@ -73,13 +90,13 @@ const AccommodationDetails = (props) => {
                     </div>
                     <div className="row" id="accommodation-details-row">
                         <div className="col-md-3 col-sm-6 mb-4" id="secondary-picture-container">
-                            <a href="#">
-                                <img className="img-fluid" id="secondary-picture" src={`http://localhost:8080/accommodations/image/${accommodation.id}/secondImage/download`} alt=""/>
+                            <a href="#" onClick={pullSecondImage}>
+                                <img className="img-fluid" id="secondary-picture" src={`http://localhost:8080/accommodations/image/${accommodation.id}/${secondaryImage}/download`} alt=""/>
                             </a>
                         </div>
                         <div className="col-md-3 col-sm-6 mb-4" id="secondary-picture-container">
-                            <a href="#">
-                                <img className="img-fluid" id="secondary-picture" src={`http://localhost:8080/accommodations/image/${accommodation.id}/thirdImage/download`}  alt=""/>
+                            <a href="#" onClick={pullThirdImage}>
+                                <img className="img-fluid" id="secondary-picture" src={`http://localhost:8080/accommodations/image/${accommodation.id}/${thirdImage}/download`}  alt=""/>
                             </a>
                         </div>
 

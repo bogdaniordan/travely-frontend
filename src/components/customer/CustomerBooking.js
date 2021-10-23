@@ -13,6 +13,7 @@ import CancelBookingModal from "./CancelBookingModal";
 import {getBookingDuration} from "../../utils/CityCoordinates";
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import PersonIcon from '@mui/icons-material/Person';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 
 Modal.setAppElement('#root');
 const CustomerBooking = ({booking, bookings, setBookings}) => {
@@ -69,7 +70,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                         <h1 className="postcard__title blue" id="booked-accommodation-title"><a href="#">{booking.accommodation.title}</a></h1>
                         <div className="postcard__subtitle small" id="booked-accommodation-dates-container">
                             <div className="calendar-icon-container">
-                                <DateRangeIcon style={{height: "35px", width: "35px"}}/>
+                                {booking.rescheduled ? <EventAvailableIcon color="success" style={{height: "35px", width: "35px"}}/> : <DateRangeIcon style={{height: "35px", width: "35px"}}/>}
                             </div>
                             <time dateTime="2020-05-25 12:00:00" className="booking-dates-aligned">
                                 <i className="fas fa-calendar-alt mr-2"></i>Check in: {moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY")}
@@ -98,7 +99,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                             )
                         }
                         {
-                            new Date(moment(booking.checkInDate).subtract(1, 'months').format("YYYY-MM-DD")) > new Date() && (
+                            (new Date(moment(booking.checkInDate).subtract(1, 'months').format("YYYY-MM-DD")) > new Date() && !booking.rescheduled) && (
                                 <li className="tag__item play blue" onClick={rescheduleBooking}><i className="fas fa-clock mr-2"></i>Reschedule</li>
                             )
                         }

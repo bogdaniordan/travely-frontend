@@ -120,3 +120,11 @@
     border: 1px solid red;
     border-radius: 7px;
 }
+
+#testimonials-clean-container {
+    margin-bottom: -250px;
+}
+
+#testimonials-header {
+    margin-bottom: 20px;
+}

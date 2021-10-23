@@ -696,6 +696,7 @@ h3 {
   /*background-color:#fff;*/
   position:relative;
   background-color: #eef4f7;
+  border-radius: 30px;
 }
 
 .testimonials-clean .item .box:after {

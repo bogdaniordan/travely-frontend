@@ -152,3 +152,8 @@
     text-align: center;
     justify-content: center;
 }
+
+#accommodation-main-image {
+    height: 550px;
+    width: 860px;
+}
