@@ -16,7 +16,7 @@ const SuccessfulCarPayment = () => {
         <div className="payment-success-card">
             <div className="payment-success-container">
                 {/*<i id="success-checkmark" className="checkmark">✓</i>*/}
-                <img src={`http://localhost:8080/cars/image/${location.state.car.id}/download`} className={classes.carAvatar}/>
+                <img src={`http://localhost:8080/cars/image/${location.state.car.id}/download`} className={classes.carAvatar} alt="car-img"/>
             </div>
             <h1 className="payment-success-header">Thank you!</h1>
             <br/>

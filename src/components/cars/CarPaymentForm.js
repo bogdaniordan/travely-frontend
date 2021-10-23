@@ -30,16 +30,19 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
         })
     },[reset])
 
+    const redirectToPaidPage = () => {
+        history.push({
+            pathname: "/successful-car-booking",
+            state: {
+                car: car,
+                dates: dates,
+                totalPrice: totalPrice
+            }})
+    }
+
     const handleToken = () => {
         CarBookingService.saveCarBooking(car.id, dates.startDate, dates.endDate, childSeatNumber, babySeatNumber, gps, totalPrice, notes)
-            .then(res => history.push({
-                pathname: "/successful-car-booking",
-                state: {
-                    car: car,
-                    dates: dates,
-                    totalPrice: totalPrice
-                }
-            }))
+            .then(res => redirectToPaidPage())
     }
 
     return (
@@ -48,7 +51,7 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                 <form onSubmit={
                     handleSubmit(() => {
                         CarBookingService.saveCarBooking(car.id, dates.startDate, dates.endDate, childSeatNumber, babySeatNumber, gps, totalPrice, notes)
-                            .then(res => history.push("/home"))
+                            .then(res => redirectToPaidPage())
                     })
                 }>
                     <div className="card-body">
