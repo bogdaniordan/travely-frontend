@@ -26,7 +26,7 @@ const CarReservationPage = () => {
                     <Link to={`/profile`} style={{float: "left"}}>Back to search car</Link>
                     <br/>
                     <h4>View car details</h4>
-                    <h6>Dates: {moment(location.state.dates.startDate).format("DD-MM-YYYY")} - {moment(location.state.dates.endDate).format("DD-MM-YYYY")}</h6>
+                    <h6>Pick up: {moment(location.state.dates.startDate).format("DD-MM-YYYY")} - Drop off: {moment(location.state.dates.endDate).format("DD-MM-YYYY")}</h6>
                     <CarCard car={location.state.car} dates={location.state.dates} hideButton="hide" />
                     <br/>
                     <div className="row">

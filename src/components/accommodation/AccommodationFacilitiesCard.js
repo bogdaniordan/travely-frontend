@@ -3,6 +3,7 @@ import TestimonialService from "../../service/TestimonialService";
 import { RatingView } from 'react-simple-star-rating'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MicrowaveIcon from '@mui/icons-material/Microwave';
+import Button from "@material-ui/core/Button";
 
 const AccommodationFacilitiesCard = ({accommodation}) => {
     const [rating, setRating] = useState(0);
@@ -37,21 +38,28 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                         <div className="card-body d-flex flex-column align-items-start">
                             {
                                 reviews.length > 0 ? (
-                                    <div>
-                                        <p><RatingView ratingValue={Math.round(rating)}/> {rating.toFixed(1)} - {reviews.length} review(s)</p>
+                                    <div className="reviews-details-container">
+                                        <RatingView ratingValue={Math.round(rating)}/>
+                                        <p> {rating.toFixed(1)} - {reviews.length} review(s)</p>
                                     </div>
                                 ) : (
-                                    <div>
+                                    <div className="reviews-details-container">
                                         <RatingView ratingValue={0}/>
                                         <p>There are no reviews yet.</p>
                                     </div>
                                 )
                             }
-                            <h3 className="mb-0">
+                            <h4 className="mb-0">
                                 <a className="text-dark" href="#">Facilities{" "}<MicrowaveIcon /></a>
-                            </h3>
-                            <br/>
-                            {accommodation.facilities.map(facility => <p className="card-text mb-auto">{facility.replace("_", " ")}</p>)}
+                            </h4>
+                            <ul className="nav" id="facilities-container">
+                                {accommodation.facilities.map(facility =>  <li className="active">
+                                    <Button variant="contained" style={{margin: "2px", backgroundColor: "blue", color: "white"}}>
+                                        <i className="glyphicon glyphicon-home">{facility}</i>
+                                    </Button>
+                                </li>)}
+                            </ul>
+
                         </div>
                         <img height="250px" width="200px" src="https://media.istockphoto.com/vectors/hotel-icons-vector-id693744314?b=1&k=20&m=693744314&s=612x612&w=0&h=EgQTJwQK-F_fVviWu48LCN2oIHD1ntsFJATLE9aPB9I=" className="card-img-right flex-auto d-none d-md-block"
                               data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>

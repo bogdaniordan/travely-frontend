@@ -78,12 +78,13 @@ const RescheduleBooking = (props) => {
                         </div>
                         <br/>
                         <h4 className="reschedule-header">Reschedule your future booking at {accommodation.title}, {accommodation.location}</h4>
+                        <h5>Rescheduling fee: <span className="reschedule-fee">$50</span> <span className="green-text">FREE</span></h5>
                         <div className="card">
                             <div className="card-body">
                                 <div className="flexed-container">
                                     <div className="reschedule-dates">
                                         <br/>
-                                        <h5>Current booked dates:</h5>
+                                        <h5 className="reschedule-dates">Current booked dates:</h5>
                                         <br/>
                                         <p>Check-in: <strong>{moment(booking.checkInDate).format("DD-MMM-YYYY")}</strong></p>
                                         <p>Check-out: <strong>{moment(booking.checkInDate).add(1, "days").format("DD-MMM-YYYY")}</strong></p>
@@ -108,7 +109,6 @@ const RescheduleBooking = (props) => {
                                     </div>
                                 </div>
                                 <br/>
-                                <h4>Rescheduling fee: <span className="reschedule-fee">$50</span> <span className="green-text">FREE</span></h4>
                             </div>
                         </div>
                         <div className="card">

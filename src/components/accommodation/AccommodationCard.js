@@ -95,7 +95,7 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, 
                                 }
                                 <button type="button" className="btn btn-sm  btn-outline-secondary" onClick={openModal}><SupervisedUserCircleIcon /></button>
                             </div>
-                            <small><strong>${place.pricePerNight}/night</strong></small>
+                            <small><strong>${place.pricePerNight}</strong>/night</small>
                         </div>
                     </div>
                 </div>

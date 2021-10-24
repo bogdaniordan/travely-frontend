@@ -142,7 +142,7 @@ const SearchTaxi = () => {
                             {
                                 dates[0].endDate && (
                                     <div>
-                                        <h4><EventAvailableIcon color="success" /> Selected dates: {moment(dates[0].startDate).format("DD-MMM-YYYY")} - {moment(dates[0].endDate).format("DD-MM-YYYY")}.</h4>
+                                        <h4><EventAvailableIcon color="success" /> Pick up: {moment(dates[0].startDate).format("DD-MMM-YYYY")} - Drop off: {moment(dates[0].endDate).format("DD-MM-YYYY")}.</h4>
                                         {/*<br/>*/}
                                     </div>
                                 )

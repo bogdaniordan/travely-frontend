@@ -61,11 +61,7 @@ const PersonCard = ({person}) => {
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <CardMedia
-                    component="img"
-                    alt="person"
-                    height="140px"
-                    image={person.picture ? `http://localhost:8080/customers/image/${person.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}
+                <CardMedia component="img" alt="person" height="140px" image={person.picture ? `http://localhost:8080/customers/image/${person.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

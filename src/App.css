@@ -1119,7 +1119,7 @@ h3 {
 
 .timeline-row:nth-child(even) .timeline-content:after {
   left: -39px;
-  border-right: 18px solid black;
+  border-right: 18px solid #5a99ee;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }

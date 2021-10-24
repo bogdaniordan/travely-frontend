@@ -86,7 +86,7 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                     className="form-control"
                                     {...register("email", {required: true,  pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ })}
                                 />
-                                <small className="text-muted">You will not receive any marketing materials.</small>
+                                <small className="text-muted" id="card-info">You will not receive any marketing materials.</small>
                                 {errors.phoneNumber && <span className="error-red">Please enter a valid phone number!</span>}
                             </div>
                             <div className="col-md-6 mb-3">
@@ -135,7 +135,7 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                         {...register("expirationDate", {required: true, pattern: /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/})}
                                     />
                                     {errors.expirationDate && <p className="error-red">Enter a valid expiration date!</p>}
-                                    <small className="text-muted">Month/year</small>
+                                    <small className="text-muted" id="card-info">Month/year</small>
                                 </div>
                                 <div className="cvv-container">
                                     <label htmlFor="firstName" className="centered-middle">CVV</label>
@@ -145,7 +145,7 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                                         {...register("cvv", {required: true, minLength: 3, maxLength: 3})}
                                     />
                                     {errors.cvv && <p className="error-red">Enter a valid CVV!</p>}
-                                    <small className="text-muted">Digits on the back of the card</small>
+                                    <small className="text-muted" id="card-info">Digits on the back of the card</small>
                                 </div>
 
                             </div>

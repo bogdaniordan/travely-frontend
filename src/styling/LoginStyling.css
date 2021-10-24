@@ -128,3 +128,24 @@
 #testimonials-header {
     margin-bottom: 20px;
 }
+
+.reviews-details-container {
+    text-align: left;
+}
+
+#facilities-container {
+    margin-top: 5px;
+}
+
+#card-info {
+    font-size: 15px !important;
+}
+
+#comment-text {
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
+#comment-container {
+    display: flex;
+}
