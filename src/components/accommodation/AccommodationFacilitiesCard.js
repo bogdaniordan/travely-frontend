@@ -59,7 +59,6 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                                     </Button>
                                 </li>)}
                             </ul>
-
                         </div>
                         <img height="250px" width="200px" src="https://media.istockphoto.com/vectors/hotel-icons-vector-id693744314?b=1&k=20&m=693744314&s=612x612&w=0&h=EgQTJwQK-F_fVviWu48LCN2oIHD1ntsFJATLE9aPB9I=" className="card-img-right flex-auto d-none d-md-block"
                               data-src="holder.js/200x250?theme=thumb" alt="Card image cap"/>

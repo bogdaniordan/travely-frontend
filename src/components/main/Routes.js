@@ -23,6 +23,7 @@ import SearchTaxi from "../cars/CarRentals";
 import CarReservationPage from "../cars/CarReservationPage";
 import SuccessfulCarPayment from "../cars/SuccessfulCarPayment";
 import RescheduleBooking from "../reservations/RescheduleBooking";
+import UserProfilePage from "../community/users/UserProfilePage";
 
 const Routes = () => {
     return (
@@ -51,6 +52,7 @@ const Routes = () => {
                     <Route path="/car-reservation/:carId" exact component={CarReservationPage} />
                     <Route path="/successful-car-booking" exact component={SuccessfulCarPayment} />
                     <Route path="/reschedule-booking/:bookingId" exact component={RescheduleBooking}/>
+                    <Route path="/user/:userId" exact component={UserProfilePage} />
                 </Switch>
             </Router>
         </div>

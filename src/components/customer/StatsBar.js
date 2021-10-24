@@ -10,7 +10,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import {useStyles} from "../../styling/js-styling/QuestionsTableStyling";
 
 const StatsBar = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
     const [numberOfBookedNights, setNumberOfBookedNights] = useState(0)
     const [amountSpent, setAmountSpent] = useState(0);
     const [trips, setTrips] = useState(0);

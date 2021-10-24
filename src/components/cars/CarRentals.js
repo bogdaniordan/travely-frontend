@@ -68,7 +68,7 @@ const SearchTaxi = () => {
 
     return (
         <div>
-            <Navbar title="Car rentals"/>
+            <Navbar title="Car rentals" subtitle="Choose from various cars for your dream vacation"/>
             <div className="container">
             <div className="card">
                 <div className="card-body">

@@ -8,9 +8,11 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonAddDisabledIcon from '@mui/icons-material/PersonAddDisabled';
 import CustomerService from "../../../service/CustomerService";
 import {useStyles} from "../../../styling/js-styling/PersonStyling";
+import {useHistory} from "react-router-dom";
 
 const PersonCard = ({person}) => {
-    const classes = useStyles();
+    const classes = useStyles()
+    const history = useHistory();
     const [bookings, setBookings] = useState([])
     const [isFriend, setIsFriend] = useState(false);
     const [friendRequestSent, setFriendRequestSent] = useState(false);
@@ -61,8 +63,7 @@ const PersonCard = ({person}) => {
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <CardMedia component="img" alt="person" height="140px" image={person.picture ? `http://localhost:8080/customers/image/${person.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}
-                />
+                <CardMedia onClick={() => history.push(`/user/${person.id}`)} component="img" alt="person" height="140px" image={person.picture ? `http://localhost:8080/customers/image/${person.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {person.firstName} {person.lastName}
