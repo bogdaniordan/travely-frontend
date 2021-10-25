@@ -25,8 +25,8 @@ const UserProfilePage = (props) => {
             <Navbar title={user.firstName + " " + user.lastName} />
             <div className="container">
                 <Avatar src={`http://localhost:8080/customers/image/${userId}/download`} style={{width: "150px", height: "150px", position: "absolute", marginLeft: "150px", marginTop: "150px", zIndex: 2}}/>
-                <img src={cover} style={{width: "100%", height: "250px", marginBottom: "50px", borderRadius: "20px"}} alt="cover"/>
-                <UserSocialBar userId={userId}/>
+                <img src={cover} style={{width: "100%", height: "250px", marginBottom: "40px", borderRadius: "20px"}} alt="cover"/>
+                <UserSocialBar userId={userId} name={user.firstName + " " + user.lastName}/>
                 {/*<div >*/}
                     <div className="row container d-flex justify-content-center" id="profile-inner-container">
                         <div className="col-xl-6 col-md-12" id="profile-second-inner">
