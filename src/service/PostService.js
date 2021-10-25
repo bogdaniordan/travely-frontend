@@ -41,6 +41,10 @@ class PostService {
     searchPosts(searchInput) {
         return axios.get(`${POST_SERVICE_API_URL}/search-posts/${searchInput}`, {headers: AuthHeader()})
     }
+
+    getLikedPosts(userId) {
+        return axios.get(`${POST_SERVICE_API_URL}/liked-posts/${userId}`, {headers: AuthHeader()});
+    }
 }
 
 export default new PostService;
