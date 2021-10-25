@@ -1,0 +1,22 @@
+.absolute {
+    position: absolute;
+}
+
+.red-text {
+    color: red;
+}
+
+.green-text {
+    color: green;
+}
+
+.other-user-profile-cover {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+}
+
+#other-user-profile-container {
+    width: 100%;
+}

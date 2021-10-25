@@ -75,11 +75,22 @@ const ChatPage = (props) => {
     useEffect(() => {
         CustomerService.getCustomerById(otherUserId).then(res => setOtherUser(res.data))
         ChatService.getMessagesForConversation(AuthService.getCurrentUser().id, otherUserId).then(res => {
-            setMessages(res.data)
+            const markedMessages = markMessagesAsSeen(res.data)
+            setMessages(markedMessages)
             scrollToBottom();
         });
         CustomerService.personIsFriend(otherUserId).then(res => setIsFriend(res.data))
     }, [])
+
+    const markMessagesAsSeen = messages => {
+        messages.forEach(message => {
+            if (message.sender.id === parseInt(otherUserId)) {
+                message.type = "SEEN";
+                ChatService.markMessageAsSeen(message.id)
+            }
+        })
+        return messages;
+    }
 
     return (
         <div>

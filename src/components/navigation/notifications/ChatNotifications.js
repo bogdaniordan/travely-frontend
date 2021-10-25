@@ -28,9 +28,9 @@ const ChatNotifications = () => {
         setNotificationsNumber(0);
     };
 
-    const markMessagesAsSeen = messages => {
-        messages.forEach(message => ChatService.markMessageAsSeen(message.id));
-    }
+    // const markMessagesAsSeen = messages => {
+    //     messages.forEach(message => ChatService.markMessageAsSeen(message.id));
+    // }
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -58,14 +58,8 @@ const ChatNotifications = () => {
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "center",
-                    }}
-                    transformOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
-                    }}
+                    anchorOrigin={{vertical: "bottom", horizontal: "center",}}
+                    transformOrigin={{vertical: "top", horizontal: "center",}}
                 >
                     <Typography className={classes.typography}>
                         {
@@ -77,7 +71,7 @@ const ChatNotifications = () => {
                                                 <p>
                                                     <Link
                                                         to={`/chat/${chatMessages[0].sender.id}`}
-                                                        onClick={() => markMessagesAsSeen(chatMessages)}
+                                                        // onClick={() => markMessagesAsSeen(chatMessages)}
                                                     >
                                                         <strong>{chatMessages.length} new message(s)</strong>
                                                     </Link>

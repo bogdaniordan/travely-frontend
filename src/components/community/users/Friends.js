@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import Avatar from "@material-ui/core/Avatar";
 import CustomerService from "../../../service/CustomerService";
 import Link from "react-router-dom/Link";
+import AuthService from "../../../service/AuthService";
 
 
 const Friends = () => {
     const [friends, setFriends] = useState([]);
 
     useEffect(() => {
-        CustomerService.getFriends().then(res => setFriends(res.data))
+        CustomerService.getFriends(AuthService.getCurrentUser().id).then(res => setFriends(res.data))
     }, [])
 
     return (

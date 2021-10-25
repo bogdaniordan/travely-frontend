@@ -58,5 +58,21 @@ export const useStyles = makeStyles((theme) => ({
         margin: "auto",
         marginTop: "50px",
         backgroundColor: theme.palette.secondary.main,
+    },
+    compareBtn: {
+        marginTop: "5px",
+        float: "right"
+    },
+    statsIcon: {
+        height: "50px !important",
+        width: "50px !important"
+    },
+    otherUserProfile: {
+        width: "150px",
+        height: "150px",
+        position: "absolute",
+        marginLeft: "150px",
+        zIndex: 2,
+        marginTop: "150px"
     }
 }));

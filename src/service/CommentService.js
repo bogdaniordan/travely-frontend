@@ -19,6 +19,10 @@ class CommentService {
     deleteComment(id) {
         return axios.delete(`${COMMENT_SERVICE_API_URL}/${id}`, {headers: AuthHeader()});
     }
+
+    getPostedComments(userId) {
+        return axios.get(`${COMMENT_SERVICE_API_URL}/posted-comments/${userId}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CommentService;

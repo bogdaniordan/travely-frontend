@@ -22,7 +22,7 @@ const PeoplePage = () => {
         if (e.target.value === "allPeople") {
             getAllPeople();
         } else if (e.target.value === "friends") {
-            CustomerService.getFriends().then(res => setPeople(res.data));
+            CustomerService.getFriends(AuthService.getCurrentUser().id).then(res => setPeople(res.data));
         } else {
             CustomerService.getSuggestedPeople().then(res => setPeople(res.data))
         }

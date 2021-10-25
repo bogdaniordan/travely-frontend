@@ -57,8 +57,8 @@ class CustomerService {
         return axios.get(`${CUSTOMER_SERVICE_API_URL}/remove-friend/${AuthService.getCurrentUser().id}/${friendId}`, {headers: AuthHeader()})
     }
 
-    getFriends() {
-        return axios.get(`${CUSTOMER_SERVICE_API_URL}/get-friends/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()});
+    getFriends(id) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/get-friends/${id}`, {headers: AuthHeader()});
     }
 
     getSuggestedPeople() {

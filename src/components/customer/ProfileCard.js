@@ -88,7 +88,7 @@ const ProfileCard = () => {
                         </div>
                     </div>
                 </div>
-                <StatsBar />
+                <StatsBar userId={AuthService.getCurrentUser().id} />
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}

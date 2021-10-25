@@ -43,3 +43,7 @@
 .centered {
     margin: auto;
 }
+
+#statistics-header {
+    margin-top: 20px;
+}
