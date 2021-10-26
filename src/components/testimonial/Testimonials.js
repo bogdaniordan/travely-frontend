@@ -29,7 +29,7 @@ const TestimonialCard = ({accommodationId}) => {
                                                 </div>
                                                 <div className="author">
                                                     <img className="rounded-circle" height="50px" width="90px" src={`http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` ? `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} alt=""/>
-                                                    <p className="name">{testimonial.customer.firstName} {testimonial.customer.lastName}</p>
+                                                    <p className="name">{testimonial.customer.firstName} {testimonial.customer.lastName}, {testimonial.customer.age ? testimonial.customer.age : ""}</p>
                                                     <RatingView ratingValue={testimonial.rating}/>
                                                 </div>
                                             </div>

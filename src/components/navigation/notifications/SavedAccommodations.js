@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import Link from "react-router-dom/Link";
 import AccommodationService from "../../../service/AccommodationService";
 import AuthService from "../../../service/AuthService";
-import Button from "@material-ui/core/Button";
 import CloseIcon from '@mui/icons-material/Close';
 
 const SavedAccommodations = ({savedAccommodations, setSavedAccommodations}) => {
@@ -48,14 +47,8 @@ const SavedAccommodations = ({savedAccommodations, setSavedAccommodations}) => {
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "center",
-                    }}
-                    transformOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
-                    }}
+                    anchorOrigin={{vertical: "bottom", horizontal: "center",}}
+                    transformOrigin={{vertical: "top", horizontal: "center",}}
                 >
                     <Typography className={classes.typography}>
                         {

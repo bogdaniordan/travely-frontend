@@ -83,7 +83,7 @@ const StatsBar = ({userId}) => {
                                     (myAmountSpent - amountSpent >= 0 ? <span className="green-text">(+ {myAmountSpent - amountSpent})</span > : <span className="red-text">(- {myAmountSpent - amountSpent})</span>)}</h6>
                                 </div>
                                 <div className="col-sm-3">
-                                    <GroupIcon className={classes.statsIcon} />
+                                    <GroupIcon color="primary" className={classes.statsIcon} />
                                     <p className="m-b-10 f-w-600">FRIENDS</p>
                                     <h6 className="text-muted f-w-400">{friends} {compare &&
                                     (myFriends - friends >= 0 ? <span className="green-text">(+ {myFriends - friends})</span> : <span className="red-text">( - {myFriends - friends})</span>)}</h6>

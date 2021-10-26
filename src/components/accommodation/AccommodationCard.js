@@ -19,13 +19,9 @@ const AccommodationCard = ({place, setSavedAccommodations, savedAccommodations, 
     const [rating, setRating] = useState(0);
     const [modalIsOpen, setIsOpen] = useState(false)
 
-    const openModal = () => {
-        setIsOpen(true);
-    }
+    const openModal = () => {setIsOpen(true);}
 
-    const closeModal = () => {
-        setIsOpen(false);
-    }
+    const closeModal = () => {setIsOpen(false);}
 
     useEffect(() => {
         AccommodationService.accommodationIsSaved(place.id, AuthService.getCurrentUser().id).then(res => setJobIsSaved(res.data))

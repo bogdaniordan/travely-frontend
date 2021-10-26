@@ -24,7 +24,7 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                             <h3 className="mb-0">
                                 <a className="text-dark" href="#">{accommodation.placeType}</a>
                             </h3>
-                            <div className="mb-1 text-muted" style={{marginTop: "10px"}}><LocationOnIcon /> {accommodation.location} </div>
+                            <div className="mb-1 text-muted" id="location-icon"><LocationOnIcon /> {accommodation.location} </div>
                             <div className="mb-1 text-muted">{accommodation.address}</div>
                             <br/>
                             <h5 className="card-text mb-auto">Price: ${accommodation.pricePerNight} per night.</h5>

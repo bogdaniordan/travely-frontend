@@ -20,3 +20,11 @@
 #other-user-profile-container {
     width: 100%;
 }
+
+#location-icon {
+    margin-top: 10px;
+}
+
+#simple-post-container {
+    width: 700px;
+}

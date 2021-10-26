@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {useHistory, useLocation} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Navbar from "../navigation/Navbar";
 import Button from "@material-ui/core/Button";
 import Footer from "../navigation/Footer";
 import {useForm} from 'react-hook-form';
 import AuthService from "../../service/AuthService";
 import TestimonialService from "../../service/TestimonialService";
-import { Rating, RatingView } from 'react-simple-star-rating'
+import {Rating} from 'react-simple-star-rating'
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AccommodationService from "../../service/AccommodationService";
-import {Link} from "react-router-dom";
 
 const AddTestimonial = (props) => {
     const accommodationId = props.match.params.accommodationId;

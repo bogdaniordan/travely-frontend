@@ -37,7 +37,7 @@ const AccommodationHostDetails = ({accommodation, isBookedAtm, hasFutureBookings
                         </div></div>
                     {
                         accommodation.cleaningStatus === "CLEAN" ? (
-                            <h4><span className="blue-colored">Cleanliness: CLEAN</span> <SmokeFreeIcon  style={{marginLeft: "205px"}} /> NO SMOKING</h4>
+                            <h4><span className="blue-colored">Cleanliness: CLEAN</span> <SmokeFreeIcon  style={{marginLeft: "185px"}} /> NO SMOKING</h4>
                         ) : (
                             <h4><span className="red-colored">Cleanliness: DIRTY</span> <SmokeFreeIcon  style={{marginLeft: "205px"}} /> NO SMOKING</h4>
                         )
