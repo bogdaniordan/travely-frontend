@@ -88,9 +88,6 @@ const Community = () => {
                                         <div className="h6 text-muted">Trips</div>
                                         <div className="h5">{bookings.length}</div>
                                     </li>
-                                    <li className="list-group-item">
-                                        <Button variant="outlined" color="primary" onClick={() => history.push("/people")}>People of Travely</Button>
-                                    </li>
                                     <Friends />
                                 </ul>
                             </div>

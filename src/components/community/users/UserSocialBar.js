@@ -7,9 +7,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ChatIcon from '@mui/icons-material/Chat';
 import CommentIcon from '@mui/icons-material/Comment';
 import CommentService from "../../../service/CommentService";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import {Collapse, IconButton} from "@material-ui/core";
-import moment from "moment";
 import SimplePost from "./SimplePost";
 
 const UserSocialBar = ({userId, name}) => {

@@ -89,7 +89,7 @@ const CustomerBooking = ({booking, bookings, setBookings}) => {
                     <br/>
                     <div className="postcard__preview-txt"><PersonIcon /> {booking.host.firstName} {booking.host.lastName}</div>
                     <ul className="postcard__tagbox">
-                        <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>All questions</li>
+                        <li className="tag__item play blue" onClick={goToAllQuestions}><i className="fas fa-tag mr-2"></i>Questions</li>
                         <li className="tag__item play blue" onClick={leaveQuestion}><i className="fas fa-tag mr-2"></i>Contact</li>
                         {
                             new Date(moment(booking.checkoutDate).subtract(1, 'months').format("YYYY-MM-DD")) < new Date() && (

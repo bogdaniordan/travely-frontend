@@ -8,8 +8,10 @@ import AuthService from "../../service/AuthService";
 import FamousCityBar from "../../utils/FamousCityBar";
 import InfoIcon from '@mui/icons-material/Info';
 import HouseboatIcon from '@mui/icons-material/Houseboat';
+import {useStyles} from "../../styling/js-styling/IconsStyling";
 
 const HomePage = () => {
+    const classes = useStyles();
     const [location, setLocation] = useState();
     const [searchInput, setSearchInput] = useState();
     const [results, setResults] = useState();
@@ -33,6 +35,9 @@ const HomePage = () => {
         } else if (!location && placeType) {
             AccommodationService.getByPlaceType(placeType).then(r => setResults(r.data));
         }
+        setTimeout(() => {
+            console.log(results)
+        }, 500)
     }
 
     const searchByCity = (city) => {
@@ -45,7 +50,7 @@ const HomePage = () => {
             <div className="container">
                 <h4>Search accommodations by location, type or name</h4>
                 <br/>
-                <p><InfoIcon style={{color: "orange"}}/> Get the advice you need. Check the latest COVID-19 restrictions before you travel. Learn more</p>
+                <p><InfoIcon className={classes.info}/> Get the advice you need. Check the latest COVID-19 restrictions before you travel. Learn more</p>
                 <br/>
                 <div className="row">
                     <div className="col-lg-12 card-margin">
@@ -104,7 +109,7 @@ const HomePage = () => {
                                         )
                                     ) : (
                                         <div>
-                                            <HouseboatIcon color="primary" style={{height: "100px", width: "100px"}}/>
+                                            <HouseboatIcon color="primary" className={classes.houseBoat}/>
                                             <h4>There are no results for your search...</h4>
                                         </div>)
                                 ) : (<h4>Where would you like to go...</h4>)

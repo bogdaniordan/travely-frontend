@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import PersonAddDisabledIcon from "@mui/icons-material/PersonAddDisabled";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import BookingService from "../../../service/BookingService";
 import CustomerService from "../../../service/CustomerService";
 
 const FriendStatus = ({personId}) => {

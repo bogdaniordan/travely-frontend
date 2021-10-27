@@ -41,6 +41,9 @@ const Navbar = ({title, subtitle, savedAccommodations, setSavedAccommodations}) 
                                     <a className="nav-link active" id="navbar-link-color" aria-current="page" href="/community">Community</a>
                                 </li>
                                 <li className="nav-item">
+                                    <a className="nav-link active" id="navbar-link-color" aria-current="page" href="/people">People</a>
+                                </li>
+                                <li className="nav-item">
                                     <a className="nav-link active" id="navbar-link-color" aria-current="page" href="/search-taxi">Cars</a>
                                 </li>
                                 <li className="nav-item">

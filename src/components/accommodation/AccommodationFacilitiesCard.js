@@ -40,7 +40,7 @@ const AccommodationFacilitiesCard = ({accommodation}) => {
                                 reviews.length > 0 ? (
                                     <div className="reviews-details-container">
                                         <RatingView ratingValue={Math.round(rating)}/>
-                                        <p> {rating.toFixed(1)} - {reviews.length} review(s)</p>
+                                        <p> <strong>{rating.toFixed(1)}</strong> - {reviews.length} review(s)</p>
                                     </div>
                                 ) : (
                                     <div className="reviews-details-container">

@@ -12,6 +12,8 @@ export const getCityCoordinates = city => {
         return [48.856613, 2.352222]
     } else if(city.toLowerCase() === "mumbai") {
         return [19.075983, 72.877655]
+    } else {
+        return [42.360081, -71.058884]
     }
 }
 

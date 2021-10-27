@@ -19,7 +19,7 @@ const UserProfilePage = (props) => {
 
     return (
         <div>
-            <Navbar title={user.firstName + " " + user.lastName} />
+            <Navbar title={user.firstName + " " + user.lastName} subtitle="Checkout the stats and interact with other users"/>
             <div className="container">
                 <Avatar src={`http://localhost:8080/customers/image/${userId}/download`} className={classes.otherUserProfile} />
                 <img src={cover} className="other-user-profile-cover" alt="cover"/>

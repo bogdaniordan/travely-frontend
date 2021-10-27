@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import CarCard from "./CarCard";
@@ -8,8 +8,6 @@ import Map from "../../utils/Map";
 import moment from "moment";
 import CarExtras from "./CarExtras";
 import CarPaymentForm from "./CarPaymentForm";
-import CustomerService from "../../service/CustomerService";
-import AuthService from "../../service/AuthService";
 
 const CarReservationPage = () => {
     const location = useLocation();
@@ -23,7 +21,7 @@ const CarReservationPage = () => {
         <div>
             <Navbar title="Reservation" subtitle="Manage your car rental" />
                 <div className="container">
-                    <Link to={`/profile`} style={{float: "left"}}>Back to search car</Link>
+                    <Link to={`/profile`} style={{float: "left"}}>Back to search</Link>
                     <br/>
                     <h4>View car details</h4>
                     <h6>Pick up: {moment(location.state.dates.startDate).format("DD-MM-YYYY")} - Drop off: {moment(location.state.dates.endDate).format("DD-MM-YYYY")}</h6>
