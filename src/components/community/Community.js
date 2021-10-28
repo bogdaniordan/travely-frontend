@@ -14,7 +14,6 @@ import {useHistory} from "react-router-dom";
 import {Collapse} from "@material-ui/core";
 
 const Community = () => {
-    const history = useHistory();
     const [user, setUser] = useState({})
     const [bookings, setBookings] = useState([])
     const [posts, setPosts] = useState([])
@@ -48,8 +47,7 @@ const Community = () => {
     const search = () => {
         if(searchInput.length > 0) {
             PostService.searchPosts(searchInput).then(res => {
-                setPosts([])
-                setPosts(res.data)
+                setPosts(res.data.reverse())
             })
         }
     }
@@ -103,7 +101,6 @@ const Community = () => {
                                                     <form onSubmit={
                                                         handleSubmit((data) => {
                                                             PostService.addPost(data).then(res => {
-                                                                setPosts([])
                                                                 PostService.findAll().then(r => setPosts(r.data))
                                                             })
                                                         })

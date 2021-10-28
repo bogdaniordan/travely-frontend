@@ -206,7 +206,6 @@ const PaymentForm = ({accommodation, booking, bookingDurationInDays, submitForm,
                         >
                             <Button color="secondary" variant="contained">STRIPE PAYMENT</Button>
                         </StripeCheckout>
-
                         <CheckButton style={{ display: "none" }} ref={checkBtn} />
                     </Form>
                     <br/>

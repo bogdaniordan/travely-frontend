@@ -35,9 +35,6 @@ const HomePage = () => {
         } else if (!location && placeType) {
             AccommodationService.getByPlaceType(placeType).then(r => setResults(r.data));
         }
-        setTimeout(() => {
-            console.log(results)
-        }, 500)
     }
 
     const searchByCity = (city) => {

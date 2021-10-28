@@ -56,7 +56,6 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
                     <div className="card-body">
                         <h5>Payment</h5>
                         <p><InfoIcon className={classes.infoIcon}/> Please note: Your own car insurance does not cover hire cars.</p>
-                        <h5>Billing address </h5>
                         <br/>
                         <div className="row">
                             <div className="col-md-6 mb-3">

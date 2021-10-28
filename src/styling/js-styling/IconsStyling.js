@@ -7,5 +7,22 @@ export const useStyles = makeStyles((theme) => ({
     },
     info: {
         color: "orange"
+    },
+    questionRightAvatar: {
+        float: "right",
+        height: "70px",
+        width: "70px"
+    },
+    questionLeftAvatar: {
+        float: "left",
+        height: "70px",
+        width: "70px"
+    },
+    backLink: {
+        float: "left"
+    },
+    errorIcon: {
+        height: "150px !important",
+        width: "150px !important"
     }
 }));
