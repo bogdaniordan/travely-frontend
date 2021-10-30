@@ -22,5 +22,14 @@ export const useStyles = makeStyles((theme) => ({
     },
     errorText: {
         color: "red"
+    },
+    backToCommunity: {
+        float: "left",
+        marginBottom: "20px"
+    },
+    noPeople: {
+        width: "100px !important",
+        height: "100px !important",
+        marginBottom: "20px !important"
     }
 }));

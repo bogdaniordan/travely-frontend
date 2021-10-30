@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
-import {CssBaseline} from "@material-ui/core";
 import {useStyles} from "../../styling/js-styling/CardDetailsStyling";
 import {useForm} from "react-hook-form";
 import CustomerService from "../../service/CustomerService";
@@ -22,7 +21,6 @@ const SavePaymentDetails = ({closeModal}) => {
 
     return (
         <>
-            <CssBaseline />
             <div className="modal-button-container">
                 <Button color="secondary" className={classes.exitButton} onClick={closeModal} variant="contained">X</Button>
             </div>

@@ -148,7 +148,6 @@ const Community = () => {
                                                             <input id="post-search-bar" className="form-control" type="text" onChange={e => setSearchInput(e.target.value)}/>
                                                             <Button variant="outlined" color="primary" onClick={search} style={{height: "84%", marginTop: "6px"}}>Search</Button>
                                                         </div>
-
                                                     </div>
                                                 </Collapse>
                                             </div>

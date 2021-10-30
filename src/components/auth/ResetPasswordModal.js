@@ -21,8 +21,7 @@ const ResetPasswordModal = ({closeModal}) => {
                         <p>Your will receive a reset password email in a few moments.</p>
                         <br/>
                         <form onSubmit={handleSubmit((data) => {
-                            AuthService.sendResetPasswordEmail(data);
-                            closeModal();
+                            AuthService.sendResetPasswordEmail(data).then(r => closeModal());
                         })}>
                             <TextField
                                 variant="outlined"

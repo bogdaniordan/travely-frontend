@@ -6,8 +6,10 @@ import CustomerService from "../../../service/CustomerService";
 import AuthService from "../../../service/AuthService";
 import {Link} from "react-router-dom";
 import FindInPageIcon from '@mui/icons-material/FindInPage';
+import {useStyles} from "../../../styling/js-styling/DatePickerWindowStyling";
 
 const PeoplePage = () => {
+    const classes = useStyles();
     const [people, setPeople] = useState([]);
 
     useEffect(() => {
@@ -32,7 +34,7 @@ const PeoplePage = () => {
         <div>
             <Navbar title="People" subtitle="Interact with people of Travely"/>
             <div className="container" id="people-container">
-                <Link to={`/community`} style={{float: "left", marginBottom: "20px"}}>Back to community</Link>
+                <Link to={`/community`} className={classes.backToCommunity}>Back to community</Link>
                 <br/>
                 <div className="people-filter-container">
                     <p>Filter people</p>
@@ -44,7 +46,6 @@ const PeoplePage = () => {
                 </div>
                 <br/>
                 {/*<div className="container" style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px', gridAutoRows: 'minMax(100px, auto)'}}>*/}
-
                 {
                     people.length > 0 ? (
                         <div id="people-grid">
@@ -56,14 +57,11 @@ const PeoplePage = () => {
                         </div>
                     ) : (
                         <div className="no-people-container">
-                            <FindInPageIcon color="error" style={{width: "100px", height: "100px", marginBottom: "20px"}}/>
+                            <FindInPageIcon color="error" className={classes.noPeople}/>
                             <h4>No people found for the applied filter.</h4>
                         </div>
                     )
                 }
-                {/*<div id="people-grid">*/}
-
-                {/*</div>*/}
             </div>
             <br/>
             <Footer />

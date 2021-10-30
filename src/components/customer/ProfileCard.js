@@ -47,7 +47,7 @@ const ProfileCard = () => {
                                 </div>
                                 <div className="col-sm-8">
                                     <div className="card-block">
-                                        <h6 className="m-b-20 p-b-5 b-b-default f-w-600">INFORMATION</h6>
+                                        <h6 className="m-b-20 p-b-5 b-b-default f-w-600">CONTACT</h6>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <p className="m-b-10 f-w-600">EMAIL</p>
@@ -58,7 +58,7 @@ const ProfileCard = () => {
                                                 <h6 className="text-muted f-w-400">{customer.phoneNumber ? customer.phoneNumber : "None"}</h6>
                                             </div>
                                         </div>
-                                        {/*<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>*/}
+                                        <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">INFORMATION</h6>
                                         <br/>
                                         <div className="row">
                                             <div className="col-sm-6">

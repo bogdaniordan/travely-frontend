@@ -7,10 +7,9 @@ export const useStyles = makeStyles({
         margin: "5px",
     },
     mutualFriends: {
-        marginLeft: "55px"
+        marginLeft: "65px",
     },
     iconContainer: {
-        float: "right",
-        marginLeft: "80px"
+        marginLeft: "80px",
     }
 });

@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
-import Navbar from "../navigation/Navbar";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import {required, validPassword} from "../../utils/Validations"
