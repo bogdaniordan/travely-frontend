@@ -13,8 +13,10 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import Button from "@material-ui/core/Button";
 import InfoIcon from '@mui/icons-material/Info';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
+import {useStyles} from "../../styling/js-styling/IconsStyling";
 
 const RescheduleBooking = (props) => {
+    const classes = useStyles();
     const history = useHistory();
     const bookingId = props.match.params.bookingId;
     const [showErrorMessage, setShowErrorMessage] = useState()
@@ -67,14 +69,14 @@ const RescheduleBooking = (props) => {
         <div>
             <Navbar title="Reschedule booking"/>
             <div className="container">
-                <Link to={`/profile`} style={{float: "left"}}>Back to profile</Link>
+                <Link to={`/profile`} className={classes.backLink}>Back to profile</Link>
                 <br/>
                 <br/>
                 <div className="card">
                     <div className="card-body">
                         <div className="reschedule-icons-container">
-                            <LocalHotelIcon style={{width: "100px", height: "100px", margin: "auto"}}/>
-                            <DateRangeIcon style={{width: "70px", height: "100px", margin: "auto"}}/>
+                            <LocalHotelIcon className={classes.hotelIcon}/>
+                            <DateRangeIcon className={classes.dateRangeIcon}/>
                         </div>
                         <br/>
                         <h4 className="reschedule-header">Reschedule your future booking at {accommodation.title}, {accommodation.location}</h4>
@@ -123,6 +125,7 @@ const RescheduleBooking = (props) => {
                                         setDates([item.selection])
                                         setShowErrorMessage(false)
                                     }}
+                                    editableDateInputs={true}
                                     moveRangeOnFirstSelection={false}
                                     ranges={dates}
                                     disabledDates={disabledDates}
@@ -132,7 +135,7 @@ const RescheduleBooking = (props) => {
                             <div className="reschedule-buttons">
                                     <img className="reschedule-img" src={`http://localhost:8080/accommodations/image/${accommodation.id}/firstImage/download`}  alt="property image"/>
                                         <div className="reschedule-inner-buttons">
-                                            <Button variant="contained" color="primary" style={{marginRight: "5px"}} onClick={reschedule}>Reschedule</Button>
+                                            <Button variant="contained" color="primary" className={classes.reschedule} onClick={reschedule}>Reschedule</Button>
                                             <Button variant="contained" color="secondary" onClick={cancelBooking}>Cancel booking</Button>
                                         </div>
                                         <br/>
@@ -141,7 +144,15 @@ const RescheduleBooking = (props) => {
                                 </div>
                             </div>
                         </div>
-                        {showErrorMessage && <h5 className="reschedule-error"><EventBusyIcon color="error"/> Choose a new date range with the same duration: {bookingDurationInDays} day(s).</h5>}
+                        {showErrorMessage && (
+                            <div className="reschedule-error">
+                                {
+                                    dates[0].endDate !== null && (
+                                        <h6>The booking you've selected is {getBookingDuration(dates[0].startDate, dates[0].endDate)} day(s) long.</h6>
+                                    )
+                                }
+                                <h5><EventBusyIcon color="error"/> Choose a new date range with the same duration: {bookingDurationInDays} day(s).</h5>
+                            </div>)}
                     </div>
                 </div>
             </div>

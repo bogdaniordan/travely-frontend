@@ -12,7 +12,7 @@ import CheckButton from "react-validation/build/button";
 import {Link, useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "../../styling/js-styling/AuthStyles";
-import {Paper} from "@material-ui/core";
+import {IconButton, Paper} from "@material-ui/core";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/js-styling/ModalStyling";
 import ResetPasswordModal from "./ResetPasswordModal";
@@ -20,6 +20,8 @@ import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"
 import login_background from "../../images/auth_backgound.jpg"
 import PersonPinIcon from '@mui/icons-material/PersonPin';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import axios from "axios";
 
 const Login = () => {
     const classes = useStyles();
@@ -133,6 +135,13 @@ const Login = () => {
                                     <Grid xs={12}>
                                         <div className="form-group" id="login-buttons-container">
                                             <Button type="submit" variant="contained" color="primary" block className={classes.sign}>Sign in</Button>
+                                            <IconButton>
+                                                <FacebookIcon color="primary" onClick={
+                                                    axios.get("http://localhost:8080/customers/user")
+                                                        .then(response => console.log(response.data))
+                                                }/>
+                                            </IconButton>
+                                            <a href="http://localhost:8080/oauth2/authorization/facebook">FB</a>
                                         </div>
                                     </Grid>
                                 </Grid>

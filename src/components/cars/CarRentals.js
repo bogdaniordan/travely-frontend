@@ -128,6 +128,7 @@ const SearchTaxi = () => {
                                             setDates([item.selection])
                                             setShowWarningMessage(false);
                                         }}
+                                        editableDateInputs={true}
                                         moveRangeOnFirstSelection={false}
                                         ranges={dates}
                                         minDate={new Date()}

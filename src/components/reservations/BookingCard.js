@@ -78,6 +78,7 @@ const BookingCard = ({customer, accommodation}) => {
                                 setShowErrorMessage(false);
                             }}
                             moveRangeOnFirstSelection={false}
+                            editableDateInputs={true}
                             ranges={dates}
                             disabledDates={disabledDates}
                             minDate={new Date()}

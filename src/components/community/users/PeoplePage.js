@@ -45,7 +45,6 @@ const PeoplePage = () => {
                     </select>
                 </div>
                 <br/>
-                {/*<div className="container" style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px', gridAutoRows: 'minMax(100px, auto)'}}>*/}
                 {
                     people.length > 0 ? (
                         <div id="people-grid">

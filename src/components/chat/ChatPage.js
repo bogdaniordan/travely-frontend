@@ -121,49 +121,49 @@ const ChatPage = (props) => {
                         )
                     }
                     <br/>
-                        <div className="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12" id="chat-container">
-                            <div className="card">
-                                <div className="card-header">{otherUser.firstName} {otherUser.lastName}</div>
-                                    <div className="card-body height3" style={{overflow: "auto", height: "600px"}}>
-                                        <Scrollbars className="scrollbar">
-                                            <ul className="chat-list">
-                                                {
-                                                    messages.map(
-                                                        message => (
-                                                            <li className={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? "out" : "in"}>
-                                                                <div className="chat-img">
-                                                                    <Avatar alt="Avatar" src={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` : `http://localhost:8080/customers/image/${otherUserId}/download`}/>
+                    <div className="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12" id="chat-container">
+                        <div className="card">
+                            <div className="card-header">{otherUser.firstName} {otherUser.lastName}</div>
+                                <div className="card-body height3" style={{overflow: "auto", height: "600px"}}>
+                                    <Scrollbars className="scrollbar">
+                                        <ul className="chat-list">
+                                            {
+                                                messages.map(
+                                                    message => (
+                                                        <li className={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? "out" : "in"}>
+                                                            <div className="chat-img">
+                                                                <Avatar alt="Avatar" src={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` : `http://localhost:8080/customers/image/${otherUserId}/download`}/>
+                                                            </div>
+                                                            <div className="chat-body" >
+                                                                <div className="chat-message" style={{width: "300px"}}>
+                                                                    <h5>{message.content}</h5>
+                                                                    {
+                                                                        Array.isArray(message.time) ? (
+                                                                            <small className="message-date">{moment(message.time.slice(0, 5)).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                        ) : (
+                                                                            <small className="message-date">{moment(message.time).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
+                                                                        )
+                                                                    }
+                                                                    <small className="chat-status">{message.type === "SENT" ? <DoneIcon /> : <DoneAllIcon />}</small>
+                                                                    <br/>
                                                                 </div>
-                                                                <div className="chat-body" >
-                                                                    <div className="chat-message" style={{width: "300px"}}>
-                                                                        <h5>{message.content}</h5>
-                                                                        {
-                                                                            Array.isArray(message.time) ? (
-                                                                                <small className="message-date">{moment(message.time.slice(0, 5)).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
-                                                                            ) : (
-                                                                                <small className="message-date">{moment(message.time).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</small>
-                                                                            )
-                                                                        }
-                                                                        <small className="chat-status">{message.type === "SENT" ? <DoneIcon /> : <DoneAllIcon />}</small>
-                                                                        <br/>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        )
+                                                            </div>
+                                                        </li>
                                                     )
-                                                }
-                                                <div ref={messagesEndRef}></div>
-                                            </ul>
-                                        </Scrollbars>
-                                    </div>
-                                <div className="chat-input-container">
-                                    <input className="form-control" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
-                                    <Button variant="contained" color="primary" onClick={send} startIcon={<SendIcon />} disabled={!isFriend} style={{height: "88%", marginTop: "7px"}}>
-                                        Send
-                                    </Button>
+                                                )
+                                            }
+                                            <div ref={messagesEndRef}></div>
+                                        </ul>
+                                    </Scrollbars>
                                 </div>
+                            <div className="chat-input-container">
+                                <input className="form-control" type="text" value={message} onChange={e => setMessage(e.target.value)}/>
+                                <Button variant="contained" color="primary" onClick={send} startIcon={<SendIcon />} disabled={!isFriend} style={{height: "88%", marginTop: "7px"}}>
+                                    Send
+                                </Button>
                             </div>
                         </div>
+                    </div>
                 </div>
             <br/>
             <Footer />

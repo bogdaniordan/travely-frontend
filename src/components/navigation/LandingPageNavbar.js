@@ -10,7 +10,6 @@ const LandingPageNavbar = () => {
                     <a href="/customer-landing-page">
                         <img src={simple_logo} className="logo-image" alt="logo"/>
                     </a>
-                    {/*<a style={{color: "#aaaccc"}} className="navbar-brand" href="#">Travely</a>*/}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false"
                             aria-label="Toggle navigation">

@@ -93,7 +93,7 @@ const UserPost = ({post, posts, setPosts}) => {
                 comments.length > 0 && (
                     <div>
                         <br/>
-                        <h5>Comments</h5>
+                        <h6>Comments</h6>
                         {
                             comments.map(
                                 comment => (
