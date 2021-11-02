@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -22,6 +21,7 @@ import login_background from "../../images/auth_backgound.jpg"
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import axios from "axios";
+import AuthHeader from "../../service/auth-helpers/AuthHeader";
 
 const Login = () => {
     const classes = useStyles();
@@ -136,12 +136,9 @@ const Login = () => {
                                         <div className="form-group" id="login-buttons-container">
                                             <Button type="submit" variant="contained" color="primary" block className={classes.sign}>Sign in</Button>
                                             <IconButton>
-                                                <FacebookIcon color="primary" onClick={
-                                                    axios.get("http://localhost:8080/customers/user")
-                                                        .then(response => console.log(response.data))
-                                                }/>
+                                                <FacebookIcon color="primary" />
                                             </IconButton>
-                                            <a href="http://localhost:8080/oauth2/authorization/facebook">FB</a>
+                                            <a href="http://localhost:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:3000/oauth2/redirect">FB</a>
                                         </div>
                                     </Grid>
                                 </Grid>

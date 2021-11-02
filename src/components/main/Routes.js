@@ -24,6 +24,7 @@ import CarReservationPage from "../cars/CarReservationPage";
 import SuccessfulCarPayment from "../cars/SuccessfulCarPayment";
 import RescheduleBooking from "../reservations/RescheduleBooking";
 import UserProfilePage from "../community/users/UserProfilePage";
+import Oauth2RedirectHandler from "../../service/auth-helpers/Oauth2RedirectHandler";
 
 const Routes = () => {
     return (
@@ -53,6 +54,7 @@ const Routes = () => {
                     <Route path="/successful-car-booking" exact component={SuccessfulCarPayment} />
                     <Route path="/reschedule-booking/:bookingId" exact component={RescheduleBooking}/>
                     <Route path="/user/:userId" exact component={UserProfilePage} />
+                    <Route path="/oauth2/redirect" exact component={Oauth2RedirectHandler} />
                 </Switch>
             </Router>
         </div>
