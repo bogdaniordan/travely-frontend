@@ -18,7 +18,7 @@ const AddRecommendationForm = ({users, setUsers, accommodation, user}) => {
         <Paper elevation={2} className={classes.recommendationPaper}>
                 <ListItem alignItems="center">
                     <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={`http://localhost:8080/customers/image/${user.id}/download`} className={classes.recommendationAvatar}/>
+                        <Avatar alt="Remy Sharp" src={user.provider !== "local" ? user.picture : `http://localhost:8080/customers/image/${user.id}/download`} className={classes.recommendationAvatar}/>
                     </ListItemAvatar>
                     <ListItemText
                         key={user.id}

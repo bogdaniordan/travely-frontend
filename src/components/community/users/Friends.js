@@ -24,7 +24,7 @@ const Friends = () => {
                                     user => (
                                         <div className="h5">
                                             <Link to={`/chat/${user.id}`}>
-                                                <Avatar src={`http://localhost:8080/customers/image/${user.id}/download`} style={{margin: "auto"}}/>
+                                                <Avatar src={user.provider !== "local" ? user.picture : `http://localhost:8080/customers/image/${user.id}/download`} style={{margin: "auto"}}/>
                                             </Link>
                                             <small>{user.firstName} {user.lastName}</small>
                                         </div>

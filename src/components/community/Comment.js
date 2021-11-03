@@ -23,7 +23,7 @@ const Comment = ({comment, comments, setComments}) => {
                 }
                 <div className="text-muted h7 mb-2"><i className="fa fa-clock-o"></i>{moment(comment.time.slice(0, 5)).subtract(1, 'months').format("DD-MM-YYYY, h:mm:ss a")}</div>
                 <div className="center-avatar-container" id="comment-container" >
-                    <Avatar src={comment.author.picture ? `http://localhost:8080/customers/image/${comment.author.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
+                    <Avatar src={comment.author.provider !== "local" ? comment.author.picture : comment.author.picture ? `http://localhost:8080/customers/image/${comment.author.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} />
                     <p className="card-text" id="comment-text">{comment.content}</p>
                 </div>
                 <br/>

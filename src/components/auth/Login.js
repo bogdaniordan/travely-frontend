@@ -3,7 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import {required, validPassword, validUsername} from "../../utils/Validations";
@@ -11,7 +10,7 @@ import CheckButton from "react-validation/build/button";
 import {Link, useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
 import {useStyles} from "../../styling/js-styling/AuthStyles";
-import {IconButton, Paper} from "@material-ui/core";
+import {Paper} from "@material-ui/core";
 import Modal from 'react-modal';
 import {customStyles} from "../../styling/js-styling/ModalStyling";
 import ResetPasswordModal from "./ResetPasswordModal";
@@ -19,8 +18,6 @@ import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LoginStyling.css"
 import login_background from "../../images/auth_backgound.jpg"
 import PersonPinIcon from '@mui/icons-material/PersonPin';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import {FACEBOOK_AUTH_URL} from "../../utils/OAuthEndpoints";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
@@ -89,7 +86,7 @@ const Login = () => {
                             <Typography component="h1" variant="h5">
                                 Sign in as customer
                             </Typography>
-                            {/*<br/>*/}
+                            <br/>
                             {message && (
                                 <div className="form-group">
                                     <div
@@ -137,10 +134,6 @@ const Login = () => {
                                     <Grid xs={12}>
                                         <div className="form-group" id="login-buttons-container">
                                             <Button type="submit" variant="contained" color="primary" block className={classes.sign}>Sign in</Button>
-                                            {/*<IconButton>*/}
-                                            {/*    <FacebookIcon color="primary" />*/}
-                                            {/*</IconButton>*/}
-                                            {/*<a href={FACEBOOK_AUTH_URL}>FB</a>*/}
                                         </div>
                                     </Grid>
                                 </Grid>
@@ -157,6 +150,7 @@ const Login = () => {
                                         </Link>
                                     </Grid>
                                 </Grid>
+                                <br/>
                             </Form>
                         </div>
                         <Modal

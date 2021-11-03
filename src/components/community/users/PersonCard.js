@@ -18,12 +18,14 @@ const PersonCard = ({person}) => {
     useEffect(() => {
         BookingService.getAllByCustomerId(person.id).then(res => setBookings(res.data));
         CustomerService.getMutualFriends(person.id).then(res => setMutualFriends(res.data.length))
+        console.log(person)
     }, [])
 
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <CardMedia onClick={() => history.push(`/user/${person.id}`)} component="img" alt="person" height="140px" image={person.picture ? `http://localhost:8080/customers/image/${person.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>
+                <CardMedia onClick={() => history.push(`/user/${person.id}`)} component="img" alt="person" height="140px"
+                           image={person.provider !== "local" ? person.picture : person.picture ? `http://localhost:8080/customers/image/${person.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {person.firstName} {person.lastName}

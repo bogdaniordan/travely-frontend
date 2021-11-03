@@ -32,7 +32,8 @@ const Recommendations = () => {
                                         <div className="card-body">
                                             <CloseIcon style={{float: "right"}} color="error" onClick={() => deleteRecommendation(recommendation.id)}/>
                                             <h5 className="card-title">{recommendation.sender.firstName} {recommendation.sender.lastName} <GroupIcon color="primary"/></h5>
-                                            <Avatar src={`http://localhost:8080/customers/image/${recommendation.sender.id}/download` ? `http://localhost:8080/customers/image/${recommendation.sender.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} style={{margin: "auto"}}/>
+                                            <Avatar src={recommendation.sender.provider !== "local" ? recommendation.sender.picture :
+                                                `http://localhost:8080/customers/image/${recommendation.sender.id}/download` ? `http://localhost:8080/customers/image/${recommendation.sender.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} style={{margin: "auto"}}/>
                                             <br/>
                                             <h6 className="card-subtitle mb-2 text-muted">recommended you this</h6>
                                             {

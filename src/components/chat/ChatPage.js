@@ -27,6 +27,7 @@ const ChatPage = (props) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [otherUser, setOtherUser] = useState({})
+    const [currentLoggedUser, setCurrentLoggedUser] = useState({});
 
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end"})
@@ -80,6 +81,10 @@ const ChatPage = (props) => {
             scrollToBottom();
         });
         CustomerService.personIsFriend(otherUserId).then(res => setIsFriend(res.data))
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {
+            setCurrentLoggedUser(res.data)
+            console.log(res.data)
+        })
     }, [])
 
     const markMessagesAsSeen = messages => {
@@ -132,7 +137,9 @@ const ChatPage = (props) => {
                                                     message => (
                                                         <li className={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? "out" : "in"}>
                                                             <div className="chat-img">
-                                                                <Avatar alt="Avatar" src={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id ? `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download` : `http://localhost:8080/customers/image/${otherUserId}/download`}/>
+                                                                <Avatar alt="Avatar" src={(message.sender ? message.sender.id : message.messageSenderId) === AuthService.getCurrentUser().id
+                                                                    ? (currentLoggedUser.provider !== "local" ? currentLoggedUser.picture : `http://localhost:8080/customers/image/${AuthService.getCurrentUser().id}/download`) :
+                                                                    (otherUser.provider !== "local" ? otherUser.picture : `http://localhost:8080/customers/image/${otherUserId}/download`)}/>
                                                             </div>
                                                             <div className="chat-body" >
                                                                 <div className="chat-message" style={{width: "300px"}}>

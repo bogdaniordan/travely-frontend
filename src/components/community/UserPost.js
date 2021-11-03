@@ -61,7 +61,8 @@ const UserPost = ({post, posts, setPosts}) => {
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex justify-content-between align-items-center">
                         <div className="mr-2">
-                            <img className="rounded-circle" width="45" src={post.author.picture ? `http://localhost:8080/customers/image/${post.author.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}
+                            <img className="rounded-circle" width="45" src={post.author.provider !== "local" ? post.author.picture :
+                                post.author.picture ? `http://localhost:8080/customers/image/${post.author.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}
                                  alt=""/>
                         </div>
                         <div className="ml-2">
