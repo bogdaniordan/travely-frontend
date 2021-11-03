@@ -20,8 +20,8 @@ import "../../styling/LoginStyling.css"
 import login_background from "../../images/auth_backgound.jpg"
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import axios from "axios";
-import AuthHeader from "../../service/auth-helpers/AuthHeader";
+import {FACEBOOK_AUTH_URL} from "../../utils/OAuthEndpoints";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
     const classes = useStyles();
@@ -79,16 +79,17 @@ const Login = () => {
             <div className="login-image-container">
                 <img src={login_background} alt="Login background"/>
                 <Paper className={classes.container} elevation={3}>
-                    <Container maxWidth="xs" className={classes.loginContainer}>
-                        <div className={classes.paper}>
-                            <br/>
+                    {/*<Container maxWidth="xs" className={classes.loginContainer}>*/}
+                    {/*    <div className={classes.paper}>*/}
+                    <div className="login-content">
+                            {/*<br/>*/}
                             <Avatar className={classes.avatar}>
                                 <PersonPinIcon />
                             </Avatar>
                             <Typography component="h1" variant="h5">
                                 Sign in as customer
                             </Typography>
-                            <br/>
+                            {/*<br/>*/}
                             {message && (
                                 <div className="form-group">
                                     <div
@@ -102,6 +103,7 @@ const Login = () => {
                                 </div>
                             )}
                             <br/>
+                            <SocialLogin />
                             <Form onSubmit={submitForm} ref={form}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
@@ -135,10 +137,10 @@ const Login = () => {
                                     <Grid xs={12}>
                                         <div className="form-group" id="login-buttons-container">
                                             <Button type="submit" variant="contained" color="primary" block className={classes.sign}>Sign in</Button>
-                                            <IconButton>
-                                                <FacebookIcon color="primary" />
-                                            </IconButton>
-                                            <a href="http://localhost:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:3000/oauth2/redirect">FB</a>
+                                            {/*<IconButton>*/}
+                                            {/*    <FacebookIcon color="primary" />*/}
+                                            {/*</IconButton>*/}
+                                            {/*<a href={FACEBOOK_AUTH_URL}>FB</a>*/}
                                         </div>
                                     </Grid>
                                 </Grid>
@@ -166,7 +168,8 @@ const Login = () => {
                             closeModal={closeModal}
                         />
                         </Modal>
-                    </Container>
+                        {/*</div>*/}
+                    {/*</Container>*/}
                 </Paper>
             </div>
         </>

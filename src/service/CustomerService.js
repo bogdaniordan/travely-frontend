@@ -103,6 +103,10 @@ class CustomerService {
             amount: amount
         }, {headers: AuthHeader()})
     }
+
+    getOauthProfile() {
+        return axios.get("http://localhost:8080/customers/oauth/profile", {headers: AuthHeader()});
+    }
 }
 
 export default new CustomerService;

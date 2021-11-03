@@ -4,7 +4,7 @@ import "../../styling/LandingPage.css"
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import AuthService from "../../service/AuthService";
-import picture from "../../images/customer_landing_page_picture.png"
+import picture from "../../images/landing-page/customer_landing_page_picture.png"
 
 const CustomerLandingPage = () => {
     const history = useHistory();

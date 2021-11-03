@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useHistory} from "react-router-dom";
-import axios from "axios";
-import AuthHeader from "./AuthHeader";
+import CustomerService from "../CustomerService";
 
 const Oauth2RedirectHandler = (props) => {
     const history = useHistory();
@@ -17,12 +16,16 @@ const Oauth2RedirectHandler = (props) => {
     useEffect(() => {
         const token = getUrlParameter('token');
         const error = getUrlParameter('error');
-        console.log(token)
         if (token) {
             localStorage.setItem("user", JSON.stringify({token: token}))
-            axios.get("http://localhost:8080/customers/profile", {headers: AuthHeader()})
-                .then(response => {
+                CustomerService.getOauthProfile().then(response => {
                     console.log(response.data)
+                    localStorage.setItem("user", JSON.stringify({
+                        token: token,
+                        id: response.data.id,
+                        roles: ["ROLE_CUSTOMER"]
+                    }))
+                    history.push("/home")
                 })
         } else {
 

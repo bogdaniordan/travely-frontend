@@ -2,7 +2,7 @@ import React from 'react';
 import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LandingPage.css";
 import Button from "@material-ui/core/Button";
-import picture from "../../images/host_landing_page_picture.png"
+import picture from "../../images/landing-page/host_landing_page_picture.png"
 const HostLandingPage = () => {
     return (
         <div>
