@@ -8,6 +8,10 @@ import Modal from "react-modal";
 import SavePaymentDetails from "../payment/SavePaymentDetails";
 import StatsBar from "./StatsBar";
 import SystemUpdateAltIcon from '@mui/icons-material/SystemUpdateAlt';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import GoogleIcon from '@mui/icons-material/Google';
 
 const ProfileCard = () => {
     const history = useHistory();
@@ -23,10 +27,7 @@ const ProfileCard = () => {
     }
 
     useEffect(() => {
-        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {
-            setCustomer(res.data)
-            console.log(res.data)
-        })
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => setCustomer(res.data))
     }, [])
 
     const updateProfile = () => {
@@ -44,7 +45,15 @@ const ProfileCard = () => {
                                     <div className="card-block text-center text-white">
                                         <div className="m-b-25"><img src={customer.provider !== "local" ? customer.picture : customer.picture ? `http://localhost:8080/customers/image/${customer.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"} height="150px" width="150px"
                                             className="img-radius" alt="User-Profile-Image"/></div>
-                                        <h6 className="f-w-600" id="profile-name-header">{customer.firstName} {customer.lastName}</h6>
+                                        <h6 className="f-w-600" id="profile-name-header">{customer.firstName} {customer.lastName}
+                                            <span className="account-type-container">
+                                            {
+                                                customer.provider === "local" ? <ManageAccountsIcon /> : customer.provider === "facebook" ? <FacebookIcon color="primary" /> :
+                                                    customer.provider === "google" ? <GoogleIcon color="primary" /> : <GitHubIcon />
+                                            }
+                                            </span>
+
+                                        </h6>
                                         <p><Button variant="contained" color="primary" onClick={updateProfile} endIcon={<SystemUpdateAltIcon />}>Update profile</Button></p>
                                     </div>
                                 </div>

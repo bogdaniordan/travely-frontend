@@ -9,8 +9,12 @@ import CommentIcon from '@mui/icons-material/Comment';
 import CommentService from "../../../service/CommentService";
 import {Collapse, IconButton} from "@material-ui/core";
 import SimplePost from "./SimplePost";
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import GoogleIcon from '@mui/icons-material/Google';
 
-const UserSocialBar = ({userId, name}) => {
+const UserSocialBar = ({userId, name, customer}) => {
     const history = useHistory();
     const [likedPosts, setLikedPosts] = useState([])
     const [posts, setPosts] = useState([]);
@@ -40,7 +44,15 @@ const UserSocialBar = ({userId, name}) => {
             <div className="card">
                 <div className="card-body">
                     <div className="reschedule-icons-container">
-                        <h5 className="centered">{name}</h5>
+                        <h5 className="centered">
+                            {name}
+                            <span className="account-type-container">
+                                {
+                                    customer.provider === "local" ? <ManageAccountsIcon /> : customer.provider === "facebook" ? <FacebookIcon color="primary" /> :
+                                        customer.provider === "google" ? <GoogleIcon color="primary" /> : <GitHubIcon />
+                                }
+                            </span>
+                        </h5>
                         <p className="centered">
                             <FriendStatus personId={userId}/>
                         </p>

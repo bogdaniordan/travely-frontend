@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
 import CustomerService from "../CustomerService";
 
 const Oauth2RedirectHandler = (props) => {
     const history = useHistory();
+    const [error, setError] = useState("");
 
     const getUrlParameter = name => {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -19,7 +20,6 @@ const Oauth2RedirectHandler = (props) => {
         if (token) {
             localStorage.setItem("user", JSON.stringify({token: token}))
                 CustomerService.getOauthProfile().then(response => {
-                    console.log(response.data)
                     localStorage.setItem("user", JSON.stringify({
                         token: token,
                         id: response.data.id,
@@ -28,7 +28,8 @@ const Oauth2RedirectHandler = (props) => {
                     history.push("/home")
                 })
         } else {
-
+            console.log(error)
+            setError(error.message)
         }
     }, [])
 
