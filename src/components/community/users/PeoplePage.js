@@ -62,7 +62,6 @@ const PeoplePage = () => {
                     )
                 }
             </div>
-            <br/>
             <Footer />
         </div>
     );

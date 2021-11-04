@@ -3,6 +3,7 @@ import LandingPageNavbar from "../navigation/LandingPageNavbar";
 import "../../styling/LandingPage.css";
 import Button from "@material-ui/core/Button";
 import picture from "../../images/landing-page/host_landing_page_picture.png"
+
 const HostLandingPage = () => {
     return (
         <div>
@@ -29,7 +30,7 @@ const HostLandingPage = () => {
                                     <Button variant="contained" color="primary"><a href="http://localhost:3001/login">
                                         Login as host
                                     </a></Button>
-                                    <Button variant="contained" color="primary" style={{marginLeft: "10px"}}><a href="http://localhost:3001/register">
+                                    <Button variant="contained" color="primary" id="landing-register-button"><a href="http://localhost:3001/register">
                                         Register as host
                                     </a></Button>
                                 </div>

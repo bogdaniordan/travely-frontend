@@ -131,8 +131,14 @@ const UpdateProfile = () => {
                                         {...register("age", {required: true, min: 18, pattern: /^[0-9]*$/})}
                                     />
                                     {errors.address && <p className="error-red">You have to be at least 18 years old.</p>}
-                                    <Form.Label>Profile picture</Form.Label>
-                                    <Form.Control type="file" onChange={getProfilePicture}/>
+                                    {
+                                        customer.provider === "local" && (
+                                            <>
+                                                <Form.Label>Profile picture</Form.Label>
+                                                <Form.Control type="file" onChange={getProfilePicture}/>
+                                            </>
+                                        )
+                                    }
                                     <br/>
                                     <br/>
                                     <Button variant="contained" type="submit" color="primary" className={classes.updateSubmitBtn}>Submit</Button>

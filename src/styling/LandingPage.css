@@ -118,3 +118,7 @@
     clip-path: circle(1200px at 2000px 1600px);
     background: #212529;
 }
+
+#landing-register-button {
+    margin-left: 10px;
+}

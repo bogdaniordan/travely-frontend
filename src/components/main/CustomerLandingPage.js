@@ -53,7 +53,6 @@ const CustomerLandingPage = () => {
                             )
                         }
                     </div>
-
                 </div>
             </section>
         </div>
