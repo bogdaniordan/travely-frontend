@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from "../navigation/Navbar";
 import Footer from "../navigation/Footer";
 import CarCard from "./CarCard";
@@ -8,6 +8,7 @@ import Map from "../../utils/Map";
 import moment from "moment";
 import CarExtras from "./CarExtras";
 import CarPaymentForm from "./CarPaymentForm";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const CarReservationPage = () => {
     const location = useLocation();
@@ -25,7 +26,17 @@ const CarReservationPage = () => {
                     <br/>
                     <h4>View car details</h4>
                     <h6>Pick up: {moment(location.state.dates.startDate).format("DD-MM-YYYY")} - Drop off: {moment(location.state.dates.endDate).format("DD-MM-YYYY")}</h6>
-                    <CarCard car={location.state.car} dates={location.state.dates} hideButton="hide" />
+                    <div className="flexed-container">
+                        <CarCard car={location.state.car} dates={location.state.dates} hideButton="hide" />
+                        <div className="card" id="price-includes-container">
+                            <div className="card-body">
+                                <h5 className="price-includes">Price includes: </h5>
+                                <h6 className="car-inclusive"><CheckCircleIcon color="success"/> Amendments</h6>
+                                <h6 className="car-inclusive"><CheckCircleIcon color="success"/> Theft Protection</h6>
+                                <h6 className="car-inclusive"><CheckCircleIcon color="success"/> Collision Damage Waiver</h6>
+                            </div>
+                        </div>
+                    </div>
                     <br/>
                     <div className="row">
                         <div className="card">

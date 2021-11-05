@@ -74,7 +74,7 @@ const SearchTaxi = () => {
                 <div className="card-body">
                     <div className="container" id="car-rentals-container">
                         <br/>
-                        <CarRentalIcon style={{width: "220px", height: "220px", margin: "auto"}}/>
+                        <CarRentalIcon className={classes.carRentalIcon} />
                         <h4>Car hire for any kind of trip</h4>
                         Clean cars. Flexible bookings. Socially distant rental counters.
                         <br/>
@@ -144,7 +144,6 @@ const SearchTaxi = () => {
                                 dates[0].endDate && (
                                     <div>
                                         <h4><EventAvailableIcon color="success" /> Pick up: {moment(dates[0].startDate).format("DD-MMM-YYYY")} - Drop off: {moment(dates[0].endDate).format("DD-MM-YYYY")}.</h4>
-                                        {/*<br/>*/}
                                     </div>
                                 )
                             }
@@ -168,7 +167,6 @@ const SearchTaxi = () => {
                             </div>
                             <br/>
                         </div>
-
                     </div>
                 ) : (
                      ( searched && (

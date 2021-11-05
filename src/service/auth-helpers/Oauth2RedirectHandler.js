@@ -45,7 +45,7 @@ const Oauth2RedirectHandler = (props) => {
                             <i className="far fa-question-circle fa-spin"></i>
                             <div className="err2">4</div>
                             <div className="error-msg">
-                                Error while logging in with OAuth2. {error}
+                                Error while trying to log in with OAuth2: {error}
                             </div>
                         </div>
                     </>

@@ -45,5 +45,10 @@ export const useStyles = makeStyles((theme) => ({
         minWidth: "20px",
         minHeight: "20px",
         marginLeft: "5px"
+    },
+    carRentalIcon: {
+        width: "220px !important",
+        height: "220px !important",
+        margin: "auto"
     }
 }));
