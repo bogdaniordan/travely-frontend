@@ -115,7 +115,6 @@ const HomePage = () => {
                     </div>
                 </div>
                 <br/>
-                <br/>
                 <hr className="mb-4"/>
             </div>
             <FamousCityBar searchByCity={searchByCity} />

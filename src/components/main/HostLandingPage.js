@@ -10,7 +10,7 @@ const HostLandingPage = () => {
             <LandingPageNavbar />
             <section className="landing-page-container">
                 <div className="fifth-circle"></div>
-                <div className="circle" style={{ background: "blue" }}></div>
+                <div className="circle" id="blue"></div>
                 <div className="second-circle"></div>
                 <div className="third-circle"></div>
                 <div className="content">

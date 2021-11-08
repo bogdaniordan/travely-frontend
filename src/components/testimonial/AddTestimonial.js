@@ -9,8 +9,10 @@ import TestimonialService from "../../service/TestimonialService";
 import {Rating} from 'react-simple-star-rating'
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AccommodationService from "../../service/AccommodationService";
+import {useStyles} from "../../styling/js-styling/NavbarBadgeStyling";
 
 const AddTestimonial = (props) => {
+    const classes = useStyles();
     const accommodationId = props.match.params.accommodationId;
     const history = useHistory();
     const [rating, setRating] = useState(0)
@@ -22,18 +24,16 @@ const AddTestimonial = (props) => {
 
     const { register, handleSubmit, formState: {errors} } = useForm();
 
-    const handleRating = rate => {
-        setRating(rate);
-    }
+    const handleRating = rate => {setRating(rate);}
 
     return (
         <div>
             <Navbar title={"Accommodation review"}/>
             <div className="container" id="add-review-container">
-                <Link to="/profile" style={{float: "left"}}>Back to profile</Link>
+                <Link to="/profile" className={classes.ageContainer}>Back to profile</Link>
                 <br/>
                 <br/>
-                <ReviewsIcon style={{margin: "auto", height: "100px", width: "100px", marginBottom: "20px"}} color="primary"/>
+                <ReviewsIcon className={classes.reviewsIcon} color="primary"/>
                 <br/>
                 <form onSubmit={handleSubmit((data) => {
                     TestimonialService.addTestimonial(accommodationId, AuthService.getCurrentUser().id, data, rating).then(

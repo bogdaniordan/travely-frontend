@@ -28,7 +28,7 @@ const CarBookingCard = ({carBooking, carBookings, setCarBookings}) => {
                 <div className="column-div-container">
                     <div className="car-booking-dates-container">
                         <div className="car-calendar-icon-container">
-                            <DateRangeIcon style={{width: "35px", height: "35px"}}/>
+                            <DateRangeIcon className={classes.dateRangeIcon} />
                         </div>
                         <p>{moment(dates.startDate).subtract(1, 'months').format("DD-MMM-YYYY")} <br/> {moment(dates.endDate).add(1, "days").subtract(1, 'months').format("DD-MMM-YYYY")}</p>
                     </div>
@@ -42,7 +42,6 @@ const CarBookingCard = ({carBooking, carBookings, setCarBookings}) => {
                             carBooking.notes && (
                                 carBooking.notes.length < 20 && (
                                     <Button variant="contained" disabled>Past booking</Button>
-                                    // <p>Notes: {carBooking.notes}</p>
                                 )
                             )
                         )

@@ -81,7 +81,6 @@ const AccommodationDetails = (props) => {
                         <div className="col-md-8">
                             <img className="img-fluid" id="accommodation-main-image" src={`http://localhost:8080/accommodations/image/${accommodation.id}/${mainImage}/download`} alt=""/>
                         </div>
-
                         <div className="col-md-4">
                             <div>
                                 <BookingCard customer={customer} accommodation={accommodation} />
@@ -99,9 +98,7 @@ const AccommodationDetails = (props) => {
                                 <img className="img-fluid" id="secondary-picture" src={`http://localhost:8080/accommodations/image/${accommodation.id}/${thirdImage}/download`}  alt=""/>
                             </a>
                         </div>
-
                         <AccommodationHostDetails accommodation={accommodation} isBookedAtm={isBookedAtm} hasFutureBookings={hasFutureBookings} closestFutureBooking={closestFutureBooking}/>
-
                         <div className="google-maps-container">
                             <Map
                                 // api key = AIzaSyBtJ-at-3HxnIdCfaeplBDJJaNuZ18rFgg
@@ -113,11 +110,9 @@ const AccommodationDetails = (props) => {
                                 lng={getCityCoordinates(accommodation.location)[1]}
                             />
                         </div>
-
                     </div>
-                    </div>
+                </div>
                 <AccommodationFacilitiesCard accommodation={accommodation} />
-
                 <Testimonials accommodationId={accommodation.id}/>
                 <div className="empty-space-container">
                 </div>

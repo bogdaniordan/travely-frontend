@@ -50,5 +50,15 @@ export const useStyles = makeStyles((theme) => ({
         width: "220px !important",
         height: "220px !important",
         margin: "auto"
+    },
+    dateRangeIcon: {
+        width: "35px !important",
+        height: "35px !important"
+    },
+    reviewsIcon: {
+        margin: "auto",
+        height: "100px !important",
+        width: "100px !important",
+        marginBottom: "20px"
     }
 }));

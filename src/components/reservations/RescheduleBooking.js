@@ -86,7 +86,7 @@ const RescheduleBooking = (props) => {
                                 <div className="flexed-container">
                                     <div className="reschedule-dates">
                                         <br/>
-                                        <h5 className="reschedule-dates">Current booked dates:</h5>
+                                        <h5>Current booked dates:</h5>
                                         <br/>
                                         <p>Check-in: <strong>{moment(booking.checkInDate).format("DD-MMM-YYYY")}</strong></p>
                                         <p>Check-out: <strong>{moment(booking.checkInDate).add(1, "days").format("DD-MMM-YYYY")}</strong></p>

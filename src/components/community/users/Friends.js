@@ -13,30 +13,30 @@ const Friends = () => {
     }, [])
 
     return (
-            <li className="list-group-item">
-                {
-                    friends.length > 0 ? (
-                        <div>
-                            <h5>Chat with friends</h5>
-                            <br/>
-                            {
-                                friends.map(
-                                    user => (
-                                        <div className="h5">
-                                            <Link to={`/chat/${user.id}`}>
-                                                <Avatar src={user.provider !== "local" ? user.picture : `http://localhost:8080/customers/image/${user.id}/download`} style={{margin: "auto"}}/>
-                                            </Link>
-                                            <small>{user.firstName} {user.lastName}</small>
-                                        </div>
-                                    )
+        <li className="list-group-item">
+            {
+                friends.length > 0 ? (
+                    <div>
+                        <h5>Chat with friends</h5>
+                        <br/>
+                        {
+                            friends.map(
+                                user => (
+                                    <div className="h5">
+                                        <Link to={`/chat/${user.id}`}>
+                                            <Avatar src={user.provider !== "local" ? user.picture : `http://localhost:8080/customers/image/${user.id}/download`} style={{margin: "auto"}}/>
+                                        </Link>
+                                        <small>{user.firstName} {user.lastName}</small>
+                                    </div>
                                 )
-                            }
-                        </div>
-                    ) : (
-                        <p className="p text-muted">You have don't have any users added as friends.</p>
-                    )
-                }
-            </li>
+                            )
+                        }
+                    </div>
+                ) : (
+                    <p className="p text-muted">You have don't have any users added as friends.</p>
+                )
+            }
+        </li>
     );
 };
 

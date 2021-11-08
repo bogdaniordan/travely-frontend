@@ -36,17 +36,11 @@ const Notifications = () => {
     };
 
     const acceptFriendRequests = id => {
-        CustomerService.acceptFriendRequest(id).then(res => {
-            // setFriendRequests(friendRequests.filter(fr => fr.id !== id));
-            window.location.reload();
-        })
+        CustomerService.acceptFriendRequest(id).then(res => window.location.reload());
     }
 
     const declineFriendRequest = id => {
-        CustomerService.denyFriendRequest(id).then(res => {
-            // setFriendRequests(friendRequests.filter(fr => fr.id !== id));
-            window.location.reload();
-        })
+        CustomerService.denyFriendRequest(id).then(res => window.location.reload())
     }
 
     return (
@@ -67,7 +61,6 @@ const Notifications = () => {
                         horizontal: "center",
                     }}
                 >
-
                     <Typography className={classes.typography}>
                         {questions.filter(question => question.response).length > 0
                             ? questions.map((q) =>
