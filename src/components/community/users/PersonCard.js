@@ -8,17 +8,19 @@ import CustomerService from "../../../service/CustomerService";
 import {useStyles} from "../../../styling/js-styling/PersonStyling";
 import {useHistory} from "react-router-dom";
 import FriendStatus from "./FriendStatus";
+import GroupIcon from '@mui/icons-material/Group';
 
 const PersonCard = ({person}) => {
     const classes = useStyles()
     const history = useHistory();
     const [bookings, setBookings] = useState([])
     const [mutualFriends, setMutualFriends] = useState(0);
+    const [isFriend, setIsFriend] = useState(false);
 
     useEffect(() => {
         BookingService.getAllByCustomerId(person.id).then(res => setBookings(res.data));
+        CustomerService.personIsFriend(person.id).then(res => setIsFriend(res.data))
         CustomerService.getMutualFriends(person.id).then(res => setMutualFriends(res.data.length))
-        console.log(person)
     }, [])
 
     return (
@@ -28,7 +30,7 @@ const PersonCard = ({person}) => {
                            image={person.provider !== "local" ? person.picture : person.picture ? `http://localhost:8080/customers/image/${person.id}/download` : "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"}/>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {person.firstName} {person.lastName}
+                        {person.firstName} {person.lastName} {isFriend && <GroupIcon color="primary" />}
                     </Typography>
                 </CardContent>
             </CardActionArea>

@@ -13,20 +13,37 @@ const PeoplePage = () => {
     const [people, setPeople] = useState([]);
 
     useEffect(() => {
-        CustomerService.getAllCustomersExcept(AuthService.getCurrentUser().id).then(res => setPeople(res.data))
+        CustomerService.getAllCustomersExcept(AuthService.getCurrentUser().id).then(res => {
+            setPeople([])
+            setPeople(res.data)
+        })
     }, [])
 
     const getAllPeople = () => {
         CustomerService.getAllCustomersExcept(AuthService.getCurrentUser().id).then(res => setPeople(res.data))
     }
 
+    const getFriends = () => {
+        CustomerService.getFriends(AuthService.getCurrentUser().id).then(res => {
+            setPeople([])
+            setPeople(res.data)
+        });
+    }
+
+    const getNonFriends = () => {
+        CustomerService.getSuggestedPeople().then(res => {
+            setPeople([])
+            setPeople(res.data)
+        })
+    }
+
     const filterPeople = e => {
         if (e.target.value === "allPeople") {
             getAllPeople();
         } else if (e.target.value === "friends") {
-            CustomerService.getFriends(AuthService.getCurrentUser().id).then(res => setPeople(res.data));
+            getFriends();
         } else {
-            CustomerService.getSuggestedPeople().then(res => setPeople(res.data))
+           getNonFriends();
         }
     }
 
