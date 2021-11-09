@@ -76,94 +76,89 @@ const Login = () => {
             <div className="login-image-container">
                 <img src={login_background} alt="Login background"/>
                 <Paper className={classes.container} elevation={3}>
-                    {/*<Container maxWidth="xs" className={classes.loginContainer}>*/}
-                    {/*    <div className={classes.paper}>*/}
                     <div className="login-content">
-                            {/*<br/>*/}
-                            <Avatar className={classes.avatar}>
-                                <PersonPinIcon />
-                            </Avatar>
-                            <Typography component="h1" variant="h5">
-                                Sign in as customer
-                            </Typography>
-                            <br/>
-                            {message && (
-                                <div className="form-group">
-                                    <div
-                                        className={
-                                            successful ? "alert alert-success" : "alert alert-danger"
-                                        }
-                                        role="alert"
-                                    >
-                                        {message}
-                                    </div>
+                        <Avatar className={classes.avatar}>
+                            <PersonPinIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign in as customer
+                        </Typography>
+                        <br/>
+                        {message && (
+                            <div className="form-group">
+                                <div
+                                    className={
+                                        successful ? "alert alert-success" : "alert alert-danger"
+                                    }
+                                    role="alert"
+                                >
+                                    {message}
                                 </div>
-                            )}
-                            <br/>
-                            <SocialLogin />
-                            <Form onSubmit={submitForm} ref={form}>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="username">Username</label>
-                                            <Input
-                                                type="text"
-                                                className="form-control"
-                                                name="username"
-                                                value={username}
-                                                onChange={onChangeUsername}
-                                                validations={[required, validUsername]}
-                                            />
-                                        </div>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <div className="form-group">
-                                            <label htmlFor="password">Password</label>
-                                            <Input
-                                                type="password"
-                                                className="form-control"
-                                                name="password"
-                                                value={password}
-                                                onChange={onChangePassword}
-                                                validations={[required, validPassword]}
-                                            />
-                                        </div>
-                                    </Grid>
-                                    <br/>
-                                    <br/>
-                                    <Grid xs={12}>
-                                        <div className="form-group" id="login-buttons-container">
-                                            <Button type="submit" variant="contained" color="primary" block className={classes.sign}>Sign in</Button>
-                                        </div>
-                                    </Grid>
+                            </div>
+                        )}
+                        <br/>
+                        <SocialLogin />
+                        <Form onSubmit={submitForm} ref={form}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <div className="form-group">
+                                        <label htmlFor="username">Username</label>
+                                        <Input
+                                            type="text"
+                                            className="form-control"
+                                            name="username"
+                                            value={username}
+                                            onChange={onChangeUsername}
+                                            validations={[required, validUsername]}
+                                        />
+                                    </div>
                                 </Grid>
-                                <CheckButton className={classes.checkBtn} ref={checkBtn} />
-                                <Grid container>
-                                    <Grid item xs>
-                                        <Link to="/register" variant="body2">
-                                            Don't have an account? Register!
-                                        </Link>
-                                        <br/>
-                                        <br/>
-                                        <Link variant="body2" onClick={openModal}>
-                                            Forgot password?
-                                        </Link>
-                                    </Grid>
+                                <Grid item xs={12}>
+                                    <div className="form-group">
+                                        <label htmlFor="password">Password</label>
+                                        <Input
+                                            type="password"
+                                            className="form-control"
+                                            name="password"
+                                            value={password}
+                                            onChange={onChangePassword}
+                                            validations={[required, validPassword]}
+                                        />
+                                    </div>
                                 </Grid>
                                 <br/>
-                            </Form>
-                        </div>
-                        <Modal
-                            isOpen={modalIsOpen}
-                            onRequestClose={closeModal}
-                            style={customStyles}
-                        >
-                        <ResetPasswordModal
-                            closeModal={closeModal}
-                        />
-                        </Modal>
-                        {/*</div>*/}
-                    {/*</Container>*/}
+                                <br/>
+                                <Grid xs={12}>
+                                    <div className="form-group" id="login-buttons-container">
+                                        <Button type="submit" variant="contained" color="primary" block className={classes.sign}>Sign in</Button>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                            <CheckButton className={classes.checkBtn} ref={checkBtn} />
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link to="/register" variant="body2">
+                                        Don't have an account? Register!
+                                    </Link>
+                                    <br/>
+                                    <br/>
+                                    <Link variant="body2" onClick={openModal}>
+                                        Forgot password?
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                            <br/>
+                        </Form>
+                    </div>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                    >
+                    <ResetPasswordModal
+                        closeModal={closeModal}
+                    />
+                    </Modal>
                 </Paper>
             </div>
         </>

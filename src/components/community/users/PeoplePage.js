@@ -14,7 +14,7 @@ const PeoplePage = () => {
 
     useEffect(() => {
         CustomerService.getAllCustomersExcept(AuthService.getCurrentUser().id).then(res => {
-            setPeople([])
+            clearPeopleState();
             setPeople(res.data)
         })
     }, [])
@@ -25,16 +25,20 @@ const PeoplePage = () => {
 
     const getFriends = () => {
         CustomerService.getFriends(AuthService.getCurrentUser().id).then(res => {
-            setPeople([])
+            clearPeopleState();
             setPeople(res.data)
         });
     }
 
     const getNonFriends = () => {
         CustomerService.getSuggestedPeople().then(res => {
-            setPeople([])
+            clearPeopleState();
             setPeople(res.data)
         })
+    }
+
+    const clearPeopleState = () => {
+        setPeople([])
     }
 
     const filterPeople = e => {

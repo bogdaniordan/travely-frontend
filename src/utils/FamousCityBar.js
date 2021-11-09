@@ -7,19 +7,17 @@ const FamousCityBar = ({searchByCity}) => {
 
     return (
         <div className="container">
-            {/*<div className="testimonials-clean">*/}
-                <br/>
-                <h4 className="explore-header">
-                    Explore famous cities
-                </h4>
-                <List style={{display: "flex"}}>
-                    {
-                        exploreCities.map(
-                            city => <CityCard searchByCity={searchByCity} city={city}/>
-                        )
-                    }
-                </List>
-            {/*</div>*/}
+            <br/>
+            <h4 className="explore-header">
+                Explore famous cities
+            </h4>
+            <List style={{display: "flex"}}>
+                {
+                    exploreCities.map(
+                        city => <CityCard searchByCity={searchByCity} city={city}/>
+                    )
+                }
+            </List>
         </div>
     );
 };
