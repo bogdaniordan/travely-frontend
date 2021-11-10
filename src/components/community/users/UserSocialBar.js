@@ -13,6 +13,9 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import CustomerService from "../../../service/CustomerService";
 
 const UserSocialBar = ({userId, name, customer}) => {
     const history = useHistory();
@@ -22,11 +25,14 @@ const UserSocialBar = ({userId, name, customer}) => {
 
     const [socials, setSocials] = useState([]);
     const [showSocials, setShowSocials] = useState(false);
+    const [getNotifications, setGetNotifications] = useState(false);
+
 
     useEffect(() => {
         PostService.getPostedPosts(userId).then(res => setPosts(res.data));
         PostService.getLikedPosts(userId).then(res => setLikedPosts(res.data))
         CommentService.getPostedComments(userId).then(res => setComments(res.data))
+        CustomerService.userIsInNotificationList(customer.id).then(res => setGetNotifications(res.data))
     }, [])
 
     const showLikedPosts = () => {
@@ -37,6 +43,14 @@ const UserSocialBar = ({userId, name, customer}) => {
     const showPostedPosts = () => {
         setShowSocials(!showSocials)
         setSocials(posts);
+    }
+
+    const addOrRemoveNotified = () => {
+        if (!getNotifications) {
+            CustomerService.addPersonToNotifiedList(customer.id).then(res => setGetNotifications(true));
+        } else {
+            CustomerService.removePersonFromNotified(customer.id).then(res => setGetNotifications(false));
+        }
     }
 
     return (
@@ -64,6 +78,9 @@ const UserSocialBar = ({userId, name, customer}) => {
                         </p>
                         <p className="centered">
                             {comments.length} <CommentIcon color="primary" />
+                        </p>
+                        <p className="centered">
+                            <IconButton color="primary" onClick={addOrRemoveNotified}>{getNotifications ?  <NotificationsActiveIcon/> : <NotificationsNoneIcon />}</IconButton>
                         </p>
                         <p className="centered">
                             <Button variant="contained" color="primary" onClick={() => history.push(`/chat/${userId}`)}>Chat</Button>

@@ -107,6 +107,18 @@ class CustomerService {
     getOauthProfile() {
         return axios.get("http://localhost:8080/customers/oauth/profile", {headers: AuthHeader()});
     }
+
+    addPersonToNotifiedList(otherUserId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/add-to-notified/${AuthService.getCurrentUser().id}/${otherUserId}`, {headers: AuthHeader()})
+    }
+
+    removePersonFromNotified(otherUserId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/remove-from-notified/${AuthService.getCurrentUser().id}/${otherUserId}`, {headers: AuthHeader()})
+    }
+
+    userIsInNotificationList(otherUserId) {
+        return axios.get(`${CUSTOMER_SERVICE_API_URL}/user-is-in-notified/${AuthService.getCurrentUser().id}/${otherUserId}`, {headers: AuthHeader()})
+    }
 }
 
 export default new CustomerService;

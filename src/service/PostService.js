@@ -49,6 +49,14 @@ class PostService {
     getLikedPosts(userId) {
         return axios.get(`${POST_SERVICE_API_URL}/liked-posts/${userId}`, {headers: AuthHeader()});
     }
+
+    getPostNotifications() {
+        return axios.get(`${POST_SERVICE_API_URL}/posts-notifications/${AuthService.getCurrentUser().id}`, {headers: AuthHeader()})
+    }
+
+    markPostNotificationAsSeen(notificationId) {
+        return axios.get(`${POST_SERVICE_API_URL}/mark-notifications-as-seen/${notificationId}`, {headers: AuthHeader()})
+    }
 }
 
 export default new PostService;
