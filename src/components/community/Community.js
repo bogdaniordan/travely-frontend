@@ -12,6 +12,7 @@ import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import {Collapse} from "@material-ui/core";
+import PostNotifications from "./PostNotifications";
 
 const Community = () => {
     const [user, setUser] = useState({})
@@ -89,6 +90,7 @@ const Community = () => {
                                     <Friends />
                                 </ul>
                             </div>
+                            <PostNotifications />
                         </div>
                         <div className="col-md-6 gedf-main">
                             <div className="card gedf-card">
