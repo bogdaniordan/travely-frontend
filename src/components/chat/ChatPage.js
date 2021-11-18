@@ -81,10 +81,7 @@ const ChatPage = (props) => {
             scrollToBottom();
         });
         CustomerService.personIsFriend(otherUserId).then(res => setIsFriend(res.data))
-        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => {
-            setCurrentLoggedUser(res.data)
-            console.log(res.data)
-        })
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => setCurrentLoggedUser(res.data))
     }, [])
 
     const markMessagesAsSeen = messages => {

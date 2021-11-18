@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Button from "@material-ui/core/Button";
 import PostService from "../../service/PostService";
 
 const PostNotifications = () => {
@@ -18,7 +17,7 @@ const PostNotifications = () => {
     return (
         <>
             {
-                notificationsLength && (
+                notificationsLength > 0 && (
                     <div className="card">
                         <div className="card-body">
                             <div className="card">

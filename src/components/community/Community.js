@@ -10,7 +10,6 @@ import UserPost from "./UserPost";
 import PostService from "../../service/PostService";
 import {useForm} from "react-hook-form";
 import Button from "@material-ui/core/Button";
-import {useHistory} from "react-router-dom";
 import {Collapse} from "@material-ui/core";
 import PostNotifications from "./PostNotifications";
 
@@ -141,7 +140,6 @@ const Community = () => {
                                                         <Button type="submit" variant="outlined" color="primary">POST</Button>
                                                     </form>
                                                 </Collapse>
-
                                                 <Collapse in={showSearch}>
                                                     <div>
                                                         <br/>
