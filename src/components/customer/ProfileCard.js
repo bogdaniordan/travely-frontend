@@ -27,7 +27,7 @@ const ProfileCard = () => {
     }
 
     useEffect(() => {
-        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => setCustomer(res.data))
+        CustomerService.getCustomerById(AuthService.getCurrentUser().id).then(res => setCustomer(res.data));
     }, [])
 
     const updateProfile = () => {

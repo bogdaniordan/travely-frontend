@@ -89,7 +89,7 @@ const Community = () => {
                                     <Friends />
                                 </ul>
                             </div>
-                            <PostNotifications />
+                            {/*<PostNotifications />*/}
                         </div>
                         <div className="col-md-6 gedf-main">
                             <div className="card gedf-card">

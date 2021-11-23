@@ -11,10 +11,11 @@ const SuccessfulPayment = () => {
     const booking = location.state.booking;
 
     useEffect(() => {
+        // Todo remove
         console.log(booking.checkInDate)
         console.log(booking.checkoutDate)
-        console.log(moment(booking.checkInDate).subtract(1, 'months').format("DD-MM-YYYY"))
-        console.log(moment(booking.checkoutDate).subtract(1, 'months').format("DD-MM-YYYY"))
+        console.log(moment(booking.checkInDate).format("DD-MM-YYYY"))
+        console.log(moment(booking.checkoutDate).format("DD-MM-YYYY"))
     })
 
     return (

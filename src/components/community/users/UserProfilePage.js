@@ -12,18 +12,26 @@ const UserProfilePage = (props) => {
     const classes = useStyles();
     const userId = props.match.params.userId;
     const [user, setUser] = useState({})
+    const [name, setName] = useState('');
 
     useEffect(() => {
-        CustomerService.getCustomerById(userId).then(res => setUser(res.data))
+        CustomerService.getCustomerById(userId).then(res => {
+            setUser(res.data);
+            let name = res.data.firstName;
+            if(res.data.lastName) {
+                name += " " + res.data.lastName;
+            }
+            setName(name);
+        });
     }, [])
 
     return (
         <div>
-            <Navbar title={user.firstName + " " + user.lastName} subtitle="Checkout the stats and interact with other users"/>
+            <Navbar title={name} subtitle="Checkout the stats and interact with other users"/>
             <div className="container">
                 <Avatar src={user.provider !== "local" ? user.picture : `http://localhost:8080/customers/image/${userId}/download`} className={classes.otherUserProfile} />
                 <img src={cover} className="other-user-profile-cover" alt="cover"/>
-                <UserSocialBar userId={userId} name={user.firstName + " " + user.lastName} customer={user}/>
+                <UserSocialBar userId={userId} name={name} customer={user}/>
                     <div className="row container d-flex justify-content-center" id="profile-inner-container">
                         <div className="col-xl-6 col-md-12" id="profile-second-inner">
                             <div className="card user-card-full">
