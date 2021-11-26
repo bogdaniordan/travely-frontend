@@ -8,6 +8,8 @@ import AuthService from "../../service/AuthService";
 import CarBookingService from "../../service/CarBookingService";
 import {useHistory} from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
+import moment from "moment";
+
 
 const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumber, gps, car}) => {
     const classes = useStyles();
@@ -41,8 +43,8 @@ const CarPaymentForm = ({totalPrice, notes, dates, childSeatNumber, babySeatNumb
     }
 
     const handleToken = () => {
-        CarBookingService.saveCarBooking(car.id, dates.startDate, dates.endDate, childSeatNumber, babySeatNumber, gps, totalPrice, notes)
-            .then(res => redirectToPaidPage())
+        CarBookingService.saveCarBooking(car.id, moment(dates.startDate).format("YYYY-MM-DD"), moment(dates.endDate).format("YYYY-MM-DD"), childSeatNumber, babySeatNumber, gps, totalPrice, notes)
+            .then(res => redirectToPaidPage());
     }
 
     return (

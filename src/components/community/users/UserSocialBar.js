@@ -27,7 +27,6 @@ const UserSocialBar = ({userId, name, customer}) => {
     const [showSocials, setShowSocials] = useState(false);
     const [getNotifications, setGetNotifications] = useState(false);
 
-
     useEffect(() => {
         PostService.getPostedPosts(userId).then(res => setPosts(res.data));
         PostService.getLikedPosts(userId).then(res => setLikedPosts(res.data))

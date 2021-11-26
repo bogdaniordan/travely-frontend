@@ -20,7 +20,7 @@ const SuccessfulCarPayment = () => {
             <h1 className="payment-success-header">Thank you!</h1>
             <br/>
             <p className="payment-success-message">Your payment for <strong>{location.state.car.model}</strong> for <strong>${location.state.totalPrice}</strong> has been made successfully!
-                <br/> Pick-up date: <strong>{moment(location.state.dates.startDate).subtract(1, 'months').format("DD-MM-YY")}</strong> / Drop off date: <strong>{moment(location.state.dates.endDate).add(1, "days").subtract(1, 'months').format("DD-MM-YY")}</strong>.
+                <br/> Pick-up date: <strong>{moment(location.state.dates.startDate).format("DD-MM-YY")}</strong> / Drop off date: <strong>{moment(location.state.dates.endDate).format("DD-MM-YY")}</strong>.
                 <br/><br/>  You can view you car rentals at your profile page. <br/>
                 <Button variant="contained" color="primary" onClick={() => history.push("/profile")} className={classes.gotToProfileButton}>Go to profile</Button>
             </p>
